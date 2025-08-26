@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -6,6 +6,8 @@
     yaru-theme
     ubuntu-sans
   ];
+
+  fonts.fontconfig.enable = true;
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm = {
@@ -26,15 +28,14 @@
         show-battery-percentage = true;
         color-scheme = "prefer-dark";
         accent-color = "orange";
-	font-antialiasing = "rgba";
-	font-hinting = "slight";
-	font-name = "Ubuntu Sans 12";
-	monospace-font-name = "Ubuntu Sans Mono 12";
-	icon-theme = "Yaru";
-	clock-format = "12h";
-	cursor-theme = "Yaru";
+	      font-antialiasing = "standard";
+	      font-hinting = "full";
+	      font-name = "Ubuntu Sans 12";
+	      monospace-font-name = "Ubuntu Sans Mono 12";
+	      icon-theme = "Yaru";
+	      clock-format = "12h";
+	      cursor-theme = "Yaru";
       };
-
     };
   }];
   

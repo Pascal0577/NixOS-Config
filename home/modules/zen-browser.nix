@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, ... }:
 
 {
   imports = [
@@ -52,7 +52,7 @@
 
       settings = {
         "zen.glance.enabled" = false;
-	"zen.theme.accent-color" = "#F57C00";
+        "zen.theme.accent-color" = "#F57C00";
       };
 
       containersForce = true;

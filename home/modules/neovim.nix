@@ -136,7 +136,6 @@
       };
       
       treesitter.enable = true;
-      # bufferline.enable = true;
       lualine.enable = true;
       web-devicons.enable = true;
       telescope.enable = true;

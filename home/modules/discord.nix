@@ -1,14 +1,6 @@
 { pkgs, ... }:
 
-# inputs.nixcord = {
-#   url = "github:kaylorben/nixcord";
-# };
-
 {
-  # imports = [
-  #   inputs.nixcord.homeModules.nixcord
-  # ];
-
   home.packages = with pkgs; [
     vesktop
   ];
@@ -40,9 +32,9 @@
       useQuickCss = true;
       plugins = {
         FakeNitro.enabled = true;
-	FixYoutubeEmbeds.enabled = true;
-	YoutubeAdblock.enabled = true;
-	BetterUploadButton.enabled = true;
+	      FixYoutubeEmbeds.enabled = true;
+	      YoutubeAdblock.enabled = true;
+	      BetterUploadButton.enabled = true;
       };
     };
   };
