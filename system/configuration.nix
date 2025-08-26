@@ -41,6 +41,8 @@
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
+      "rcupdate.rcu_expedited=1"
+      "page_alloc.shuffle=1"
     ];
 
     loader = {
