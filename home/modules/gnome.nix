@@ -73,7 +73,7 @@
       "org/gnome/desktop/wm/preferences" = {
         resize-with-right-button = true;
 	      auto-raise = true;
-	      auto-raise-delay = 25;
+	      auto-raise-delay = 0;
 	      focus-mode = "sloppy";
       };
 

@@ -5,7 +5,6 @@
     fastfetch
   ];
 
-
   programs.fastfetch = {
     enable = true;
 
@@ -21,12 +20,12 @@
         color = {
           "1" = "38;2;129;162;190";
           "2" = "38;2;138;190;183";
-	  "3" = "38;2;89;134;179";
+	        "3" = "38;2;89;134;179";
         };
       };
       modules = [
         "break"
-	{
+	      {
           type = "custom";
           format = "{##B0B0B0}┌─────────────────────────Hardware─────────────────────────┐";
         }
@@ -126,13 +125,13 @@
           key = "  Uptime ";
           keyColor = "magenta";
         }
- 	{
-	  type = "command";
-	  key = "  Hostname ";
-	  keyColor = "magenta";
-	  text = "echo $USER@$(hostname)";
-	}
-	{
+ 	      {
+	        type = "command";
+	        key = "  Hostname ";
+	        keyColor = "magenta";
+	        text = "echo $USER@$(hostname)";
+	      }
+	      {
           type = "datetime";
           key = "  DateTime ";
           keyColor = "magenta";

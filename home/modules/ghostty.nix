@@ -7,18 +7,11 @@
 
   programs.ghostty = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
       command = "zsh";
       window-height = 35;
       window-width = 120;
     };
   };
-
-  #home.file = {
-  #   ".config/ghostty/config".text = ''
-  #     command = zsh
-  #     window-height = 35
-  #     window-width = 120
-  #   '';
-  #};
 }
