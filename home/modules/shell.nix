@@ -56,7 +56,7 @@
 
         # Add in zsh plugins
         zinit light Aloxaf/fzf-tab
-	      zinit light zdharma-continuum/fast-syntax-highlighting
+        zinit light zdharma-continuum/fast-syntax-highlighting
 
         zinit cdreplay -q
 
