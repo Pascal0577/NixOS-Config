@@ -1,12 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/gnome.nix
       ./modules/nvidia.nix
       ./modules/intel.nix
+      ./modules/gnome.nix
+      ./modules/steam.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -107,7 +108,7 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.pascal = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Pascal";
     extraGroups = [ "networkmanager" "wheel" ];
