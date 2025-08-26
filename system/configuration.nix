@@ -15,8 +15,40 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  
+
+   boot = {
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+      themePackages = with pkgs; [
+        # (adi1090x-plymouth-themes.override {
+        #   selected_themes = [ "rings" ];
+        # })
+      ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 4;
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+    };
+
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+
+    loader = {
+      timeout = 0;
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
 
