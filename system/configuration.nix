@@ -41,11 +41,12 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  security.rtkit.enable = true;
+
   services = {
     printing.enable = true;
     openssh.enable = true;
     pulseaudio.enable = false;
-    rtkit.enable = true;
 
     xserver = {
       enable = true;
