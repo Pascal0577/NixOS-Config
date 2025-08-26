@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   imports = [ 
@@ -13,8 +13,8 @@
     ./modules/fastfetch.nix
   ];
 
-  home.username = "pascal";
-  home.homeDirectory = "/home/pascal";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
 
   nixpkgs.config.allowUnfree = true;
 
