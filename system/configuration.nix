@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./modules/gnome.nix
       ./modules/nvidia.nix
+      ./modules/intel.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
