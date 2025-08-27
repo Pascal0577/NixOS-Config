@@ -21,7 +21,6 @@
 
   home.packages = with pkgs; [
     celluloid
-    gcolor3
   ];
 
   home.file = {
