@@ -26,6 +26,13 @@
         "browser.tabs.warnOnClose" = false;
         "browser.aboutConfig.showWarning" = false;
         "browser.tabs.fadeOutUnloadedTabs" = true;
+        "browser.newtabpage.activity-stream.trendingSearch.defaultSearchEngine" = "DuckDuckGo";
+        "browser.urlbar.placeholderName.private" = "DuckDuckGo";
+        "browser.urlbar.suggest.history" = false;
+        "browser.urlbar.suggest.recentsearches" = false;
+        "browser.urlbar.suggest.openpage" = false;
+        "browser.urlbar.suggest.yelp" = false;
+        "browser.urlbar.suggest.addons" = false;
       };
 
       AutofillAddressEnabled = false;

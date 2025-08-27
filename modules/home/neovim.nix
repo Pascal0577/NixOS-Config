@@ -77,7 +77,7 @@
           light_aqua = "#d0e9dc";
           light_aqua_soft = "#d6ece0";
 
-          gray = "#c5c8c6";
+          gray = "#6a6a6a";
         }; 
       };
     };
