@@ -100,6 +100,12 @@ let
 	        click-policy = "single";
         };
 
+        "org/gnome/mutter" = {
+          experimental-features = [
+            "variable-refresh-rate"
+          ];
+        };
+
         "org/gnome/shell/extensions/user-theme".name = "Yaru-dark";
 
         "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
