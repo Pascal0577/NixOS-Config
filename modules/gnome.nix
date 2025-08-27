@@ -100,11 +100,12 @@ let
 	        click-policy = "single";
         };
 
-        "org/gnome/mutter" = {
-          experimental-features = [
-            "variable-refresh-rate"
-          ];
-        };
+        # I'll re-enable this when VRR on GNOME doesn't suck turbo ass
+        # "org/gnome/mutter" = {
+        #   experimental-features = [
+        #     "variable-refresh-rate"
+        #   ];
+        # };
 
         "org/gnome/shell/extensions/user-theme".name = "Yaru-dark";
 
