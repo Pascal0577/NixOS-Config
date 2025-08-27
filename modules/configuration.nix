@@ -14,7 +14,9 @@
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-   boot = {
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
+  boot = {
     plymouth = {
       enable = true;
       theme = "bgrt";
