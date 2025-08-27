@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   home.packages = with pkgs; [
@@ -11,7 +11,7 @@
     settings = {
       logo = {
         type = "file";
-        source = "/home/pascal/nix/home/modules/fastfetch-logo.txt";
+        source = "/home/${username}/NixOS-Config/modules/home/fastfetch-logo.txt";
         padding = {
           top = 1;
           left = 2;
