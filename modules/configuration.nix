@@ -16,6 +16,8 @@
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
+  zramSwap.enable = true;
+
   boot = {
     plymouth = {
       enable = true;
