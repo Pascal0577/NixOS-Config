@@ -33,7 +33,7 @@ let
 	        monospace-font-name = "Ubuntu Sans Mono 12";
 	        icon-theme = "Yaru";
 	        clock-format = "12h";
-	        cursor-theme = "Yaru";
+	        # cursor-theme = "Yaru";
         };
       };
     }];
@@ -75,6 +75,21 @@ let
       gnomeExtensions.user-themes
       gnomeExtensions.clipboard-history
     ];
+
+    home.pointerCursor = {
+      package = pkgs.yaru-theme;
+      name = "Yaru";
+      size = 32;
+    };
+
+    gtk = {
+      enable = true;
+      cursorTheme = {
+        size = 24;
+        package = pkgs.yaru-theme;
+        name = "Yaru";
+      };
+    };
 
     dconf = {
       enable = true;
@@ -140,7 +155,7 @@ let
 	        monospace-font-name = "Ubuntu Sans Mono 12";
 	        icon-theme = "Yaru";
 	        clock-format = "12h";
-	        cursor-theme = "Yaru";
+	        # cursor-theme = "Yaru";
         };
 
         "org/gnome/desktop/sound".theme-name = "Yaru";
