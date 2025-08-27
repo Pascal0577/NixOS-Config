@@ -26,25 +26,31 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "pascal";
+      hostname = "nixos";
     in
   {
     # use "nixos", or your hostname as the name of the configuration
     # it's a better practice than "default" shown in the video
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
         inherit username;
+        inherit hostname;
       };
 
       modules = [
-        ./system/configuration.nix
+        ./modules/configuration.nix
+        (import ./modules/gnome.nix { inherit pkgs; }).system
       ];
     };
 
     homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
-      modules = [ ./home/home.nix ];
+      modules = [ 
+        ./modules/home.nix
+        (import ./modules/gnome.nix { inherit pkgs; }).home
+      ];
 
       extraSpecialArgs = { 
         inherit inputs;
