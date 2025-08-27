@@ -1,22 +1,18 @@
-{ pkgs, username, ... }:
+{ pkgs, username, hostname, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/nvidia.nix
-      ./modules/intel.nix
-      ./modules/gnome.nix
-      ./modules/steam.nix
+      ./system/nvidia.nix
+      ./system/intel.nix
+      ./system/steam.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.pathsToLink = [ "/share/zsh" ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  # Bootloader.
-  
 
    boot = {
     plymouth = {
@@ -53,7 +49,7 @@
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = hostname;
 
   # Enable networking
   networking.networkmanager.enable = true;
