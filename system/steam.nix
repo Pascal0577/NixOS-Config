@@ -1,10 +1,6 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 
 {
-  users.users.${username}.packages = with pkgs; [
-    steam
-  ];
-
   programs.gamemode.enable = true;
 
   programs.steam = {
@@ -12,5 +8,6 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+    extraCompatPackages =  [ pkgs.proton-ge-bin ];
   };
 }
