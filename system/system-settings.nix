@@ -1,24 +1,23 @@
 { pkgs, username, hostname, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./system/nvidia.nix
-      ./system/intel.nix
-      ./system/steam.nix
-    ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.pathsToLink = [ "/share/zsh" ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-
   zramSwap.enable = true;
 
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+    package = pkgs.appimage-run.override {
+      extraPkgs = pkgs: [ pkgs.libxcrypt ];
+    };
+  }; 
+
   boot = {
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     plymouth = {
       enable = true;
       theme = "bgrt";
@@ -107,7 +106,6 @@
     graphics.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
     description = "Pascal";
@@ -117,14 +115,7 @@
     ];
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Hopefully I can just install everything with Home Manager
-  environment.systemPackages = with pkgs; [
-
-  ];
-
   system.stateVersion = "25.05";
-
 }

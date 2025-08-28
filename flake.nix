@@ -3,22 +3,33 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
- 
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Web Browser
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Declarative Neovim
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Declarative KDE Plasma
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    # Possibly needed in the future
+    # nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -29,8 +40,6 @@
       hostname = "nixos";
     in
   {
-    # use "nixos", or your hostname as the name of the configuration
-    # it's a better practice than "default" shown in the video
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
@@ -39,23 +48,37 @@
       };
 
       modules = [
-        ./modules/configuration.nix
-        (import ./modules/gnome.nix { inherit pkgs; }).system
+        # Import desired system modules
+        ./system/system-settings.nix
+        ./system/hardware-configuration.nix
+        ./system/intel.nix
+        ./system/nvidia.nix
+        ./system/steam.nix
+        ./system/gnome.nix
       ];
     };
 
     homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
-      modules = [ 
-        ./modules/home.nix
-        (import ./modules/gnome.nix { inherit pkgs; }).home
-      ];
-
       extraSpecialArgs = { 
         inherit inputs;
         inherit username;
       };
+
+      modules = [
+        # Import desired home modules
+        ./home/home-settings.nix
+        ./home/zen-browser.nix
+        ./home/neovim.nix
+        ./home/git.nix
+        ./home/shell.nix
+        ./home/ghostty.nix
+        ./home/discord.nix
+        ./home/obs-studio.nix
+        ./home/fastfetch.nix
+        ./home/gnome.nix
+      ];
     };
   };
 }
