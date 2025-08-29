@@ -14,7 +14,12 @@
     package = pkgs.appimage-run.override {
       extraPkgs = pkgs: [ pkgs.libxcrypt ];
     };
-  }; 
+  };
+
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+  ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
