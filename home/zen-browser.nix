@@ -59,7 +59,7 @@
 
       settings = {
         "zen.glance.enabled" = false;
-        "zen.theme.accent-color" = "#F57C00";
+        "zen.theme.accent-color" = "#d56199";
         "zen.welcome-screen.seen" = true;
         "zen.urlbar.behavior" = "float";
         "zen.theme.use-sysyem-colors" = true;

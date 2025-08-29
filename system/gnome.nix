@@ -26,7 +26,7 @@
         "org/gnome/desktop/interface" = {
           show-battery-percentage = true;
           color-scheme = "prefer-dark";
-          accent-color = "orange";
+          accent-color = "pink";
 	        font-antialiasing = "standard";
 	        font-hinting = "full";
 	        font-name = "Ubuntu Sans 12";
@@ -39,31 +39,18 @@
     }];
   
     environment.gnome.excludePackages = (with pkgs; [
-      yelp
-      epiphany
-      atomix # puzzle game
-      cheese # webcam tool
-      epiphany # web browser
-      evince # document viewer
-      geary # email reader
-      gedit # text editor
-      simple-scan
-      gnome-console
-      gnome-text-editor
-      gnome-maps
-      gnome-clocks
-      gnome-characters
-      gnome-music
-      gnome-photos
-      gnome-tour
-      gnome-contacts
-      gnome-weather
-      gnome-calendar
-      gnome-connections
-      snapshot
-      hitori
-      iagno
-      tali
-      totem
+      yelp             epiphany
+      atomix           cheese
+      epiphany         evince
+      geary            gedit 
+      gnome-console    gnome-text-editor
+      gnome-maps       gnome-clocks 
+      gnome-characters gnome-music
+      gnome-photos     gnome-tour
+      gnome-contacts   gnome-weather
+      gnome-calendar   gnome-connections
+      snapshot         hitori
+      iagno            tali
+      totem            simple-scan
     ]);
 }
