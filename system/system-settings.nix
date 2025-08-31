@@ -8,12 +8,20 @@
 
   zramSwap.enable = true;
 
+  programs.nix-ld = {
+    enable  = true;
+    package = pkgs.nix-ld;
+    libraries = with pkgs; [
+      libxcrypt
+      libxcrypt-legacy
+      libffi
+      libyaml
+    ];
+  };
+
   programs.appimage = {
     enable = true;
     binfmt = true;
-    package = pkgs.appimage-run.override {
-      extraPkgs = pkgs: [ pkgs.libxcrypt ];
-    };
   };
 
   fonts.packages = with pkgs; [

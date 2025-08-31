@@ -28,18 +28,22 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    nixgl.url = "github:nix-community/NixGL";
+
     # Possibly needed in the future
     # nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, ... }@inputs:
     let
+
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       username = "pascal";
       hostname = "nixos";
     in
   {
+
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
@@ -49,12 +53,13 @@
 
       modules = [
         # Import desired system modules
+        ./system/gnome.nix
         ./system/system-settings.nix
         ./system/hardware-configuration.nix
         ./system/intel.nix
         ./system/nvidia.nix
         ./system/steam.nix
-        ./system/gnome.nix
+        ./system/vpn.nix
       ];
     };
 
@@ -68,7 +73,8 @@
 
       modules = [
         # Import desired home modules
-        ./home/home-settings.nix
+        ./home/gnome.nix
+	./home/home-settings.nix
         ./home/zen-browser.nix
         ./home/neovim.nix
         ./home/git.nix
@@ -77,7 +83,6 @@
         ./home/discord.nix
         ./home/obs-studio.nix
         ./home/fastfetch.nix
-        ./home/gnome.nix
       ];
     };
   };
