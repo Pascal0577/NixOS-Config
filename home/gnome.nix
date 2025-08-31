@@ -55,11 +55,11 @@
       };
 
       # I'll re-enable this when VRR on GNOME doesn't suck turbo ass
-      # "org/gnome/mutter" = {
-      #   experimental-features = [
-      #     "variable-refresh-rate"
-      #   ];
-      # };
+      "org/gnome/mutter" = {
+        experimental-features = [
+          "variable-refresh-rate"
+        ];
+      };
 
       "org/gnome/shell/extensions/user-theme".name = "Yaru-dark";
 
@@ -81,7 +81,7 @@
 
       "org/gnome/shell/extensions/paperwm" = {
         animation-time = 0.2;
-        default-focus-mode = 2; # Edge, vs center or default
+        default-focus-mode = 0; # Edge, vs center or default
         disable-topbar-styling = true;
         edge-preview-enable = true;
         edge-preview-scale = 0.25;

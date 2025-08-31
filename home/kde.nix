@@ -5,6 +5,11 @@
     inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
 
+  home.packages = with pkgs; [
+    papirus-icon-theme
+    kdePackages.karousel
+  ];
+
   programs.plasma = {
     enable = true;
     overrideConfig = false;
@@ -457,7 +462,7 @@
             };
           }
           {
-            panel-spacer = {
+            panelSpacer = {
               expanding = true;
             };
           }
