@@ -59,6 +59,7 @@
         experimental-features = [
           "variable-refresh-rate"
         ];
+        overlay-key = "";
       };
 
       "org/gnome/shell/extensions/user-theme".name = "Yaru-dark";
@@ -219,7 +220,6 @@
         command = "playerctl position 5-";
         binding = "<Super>XF86AudioPrev";
       };
-
     };
   };
 }
