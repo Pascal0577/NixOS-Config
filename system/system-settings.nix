@@ -4,7 +4,10 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.pathsToLink = [ "/share/zsh" ];
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    LD_LIBRARY_PATH = "/run/current-system/sw/share/nix-ld/lib";
+  };
 
   zramSwap.enable = true;
 
@@ -16,6 +19,7 @@
       libxcrypt-legacy
       libffi
       libyaml
+      icu
     ];
   };
 
