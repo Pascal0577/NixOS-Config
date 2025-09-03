@@ -6,6 +6,7 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    # For nix-ld
     LD_LIBRARY_PATH = "/run/current-system/sw/share/nix-ld/lib";
   };
 
@@ -22,6 +23,11 @@
       icu
     ];
   };
+
+  # environment.systemPackages = with pkgs; [ pulseaudio ];
+
+  # systemd.services."getty@tty1".enable = false;
+  # systemd.services."autovt@tty1".enable = false;
 
   programs.appimage = {
     enable = true;
@@ -97,7 +103,7 @@
   services = {
     printing.enable = true;
     openssh.enable = true;
-    pulseaudio.enable = false;
+    # pulseaudio.enable = false;
 
     xserver = {
       enable = true;
@@ -106,6 +112,11 @@
         layout = "us";
         variant = "";
       };
+      # autoLogin is really janky and bad right now.
+      # displayManager.autoLogin = {
+      #   enable = true;
+      #   user = "${username}";
+      # };
     };
 
     pipewire = {

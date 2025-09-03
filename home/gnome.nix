@@ -7,6 +7,7 @@
     gnomeExtensions.user-themes
     gnomeExtensions.clipboard-history
     gnomeExtensions.paperwm
+    #gnomeExtensions.quick-settings-audio-panel
     celluloid
     dconf-editor
   ];
@@ -36,6 +37,7 @@
           user-themes.extensionUuid
           clipboard-history.extensionUuid
           paperwm.extensionUuid
+          #quick-settings-audio-panel.extensionUuid
         ];
         favorite-apps = [
           # .desktop files can be found in "/run/current-system/sw/share/applications/"
