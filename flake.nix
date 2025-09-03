@@ -28,13 +28,13 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nixgl.url = "github:nix-community/NixGL";
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     # Possibly needed in the future
     # nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
 
       system = "x86_64-linux";
@@ -74,7 +74,7 @@
       modules = [
         # Import desired home modules
         ./home/gnome.nix
-	./home/home-settings.nix
+	      ./home/home-settings.nix
         ./home/zen-browser.nix
         ./home/neovim.nix
         ./home/git.nix
