@@ -9,12 +9,9 @@
     stateVersion = "25.05";
     packages = with pkgs; [
       playerctl
-      # wineWowPackages.staging
-      # inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
       icoutils
       unrar
       losslesscut-bin
-      timeshift
     ];
 
     file = {

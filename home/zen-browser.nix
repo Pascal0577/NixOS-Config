@@ -112,4 +112,14 @@
     exec = "nvidia-offload zen-beta --name zen-beta %U";
     icon = "zen-beta";
   };
+
+  # Setting mime types declaratively has issues I don't want to deal with
+  # xdg.mimeApps = {
+  #   enable = true;
+  #   defaultApplications = {
+  #     "text/html" = "zen-beta.desktop";
+  #     "x-scheme-handler/http" = "zen-beta.desktop";
+  #     "x-scheme-handler/https" = "zen-beta.desktop";
+  #   };
+  # };
 }

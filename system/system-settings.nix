@@ -24,11 +24,6 @@
     ];
   };
 
-  # environment.systemPackages = with pkgs; [ pulseaudio ];
-
-  # systemd.services."getty@tty1".enable = false;
-  # systemd.services."autovt@tty1".enable = false;
-
   programs.appimage = {
     enable = true;
     binfmt = true;
@@ -36,11 +31,11 @@
 
   fonts.packages = with pkgs; [
     noto-fonts-cjk-sans
-    # noto-fonts-emoji
+    noto-fonts-emoji
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     plymouth = {
       enable = true;
       theme = "bgrt";
@@ -103,7 +98,6 @@
   services = {
     printing.enable = true;
     openssh.enable = true;
-    # pulseaudio.enable = false;
 
     xserver = {
       enable = true;
@@ -124,8 +118,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
     };
   };
 
