@@ -5,10 +5,6 @@
     inputs.nixvim.homeModules.nixvim
   ];
 
-  home.packages = with pkgs; [
-    python313Packages.pylatexenc
-  ];
-
   programs.nixvim = {
     enable = true;
     colorschemes.gruvbox = {
@@ -121,7 +117,7 @@
         servers = { 
 	        bashls.enable = true;
 	        nixd.enable = true;
-                zls.enable = true;
+          zls.enable = true;
 	      };
       };
 
@@ -132,6 +128,7 @@
 	        {name = "nvim_lsp";}
 	        {name = "path";}
 	        {name = "buffer";}
+          {name = "cmp-nvim-lsp";}
         ];
       };
       
@@ -139,7 +136,6 @@
       lualine.enable = true;
       web-devicons.enable = true;
       telescope.enable = true;
-      render-markdown.enable = true;
     };
   };
 

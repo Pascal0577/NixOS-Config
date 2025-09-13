@@ -28,10 +28,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
-    # Possibly needed in the future
-    # nix-gaming.url = "github:fufexan/nix-gaming";
+    # Secure Boot
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -60,6 +61,7 @@
         ./system/nvidia.nix
         ./system/steam.nix
         ./system/vpn.nix
+        ./system/secure-boot.nix
       ];
     };
 
@@ -83,6 +85,7 @@
         ./home/discord.nix
         ./home/obs-studio.nix
         ./home/fastfetch.nix
+        ./home/quarto.nix
       ];
     };
   };

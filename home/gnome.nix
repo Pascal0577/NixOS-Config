@@ -7,7 +7,6 @@
     gnomeExtensions.user-themes
     gnomeExtensions.clipboard-history
     gnomeExtensions.paperwm
-    #gnomeExtensions.quick-settings-audio-panel
     celluloid
     dconf-editor
   ];
@@ -33,11 +32,10 @@
       "org/gnome/shell" = {
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [
-          blur-my-shell.extensionUuid
+          # blur-my-shell.extensionUuid
           user-themes.extensionUuid
-          clipboard-history.extensionUuid
+          # clipboard-history.extensionUuid
           paperwm.extensionUuid
-          #quick-settings-audio-panel.extensionUuid
         ];
         favorite-apps = [
           # .desktop files can be found in "/run/current-system/sw/share/applications/"

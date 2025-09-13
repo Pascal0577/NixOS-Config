@@ -12,8 +12,9 @@
     );
 
     plugins = with pkgs.obs-studio-plugins; [
-      # obs-backgroundremoval
-      # obs-pipewire-audio-capture
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-vaapi
     ];
   };
 }
