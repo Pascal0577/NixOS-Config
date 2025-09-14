@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -7,6 +7,105 @@
 
   programs.nixvim = {
     enable = true;
+    globals.mapleader = " ";
+    opts = {
+      number = true;
+      relativenumber = true;
+      nu = true;
+      tabstop = 2;
+      softtabstop = 2;
+      shiftwidth = 2;
+      expandtab = true;
+      smartindent = true;
+      hlsearch = true;
+      incsearch = true;
+      scrolloff = 8;
+      signcolumn = "yes";
+      winborder = "rounded";
+      swapfile = false;
+    };
+
+    keymaps = [
+      {
+        mode = "n";
+        action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+        key = "<leader>do";
+        options.desc = "Open diagnostic";
+      }
+      {
+        mode = "n";
+        action = "<cmd>Telescope find_files<CR>";
+        key = "<leader>ff";
+        options.desc = "Telescope fine files";
+      }
+    ];
+
+    plugins = {
+      lsp = {
+        enable = true;
+        servers = { 
+	        bashls.enable = true;
+	        nixd.enable = true;
+          zls.enable = true;
+	      };
+      };
+
+      blink-cmp = {
+        enable = true;
+        setupLspCapabilities = true;
+        settings = {
+          appearance = {
+            nerd_font_variant = "mono";
+          };
+          completion = {
+            menu.border = "none";
+            accept = {
+              auto_brackets = {
+                enabled = false;
+                semantic_token_resolution = {
+                  enabled = false;
+                };
+              };
+            };
+            documentation = {
+              auto_show = false;
+            };
+          };
+          keymap = {
+            preset = "super-tab";
+          };
+          signature = {
+            enabled = true;
+          };
+          sources = {
+            cmdline = [ ];
+            providers = {
+              buffer = {
+                score_offset = -7;
+              };
+              lsp = {
+                fallbacks = [ ];
+              };
+            };
+          };
+        };
+      };
+
+      indent-blankline = {
+        enable = true;
+        settings = {
+          indent = {
+            char = "│";
+          };
+
+        };
+      };
+      treesitter.enable = true;
+      lualine.enable = true;
+      web-devicons.enable = true;
+      telescope.enable = true;
+    };
+
     colorschemes.gruvbox = {
       enable = true;
       settings = {
@@ -76,66 +175,6 @@
           gray = "#6a6a6a";
         }; 
       };
-    };
-
-    globals.mapleader = " ";
-    
-    opts = {
-      number = true;
-      relativenumber = true;
-      nu = true;
-      tabstop = 2;
-      softtabstop = 2;
-      shiftwidth = 2;
-      expandtab = true;
-      smartindent = true;
-      hlsearch = true;
-      incsearch = true;
-      scrolloff = 8;
-      signcolumn = "yes";
-      winborder = "rounded";
-      swapfile = false;
-    };
-
-    keymaps = [
-      {
-        mode = "n";
-        action = "<cmd>lua vim.diagnostic.open_float()<CR>";
-        key = "<leader>do";
-        options.desc = "Open diagnostic";
-      }
-      {
-        mode = "n";
-        action = "<cmd>Telescope find_files<CR>";
-        key = "<leader>ff";
-        options.desc = "Telescope fine files";
-      }
-    ];
-    plugins = {
-      lsp = {
-        enable = true;
-        servers = { 
-	        bashls.enable = true;
-	        nixd.enable = true;
-          zls.enable = true;
-	      };
-      };
-
-      cmp = {
-        enable = true;
-	      autoEnableSources = true;
-	      settings.sources = [
-	        {name = "nvim_lsp";}
-	        {name = "path";}
-	        {name = "buffer";}
-          {name = "cmp-nvim-lsp";}
-        ];
-      };
-      
-      treesitter.enable = true;
-      lualine.enable = true;
-      web-devicons.enable = true;
-      telescope.enable = true;
     };
   };
 
