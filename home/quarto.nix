@@ -29,5 +29,14 @@
         };
       };
     };
+
+    keymaps = [
+      {
+        mode = "n";
+        action = "<cmd>QuartoPreview<CR>";
+        key = "<leader>qp";
+        options.desc = "Quarto Preview";
+      }
+    ];
   };
 }
