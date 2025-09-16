@@ -45,7 +45,7 @@
       geary            gedit 
       gnome-console    gnome-text-editor
       gnome-maps       gnome-clocks 
-      gnome-characters gnome-music
+      gnome-music
       gnome-photos     gnome-tour
       gnome-contacts   gnome-weather
       gnome-calendar   gnome-connections

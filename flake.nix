@@ -92,6 +92,7 @@
         ./home/obs-studio.nix
         ./home/fastfetch.nix
         ./home/quarto.nix
+        ./home/llama-cpp.nix
       ];
     };
   };
