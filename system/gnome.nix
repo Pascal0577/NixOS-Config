@@ -4,15 +4,16 @@
     environment.systemPackages = with pkgs; [
       yaru-theme
       ubuntu-sans
+      showtime
     ];
 
     fonts.fontconfig.enable = true;
 
-    # Enable the GNOME Desktop Environment.
     services.displayManager.gdm = {
       enable = true;
       wayland = true;
     };
+
     services.desktopManager.gnome.enable = true;
 
     programs.dconf.profiles.gdm.databases = [{
@@ -21,7 +22,7 @@
           numlock-state = true;
         };
 
-        "org/gnome/shell/extensions/user-theme".name = "Yaru";
+        "org/gnome/desktop/sound".theme-name = "Yaru";
 
         "org/gnome/desktop/interface" = {
           show-battery-percentage = true;
@@ -33,7 +34,7 @@
 	        monospace-font-name = "Ubuntu Sans Mono 12";
 	        icon-theme = "Yaru";
 	        clock-format = "12h";
-	        # cursor-theme = "Yaru";
+	        cursor-theme = "Yaru";
         };
       };
     }];
@@ -46,11 +47,11 @@
       gnome-console    gnome-text-editor
       gnome-maps       gnome-clocks 
       gnome-music      simple-scan
-      gnome-photos     gnome-tour
+      gnome-tour       gnome-photos
       gnome-contacts   gnome-weather
       gnome-calendar   gnome-connections
       snapshot         hitori
       iagno            tali
-      # totem            
+      loupe            totem
     ]);
 }

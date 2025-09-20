@@ -13,6 +13,8 @@
       unrar
       losslesscut-bin
       zig_0_15
+      pinta
+      gdm-settings
     ];
 
     file = {
