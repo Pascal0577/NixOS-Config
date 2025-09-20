@@ -45,12 +45,12 @@
       geary            gedit 
       gnome-console    gnome-text-editor
       gnome-maps       gnome-clocks 
-      gnome-music
+      gnome-music      simple-scan
       gnome-photos     gnome-tour
       gnome-contacts   gnome-weather
       gnome-calendar   gnome-connections
       snapshot         hitori
       iagno            tali
-      totem            simple-scan
+      # totem            
     ]);
 }

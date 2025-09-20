@@ -12,7 +12,7 @@
       icoutils
       unrar
       losslesscut-bin
-      zig
+      zig_0_15
     ];
 
     file = {

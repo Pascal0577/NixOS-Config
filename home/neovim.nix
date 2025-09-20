@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -47,6 +47,7 @@
 	        bashls.enable = true;
 	        nixd.enable = true;
           zls.enable = true;
+          zls.package = pkgs.zls_0_15;
 	      };
       };
 
