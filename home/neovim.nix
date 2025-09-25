@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -46,8 +46,7 @@
         servers = { 
 	        bashls.enable = true;
 	        nixd.enable = true;
-          zls.enable = true;
-          zls.package = pkgs.zls_0_15;
+          # zls.enable = true;
 	      };
       };
 

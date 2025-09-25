@@ -9,12 +9,9 @@
     stateVersion = "25.05";
     packages = with pkgs; [
       playerctl
-      icoutils
-      unrar
       losslesscut-bin
-      zig_0_15
+      # zig
       pinta
-      gdm-settings
     ];
 
     file = {
