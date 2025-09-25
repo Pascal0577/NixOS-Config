@@ -93,6 +93,7 @@
         ./home/fastfetch.nix
         ./home/quarto.nix
         ./home/llama-cpp.nix
+        ./home/zig.nix
       ];
     };
   };

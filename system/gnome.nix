@@ -4,7 +4,7 @@
     environment.systemPackages = with pkgs; [
       yaru-theme
       ubuntu-sans
-      showtime
+      # showtime
     ];
 
     fonts.fontconfig.enable = true;
@@ -52,6 +52,6 @@
       gnome-calendar   gnome-connections
       snapshot         hitori
       iagno            tali
-      loupe            totem
+      loupe
     ]);
 }
