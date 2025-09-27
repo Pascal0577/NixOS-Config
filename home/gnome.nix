@@ -69,16 +69,11 @@
         blur = false;
       };
 
-      # "org/gnome/desktop/wm/keybindings" = {
-      #   move-to-workspace-down = [
-      #     "<Super>Down"
-      #     "<Super>s"
-      #   ];
-      #   move-to-workspace-up = [
-      #     "<Super>Up"
-      #     "<Super>w"
-      #   ];
-      # };
+      "org/gnome/desktop/wm/keybindings" = {
+        toggle-fullscreen = [
+          "F11"
+        ];
+      };
 
       "org/gnome/shell/extensions/paperwm" = {
         animation-time = 0.2;
@@ -176,7 +171,7 @@
         monospace-font-name = "Ubuntu Sans Mono 12";
         icon-theme = "Yaru";
         clock-format = "12h";
-        # cursor-theme = "Yaru";
+        cursor-theme = "Yaru";
       };
 
       "org/gnome/desktop/sound".theme-name = "Yaru";
