@@ -10,8 +10,8 @@
     packages = with pkgs; [
       playerctl
       losslesscut-bin
-      # zig
       pinta
+      reaper
     ];
 
     file = {
