@@ -6,28 +6,9 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    # For nix-ld
-    LD_LIBRARY_PATH = "/run/current-system/sw/share/nix-ld/lib";
   };
 
   zramSwap.enable = true;
-
-  programs.nix-ld = {
-    enable  = true;
-    package = pkgs.nix-ld;
-    libraries = with pkgs; [
-      libxcrypt
-      libxcrypt-legacy
-      libffi
-      libyaml
-      icu
-    ];
-  };
-
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
 
   fonts.packages = with pkgs; [
     noto-fonts-cjk-sans
@@ -56,6 +37,7 @@
     kernelParams = [
       "quiet"
       "splash"
+      "nowatchdog"
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
@@ -100,17 +82,12 @@
     openssh.enable = true;
 
     xserver = {
-      enable = true;
+      enable = false;
       excludePackages = [ pkgs.xterm ];
       xkb = {
         layout = "us";
         variant = "";
       };
-      # autoLogin is really janky and bad right now.
-      # displayManager.autoLogin = {
-      #   enable = true;
-      #   user = "${username}";
-      # };
     };
 
     pipewire = {
@@ -118,6 +95,7 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      jack.enable = true;
     };
   };
 
@@ -130,6 +108,7 @@
     isNormalUser = true;
     description = "Pascal";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = "zsh";
     packages = with pkgs; [
       home-manager
     ];

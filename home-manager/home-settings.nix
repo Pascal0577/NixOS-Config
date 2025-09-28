@@ -11,7 +11,6 @@
       playerctl
       losslesscut-bin
       pinta
-      reaper
     ];
 
     file = {
