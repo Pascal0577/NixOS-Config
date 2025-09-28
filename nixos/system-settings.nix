@@ -13,7 +13,10 @@
   fonts.packages = with pkgs; [
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    akkadian
   ];
+
+  fonts.fontconfig.useEmbeddedBitmaps = true;
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -108,7 +111,7 @@
     isNormalUser = true;
     description = "Pascal";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = "zsh";
+    # shell = pkgs.zsh;
     packages = with pkgs; [
       home-manager
     ];
