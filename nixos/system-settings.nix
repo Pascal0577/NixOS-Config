@@ -111,7 +111,6 @@
     isNormalUser = true;
     description = "Pascal";
     extraGroups = [ "networkmanager" "wheel" ];
-    # shell = pkgs.zsh;
     packages = with pkgs; [
       home-manager
     ];
