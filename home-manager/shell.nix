@@ -2,13 +2,15 @@
 
 {
   home.packages = with pkgs; [
-    fzf
-    eza
-    zoxide
-    zsh
+    # fzf
+    # eza
+    # zoxide
   ];
 
   programs = {
+    fzf.enable = true;
+    eza.enable = true;
+    zoxide.enable = true;
     fzf.enableZshIntegration = true;
     eza.enableZshIntegration = true;
     zoxide.enableZshIntegration = true; 
@@ -71,10 +73,10 @@
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
         zstyle ':completion:*' menu no
-        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-        zstyle ':fzf-tab:complete:eza:*' fzf-preview 'ls --color $realpath'
-        zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-        zstyle ':fzf-tab:complete:z:*' fzf-preview 'ls --color $realpath'
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always --icons=always --group-directories-first -1 $realpath'
+        zstyle ':fzf-tab:complete:eza:*' fzf-preview 'eza --color=always --icons=always --group-directories-first -1 $realpath'
+        zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color=always --icons=always --group-directories-first -1 $realpath'
+        zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza --color=always --icons=always --group-directories-first -1 $realpath'
 
         eval "$(fzf --zsh)"
         eval "$(zoxide init zsh)"
