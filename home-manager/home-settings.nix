@@ -11,6 +11,7 @@
       playerctl
       losslesscut-bin
       pinta
+      qbittorrent
     ];
 
     file = {
