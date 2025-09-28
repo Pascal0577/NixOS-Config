@@ -2,15 +2,12 @@
 
 {
   home.packages = with pkgs; [
-    # fzf
-    # eza
-    # zoxide
+    fzf
+    eza
+    zoxide
   ];
 
   programs = {
-    fzf.enable = true;
-    eza.enable = true;
-    zoxide.enable = true;
     fzf.enableZshIntegration = true;
     eza.enableZshIntegration = true;
     zoxide.enableZshIntegration = true; 
