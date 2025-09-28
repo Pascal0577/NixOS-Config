@@ -60,14 +60,15 @@
 
       modules = [
         # Import desired system modules
-        ./system/gnome.nix
-        ./system/system-settings.nix
-        ./system/hardware-configuration.nix
-        ./system/intel.nix
-        ./system/nvidia.nix
-        ./system/steam.nix
-        ./system/vpn.nix
-        ./system/secure-boot.nix
+        ./nixos/gnome.nix
+        ./nixos/system-settings.nix
+        ./nixos/hardware-configuration.nix
+        ./nixos/intel.nix
+        ./nixos/nvidia.nix
+        ./nixos/steam.nix
+        ./nixos/vpn.nix
+        ./nixos/secure-boot.nix
+        ./nixos/appimage.nix
       ];
     };
 
@@ -81,19 +82,19 @@
 
       modules = [
         # Import desired home modules
-        ./home/gnome.nix
-	      ./home/home-settings.nix
-        ./home/zen-browser.nix
-        ./home/neovim.nix
-        ./home/git.nix
-        ./home/shell.nix
-        ./home/ghostty.nix
-        ./home/discord.nix
-        ./home/obs-studio.nix
-        ./home/fastfetch.nix
-        ./home/quarto.nix
-        ./home/llama-cpp.nix
-        ./home/zig.nix
+        ./home-manager/gnome.nix
+	      ./home-manager/home-settings.nix
+        ./home-manager/zen-browser.nix
+        ./home-manager/neovim.nix
+        ./home-manager/git.nix
+        ./home-manager/shell.nix
+        ./home-manager/ghostty.nix
+        ./home-manager/discord.nix
+        ./home-manager/obs-studio.nix
+        ./home-manager/fastfetch.nix
+        ./home-manager/quarto.nix
+        ./home-manager/llama-cpp.nix
+        ./home-manager/zig.nix
       ];
     };
   };
