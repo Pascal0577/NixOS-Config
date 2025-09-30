@@ -6,6 +6,7 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    TERMINAL = "ghostty";
   };
 
   zramSwap.enable = true;
@@ -16,16 +17,16 @@
     akkadian
   ];
 
-  # environment.systemPackages = [
-  #   (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
-  #     exec "${lib.getExe pkgs.ghostty}" -- "$@"
-  #   '')
-  # ];
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
+      exec "${lib.getExe pkgs.ghostty}" -- "$@"
+    '')
+  ];
 
   fonts.fontconfig.useEmbeddedBitmaps = true;
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_lqx;
     plymouth = {
       enable = true;
       theme = "bgrt";
