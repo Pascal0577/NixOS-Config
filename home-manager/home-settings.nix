@@ -12,6 +12,7 @@
       losslesscut-bin
       pinta
       qbittorrent
+      icoextract
     ];
 
     file = {

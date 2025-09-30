@@ -4,7 +4,6 @@
     environment.systemPackages = with pkgs; [
       yaru-theme
       ubuntu-sans
-      # showtime
     ];
 
     fonts.fontconfig.enable = true;
