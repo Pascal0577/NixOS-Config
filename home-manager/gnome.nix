@@ -2,13 +2,14 @@
 
 {
   home.packages = with pkgs; [
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.dash-to-dock
+    # gnomeExtensions.blur-my-shell
+    # gnomeExtensions.clipboard-history
+    # gnomeExtensions.dash-to-dock
     gnomeExtensions.user-themes
-    gnomeExtensions.clipboard-history
     gnomeExtensions.paperwm
     celluloid
     dconf-editor
+    icoextract
   ];
 
   home.pointerCursor = {
@@ -33,8 +34,8 @@
         disable-user-extensions = false;
         enabled-extensions = with pkgs.gnomeExtensions; [
           # blur-my-shell.extensionUuid
-          user-themes.extensionUuid
           # clipboard-history.extensionUuid
+          user-themes.extensionUuid
           paperwm.extensionUuid
         ];
         favorite-apps = [
@@ -54,7 +55,6 @@
         click-policy = "single";
       };
 
-      # I'll re-enable this when VRR on GNOME doesn't suck turbo ass
       "org/gnome/mutter" = {
         experimental-features = [
           "variable-refresh-rate"

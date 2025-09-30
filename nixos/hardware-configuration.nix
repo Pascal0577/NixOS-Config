@@ -15,7 +15,7 @@
 
   boot.initrd.luks.devices = {
     root = { 
-      device = "/dev/nvme0n1p2";
+      device = "/dev/disk/by-uuid/b9778859-81fd-4d5c-9e4d-c57d05d6aacd";
       preLVM = true;
     };
   };

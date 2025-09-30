@@ -1,4 +1,4 @@
-{ pkgs, username, inputs, ... }:
+{ pkgs, username, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -12,27 +12,14 @@
       losslesscut-bin
       pinta
       qbittorrent
-      icoextract
     ];
 
-    file = {
+    file = { };
 
-    };
-
-    sessionVariables = {
-    };
+    sessionVariables = { };
   };
 
   programs = {
     home-manager.enable = true;
-    mangohud.enable = true;
   };
-
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
-  };
-
 }
