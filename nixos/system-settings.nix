@@ -6,6 +6,7 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    TERMINAL = "ghostty";
   };
 
   zramSwap.enable = true;
@@ -115,6 +116,9 @@
       home-manager
     ];
   };
+
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   nixpkgs.config.allowUnfree = true;
 
