@@ -93,7 +93,6 @@
         ./home-manager/obs-studio.nix
         ./home-manager/fastfetch.nix
         ./home-manager/quarto.nix
-        ./home-manager/llama-cpp.nix
         ./home-manager/zig.nix
       ];
     };
