@@ -66,7 +66,6 @@
         ./nixos/intel.nix
         ./nixos/nvidia.nix
         ./nixos/steam.nix
-        ./nixos/vpn.nix
         ./nixos/secure-boot.nix
         ./nixos/appimage.nix
       ];
