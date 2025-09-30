@@ -1,4 +1,4 @@
-{ pkgs, username, hostname, ... }:
+{ lib, pkgs, username, hostname, ... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -6,7 +6,6 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    TERMINAL = "ghostty";
   };
 
   zramSwap.enable = true;
@@ -16,6 +15,12 @@
     noto-fonts-emoji
     akkadian
   ];
+
+  # environment.systemPackages = [
+  #   (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
+  #     exec "${lib.getExe pkgs.ghostty}" -- "$@"
+  #   '')
+  # ];
 
   fonts.fontconfig.useEmbeddedBitmaps = true;
 
