@@ -8,12 +8,13 @@
 
   programs.wine = {
     enable = true;
-    package = pkgs.wineWowPackages.staging;
+    package = pkgs.wineWowPackages.stagingFull;
     binfmt = true;
     ntsync = true;
   };
 
   programs.gamemode.enable = true;
+  programs.mangohud.enable = true;
 
   programs.steam = {
     enable = true;
