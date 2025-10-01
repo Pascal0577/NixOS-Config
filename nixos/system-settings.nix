@@ -17,6 +17,7 @@
     akkadian
   ];
 
+  # It thinks this is an error but it's not
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
       exec "${lib.getExe pkgs.ghostty}" -- "$@"
@@ -30,11 +31,6 @@
     plymouth = {
       enable = true;
       theme = "bgrt";
-      themePackages = with pkgs; [
-        # (adi1090x-plymouth-themes.override {
-        #   selected_themes = [ "rings" ];
-        # })
-      ];
     };
 
     # Enable "Silent boot"
@@ -63,8 +59,6 @@
   };
 
   networking.hostName = hostname;
-
-  # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -107,6 +101,11 @@
       pulse.enable = true;
       jack.enable = true;
     };
+
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
   };
 
   hardware = {
@@ -123,8 +122,6 @@
     ];
   };
 
-  services.mullvad-vpn.enable = true;
-  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   nixpkgs.config.allowUnfree = true;
 
