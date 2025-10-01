@@ -11,11 +11,14 @@
 
   zramSwap.enable = true;
 
-  fonts.packages = with pkgs; [
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    akkadian
-  ];
+  fonts = {
+    fontconfig.useEmbeddedBitmaps = true;
+    packages = with pkgs; [
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      akkadian
+    ];
+  };
 
   # It thinks this is an error but it's not
   environment.systemPackages = [
@@ -23,8 +26,6 @@
       exec "${lib.getExe pkgs.ghostty}" -- "$@"
     '')
   ];
-
-  fonts.fontconfig.useEmbeddedBitmaps = true;
 
   boot = {
     kernelPackages = pkgs.linuxPackages_lqx;
@@ -79,7 +80,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  security.rtkit.enable = true;
+  systemd.user.extraConfig = ''
+    DefaultTimeoutStopSec=10s
+  '';
 
   services = {
     printing.enable = true;
@@ -122,8 +125,7 @@
     ];
   };
 
-
+  security.rtkit.enable = true;
   nixpkgs.config.allowUnfree = true;
-
   system.stateVersion = "25.05";
 }
