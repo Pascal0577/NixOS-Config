@@ -1,6 +1,10 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, username, ... }:
 
 {
+  users.users.${username}.packages = with pkgs; [
+    mangohud
+  ];
+
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
     inputs.nix-gaming.nixosModules.wine
@@ -14,7 +18,6 @@
   };
 
   programs.gamemode.enable = true;
-  programs.mangohud.enable = true;
 
   programs.steam = {
     enable = true;
