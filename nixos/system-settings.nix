@@ -63,7 +63,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -116,10 +116,12 @@
     graphics.enable = true;
   };
 
+  programs.zsh.enable = true;
   users.users.${username} = {
     isNormalUser = true;
     description = "Pascal";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       home-manager
     ];
