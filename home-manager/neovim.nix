@@ -12,9 +12,9 @@
       number = true;
       relativenumber = true;
       nu = true;
-      tabstop = 2;
-      softtabstop = 2;
-      shiftwidth = 2;
+      tabstop = 4;
+      softtabstop = 4;
+      shiftwidth = 4;
       expandtab = true;
       smartindent = true;
       hlsearch = true;
