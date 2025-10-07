@@ -68,6 +68,7 @@
         ./nixos/steam.nix
         ./nixos/secure-boot.nix
         ./nixos/appimage.nix
+        ./nixos/virtualization.nix
       ];
     };
 
@@ -82,7 +83,7 @@
       modules = [
         # Import desired home modules
         ./home-manager/gnome.nix
-	      ./home-manager/home-settings.nix
+	    ./home-manager/home-settings.nix
         ./home-manager/zen-browser.nix
         ./home-manager/neovim.nix
         ./home-manager/git.nix
