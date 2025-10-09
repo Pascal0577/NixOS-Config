@@ -1,13 +1,13 @@
 { username, ... }:
 
 {
-  programs.virt-manager.enable = true;
+    programs.virt-manager.enable = true;
 
-  users.groups.libvirtd.members = ["${username}"];
+    users.groups.libvirtd.members = ["${username}"];
 
-  virtualisation.libvirtd.enable = true;
+    virtualisation.libvirtd.enable = true;
 
-  virtualisation.spiceUSBRedirection.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
 
-  users.users.${username}.extraGroups = [ "libvirtd" ];
+    users.users.${username}.extraGroups = [ "libvirtd" ];
 }
