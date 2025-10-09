@@ -23,7 +23,7 @@
       signcolumn = "yes";
       winborder = "rounded";
       swapfile = false;
-      wrap = false;
+      linebreak = true;
     };
 
     keymaps = [
