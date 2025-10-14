@@ -93,6 +93,7 @@
                 ./home-manager/fastfetch.nix
                 ./home-manager/quarto.nix
                 ./home-manager/zig.nix
+                ./home-manager/onlyoffice.nix
             ];
         };
     };
