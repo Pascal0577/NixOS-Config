@@ -29,5 +29,6 @@
 
     programs = {
         home-manager.enable = true;
+        onlyoffice.enable = true;
     };
 }
