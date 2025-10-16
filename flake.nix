@@ -39,6 +39,10 @@
             url = "github:fufexan/nix-gaming";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        niri = {
+            url = "github:sodiboo/niri-flake";
+        };
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -68,6 +72,7 @@
                 ./nixos/secure-boot.nix
                 ./nixos/appimage.nix
                 ./nixos/virtualization.nix
+                ./nixos/niri.nix
             ];
         };
 
