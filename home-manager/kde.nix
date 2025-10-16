@@ -2,7 +2,7 @@
 
 {
     imports = [
-        inputs.plasma-manager.homeManagerModules.plasma-manager
+        inputs.plasma-manager.homeModules.plasma-manager
     ];
 
     home.packages = with pkgs; [
@@ -44,152 +44,152 @@
             ];
         };
 
-        fonts = {
-            fixedWidth = {
-                family = "Ubuntu Sans";
-                capitalization = "mixedCase";
-                fixedPitch = false;
-                letterSpacing = 0;
-                letterSpacingType = "percentage";
-                pixelSize = null;
-                pointSize = 12;
-                stretch = "anyStretch";
-                strikeOut = false;
-                style = "normal";
-                styleHint = "anyStyle";
-                styleStrategy = {
-                    antialiasing = "prefer";
-                    matchingPrefer = "default";
-                    noFontMerging = false;
-                    prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
-                    preferNoShaping = false; # Enabling can increase performance for some fonts
-                };
-                underline = false;
-                weight = "normal"; # Also try thin
-                wordSpacing = 0;
-            };
+        # fonts = {
+        #     fixedWidth = {
+        #         family = "Ubuntu Sans";
+        #         capitalization = "mixedCase";
+        #         fixedPitch = false;
+        #         letterSpacing = 0;
+        #         letterSpacingType = "percentage";
+        #         pixelSize = null;
+        #         pointSize = 12;
+        #         stretch = "anyStretch";
+        #         strikeOut = false;
+        #         style = "normal";
+        #         styleHint = "anyStyle";
+        #         styleStrategy = {
+        #             antialiasing = "prefer";
+        #             matchingPrefer = "default";
+        #             noFontMerging = false;
+        #             prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
+        #             preferNoShaping = false; # Enabling can increase performance for some fonts
+        #         };
+        #         underline = false;
+        #         weight = "normal"; # Also try thin
+        #         wordSpacing = 0;
+        #     };
 
-            general = {
-                family = "Ubuntu Sans";
-                capitalization = "mixedCase";
-                fixedPitch = false;
-                letterSpacing = 0;
-                letterSpacingType = "percentage";
-                pixelSize = null;
-                pointSize = 12;
-                stretch = "anyStretch";
-                strikeOut = false;
-                style = "normal";
-                styleHint = "anyStyle";
-                styleStrategy = {
-                    antialiasing = "prefer";
-                    matchingPrefer = "default";
-                    noFontMerging = false;
-                    prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
-                    preferNoShaping = false; # Enabling can increase performance for some fonts
-                };
-                underline = false;
-                weight = "normal"; # Also try thin
-                wordSpacing = 0;
-            };
-
-            menu = {
-                family = "Ubuntu Sans";
-                capitalization = "mixedCase";
-                fixedPitch = false;
-                letterSpacing = 0;
-                letterSpacingType = "percentage";
-                pixelSize = null;
-                pointSize = 11;
-                stretch = "anyStretch";
-                strikeOut = false;
-                style = "normal";
-                styleHint = "anyStyle";
-                styleStrategy = {
-                    antialiasing = "prefer";
-                    matchingPrefer = "default";
-                    noFontMerging = false;
-                    prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
-                    preferNoShaping = false; # Enabling can increase performance for some fonts
-                };
-                underline = false;
-                weight = "normal"; # Also try thin
-                wordSpacing = 0;
-            };
-
-            small = {
-                family = "Ubuntu Sans";
-                capitalization = "mixedCase";
-                fixedPitch = false;
-                letterSpacing = 0;
-                letterSpacingType = "percentage";
-                pixelSize = null;
-                pointSize = 8;
-                stretch = "anyStretch";
-                strikeOut = false;
-                style = "normal";
-                styleHint = "anyStyle";
-                styleStrategy = {
-                    antialiasing = "prefer";
-                    matchingPrefer = "default";
-                    noFontMerging = false;
-                    prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
-                    preferNoShaping = false; # Enabling can increase performance for some fonts
-                };
-                underline = false;
-                weight = "normal"; # Also try thin
-                wordSpacing = 0;
-            };
-
-            toolbar = {
-                family = "Ubuntu Sans";
-                capitalization = "mixedCase";
-                fixedPitch = false;
-                letterSpacing = 0;
-                letterSpacingType = "percentage";
-                pixelSize = null;
-                pointSize = 8;
-                stretch = "anyStretch";
-                strikeOut = false;
-                style = "normal";
-                styleHint = "anyStyle";
-                styleStrategy = {
-                    antialiasing = "prefer";
-                    matchingPrefer = "default";
-                    noFontMerging = false;
-                    prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
-                    preferNoShaping = false; # Enabling can increase performance for some fonts
-                };
-                underline = false;
-                weight = "normal"; # Also try thin
-                wordSpacing = 0;
-            };
-
-            windowTitle = {
-                family = "Ubuntu Sans";
-                capitalization = "mixedCase";
-                fixedPitch = false;
-                letterSpacing = 0;
-                letterSpacingType = "percentage";
-                pixelSize = null;
-                pointSize = 11;
-                stretch = "anyStretch";
-                strikeOut = false;
-                style = "normal";
-                styleHint = "anyStyle";
-                styleStrategy = {
-                    antialiasing = "prefer";
-                    matchingPrefer = "default";
-                    noFontMerging = false;
-                    prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
-                    preferNoShaping = false; # Enabling can increase performance for some fonts
-                };
-                weight = "normal"; # Also try thin
-                wordSpacing = 0;
-                underline = false;
-            };
-            # End of fonts hell
-        };
+        #     general = {
+        #         family = "Ubuntu Sans";
+        #         capitalization = "mixedCase";
+        #         fixedPitch = false;
+        #         letterSpacing = 0;
+        #         letterSpacingType = "percentage";
+        #         pixelSize = null;
+        #         pointSize = 12;
+        #         stretch = "anyStretch";
+        #         strikeOut = false;
+        #         style = "normal";
+        #         styleHint = "anyStyle";
+        #         styleStrategy = {
+        #             antialiasing = "prefer";
+        #             matchingPrefer = "default";
+        #             noFontMerging = false;
+        #             prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
+        #             preferNoShaping = false; # Enabling can increase performance for some fonts
+        #         };
+        #         underline = false;
+        #         weight = "normal"; # Also try thin
+        #         wordSpacing = 0;
+        #     };
+        # 
+        #     menu = {
+        #         family = "Ubuntu Sans";
+        #         capitalization = "mixedCase";
+        #         fixedPitch = false;
+        #         letterSpacing = 0;
+        #         letterSpacingType = "percentage";
+        #         pixelSize = null;
+        #         pointSize = 11;
+        #         stretch = "anyStretch";
+        #         strikeOut = false;
+        #         style = "normal";
+        #         styleHint = "anyStyle";
+        #         styleStrategy = {
+        #             antialiasing = "prefer";
+        #             matchingPrefer = "default";
+        #             noFontMerging = false;
+        #             prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
+        #             preferNoShaping = false; # Enabling can increase performance for some fonts
+        #         };
+        #         underline = false;
+        #         weight = "normal"; # Also try thin
+        #         wordSpacing = 0;
+        #     };
+        # 
+        #     small = {
+        #         family = "Ubuntu Sans";
+        #         capitalization = "mixedCase";
+        #         fixedPitch = false;
+        #         letterSpacing = 0;
+        #         letterSpacingType = "percentage";
+        #         pixelSize = null;
+        #         pointSize = 8;
+        #         stretch = "anyStretch";
+        #         strikeOut = false;
+        #         style = "normal";
+        #         styleHint = "anyStyle";
+        #         styleStrategy = {
+        #             antialiasing = "prefer";
+        #             matchingPrefer = "default";
+        #             noFontMerging = false;
+        #             prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
+        #             preferNoShaping = false; # Enabling can increase performance for some fonts
+        #         };
+        #         underline = false;
+        #         weight = "normal"; # Also try thin
+        #         wordSpacing = 0;
+        #     };
+        # 
+        #     toolbar = {
+        #         family = "Ubuntu Sans";
+        #         capitalization = "mixedCase";
+        #         fixedPitch = false;
+        #         letterSpacing = 0;
+        #         letterSpacingType = "percentage";
+        #         pixelSize = null;
+        #         pointSize = 8;
+        #         stretch = "anyStretch";
+        #         strikeOut = false;
+        #         style = "normal";
+        #         styleHint = "anyStyle";
+        #         styleStrategy = {
+        #             antialiasing = "prefer";
+        #             matchingPrefer = "default";
+        #             noFontMerging = false;
+        #             prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
+        #             preferNoShaping = false; # Enabling can increase performance for some fonts
+        #         };
+        #         underline = false;
+        #         weight = "normal"; # Also try thin
+        #         wordSpacing = 0;
+        #     };
+        # 
+        #     windowTitle = {
+        #         family = "Ubuntu Sans";
+        #         capitalization = "mixedCase";
+        #         fixedPitch = false;
+        #         letterSpacing = 0;
+        #         letterSpacingType = "percentage";
+        #         pixelSize = null;
+        #         pointSize = 11;
+        #         stretch = "anyStretch";
+        #         strikeOut = false;
+        #         style = "normal";
+        #         styleHint = "anyStyle";
+        #         styleStrategy = {
+        #             antialiasing = "prefer";
+        #             matchingPrefer = "default";
+        #             noFontMerging = false;
+        #             prefer = "default"; # What type of font (e.g. bitmap, outline, etc.)
+        #             preferNoShaping = false; # Enabling can increase performance for some fonts
+        #         };
+        #         weight = "normal"; # Also try thin
+        #         wordSpacing = 0;
+        #         underline = false;
+        #     };
+        #     # End of fonts hell
+        # };
 
         hotkeys.commands."Launch-Konsole" = {
             command = "konsole";
