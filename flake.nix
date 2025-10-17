@@ -99,6 +99,7 @@
                 ./home-manager/quarto.nix
                 ./home-manager/zig.nix
                 ./home-manager/niri.nix
+                ./home-manager/walker.nix
             ];
         };
     };
