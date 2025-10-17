@@ -226,6 +226,14 @@
                 };
                 clip-to-geometry = true;
             }
+            {
+                matches = [
+                    {
+                        title = "Ghostty";
+                    }
+                ];
+                opacity = 0.8;
+            }
         ];
 
         switch-events = {
