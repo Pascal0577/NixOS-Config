@@ -43,9 +43,19 @@
         niri = {
             url = "github:sodiboo/niri-flake";
         };
+
+        vicinae = {
+            url = "github:vicinaehq/vicinae";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        noctalia = {
+          url = "github:noctalia-dev/noctalia-shell";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, vicinae, ... }@inputs:
         let
             system = "x86_64-linux";
             pkgs = nixpkgs.legacyPackages.${system};
@@ -53,6 +63,8 @@
             hostname = "nixos";
         in
     {
+        extra-substituters = [ "https://vicinae.cachix.org" ];
+        extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
 
         nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
             specialArgs = {
@@ -73,6 +85,7 @@
                 ./nixos/appimage.nix
                 ./nixos/virtualization.nix
                 ./nixos/niri.nix
+                ./nixos/noctalia.nix
             ];
         };
 
@@ -99,7 +112,8 @@
                 ./home-manager/quarto.nix
                 ./home-manager/zig.nix
                 ./home-manager/niri.nix
-                ./home-manager/walker.nix
+                ./home-manager/noctalia.nix
+                ./home-manager/vicinae.nix
             ];
         };
     };

@@ -5,10 +5,13 @@
         inputs.niri.homeModules.niri
     ];
 
+    home.packages = with pkgs; [
+        brightnessctl
+    ];
+
     programs.niri.settings = with config.lib.niri.actions; let
         bar = "waybar";
-        launcher = "walker";
-        lockscreen = "swaylock";
+        launcher = "vicinae toggle";
         terminal = "ghostty";
     in {
         hotkey-overlay.skip-at-startup = true;
@@ -25,7 +28,7 @@
 
         spawn-at-startup = [
             { argv = [bar]; }
-            { argv = ["swaybg" "--image" "~/Pictures/Wallpapers/TranscodedWallpaper.png"]; }
+            # { argv = ["swaybg" "--image" "~/Pictures/Wallpapers/TranscodedWallpaper.png"]; }
         ];
 
         binds = {
@@ -89,11 +92,11 @@
             # Execs
             "Print".action = screenshot;
             "Ctrl+Print".action = screenshot-window;
-            # This just doesn't exist for some reason lol
-            # "Shift+Print".action = screenshot-screen;
             "Mod+Return".action = spawn terminal;
-            "Mod+Space".action = spawn launcher;
-            "Mod+L".action = spawn lockscreen;
+            "Mod+Space".action = spawn-sh launcher;
+            "Mod+L".action = spawn-sh "noctalia-shell ipc call lockScreen toggle";
+            "Mod+P".action = spawn-sh "noctalia-shell ipc call wallpaper toggle";
+            "Ctrl+Alt+Delete".action = spawn-sh "noctalia-shell ipc call sessionMenu toggle";
 
             # Control keys
             "XF86AudioPlay" = {
@@ -115,11 +118,11 @@
 
             "XF86AudioRaiseVolume" = {
                 allow-when-locked = true;
-                action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
+                action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
             };
             "XF86AudioLowerVolume" = {
                 allow-when-locked = true;
-                action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+                action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
             };
             "XF86AudioMute" = {
                 allow-when-locked = true;
@@ -127,11 +130,11 @@
             };
             "XF86MonBrightnessUp" = {
                 allow-when-locked = true;
-                action = spawn-sh "brightnessctl --class=backlight set +10%";
+                action = spawn-sh "brightnessctl --class=backlight set 5%+";
             };
             "XF86MonBrightnessDown" = {
                 allow-when-locked = true;
-                action = spawn-sh "brightnessctl --class=backlight set -10%";
+                action = spawn-sh "brightnessctl --class=backlight set 5%-";
             };
         };
 
@@ -155,11 +158,12 @@
             center-focused-column = "never";
             default-column-display = "normal"; # Can be normal or tabbed
             empty-workspace-above-first = true;
-            gaps = 16;
+            focus-ring.enable = false;
+            gaps = 8;
 
             struts = {
-                bottom = -8;
-                top = -8;
+                bottom = -4;
+                top = -4;
                 left = 8;
                 right = 8;
             };
@@ -178,8 +182,6 @@
                 inactive.color = "#505050";
                 urgent.color = "#9b0000";
             };
-
-            focus-ring.enable = false;
 
             shadow = {
                 enable = true;
@@ -214,10 +216,20 @@
             hot-corners.enable = false;
         };
 
-
+        window-rules = [
+            {
+                geometry-corner-radius = {
+                    bottom-left = 10.0;
+                    bottom-right = 10.0;
+                    top-left = 10.0;
+                    top-right = 10.0;
+                };
+                clip-to-geometry = true;
+            }
+        ];
 
         switch-events = {
-            lid-close.action = spawn [lockscreen];
+            # lid-close.action = spawn [lockscreen];
         };
 
     };

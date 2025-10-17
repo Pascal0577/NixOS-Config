@@ -9,9 +9,7 @@
         enable = true;
         enableZshIntegration = true;
         settings = {
-            command = "zsh";
-            window-height = 35;
-            window-width = 120;
+            confirm-close-surface = false;
         };
     };
 }
