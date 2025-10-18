@@ -24,6 +24,7 @@
 
     # It thinks this is an error but it's not
     environment.systemPackages = [
+        pkgs.nh
         (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
             exec "${lib.getExe pkgs.ghostty}" -- "$@"
         '')
