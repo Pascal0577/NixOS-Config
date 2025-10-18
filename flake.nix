@@ -113,6 +113,7 @@
                 ./home-manager/zig.nix
                 ./home-manager/noctalia.nix
                 ./home-manager/vicinae.nix
+		        ./home-manager/niri.nix
             ];
         };
     };
