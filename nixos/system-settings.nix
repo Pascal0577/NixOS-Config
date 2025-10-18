@@ -1,14 +1,18 @@
 { lib, pkgs, username, hostname, ... }:
 
 {
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings = {
+        experimental-features = [ "nix-command" "flakes" ];
+        trusted-users = [ "${username}" ];
+        substituters = [ "https://vicinae.cachix.org" ];
+        trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
+    };
+
     environment.pathsToLink = [ "/share/zsh" ];
 
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
         TERMINAL = "ghostty";
-        # __NV_PRIME_RENDER_OFFLOAD=1;
-        # __GLX_VENDOR_LIBRARY_NAME="nvidia";
     };
 
     zramSwap.enable = true;

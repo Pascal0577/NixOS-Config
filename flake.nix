@@ -46,7 +46,6 @@
 
         vicinae = {
             url = "github:vicinaehq/vicinae";
-            inputs.nixpkgs.follows = "nixpkgs";
         };
 
         noctalia = {
@@ -112,8 +111,8 @@
                 ./home-manager/quarto.nix
                 ./home-manager/zig.nix
                 ./home-manager/noctalia.nix
-                ./home-manager/vicinae.nix
 		        ./home-manager/niri.nix
+                ./home-manager/vicinae.nix
             ];
         };
     };
