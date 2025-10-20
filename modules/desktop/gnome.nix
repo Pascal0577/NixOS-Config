@@ -63,21 +63,6 @@
                 gnomeExtensions.paperwm
             ];
 
-            home.pointerCursor = {
-                package = pkgs.yaru-theme;
-                name = "Yaru";
-                size = 24;
-            };
-
-            gtk = {
-                enable = true;
-                cursorTheme = {
-                    size = 24;
-                    package = pkgs.yaru-theme;
-                    name = "Yaru";
-                };
-            };
-
             dconf = {
                 enable = true;
                 settings = {
