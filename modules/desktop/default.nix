@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
     imports = [
@@ -15,7 +15,6 @@
         losslesscut-bin
         pinta
         qbittorrent
-        ubuntu-sans # My favorite font!
     ];
 
     fonts = {
@@ -25,6 +24,8 @@
         };
 
         packages = with pkgs; [
+            ubuntu-sans
+            ubuntu-sans-mono
             noto-fonts-cjk-sans
             noto-fonts-emoji
             akkadian
@@ -65,5 +66,22 @@
     hardware = {
         bluetooth.enable = true;
         graphics.enable = true;
+    };
+
+    home-manager.users.${username} = {
+        home.pointerCursor = {
+            package = pkgs.yaru-theme;
+            name = "Yaru";
+            size = 24;
+        };
+
+        gtk = {
+            enable = true;
+            cursorTheme = {
+                size = 24;
+                package = pkgs.yaru-theme;
+                name = "Yaru";
+            };
+        };
     };
 }

@@ -75,6 +75,8 @@
         ];
     };
 
+    services.power-profiles-daemon.enable = true;
+
     security.rtkit.enable = true;
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "25.05";

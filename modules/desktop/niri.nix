@@ -35,12 +35,22 @@ in
             baobab
             showtime
             file-roller
+            (pkgs.catppuccin-sddm.override {
+                flavor = "macchiato";
+                accent = "peach";
+                font  = "Ubuntu Sans";
+                fontSize = "10";
+                background = "${config.users.users.${username}.home}/Pictures/Wallpapers/TranscodedWallpaper.png";
+                loginBackground = true;
+            })
         ];
 
         #config = lib.mkIf ! config.mySystem.desktop.gnome.enable {
            services.displayManager.sddm = {
                enable = true;
                wayland.enable = true;
+               package = pkgs.kdePackages.sddm;
+               theme = "catppuccin-macchiato-peach";
            };
         #};  
 
