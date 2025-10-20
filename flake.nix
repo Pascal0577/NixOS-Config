@@ -40,13 +40,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        niri = {
-            url = "github:sodiboo/niri-flake";
-        };
-
-        vicinae = {
-            url = "github:vicinaehq/vicinae";
-        };
+        niri.url = "github:sodiboo/niri-flake";
+        vicinae.url = "github:vicinaehq/vicinae";
 
         noctalia = {
           url = "github:noctalia-dev/noctalia-shell";
@@ -54,7 +49,7 @@
         };
     };
 
-    outputs = { self, nixpkgs, home-manager, vicinae, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, ... }@inputs:
         let
             system = "x86_64-linux";
             pkgs = nixpkgs.legacyPackages.${system};
@@ -62,9 +57,6 @@
             hostname = "nixos";
         in
     {
-        extra-substituters = [ "https://vicinae.cachix.org" ];
-        extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
-
         nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
             specialArgs = {
                 inherit inputs;
@@ -73,46 +65,49 @@
             };
 
             modules = [
+                home-manager.nixosModules.home-manager {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.extraSpecialArgs = { inherit inputs username; };
+                    home-manager.users.${username} = {
+                        home.username = username;
+                        home.homeDirectory = "/home/${username}";
+                        home.stateVersion = "25.11";
+                        programs.home-manager.enable = true;
+			        };
+                }
+
+                {
+                    mySystem = {
+                        desktop = {
+                            niri.enable = true;
+                            niri.noctalia.enable = true;
+                            kde.enable = false;
+                            gnome.enable = false;
+                        };
+                        neovim.enable = true;
+                        nvidia.enable = true;
+                    };
+                }
+
                 # Import desired system modules
-                ./nixos/gnome.nix
-                ./nixos/system-settings.nix
-                ./nixos/hardware-configuration.nix
-                ./nixos/intel.nix
-                ./nixos/nvidia.nix
-                ./nixos/steam.nix
-                ./nixos/secure-boot.nix
-                ./nixos/appimage.nix
-                ./nixos/virtualization.nix
-                ./nixos/niri.nix
-                ./nixos/noctalia.nix
-            ];
-        };
-
-        homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-
-            extraSpecialArgs = { 
-                inherit inputs;
-                inherit username;
-            };
-
-            modules = [
-                # Import desired home modules
-                ./home-manager/gnome.nix
-                ./home-manager/home-settings.nix
-                ./home-manager/zen-browser.nix
-                ./home-manager/neovim.nix
-                ./home-manager/git.nix
-                ./home-manager/shell.nix
-                ./home-manager/ghostty.nix
-                ./home-manager/discord.nix
-                ./home-manager/obs-studio.nix
-                ./home-manager/fastfetch.nix
-                ./home-manager/quarto.nix
-                ./home-manager/zig.nix
-                ./home-manager/noctalia.nix
-		        ./home-manager/niri.nix
-                ./home-manager/vicinae.nix
+                ./modules/appimage.nix
+                ./modules/discord.nix
+                ./modules/fastfetch.nix
+                ./modules/ghostty.nix
+                ./modules/git.nix
+                ./modules/configuration.nix
+                ./modules/hardware-configuration.nix
+                ./modules/intel.nix
+                ./modules/neovim.nix
+                ./modules/nvidia.nix
+                ./modules/obs-studio.nix
+                ./modules/secure-boot.nix
+                ./modules/shell.nix
+                ./modules/steam.nix
+                ./modules/zig.nix
+                ./modules/virtualization.nix
+                ./modules/desktop
             ];
         };
     };
