@@ -59,7 +59,7 @@
             profiles."pascal" = {
                 settings = {
                     "zen.glance.enabled" = false;
-                    "zen.theme.accent-color" = "#d56199";
+                    "zen.theme.accent-color" = "#E95420";
                     "zen.welcome-screen.seen" = true;
                     "zen.urlbar.behavior" = "float";
                     "zen.theme.use-sysyem-colors" = true;
