@@ -98,7 +98,6 @@
                 ./modules/git.nix
                 ./modules/configuration.nix
                 ./modules/hardware-configuration.nix
-                ./modules/intel.nix
                 ./modules/neovim.nix
                 ./modules/nvidia.nix
                 ./modules/obs-studio.nix
