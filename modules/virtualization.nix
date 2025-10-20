@@ -35,4 +35,13 @@
     #         options vfio-pci ids=10de:28e1,10de:22be
     #     '';
     # };
+
+    home-manager.users.${username} = {
+        dconf.settings = {
+            "org/virt-manager/virt-manager/connections" = {
+                autoconnect = ["qemu:///system"];
+                uris = ["qemu:///system"];
+            };
+        };
+   };
 }

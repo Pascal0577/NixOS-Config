@@ -1,38 +1,10 @@
-{ lib, pkgs, username, hostname, ... }:
+{ pkgs, username, hostname, ... }:
 
 {
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
         trusted-users = [ "${username}" ];
-        substituters = [ "https://vicinae.cachix.org" ];
-        trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
     };
-
-    environment.pathsToLink = [ "/share/zsh" ];
-
-    environment.sessionVariables = {
-        NIXOS_OZONE_WL = "1";
-        TERMINAL = "ghostty";
-    };
-
-    zramSwap.enable = true;
-
-    fonts = {
-        fontconfig.useEmbeddedBitmaps = true;
-        packages = with pkgs; [
-            noto-fonts-cjk-sans
-            noto-fonts-emoji
-            akkadian
-        ];
-    };
-
-    # It thinks this is an error but it's not
-    environment.systemPackages = [
-        pkgs.nh
-        (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
-            exec "${lib.getExe pkgs.ghostty}" -- "$@"
-        '')
-    ];
 
     boot = {
         kernelPackages = pkgs.linuxPackages_lqx;
@@ -91,46 +63,15 @@
         DefaultTimeoutStopSec=10s
     '';
 
-    services = {
-        printing.enable = true;
-        openssh.enable = true;
+    zramSwap.enable = true;
 
-        xserver = {
-            enable = false;
-            excludePackages = [ pkgs.xterm ];
-            xkb = {
-              layout = "us";
-              variant = "";
-            };
-        };
-
-        pipewire = {
-            enable = true;
-            alsa.enable = true;
-            alsa.support32Bit = true;
-            pulse.enable = true;
-            jack.enable = true;
-        };
-
-        mullvad-vpn = {
-            enable = true;
-            package = pkgs.mullvad-vpn;
-        };
-    };
-
-    hardware = {
-        bluetooth.enable = true;
-        graphics.enable = true;
-    };
-
-    programs.zsh.enable = true;
     users.users.${username} = {
         isNormalUser = true;
         description = "Pascal";
         extraGroups = [ "networkmanager" "wheel" ];
-        shell = pkgs.zsh;
         packages = with pkgs; [
             home-manager
+            nh
         ];
     };
 
