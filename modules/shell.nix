@@ -59,11 +59,7 @@
                     # Load everything as fast as possible
                     zinit ice depth=1
                     zinit light romkatv/powerlevel10k
-
-                    zinit ice turbo wait'0' lucid
                     zinit light zdharma-continuum/fast-syntax-highlighting
-
-                    zinit ice turbo wait'0' lucid
                     zinit light Aloxaf/fzf-tab
 
                     zinit cdreplay -q
