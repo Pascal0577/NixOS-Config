@@ -38,7 +38,8 @@ in
                     mOnSurface = "#a5adcb";
                     mOnTertiary = "#181926";
                     mOutline = "#3c3c3c";
-                    mPrimary = "#eed49f";
+                    # mPrimary = "#eed49f"; # Yellow Accent
+                    mPrimary = "#de9c68"; # Orange accent
                     mSecondary = "#3a5198";
                     mShadow = "#000000";
                     mSurface = "#1e2030";
