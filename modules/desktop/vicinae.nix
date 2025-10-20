@@ -11,28 +11,28 @@
             inputs.vicinae.homeManagerModules.default
         ];
 
-#       services.vicinae = {
-#           enable = true;
-#           autoStart = true;
-#           package = inputs.vicinae.packages.${pkgs.system}.default;
-#           settings = {
-#               faviconService = "twenty"; # twenty | google | none
-#               popToRootOnClose = true;
-#               rootSearch.searchFiles = false;
-#               font = {
-#                   normal = "Ubuntu Sands";
-#                   size = 13;
-#               };
-#               theme = {
-#                   name = "catppuccin-macchiato";
-#                   iconTheme = "Yaru-dark";
-#               };
-#               window = {
-#                   csd = true;
-#                   opacity = 0.95;
-#                   rounding = 10;
-#               };
-#           };
-#       };
+       services.vicinae = {
+           enable = true;
+           autoStart = true;
+           package = inputs.vicinae.packages.${pkgs.system}.default;
+           settings = {
+               faviconService = "twenty"; # twenty | google | none
+               popToRootOnClose = true;
+               rootSearch.searchFiles = false;
+               font = {
+                   normal = "Ubuntu Sands";
+                   size = 13;
+               };
+               theme = {
+                   name = "catppuccin-macchiato";
+                   iconTheme = "Yaru-dark";
+               };
+               window = {
+                   csd = true;
+                   opacity = 0.95;
+                   rounding = 10;
+               };
+           };
+       };
     };
 }
