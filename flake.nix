@@ -3,57 +3,37 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-        home-manager = {
-            url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        # Web Browser
-        zen-browser = {
-            url = "github:0xc000022070/zen-browser-flake";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        # Declarative Neovim
-        nixvim = {
-            url = "github:nix-community/nixvim";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        # Declarative KDE Plasma
-        plasma-manager = {
-            url = "github:nix-community/plasma-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-            inputs.home-manager.follows = "home-manager";
-        };
-
-        # Secure Boot
-        lanzaboote = {
-            url = "github:nix-community/lanzaboote/v0.4.2";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        # Gaming
-        nix-gaming = {
-            url = "github:fufexan/nix-gaming";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
         niri.url = "github:sodiboo/niri-flake";
         vicinae.url = "github:vicinaehq/vicinae";
 
-        noctalia = {
-          url = "github:noctalia-dev/noctalia-shell";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
+        home-manager.url = "github:nix-community/home-manager";
+        home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+        zen-browser.url = "github:0xc000022070/zen-browser-flake";
+        zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+        nixvim.url = "github:nix-community/nixvim";
+        nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+        plasma-manager.url = "github:nix-community/plasma-manager";
+        plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+        # Secure Boot
+        lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+        lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+
+        nix-gaming.url = "github:fufexan/nix-gaming";
+        nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
+
+        noctalia.url = "github:noctalia-dev/noctalia-shell";
+        noctalia.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
         let
             system = "x86_64-linux";
             pkgs = nixpkgs.legacyPackages.${system};
-            username = "pascal";
+            username = "pascal-work";
             hostname = "nixos";
         in
     {
@@ -61,48 +41,21 @@
             specialArgs = { inherit inputs username hostname; };
 
             modules = [
-                home-manager.nixosModules.home-manager {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.extraSpecialArgs = { inherit inputs username; };
-                    home-manager.users.${username} = {
-                        home.username = username;
-                        home.homeDirectory = "/home/${username}";
-                        home.stateVersion = "25.11";
-                        programs.home-manager.enable = true;
-			        };
-                }
-
+                home-manager.nixosModules.home-manager
+                ./modules
                 {
                     mySystem = {
                         desktop = {
-                            niri.enable = true;
-                            niri.noctalia.enable = true;
+                            niri.enable = false;
+                            niri.noctalia.enable = false;
+                            gnome.enable = true;
                             kde.enable = false;
-                            gnome.enable = false;
                         };
                         neovim.enable = true;
-                        nvidia.enable = true;
+                        nvidia.enable = false;
+                        secure-boot.enable = false;
                     };
                 }
-
-                # Import desired system modules
-                ./modules/appimage.nix
-                ./modules/discord.nix
-                ./modules/fastfetch.nix
-                ./modules/ghostty.nix
-                ./modules/git.nix
-                ./modules/configuration.nix
-                ./modules/hardware-configuration.nix
-                ./modules/neovim.nix
-                ./modules/nvidia.nix
-                ./modules/obs-studio.nix
-                ./modules/secure-boot.nix
-                ./modules/shell.nix
-                ./modules/steam.nix
-                ./modules/zig.nix
-                ./modules/virtualization.nix
-                ./modules/desktop
             ];
         };
     };

@@ -1,8 +1,6 @@
 { pkgs, inputs, username, config, lib, ... }:
 
 {
-    options.mySystem.desktop.kde.enable = lib.mkEnableOption "KDE Plasma Desktop";
-
     config = lib.mkIf config.mySystem.desktop.kde.enable {
         services = {
             desktopManager.plasma6.enable = true;

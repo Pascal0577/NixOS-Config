@@ -4,8 +4,6 @@ let
     wallpaper = directory + "/" + "TranscodedWallpaper.png";
 in
 {
-    options.mySystem.desktop.niri.noctalia.enable = lib.mkEnableOption "Noctalia shell for Niri";
-
     imports = [
         inputs.noctalia.nixosModules.default
     ];

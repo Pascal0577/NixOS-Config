@@ -1,8 +1,6 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.mySystem.desktop.gnome.enable = lib.mkEnableOption "GNOME desktop environment";
-
     config = lib.mkIf config.mySystem.desktop.gnome.enable {
         environment.systemPackages = with pkgs; [
             yaru-theme
@@ -69,8 +67,6 @@
                     "org/gnome/shell" = {
                         disable-user-extensions = false;
                         enabled-extensions = with pkgs.gnomeExtensions; [
-                            # blur-my-shell.extensionUuid
-                            # clipboard-history.extensionUuid
                             user-themes.extensionUuid
                             paperwm.extensionUuid
                         ];
@@ -91,19 +87,7 @@
                         click-policy = "single";
                     };
 
-                    "org/gnome/mutter" = {
-                        experimental-features = [
-                            "variable-refresh-rate"
-                        ];
-                        overlay-key = "";
-                    };
-
                     "org/gnome/shell/extensions/user-theme".name = "Yaru-dark";
-
-                    "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
-                        static-blur = false;
-                        blur = false;
-                    };
 
                     "org/gnome/desktop/wm/keybindings" = {
                         toggle-fullscreen = [
@@ -179,22 +163,6 @@
                         switch-monitor-below = [""];
                         switch-monitor-left = [""];
                         switch-monitor-right = [""];
-                    };
-
-                    "org/gnome/shell/extensions/blur-my-shell/panel" = {
-                        override-background = false;
-                        unblur-in-overview = false;
-                        static-blur = false;
-                    };
-
-                    "org/gnome/shell/extensions/dash-to-dock" = {
-                        dock-position = "RIGHT";
-                        extend-height = true;
-                        scroll-action = "switch-workspace";
-                        middle-click-action = "launch";
-                        custom-theme-shrink = true;
-                        transparency-mode = "FIXED";
-                        background-opacity = 0.90;
                     };
 
                     "org/gnome/desktop/interface" = {
