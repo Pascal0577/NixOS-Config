@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
     programs.virt-manager.enable = true;
@@ -36,12 +36,10 @@
     #     '';
     # };
 
-    home-manager.users.${username} = {
-        dconf.settings = {
-            "org/virt-manager/virt-manager/connections" = {
-                autoconnect = ["qemu:///system"];
-                uris = ["qemu:///system"];
-            };
+    home-manager.users.${username}.dconf.settings = {
+        "org/virt-manager/virt-manager/connections" = {
+            autoconnect = ["qemu:///system"];
+            uris = ["qemu:///system"];
         };
    };
 }

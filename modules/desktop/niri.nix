@@ -40,8 +40,10 @@ in
                 accent = "peach";
                 font  = "Ubuntu Sans";
                 fontSize = "10";
-                background = "${config.users.users.${username}.home}/Pictures/Wallpapers/TranscodedWallpaper.png";
+                disableBackground = false;
+                background = "/var/TranscodedWallpaper.png";
                 loginBackground = true;
+                userIcon = true;
             })
         ];
 

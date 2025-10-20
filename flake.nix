@@ -58,11 +58,7 @@
         in
     {
         nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-                inherit inputs;
-                inherit username;
-                inherit hostname;
-            };
+            specialArgs = { inherit inputs username hostname; };
 
             modules = [
                 home-manager.nixosModules.home-manager {
