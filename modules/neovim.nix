@@ -1,8 +1,6 @@
 { inputs, pkgs, config, lib, username, ... }:
 
 {
-    options.mySystem.neovim.enable = lib.mkEnableOption "Neovim and its integrations";
-
     config = lib.mkIf config.mySystem.neovim.enable {
         home-manager.users.${username} = {
             imports = [

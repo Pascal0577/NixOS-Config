@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-    options.mySystem.nvidia.enable = lib.mkEnableOption "Nvidia + Intel laptop";
-
     config = lib.mkIf config.mySystem.nvidia.enable {
         services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
         hardware.nvidia = {

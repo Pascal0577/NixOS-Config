@@ -14,14 +14,11 @@ let
     terminal = "ghostty";
 in
 {
-    options.mySystem.desktop.niri.enable = lib.mkEnableOption "Niri desktop";
-    
     imports = [
         inputs.niri.nixosModules.niri
     ];
 
     config = lib.mkIf config.mySystem.desktop.niri.enable {
-
         nixpkgs.overlays = [ inputs.niri.overlays.niri ];
         niri-flake.cache.enable = true;
 
