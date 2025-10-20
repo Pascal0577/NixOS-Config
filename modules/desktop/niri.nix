@@ -9,6 +9,10 @@ let
         };
         doCheck = false;
         version = "niri-unstable-blur";
+
+        # preBuild = ''
+        #     export RUSTFLAGS="-C target-cpu=native -C opt-level=3 -C codegen-units=1"
+        # '';
     });
     launcher = "vicinae toggle";
     terminal = "ghostty";

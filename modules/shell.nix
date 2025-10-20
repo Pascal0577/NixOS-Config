@@ -39,6 +39,7 @@
                     ls = "eza --color=always --icons=always --group-directories-first -a";
                     lsl = "eza --color=always --icons=always --group-directories-first -lAh --total-size";
                     nviz = "nvim $(fzf)";
+                    nivm = "nvim";
                 };
 
                 initContent = ''
