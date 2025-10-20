@@ -219,7 +219,7 @@ in
 #                        gradient = {
 #                            angle = 45;
 #                            from = "#D5B69D";
-#                            to = "#D5B69D";
+#                            to = "#B76041";
 #                            relative-to = "workspace-view";
 #                        };
 #                    };
@@ -271,8 +271,9 @@ in
 #                    clip-to-geometry = true;
 #                }
 #                {
-#                    matches = [{ app-id = "com.mitchellh.ghostty"; }];
-#                    opacity = 0.9;
+#                    matches = [{ is-active = false; }];
+#                    opacity = 0.8
+#                    draw-border-with-background = false;
 #                }
 #            ];
 #
