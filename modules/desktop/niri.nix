@@ -9,10 +9,13 @@ let
         };
         doCheck = false;
         version = "niri-unstable-blur";
-
-        # preBuild = ''
-        #     export RUSTFLAGS="-C target-cpu=native -C opt-level=3 -C codegen-units=1"
-        # '';
+        # If we're building from source we might as well apply optimizations
+        RUSTFLAGS = (oldAttrs.RUSTFLAGS or []) ++ [
+            "-C" "opt-level=3"
+            "-C" "target-cpu=native"
+            "-C" "codegen-units=1"
+            "-C" "lto=thin"
+        ];
     });
     launcher = "vicinae toggle";
     terminal = "ghostty";
@@ -28,14 +31,15 @@ in
 
         programs.niri = {
             enable = true;
-            package = niri-blur;
         };
+        
+        programs.niri.package = lib.mkIf config.mySystem.desktop.niri.blur.enable niri-blur;
 
         environment.systemPackages = with pkgs; [
             nautilus
             baobab
-            showtime
             file-roller
+            totem
             (pkgs.catppuccin-sddm.override {
                 flavor = "macchiato";
                 accent = "peach";

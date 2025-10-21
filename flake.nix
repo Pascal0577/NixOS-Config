@@ -46,8 +46,11 @@
                 {
                     mySystem = {
                         desktop = {
-                            niri.enable = true;
-                            niri.noctalia.enable = true;
+                            niri = {
+                                enable = true;
+                                noctalia.enable = true;
+                                blur.enable = true;
+                            };
                             gnome.enable = false;
                             kde.enable = false;
                         };
