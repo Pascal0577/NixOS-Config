@@ -87,7 +87,7 @@
                         click-policy = "single";
                     };
 
-                    "org/gnome/shell/extensions/user-theme".name = "Yaru-dark";
+                    "org/gnome/shell/extensions/user-theme".name = lib.mkIf config.mySystem.desktop.gnome.yaru.enable "Yaru-dark";
 
                     "org/gnome/desktop/wm/keybindings" = {
                         toggle-fullscreen = [
