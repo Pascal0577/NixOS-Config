@@ -33,7 +33,7 @@
         let
             system = "x86_64-linux";
             pkgs = nixpkgs.legacyPackages.${system};
-            username = "pascal-work";
+            username = "pascal";
             hostname = "nixos";
         in
     {
@@ -47,20 +47,19 @@
                     mySystem = {
                         desktop = {
                             niri = {
-                                enable = false;
-                                noctalia.enable = false;
+                                enable = true;
+                                noctalia.enable = true;
                                 blur.enable = false;
                             };
                             gnome = {
-                                enable = true;
-                                yaru.enable = false;
+                                enable = false;
+                                yaru.enable = true;
                             };
                             kde.enable = false;
                         };
-                        obs-optimization.enable = true;
                         neovim.enable = true;
-                        nvidia.enable = false;
-                        secure-boot.enable = false;
+                        nvidia.enable = true;
+                        secure-boot.enable = true;
                     };
                 }
             ];

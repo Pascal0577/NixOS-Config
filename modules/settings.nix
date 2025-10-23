@@ -14,7 +14,6 @@
             };
             kde.enable = lib.mkEnableOption "KDE Plasma Desktop Environment";
         };
-        obs-optimization.enable = lib.mkEnableOption "Compile OBS with aggressive optimization flags";
         neovim.enable = lib.mkEnableOption "Neovim editor and support";
         nvidia.enable = lib.mkEnableOption "Enable support for my Nvidia + Intel laptop";
         secure-boot.enable = lib.mkEnableOption "Secure boot support via lanzaboote";
