@@ -62,19 +62,14 @@ in
             })
         ];
 
-        #config = lib.mkIf ! config.mySystem.desktop.gnome.enable {
-           services.displayManager.sddm = {
-               enable = true;
-               wayland.enable = true;
-               package = pkgs.kdePackages.sddm;
-               theme = "catppuccin-macchiato-peach";
-           };
-        #};  
+        services.displayManager.sddm = {
+            enable = true;
+            wayland.enable = true;
+            package = pkgs.kdePackages.sddm;
+            theme = "catppuccin-macchiato-peach";
+        };
 
         home-manager.users.${username} = {
-            # imports = [
-            #     inputs.niri.homeModules.niri
-            # ];
 
             programs.niri.settings = with config.home-manager.users.${username}.lib.niri.actions; {
                 hotkey-overlay.skip-at-startup = true;
@@ -156,7 +151,7 @@ in
                     "Ctrl+Print".action.screenshot-window = [];
                     "Mod+Return".action = spawn terminal;
                     "Mod+Space".action = spawn-sh launcher;
-                    "Mod+L".action = spawn-sh "noctalia-shell ipc call lockScreen toggle";
+                    "Mod+L".action = spawn-sh "noctalia-shell ipc call lockScreen lock";
                     "Mod+P".action = spawn-sh "noctalia-shell ipc call wallpaper toggle";
                     "Ctrl+Alt+Delete".action = spawn-sh "noctalia-shell ipc call sessionMenu toggle";
 
@@ -177,7 +172,14 @@ in
                         allow-when-locked = true;
                         action = spawn-sh "playerctl next";
                     };
-
+                    "Mod+XF86AudioPrev" = {
+                        allow-when-locked = true;
+                        action = spawn-sh "playerctl position 5-";
+                    };
+                    "Mod+XF86AudioNext" = {
+                        allow-when-locked = true;
+                        action = spawn-sh "playerctl position 5+";
+                    };
                     "XF86AudioRaiseVolume" = {
                         allow-when-locked = true;
                         action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
@@ -265,13 +267,7 @@ in
                         place-within-column = false;
                         position = "bottom";
                         width = 4.000000;
-                        # active.color = null;
-                        # inactive.color = null;
-                        # urgent.color = null;
                     };
-
-                    # Come back to this later. Way too much to do right now
-                    # animations = {};
                 };
 
                 gestures = {
