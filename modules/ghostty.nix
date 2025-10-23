@@ -24,7 +24,7 @@
         }
 
         {
-        home-manager.users.${username} = lib.mkIf config.mySystem.desktop.niri.enable {
+        home-manager.users.${username} = lib.mkIf config.mySystem.desktop.niri.blur.enable {
             programs.ghostty.settings.background-opacity = 0.85;
         };
         }

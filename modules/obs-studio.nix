@@ -16,7 +16,7 @@
                 pkgs.obs-studio.override {
                     cudaSupport = true;
                     # If we're compiling from source we might as well apply optimizations
-                    stdenv = lib.mkIf config.mySystem.obs-optimization.enable pkgs.stdenvAdapters.withCFlags [
+                    stdenv = pkgs.stdenvAdapters.withCFlags [
                         "-O3"
                         "-march=native"
                         "-mtune=native"
