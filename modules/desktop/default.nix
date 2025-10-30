@@ -27,7 +27,7 @@
             ubuntu-sans
             ubuntu-sans-mono
             noto-fonts-cjk-sans
-            noto-fonts-emoji
+            noto-fonts-color-emoji
             akkadian
         ];
     };
