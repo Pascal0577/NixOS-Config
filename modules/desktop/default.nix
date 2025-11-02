@@ -14,6 +14,7 @@
         playerctl
         losslesscut-bin
         pinta
+        # deluge
         qbittorrent
     ];
 
