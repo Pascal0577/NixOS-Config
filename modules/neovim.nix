@@ -54,6 +54,12 @@
                         key = "<leader>qp";
                         options.desc = "Quarto Preview";
                     }
+                    {
+                        mode = "n";
+                        action = "<cmd>silent !zig fmt %<CR>";
+                        key = "<leader>zf";
+                        options.desc = "Format Zig file";
+                    }
                 ];
 
                 plugins = {
