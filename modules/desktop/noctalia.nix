@@ -1,7 +1,7 @@
 { pkgs, inputs, username, config, lib, ... }:
 let
     directory = "/home/${username}/Pictures/Wallpapers";
-    wallpaper = directory + "/" + "TranscodedWallpaper.png";
+    wallpaper = directory + "/" + "nixos.png";
 in
 {
     imports = [
@@ -22,23 +22,23 @@ in
             programs.noctalia-shell = {
                 enable = true;
 
-                colors = {
-                    mError = "#ed8796";
-                    mOnError = "#181926";
-                    mOnPrimary = "#181926";
-                    mOnSecondary = "#181926";
-                    mOnSurfaceVariant = "#828282";
-                    mOnSurface = "#a5adcb";
-                    mOnTertiary = "#181926";
-                    mOutline = "#3c3c3c";
-                    # mPrimary = "#eed49f"; # Yellow Accent
-                    mPrimary = "#de9c68"; # Orange accent
-                    mSecondary = "#3a5198";
-                    mShadow = "#000000";
-                    mSurface = "#1e2030";
-                    mSurfaceVariant = "#24273a";
-                    mTertiary = "#5c5e99";
-                };
+                #colors = {
+                #    mError = "#ed8796";
+                #    mOnError = "#181926";
+                #    mOnPrimary = "#181926";
+                #    mOnSecondary = "#181926";
+                #    mOnSurfaceVariant = "#828282";
+                #    mOnSurface = "#a5adcb";
+                #    mOnTertiary = "#181926";
+                #    mOutline = "#3c3c3c";
+                #    # mPrimary = "#eed49f"; # Yellow Accent
+                #    mPrimary = "#de9c68"; # Orange accent
+                #    mSecondary = "#3a5198";
+                #    mShadow = "#000000";
+                #    mSurface = "#1e2030";
+                #    mSurfaceVariant = "#24273a";
+                #    mTertiary = "#5c5e99";
+                #};
 
                 settings = {
                     settingsVersion = 16;
@@ -253,11 +253,11 @@ in
                         brightnessStep = 5;
                     };
                     colorSchemes = {
-                        useWallpaperColors = true;
-                        predefinedScheme = "Monochrome";
+                        useWallpaperColors = false;
+                        predefinedScheme = "Nord";
                         darkMode = true;
                         matugenSchemeType = "scheme-fruit-salad";
-                        generateTemplatesForPredefined = true;
+                        generateTemplatesForPredefined = false;
                     };
                     templates = {
                         gtk = true;

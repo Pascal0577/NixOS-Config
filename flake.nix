@@ -64,7 +64,11 @@
                             };
                             kde.enable = false;
                         };
-                        neovim.enable = true;
+                        neovim = {
+                            enable = true;
+                            ghostty-theme.enable = false;
+                            nord-theme.enable = true;
+                        };
                         nvidia.enable = true;
                         secure-boot.enable = true;
                     };

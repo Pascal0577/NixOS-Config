@@ -14,7 +14,11 @@
             };
             kde.enable = lib.mkEnableOption "KDE Plasma Desktop Environment";
         };
-        neovim.enable = lib.mkEnableOption "Neovim editor and support";
+        neovim = {
+            enable = lib.mkEnableOption "Neovim editor and support";
+            ghostty-theme.enable = lib.mkEnableOption "Neovim theme to match default Ghostty theme";
+            nord-theme.enable = lib.mkEnableOption "Nord theme for Neovim.";
+        };
         nvidia.enable = lib.mkEnableOption "Enable support for my Nvidia + Intel laptop";
         secure-boot.enable = lib.mkEnableOption "Secure boot support via lanzaboote";
     };

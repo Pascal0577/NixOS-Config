@@ -20,11 +20,11 @@
                popToRootOnClose = true;
                rootSearch.searchFiles = false;
                font = {
-                   normal = "Ubuntu Sands";
+                   normal = "Ubuntu Sans";
                    size = 13;
                };
                theme = {
-                   name = "catppuccin-macchiato";
+                   name = "nord";
                    iconTheme = "Yaru-dark";
                };
                window = {

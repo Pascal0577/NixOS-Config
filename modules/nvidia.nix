@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
     config = lib.mkIf config.mySystem.nvidia.enable {
