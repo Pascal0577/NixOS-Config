@@ -50,14 +50,16 @@ in
             baobab
             file-roller
             totem
+            papirus-nord
+            eyedropper
             (pkgs.catppuccin-sddm.override {
                 flavor = "macchiato";
                 accent = "peach";
                 font  = "Ubuntu Sans";
                 fontSize = "10";
                 disableBackground = false;
-                background = "/var/TranscodedWallpaper.png";
-                loginBackground = true;
+                background = "/var/nixos.png";
+                loginBackground = false;
                 userIcon = true;
             })
         ];
@@ -238,8 +240,10 @@ in
                         active = {
                             gradient = {
                                 angle = 45;
-                                from = "#D5B69D";
-                                to = "#B76041";
+                                # from = "#D5B69D";
+                                # to = "#B76041";
+                                from = "#8fbcbb";
+                                to = "#88c0d0";
                                 relative-to = "workspace-view";
                             };
                         };
@@ -297,13 +301,18 @@ in
             };
 
             dconf.settings."org/gnome/desktop/interface" = {
-                accent-color = "orange";
+                gtk-theme = "Nordic-standard-buttons";
+                accent-color = "blue";
                 color-scheme = "prefer-dark";
                 font-antialiasing = "standard";
                 font-hinting = "full";
                 font-name = "Ubuntu Sans 12";
                 monospace-font-name = "Ubuntu Sans Mono 12";
-                icon-theme = "Yaru";
+                icon-theme = "Papirus-Dark";
+            };
+
+            dconf.settings."org/gnome/desktop/wm/preferences" = {
+                theme = "Nordic-standard-buttons";
             };
         };
     };

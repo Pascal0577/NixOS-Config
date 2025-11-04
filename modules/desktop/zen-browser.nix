@@ -125,18 +125,51 @@
                         id = "c6de089c-410d-4206-961d-ab11f988d40a";
                         container = containers."General".id;
                         position = 1000;
+                        theme = {
+                            type = "gradient";
+                            colors = [
+                                {
+                                    red = 46;
+                                    green = 52;
+                                    blue = 64;
+                                    algorithm = "floating";
+                                }
+                            ];
+                        };
                     };
                     "Pascal" = {
                         id = "cdd10fab-4fc5-494b-9041-325e5759195b";
                         icon = "❗";
                         container = containers."Pascal".id;
                         position = 2000;
+                        theme = {
+                            type = "gradient";
+                            colors = [
+                                {
+                                    red = 46;
+                                    green = 52;
+                                    blue = 64;
+                                    algorithm = "floating";
+                                }
+                            ];
+                        };
                     };
                     "School" = {
                         id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
                         icon = "🎓";
                         container = containers."School".id;
                         position = 3000;
+                        theme = {
+                            type = "gradient";
+                            colors = [
+                                {
+                                    red = 97;
+                                    green = 58;
+                                    blue = 66;
+                                    algorithm = "floating";
+                                }
+                            ];
+                        };
                     };
                     "Personal" = {
                         id = "42ccc4c6-c0a2-0ff8-0ef4-eaa8dadbaa87";
@@ -160,7 +193,7 @@
 
                 search = {
                     force = true;
-                    default = "rawr";
+                    default = "ddg";
                     engines = let
                         nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                     in {

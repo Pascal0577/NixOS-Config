@@ -9,7 +9,6 @@
         ./git.nix
         ./configuration.nix
         ./hardware-configuration.nix
-        ./neovim.nix
         ./nvidia.nix
         ./obs-studio.nix
         ./secure-boot.nix
@@ -19,6 +18,8 @@
         ./virtualization.nix
         ./desktop
         ./settings.nix
+        ./neovim/ghostty-theme.nix
+        ./neovim/neovim.nix
     ];
 
     home-manager.useGlobalPkgs = true;

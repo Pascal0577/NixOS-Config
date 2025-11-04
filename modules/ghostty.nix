@@ -18,6 +18,7 @@
                 enableZshIntegration = true;
                 settings = {
                     confirm-close-surface = false;
+                    gtk-single-instance = true;
                 };
             };
         };
@@ -26,6 +27,12 @@
         {
         home-manager.users.${username} = lib.mkIf config.mySystem.desktop.niri.blur.enable {
             programs.ghostty.settings.background-opacity = 0.85;
+        };
+        }
+
+        {
+        home-manager.users.${username} = lib.mkIf config.mySystem.desktop.niri.noctalia.enable {
+            programs.ghostty.settings.theme = "noctalia";
         };
         }
     ];

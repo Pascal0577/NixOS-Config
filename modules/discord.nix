@@ -15,7 +15,6 @@
 
         programs.vesktop = {
             enable = true;
-
             settings = {
                 hardwareAcceleration = true;
                 hardwareVideoAcceleration = true;
@@ -31,11 +30,17 @@
             vencord.settings = {
                 autoUpdate = false;
                 useQuickCss = true;
+                enabledThemes = ["nordic.theme.css"];
                 plugins = {
                     FakeNitro.enabled = true;
                     FixYoutubeEmbeds.enabled = true;
                     YoutubeAdblock.enabled = true;
                     BetterUploadButton.enabled = true;
+                    WebScreenShareFixes.enabled = true;
+                    NoTrack = {
+                        enabled = true;
+                        disableAnalytics = true;
+                    };
                 };
             };
         };
