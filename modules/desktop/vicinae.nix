@@ -1,38 +1,40 @@
-{ inputs, pkgs, username, ... }:
+{ lib, config, inputs, pkgs, username, ... }:
 
 {
-    nix.settings = {
-        substituters = [ "https://vicinae.cachix.org" ];
-        trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
-    };
+    config = lib.mkIf config.mySystem.desktop.niri.vicinae.enable {
+        nix.settings = {
+            substituters = [ "https://vicinae.cachix.org" ];
+            trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
+        };
 
-    home-manager.users.${username} = {
-        imports = [
-            inputs.vicinae.homeManagerModules.default
-        ];
+        home-manager.users.${username} = {
+            imports = [
+                inputs.vicinae.homeManagerModules.default
+            ];
 
-       services.vicinae = {
-           enable = true;
-           autoStart = true;
-           package = inputs.vicinae.packages.${pkgs.system}.default;
-           settings = {
-               faviconService = "twenty"; # twenty | google | none
-               popToRootOnClose = true;
-               rootSearch.searchFiles = false;
-               font = {
-                   normal = "Ubuntu Sans";
-                   size = 13;
-               };
-               theme = {
-                   name = "nord";
-                   iconTheme = "Yaru-dark";
-               };
-               window = {
-                   csd = true;
-                   opacity = 0.95;
-                   rounding = 10;
+           services.vicinae = {
+               enable = true;
+               autoStart = true;
+               package = inputs.vicinae.packages.${pkgs.system}.default;
+               settings = {
+                   faviconService = "twenty"; # twenty | google | none
+                   popToRootOnClose = true;
+                   rootSearch.searchFiles = false;
+                   font = {
+                       normal = "Ubuntu Sans";
+                       size = 13;
+                   };
+                   theme = {
+                       name = "nord";
+                       iconTheme = "Yaru-dark";
+                   };
+                   window = {
+                       csd = true;
+                       opacity = 0.95;
+                       rounding = 10;
+                   };
                };
            };
-       };
+        };
     };
 }

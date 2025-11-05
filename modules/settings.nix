@@ -7,6 +7,8 @@
                 enable = lib.mkEnableOption "Niri Window Manager";
                 noctalia.enable = lib.mkEnableOption "Noctalia shell for Niri";
                 blur.enable = lib.mkEnableOption "Build Niri with experimental blur";
+                walker.enable = lib.mkEnableOption "Use walker app launcher";
+                vicinae.enable = lib.mkEnableOption "Use vicinae launcher";
             };
             gnome = {
                 enable = lib.mkEnableOption "GNOME Desktop Environment";
