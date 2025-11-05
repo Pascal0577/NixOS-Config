@@ -25,7 +25,7 @@ let
             "-C" "lto=fat"
         ];
     });
-    launcher = "vicinae toggle";
+    launcher = "walker";
     terminal = "ghostty";
 in
 {

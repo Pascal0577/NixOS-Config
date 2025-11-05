@@ -8,6 +8,7 @@
         ./noctalia.nix
         ./zen-browser.nix
         ./kde.nix
+        ./walker.nix
     ];
 
     environment.systemPackages = with pkgs; [

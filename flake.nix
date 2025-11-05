@@ -34,6 +34,12 @@
             inputs.nixpkgs.follows = "nixpkgs";
             inputs.quickshell.follows = "quickshell";  # Use same quickshell version
         };
+
+        elephant.url = "github:abenz1267/elephant";
+        walker = {
+            url = "github:abenz1267/walker";
+            inputs.elephant.follows = "elephant";
+        };
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -57,6 +63,8 @@
                                 enable = true;
                                 noctalia.enable = true;
                                 blur.enable = false;
+                                walker.enable = true;
+                                vicinae.enable = false;
                             };
                             gnome = {
                                 enable = false;
