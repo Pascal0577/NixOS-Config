@@ -60,9 +60,9 @@
                         list = "No Results";
                     };
                     providers.prefixes = [
-                        { provider = "providerlist"; prefix = "."; }
-                        { provider = "unicode"; prefix = "/"; }
-                        { provider = "files"; prefix = ","; }
+                        { provider = "providerlist"; prefix = "/"; }
+                        { provider = "unicode"; prefix = ","; }
+                        { provider = "files"; prefix = "."; }
                     ];
                     keybinds.quick_activate = ["F1" "F2" "F3"];
                 };
@@ -136,8 +136,6 @@
                               border-radius: 14px;
                               border: 2px solid transparent;
                               transition: all 200ms ease;
-                              backdrop-filter: blur(10px);
-                              -webkit-backdrop-filter: blur(10px);
                             }
 
                             .input:focus,
