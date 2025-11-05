@@ -1,8 +1,8 @@
-{ lib, config, username, inputs, ... }:
+{ lib, config, username, inputs, pkgs, ... }:
 
 {
+    config = lib.mkIf config.mySystem.desktop.niri.walker.enable {
 
-    #config = lib.mkIf config.mySystem.desktop.niri.walker.enable {
         nix.settings = {
             extra-substituters = [
                 "https://walker.cachix.org"
@@ -14,20 +14,55 @@
             ];
         };
 
+        environment.systemPackages = with pkgs; [
+            gst_all_1.gstreamer
+            gst_all_1.gst-libav
+            gst_all_1.gst-plugins-base
+            gst_all_1.gst-plugins-good
+            gst_all_1.gst-plugins-bad
+            gst_all_1.gst-plugins-ugly
+            gst_all_1.gst-vaapi
+        ];
+
         home-manager.users.${username} = {
-            imports = [ inputs.walker.homeManagerModules.default ];
+            imports = [ 
+                inputs.walker.homeManagerModules.default
+            ];
+
+            # Needed so walker can find gstreamer stuff and not crash
+            # when trying to preview a video
+            home.file.".config/systemd/user/walker.service.d/env.conf".text = ''
+                [Service]
+                Environment=GST_PLUGIN_PATH=/run/current-system/sw/lib/gstreamer-1.0
+            '';
+
+            programs.elephant = {
+                providers = [
+                    "desktopapplications"
+                    "runner"
+                    "unicode"
+                    "symbols"
+                    "files"
+                    "clipboard"
+                    "calc"
+                    "providerlist"
+                ];
+            };
+
             programs.walker = {
                 enable = true;
                 runAsService = true;
                 config = {
                     theme = "nord";
+                    force_keyboard_focus = true;
                     placeholders.default = {
                         input = "Search";
                         list = "No Results";
                     };
                     providers.prefixes = [
-                        { provider = "websearch"; prefix = "+"; }
                         { provider = "providerlist"; prefix = "."; }
+                        { provider = "unicode"; prefix = "/"; }
+                        { provider = "files"; prefix = ","; }
                     ];
                     keybinds.quick_activate = ["F1" "F2" "F3"];
                 };
@@ -35,7 +70,6 @@
                 themes = {
                     "nord" = {
                         style = ''
-                            /* Nord Color Palette with Reduced Transparency */
                             @define-color window_bg_color rgba(46, 52, 64, 0.95);
                             @define-color accent_bg_color #5e81ac;
                             @define-color theme_fg_color #eceff4;
@@ -58,8 +92,6 @@
 
                             scrollbar {
                               opacity: 0;
-                              width: 0;
-                              height: 0;
                             }
 
                             .box-wrapper {
@@ -70,12 +102,8 @@
                               padding: 8px;
                               border-radius: 20px;
                               border: 1px solid alpha(@accent_bg_color, 0.4);
-                              backdrop-filter: blur(20px);
-                              -webkit-backdrop-filter: blur(20px);
                               min-width: 600px;
-                              max-width: 600px;
                               min-height: 400px;
-                              max-height: 400px;
                             }
 
                             .preview-box,
@@ -85,11 +113,10 @@
                             }
 
                             .box {
-                              min-height: 384px;
-                              max-height: 384px;
+                              min-height: 400px;
+                              max-height: 400px;
                               display: flex;
                               flex-direction: column;
-                              flex: 0 0 auto;
                             }
 
                             .search-container {
@@ -122,9 +149,9 @@
 
                             .content-container {
                               margin-top: 8px;
-                              min-height: 320px;
-                              max-height: 320px;
-                              flex: 0 0 auto;
+                              min-height: 400px;
+                              max-height: 400px;
+                              flex: 1;
                               display: flex;
                               flex-direction: column;
                             }
@@ -140,19 +167,14 @@
                             .scroll {
                               min-height: 280px;
                               max-height: 280px;
-                              overflow-y: scroll;
+                              overflow-y: auto;
                               scrollbar-width: none;
-                            }
-
-                            .scroll viewport,
-                            .scroll > viewport > box {
-                              min-height: 100%;
-                              max-height: 100%;
                             }
 
                             .list {
                               color: @theme_fg_color;
                               min-height: 280px;
+                              max-height: 280px;
                             }
 
                             child {
@@ -304,5 +326,5 @@
                 };
             };
         };
-    #};
+    };
 }

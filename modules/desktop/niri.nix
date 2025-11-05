@@ -25,7 +25,7 @@ let
             "-C" "lto=fat"
         ];
     });
-    launcher = "walker";
+    launcher = "nc -U /run/user/1000/walker/walker.sock";
     terminal = "ghostty";
 in
 {
