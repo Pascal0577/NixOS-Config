@@ -37,6 +37,7 @@
                     YoutubeAdblock.enabled = true;
                     BetterUploadButton.enabled = true;
                     WebScreenShareFixes.enabled = true;
+                    FixImagesQuality.enabled = true;
                     NoTrack = {
                         enabled = true;
                         disableAnalytics = true;
