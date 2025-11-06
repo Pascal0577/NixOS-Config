@@ -39,6 +39,7 @@
         walker = {
             url = "github:abenz1267/walker";
             inputs.elephant.follows = "elephant";
+            inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
@@ -78,7 +79,7 @@
                             nord-theme.enable = true;
                         };
                         nvidia.enable = true;
-                        secure-boot.enable = true;
+                        secure-boot.enable = false;
                     };
                 }
             ];

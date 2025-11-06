@@ -1,8 +1,6 @@
 { lib, config, username, inputs, pkgs, ... }:
-
 {
     config = lib.mkIf config.mySystem.desktop.niri.walker.enable {
-
         nix.settings = {
             extra-substituters = [
                 "https://walker.cachix.org"
