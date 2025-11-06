@@ -293,6 +293,10 @@ in
                         opacity = lib.mkIf config.mySystem.desktop.niri.blur.enable 0.8;
                         draw-border-with-background = lib.mkIf config.mySystem.desktop.niri.blur.enable false;
                     }
+                    {
+                        matches = [{ app-id = "com.mitchellh.ghostty"; }];
+                        default-column-width.proportion = 0.5;
+                    }
                 ];
 
                 switch-events = {
