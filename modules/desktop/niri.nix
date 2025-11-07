@@ -151,7 +151,7 @@ in
                     "Print".action.screenshot = [];
                     "Shift+Print".action.screenshot-screen = [];
                     "Ctrl+Print".action.screenshot-window = [];
-                    "Mod+Return".action = spawn terminal;
+                    "Mod+Return".action = spawn terminal "+new-window";
                     "Mod+Space".action = spawn-sh launcher;
                     "Mod+L".action = spawn-sh "noctalia-shell ipc call lockScreen lock";
                     "Mod+P".action = spawn-sh "noctalia-shell ipc call wallpaper toggle";
