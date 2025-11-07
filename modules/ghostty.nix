@@ -16,9 +16,13 @@
             programs.ghostty = {
                 enable = true;
                 enableZshIntegration = true;
+                systemd.enable = true;
                 settings = {
                     confirm-close-surface = false;
-                    gtk-single-instance = true;
+                    quit-after-last-window-closed = true;
+                    quit-after-last-window-closed-delay = "5m";
+                    background-blur = true;
+                    background-opacity = 0.9;
                 };
             };
         };
