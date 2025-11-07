@@ -17,6 +17,7 @@
         pinta
         # deluge
         qbittorrent
+        onlyoffice-desktopeditors
     ];
 
     fonts = {
