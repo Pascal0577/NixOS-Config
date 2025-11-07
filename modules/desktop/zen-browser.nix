@@ -96,21 +96,21 @@
                 pins = {
                     "NixOS Packages" = {
                         id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
-                        workspace = spaces."General".id;
+                        # workspace = spaces."General".id;
                         url = "https://search.nixos.org/packages?channel=unstable&";
                         position = 1000;
                         isEssential = true;
                     };
                     "Youtube" = {
                         id = "1eabb6a3-911b-4fa9-9eaf-232a3703db19";
-                        workspace = spaces."General".id;
+                        # workspace = spaces."General".id;
                         url = "https://www.youtube.com/";
                         position = 2000;
                         isEssential = true;
                     };
                     "Home Manager Options" = {
                         id = "5065293b-1c04-40ee-ba1d-99a231873864";
-                        workspace = spaces."General".id;
+                        # workspace = spaces."General".id;
                         url = "https://home-manager-options.extranix.com/?query=&release=master";
                         position = 3000;
                         isEssential = true;
@@ -158,7 +158,7 @@
                         id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
                         icon = "🎓";
                         container = containers."School".id;
-                        position = 3000;
+                        position = 4000;
                         theme = {
                             type = "gradient";
                             colors = [
@@ -175,7 +175,7 @@
                         id = "42ccc4c6-c0a2-0ff8-0ef4-eaa8dadbaa87";
                         icon = "🐉";
                         container = containers."Personal".id;
-                        position = 4000;
+                        position = 3000;
                         theme = {
                             type = "gradient";
                             colors = [
