@@ -21,8 +21,6 @@
                     confirm-close-surface = false;
                     quit-after-last-window-closed = true;
                     quit-after-last-window-closed-delay = "5m";
-                    background-blur = true;
-                    background-opacity = 0.9;
                 };
             };
         };
