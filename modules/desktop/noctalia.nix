@@ -52,6 +52,7 @@ in
                         floating = false;
                         marginVertical = 0.25;
                         marginHorizontal = 0.25;
+                        outerCorners = false;
 
                         widgets = {
                             left = [
@@ -103,13 +104,14 @@ in
                         avatarImage = "~/Pictures/Profile_Pictures/moody.png";
                         dimDesktop = false;
                         showScreenCorners = true;
-                        forceBlackScreenCorners = false;
+                        forceBlackScreenCorners = true;
                         scaleRatio = 1;
                         radiusRatio = 0.5;
-                        screenRadiusRatio = 1;
+                        screenRadiusRatio = 0.5;
                         animationSpeed = 2;
                         animationDisabled = false;
                         compactLockScreen = false;
+                        shadowDirection = "overhead";
                     };
                     location = {
                         name = "Kentucky";
@@ -131,6 +133,7 @@ in
                     };
                     wallpaper = {
                         enabled = true;
+                        overviewEnabled = false;
                         directory = directory;
                         monitors = [
                             {
@@ -204,6 +207,7 @@ in
                         ];
                     };
                     dock = {
+                        enabled = false;
                         displayMode = "auto_hide";
                         backgroundOpacity = 1;
                         floatingRatio = 1;
