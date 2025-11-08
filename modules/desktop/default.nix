@@ -15,8 +15,8 @@
         playerctl
         losslesscut-bin
         pinta
-        # deluge
-        qbittorrent
+        deluge
+        # qbittorrent
         onlyoffice-desktopeditors
     ];
 
