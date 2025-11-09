@@ -37,6 +37,8 @@
                     "gfx.webrender.all" = true;
                     "network.http.http3.enabled" = true;
                     "privacy.resistFingerprinting" = true;
+                    "widget.use-xdg-desktop-portal.mime-handler" = 1;
+                    "widget.use-xdg-desktop-portal.file-picker" = 1;
                 };
 
                 AutofillAddressEnabled = false;
