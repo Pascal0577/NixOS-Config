@@ -16,7 +16,6 @@
         losslesscut-bin
         pinta
         deluge
-        # qbittorrent
         onlyoffice-desktopeditors
     ];
 
