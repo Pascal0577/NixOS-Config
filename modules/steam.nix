@@ -12,7 +12,7 @@
 
     programs.wine = {
         enable = true;
-        package = pkgs.wineWowPackages.stagingFull;
+        package = pkgs.wineWowPackages.waylandFull;
         binfmt = true;
         ntsync = true;
     };
