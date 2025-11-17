@@ -228,10 +228,10 @@ in
                     gaps = 8;
 
                     struts = {
-                        bottom = -4;
-                        top = -4;
-                        left = 8;
-                        right = 8;
+                        bottom = -2;
+                        top = -2;
+                        left = 6;
+                        right = 6;
                     };
 
                     border = {
