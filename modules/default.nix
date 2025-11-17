@@ -18,7 +18,7 @@
         ./virtualization.nix
         ./desktop
         ./settings.nix
-        ./mathematica.nix
+        # ./mathematica.nix
         ./neovim/ghostty-theme.nix
         ./neovim/neovim.nix
     ];
