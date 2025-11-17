@@ -14,7 +14,7 @@ let
             "-C" "opt-level=3"
             "-C" "target-cpu=native"
             "-C" "codegen-units=1"
-            "-C" "lto=fat"
+            "-C" "lto=thin"
         ];
     });
     niri-optimized = pkgs.niri-unstable.overrideAttrs (oldAttrs: {
@@ -22,7 +22,7 @@ let
             "-C" "opt-level=3"
             "-C" "target-cpu=native"
             "-C" "codegen-units=1"
-            "-C" "lto=fat"
+            "-C" "lto=thin"
         ];
     });
     launcher = "nc -U /run/user/1000/walker/walker.sock";
