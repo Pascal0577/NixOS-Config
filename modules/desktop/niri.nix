@@ -52,6 +52,7 @@ in
             totem
             papirus-nord
             eyedropper
+            brightnessctl
             (pkgs.catppuccin-sddm.override {
                 flavor = "macchiato";
                 accent = "peach";
