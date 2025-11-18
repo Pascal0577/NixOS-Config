@@ -16,11 +16,11 @@
         ./steam.nix
         ./zig.nix
         ./virtualization.nix
-        ./desktop
         ./settings.nix
         # ./mathematica.nix
         ./neovim/ghostty-theme.nix
-        ./neovim/neovim.nix
+        ./neovim
+        ./desktop
     ];
 
     home-manager.useGlobalPkgs = true;
