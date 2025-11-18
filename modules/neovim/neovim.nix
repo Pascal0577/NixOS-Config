@@ -171,9 +171,9 @@
                     };
 
                     combinePlugins = {
-                        enable = false;
+                        enable = true;
                         standalonePlugins = [
-                            "nvim-nord"
+                            pkgs.vimPlugins.nord-nvim
                         ];
                     };
                 };
