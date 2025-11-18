@@ -58,6 +58,9 @@ in
                             left = [
                                 {
                                     id = "SystemMonitor";
+                                    usePrimaryColor = true;
+                                    showDiskusage = true;
+                                    diskPath = "/";
                                 }
                                 {
                                     id = "ActiveWindow";
@@ -73,9 +76,13 @@ in
                             right = [
                                 {
                                     id = "Tray";
+                                    drawerEnabled = false;
+                                    colorizeIcons = false;
                                 }
                                 {
                                     id = "NotificationHistory";
+                                    hideWhenZero = true;
+                                    showUnreadBadge = true;
                                 }
                                 {
                                     id = "Bluetooth";
@@ -102,7 +109,7 @@ in
                     };
                     general = {
                         avatarImage = "~/Pictures/Profile_Pictures/moody.png";
-                        dimDesktop = false;
+                        dimmerOpacity = 0;
                         showScreenCorners = true;
                         forceBlackScreenCorners = true;
                         scaleRatio = 1;
@@ -111,7 +118,7 @@ in
                         animationSpeed = 2;
                         animationDisabled = false;
                         compactLockScreen = false;
-                        shadowDirection = "overhead";
+                        shadowDirection = "left";
                     };
                     location = {
                         name = "Kentucky";
