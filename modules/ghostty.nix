@@ -19,7 +19,7 @@
                 systemd.enable = true;
                 settings = {
                     confirm-close-surface = false;
-                    quit-after-last-window-closed = true;
+                    quit-after-last-window-closed = false;
                     quit-after-last-window-closed-delay = "5m";
                 };
             };
