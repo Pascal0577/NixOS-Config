@@ -1,7 +1,7 @@
 { pkgs, inputs, username, config, lib, ... }:
 let
     directory = "/home/${username}/Pictures/Wallpapers/Nord";
-    wallpaper = directory + "/" + "nord-arctic-fox.png";
+    wallpaper = "/home/pascal-work/Pictures/Wallpaper/Nord/nord-arctic-fox.png";
 in
 {
     imports = [

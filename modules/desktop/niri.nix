@@ -41,9 +41,11 @@ in
             enable = true;
         };
         
-        programs.niri.package = if config.mySystem.desktop.niri.blur.enable
-                                then niri-blur
-                                else niri-optimized;
+        #programs.niri.package = if config.mySystem.desktop.niri.blur.enable
+        #                        then niri-blur
+        #                        else niri-optimized;
+
+        programs.niri.package = pkgs.niri-stable;
 
         environment.systemPackages = with pkgs; [
             nautilus

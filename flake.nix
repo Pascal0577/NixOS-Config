@@ -47,7 +47,7 @@
         let
             system = "x86_64-linux";
             pkgs = nixpkgs.legacyPackages.${system};
-            username = "pascal";
+            username = "pascal-work";
             hostname = "nixos";
         in
     {
@@ -78,7 +78,7 @@
                             ghostty-theme.enable = false;
                             nord-theme.enable = true;
                         };
-                        nvidia.enable = true;
+                        nvidia.enable = false;
                         secure-boot.enable = false;
                     };
                 }
