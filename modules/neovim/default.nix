@@ -55,15 +55,31 @@
                     }
                     {
                         mode = "n";
-                        action = "<cmd>QuartoPreview<CR>";
-                        key = "<leader>qp";
-                        options.desc = "Quarto Preview";
-                    }
-                    {
-                        mode = "n";
                         action = "<cmd>silent !zig fmt %<CR>";
                         key = "<leader>zf";
                         options.desc = "Format Zig file";
+                    }
+                    {
+                        mode = "n";
+                        action = "<cmd>tabnext<CR>";
+                        key = "<leader>tt";
+                        options.desc = "Go to next tab";
+                    }
+                    {
+                        mode = "n";
+                        action = "<cmd>tabprevious<CR>";
+                        key = "<leader>tr";
+                        options.desc = "Go to previous tab";
+                    }
+                    {
+                        mode = "n";
+                        action = "<cmd>NvimTreeToggle<CR>";
+                        key = "<leader>ntt";
+                    }
+                    {
+                        mode = "n";
+                        action = "<cmd>NvimTreeFocus<CR>";
+                        key = "<leader>ntf";
                     }
                 ];
 
@@ -73,26 +89,6 @@
                         servers = { 
                             bashls.enable = true;
                             nixd.enable = true;
-                        };
-                    };
-
-                    quarto = {
-                        enable = true;
-                        settings = {
-                            codeRunner = {
-                                default_method = "molten";
-                                enabled = false;
-                            };
-                            debug = false;
-                            lspFeatures = {
-                                enabled = true;
-                                completion.enabled = true;
-                                chunks = "curly";
-                                diagnostics = {
-                                    enabled = true;
-                                    triggers = [ "BufWritePost" ];
-                                };
-                            };
                         };
                     };
 
@@ -155,10 +151,20 @@
                         };
                     };
 
+                    nvim-tree = {
+                        enable = true;
+                        settings = {
+                            tab = {
+                                sync = {
+                                    open = true;
+                                };
+                            };
+                        };
+                    };
+
                     lualine.enable = true;
                     web-devicons.enable = true;
                     telescope.enable = true;
-                    otter.enable = true;
                 };
 
                 performance = {
@@ -174,6 +180,7 @@
                         enable = true;
                         standalonePlugins = [
                             pkgs.vimPlugins.nord-nvim
+                            pkgs.vimPlugins.blink-cmp
                         ];
                     };
                 };
