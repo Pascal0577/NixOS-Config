@@ -48,7 +48,8 @@ in
         programs.niri.package = pkgs.niri-stable;
 
         environment.systemPackages = with pkgs; [
-            nautilus
+            # nautilus
+            nemo-with-extensions
             baobab
             file-roller
             totem
@@ -67,6 +68,7 @@ in
             })
         ];
 
+        services.gvfs.enable = true;
         services.displayManager.sddm = {
             enable = true;
             wayland.enable = true;
@@ -75,7 +77,6 @@ in
         };
 
         home-manager.users.${username} = {
-
             programs.niri.settings = with config.home-manager.users.${username}.lib.niri.actions; {
                 hotkey-overlay.skip-at-startup = true;
                 prefer-no-csd = true;

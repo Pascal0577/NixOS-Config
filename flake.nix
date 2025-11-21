@@ -32,7 +32,6 @@
         noctalia = {
             url = "github:noctalia-dev/noctalia-shell";
             inputs.nixpkgs.follows = "nixpkgs";
-            inputs.quickshell.follows = "quickshell";  # Use same quickshell version
         };
 
         elephant.url = "github:abenz1267/elephant";
