@@ -48,8 +48,7 @@ in
         programs.niri.package = pkgs.niri-stable;
 
         environment.systemPackages = with pkgs; [
-            # nautilus
-            nemo-with-extensions
+            nautilus
             baobab
             file-roller
             totem
