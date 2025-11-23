@@ -46,8 +46,7 @@ in
                                 else niri-optimized;
 
         environment.systemPackages = with pkgs; [
-            # nautilus
-            nemo-with-extensions
+            nautilus
             baobab
             file-roller
             totem

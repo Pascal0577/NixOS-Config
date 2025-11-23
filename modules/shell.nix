@@ -13,6 +13,9 @@
             fzf
             eza
             zoxide
+            bat
+            glow
+            poppler-utils
         ];
 
         programs = {
@@ -40,6 +43,7 @@
                     lsl = "eza --color=always --icons=always --group-directories-first -lAh --total-size";
                     nviz = "nvim $(fzf)";
                     nivm = "nvim";
+                    cat = "bat --theme Nord -p -u -P";
                 };
 
                 initContent = ''
@@ -73,15 +77,30 @@
                     bindkey '^p' history-search-backward
                     bindkey '^n' history-search-forward
                     bindkey '^[w' kill-region
+                    bindkey '^[[1;5D' backward-word
+                    bindkey '^[[1;5C' forward-word
 
                     # Completion styling
                     zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
                     zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
                     zstyle ':completion:*' menu no
-                    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always --icons=always --group-directories-first -1 $realpath'
-                    zstyle ':fzf-tab:complete:eza:*' fzf-preview 'eza --color=always --icons=always --group-directories-first -1 $realpath'
-                    zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color=always --icons=always --group-directories-first -1 $realpath'
-                    zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza --color=always --icons=always --group-directories-first -1 $realpath'
+                    zstyle ':fzf-tab:complete:*' show-hidden true
+
+                    zstyle ':fzf-tab:complete:*' fzf-preview '
+                        case "$realpath" in
+                            *.pdf) pdftotext "$realpath" - | head -200 ;;
+                            *.tar.gz|*.tgz|*.zst) tar -tzf "$realpath" ;;
+                            *.zip) unzip -l "$realpath" ;;
+                            *.md) glow -s dark "$realpath" ;;
+                            *)
+                                if [ -d "$realpath" ]; then
+                                    eza --color=always --icons=always --group-directories-first -1 "$realpath"
+                                else
+                                    bat --theme="Nord" -p --color=always -- "$realpath"
+                                fi
+                            ;;
+                        esac
+                    '
 
                     eval "$(fzf --zsh)"
                     eval "$(zoxide init zsh)"
