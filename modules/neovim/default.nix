@@ -81,6 +81,16 @@
                         action = "<cmd>NvimTreeFocus<CR>";
                         key = "<leader>ntf";
                     }
+                    {
+                        mode = "n";
+                        action = "<cmd>vertical resize -10<CR>";
+                        key = "<C-[>";
+                    }
+                    {
+                        mode = "n";
+                        action = "<cmd>vertical resize +10<CR>";
+                        key = "<C-]>";
+                    }
                 ];
 
                 plugins = {
