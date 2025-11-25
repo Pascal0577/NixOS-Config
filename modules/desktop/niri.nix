@@ -5,25 +5,19 @@ let
             owner = "visualglitch91";
             repo = "niri";
             rev = "feat/blur";
-            hash = "sha256-sNAJQBP2rVL5OM6Lnblmy7EWYRsrZnmuQnnip4mX8mQ=";  # You'll need to update this
+            hash = "sha256-sNAJQBP2rVL5OM6Lnblmy7EWYRsrZnmuQnnip4mX8mQ=";
         };
         doCheck = false;
         version = "unstable-blur";
-        # If we're building from source we might as well apply optimizations
-        RUSTFLAGS = (oldAttrs.RUSTFLAGS or []) ++ [
-            "-C" "opt-level=3"
-            "-C" "target-cpu=native"
-            "-C" "codegen-units=1"
-            "-C" "lto=thin"
-        ];
+        # Set RUSTFLAGS in env instead of as derivation arguments
+        env = (oldAttrs.env or {}) // {
+            RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
+        };
     });
     niri-optimized = pkgs.niri-unstable.overrideAttrs (oldAttrs: {
-        RUSTFLAGS = (oldAttrs.RUSTFLAGS or []) ++ [
-            "-C" "opt-level=3"
-            "-C" "target-cpu=native"
-            "-C" "codegen-units=1"
-            "-C" "lto=thin"
-        ];
+        env = (oldAttrs.env or {}) // {
+            RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
+        };
     });
     launcher = "nc -U /run/user/1000/walker/walker.sock";
     terminal = "ghostty";
