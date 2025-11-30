@@ -3,6 +3,9 @@
 {
     users.users.${username}.packages = with pkgs; [
         mangohud
+        heroic
+        unzip
+        cabextract
     ];
 
     imports = [

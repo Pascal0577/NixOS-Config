@@ -63,7 +63,10 @@
         DefaultTimeoutStopSec=10s
     '';
 
-    zramSwap.enable = true;
+    zramSwap = {
+        enable = true;
+        algorithm = "zstd";
+    };
 
     users.users.${username} = {
         isNormalUser = true;
@@ -79,5 +82,5 @@
 
     security.rtkit.enable = true;
     nixpkgs.config.allowUnfree = true;
-    system.stateVersion = "25.05";
+    system.stateVersion = "26.05";
 }
