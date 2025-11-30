@@ -84,12 +84,12 @@
                     {
                         mode = "n";
                         action = "<cmd>vertical resize -10<CR>";
-                        key = "<C-[>";
+                        key = "<C-;>";
                     }
                     {
                         mode = "n";
                         action = "<cmd>vertical resize +10<CR>";
-                        key = "<C-]>";
+                        key = "<C-'>";
                     }
                 ];
 

@@ -9,7 +9,6 @@ let
         };
         doCheck = false;
         version = "unstable-blur";
-        # Set RUSTFLAGS in env instead of as derivation arguments
         env = (oldAttrs.env or {}) // {
             RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
         };
@@ -59,7 +58,6 @@ in
             })
         ];
 
-        services.gvfs.enable = true;
         services.displayManager.sddm = {
             enable = true;
             wayland.enable = true;
