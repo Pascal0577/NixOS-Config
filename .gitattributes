@@ -1,0 +1,2 @@
+flake.nix merge=ours
+./modules/hardware-configuration.nix merge=ours
