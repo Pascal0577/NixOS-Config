@@ -25,7 +25,7 @@
     fileSystems."/home" = {
         device = "/dev/disk/by-uuid/06c0c17e-87c3-4411-8897-52aadfbd5023";
         fsType = "btrfs";
-	    options = [ "subvol=@home" "compress=zstd "];
+	    options = [ "subvol=@home" "compress=zstd" ];
     };
 
     fileSystems."/boot" = {

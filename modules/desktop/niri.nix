@@ -290,6 +290,12 @@ in
                         matches = [{ app-id = "com.mitchellh.ghostty"; }];
                         default-column-width.proportion = 0.5;
                     }
+                    {
+                        matches = [{
+                            app-id = "steam_app_0";
+                        }];
+                        variable-refresh-rate = true;
+                    }
                 ];
 
                 switch-events = {
