@@ -18,21 +18,17 @@
         plasma-manager.url = "github:nix-community/plasma-manager";
         plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-        # Secure Boot
-        lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+        lanzaboote.url = "github:nix-community/lanzaboote";
         lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
         nix-gaming.url = "github:fufexan/nix-gaming";
         nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
 
-        quickshell = {
-            url = "github:outfoxxed/quickshell";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-        noctalia = {
-            url = "github:noctalia-dev/noctalia-shell";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        quickshell.url = "github:outfoxxed/quickshell";
+        quickshell.inputs.nixpkgs.follows = "nixpkgs";
+
+        noctalia.url = "github:noctalia-dev/noctalia-shell";
+        noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
         elephant.url = "github:abenz1267/elephant";
         walker = {
@@ -78,7 +74,7 @@
                             nord-theme.enable = true;
                         };
                         nvidia.enable = true;
-                        secure-boot.enable = false;
+                        secure-boot.enable = true;
                     };
                 }
             ];
