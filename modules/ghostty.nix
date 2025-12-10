@@ -1,41 +1,27 @@
 { pkgs, username, lib, config, ... }:
 
 {
-    config = lib.mkMerge [
-        {
-        environment = {
-            sessionVariables = { TERMINAL="ghostty"; };
-            systemPackages = [
-                (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
-                    exec "${lib.getExe pkgs.ghostty}" -- "$@"
-                '')
-            ];
-        };
+    environment = {
+        sessionVariables = { TERMINAL="ghostty"; };
+        systemPackages = [
+            (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
+                exec "${lib.getExe pkgs.ghostty}" -- "$@"
+            '')
+        ];
+    };
 
-        home-manager.users.${username} = {
-            programs.ghostty = {
-                enable = true;
-                enableZshIntegration = true;
-                systemd.enable = true;
-                settings = {
-                    confirm-close-surface = false;
-                    quit-after-last-window-closed = true;
-                    quit-after-last-window-closed-delay = "1h";
-                };
+    home-manager.users.${username} = {
+        programs.ghostty = {
+            enable = true;
+            enableZshIntegration = true;
+            systemd.enable = true;
+            settings = {
+                confirm-close-surface = false;
+                quit-after-last-window-closed = true;
+                quit-after-last-window-closed-delay = "1h";
+                background-opacity = lib.mkIf config.mySystem.desktop.niri.blur.enable 0.85;
+                theme = lib.mkIf config.mySystem.desktop.niri.noctalia.enable "noctalia";
             };
         };
-        }
-
-        {
-        home-manager.users.${username} = lib.mkIf config.mySystem.desktop.niri.blur.enable {
-            programs.ghostty.settings.background-opacity = 0.85;
-        };
-        }
-
-        {
-        home-manager.users.${username} = lib.mkIf config.mySystem.desktop.niri.noctalia.enable {
-            programs.ghostty.settings.theme = "noctalia";
-        };
-        }
-    ];
+    };
 }
