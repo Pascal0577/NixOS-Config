@@ -5,6 +5,8 @@
 
     users.groups.libvirtd.members = ["${username}"];
 
+    environment.systemPackages = [ pkgs.qemu ];
+
     virtualisation.libvirtd = {
         enable = true;
         qemu = {
