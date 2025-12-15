@@ -299,7 +299,7 @@ in
                 ];
 
                 switch-events = {
-                    # lid-close.action = spawn [lockscreen];
+                    lid-close.action = spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
                 };
             };
 
