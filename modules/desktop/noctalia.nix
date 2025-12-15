@@ -9,10 +9,6 @@ in
     ];
 
     config = lib.mkIf config.mySystem.desktop.niri.noctalia.enable {
-        environment.systemPackages = with pkgs; [
-            inputs.noctalia.packages.${system}.default
-        ];
-
         services.noctalia-shell.enable = true;
 
         home-manager.users.${username} = {
