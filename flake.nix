@@ -39,9 +39,6 @@
             inputs.elephant.follows = "elephant";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
-        kmscon.url = "path:/home/pascal/NixOS-Config/packages/kmscon/";
-        kmscon.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
