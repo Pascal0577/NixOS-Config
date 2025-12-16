@@ -44,6 +44,7 @@ in
         papirus-nord
         eyedropper
         brightnessctl
+        swaybg
         (pkgs.catppuccin-sddm.override {
             flavor = "macchiato";
             accent = "peach";
@@ -297,6 +298,23 @@ in
 
             switch-events = {
                 lid-close.action = spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
+            };
+        };
+
+        systemd.user.services.swaybg = {
+            Unit = {
+                PartOf = "graphical-session.target";
+                After = "graphical-session.target";
+                Requisite = "graphical-session.target";
+            };
+
+            Service = {
+                ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i %h/Pictures/Wallpapers/Nord/nord-arctic-fox.png";
+                Restart = "on-failure";
+            };
+
+            Install = {
+                WantedBy = [ "graphical-session.target" ];
             };
         };
 
