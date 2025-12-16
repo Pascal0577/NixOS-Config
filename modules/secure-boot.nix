@@ -1,17 +1,15 @@
-{ inputs, config, lib, ... }:
+{ inputs, lib, ... }:
 
 {
     imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 
-    config = lib.mkIf config.mySystem.secure-boot.enable {
-        boot = {
-            loader.systemd-boot.enable = lib.mkForce false;
-            bootspec.enable = true;
+    boot = {
+        loader.systemd-boot.enable = lib.mkForce false;
+        bootspec.enable = true;
 
-            lanzaboote = {
-                enable = true;
-                pkiBundle = "/var/lib/sbctl/";
-            };
+        lanzaboote = {
+            enable = true;
+            pkiBundle = "/var/lib/sbctl/";
         };
     };
 }

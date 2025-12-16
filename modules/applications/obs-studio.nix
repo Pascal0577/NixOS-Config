@@ -1,4 +1,4 @@
-{ pkgs, lib, config, username, ... }:
+{ pkgs, lib, config, ... }:
 
 {
     programs.obs-studio = {
@@ -13,7 +13,7 @@
         ];
 
         # Nvidia hardware acceleration
-        package = lib.mkIf config.mySystem.nvidia.enable (
+        package = lib.mkIf config.nvidia.enable (
             pkgs.obs-studio.override {
                 cudaSupport = true;
                 # If we're compiling from source we might as well apply optimizations

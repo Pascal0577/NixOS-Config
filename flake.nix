@@ -40,44 +40,29 @@
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
         let
-            system = "x86_64-linux";
-            pkgs = nixpkgs.legacyPackages.${system};
             username = "pascal";
             hostname = "nixos";
         in
     {
-        nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs username hostname; };
+        nixosConfigurations = {
+            ${hostname} = nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit inputs username hostname; };
+                modules = [
+                    home-manager.nixosModules.home-manager
+                    ./modules
+                    ./systems/acer
+                    { options.nvidia.enable = nixpkgs.lib.mkEnableOption "Nvidia support for hardware and applications"; }
+                ];
+            };
 
-            modules = [
-                home-manager.nixosModules.home-manager
-                ./modules
-                {
-                    mySystem = {
-                        desktop = {
-                            niri = {
-                                enable = true;
-                                noctalia.enable = true;
-                                blur.enable = false;
-                                walker.enable = true;
-                                vicinae.enable = false;
-                            };
-                            gnome = {
-                                enable = false;
-                                yaru.enable = true;
-                            };
-                            kde.enable = false;
-                        };
-                        neovim = {
-                            enable = true;
-                            ghostty-theme.enable = false;
-                            nord-theme.enable = true;
-                        };
-                        nvidia.enable = true;
-                        secure-boot.enable = true;
-                    };
-                }
-            ];
+            lenovo = nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit inputs username hostname; };
+                modules = [
+                    home-manager.nixosModules.home-manager
+                    ./modules
+                    ./systems/lenovo
+                ];
+            };
         };
     };
 }

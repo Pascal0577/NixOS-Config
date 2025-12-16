@@ -1,14 +1,9 @@
-{ pkgs, config, lib, username, ... }:
+{ pkgs, username, ... }:
 
 {
     environment.systemPackages = with pkgs; [
         zig
         zig-shell-completions
     ];
-    
-    home-manager.users.${username} = {
-        programs.nixvim.plugins.lsp.servers = lib.mkIf config.mySystem.neovim.enable {
-            zls.enable = true;
-        };
-    };
+    home-manager.users.${username}.programs.nixvim.plugins.lsp.servers.zls.enable = true;
 }
