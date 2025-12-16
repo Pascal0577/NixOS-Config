@@ -25,7 +25,7 @@ in
     imports = [
         inputs.niri.nixosModules.niri
         ./noctalia.nix
-        ../../applications/walker.nix
+        ./walker.nix
     ];
 
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
