@@ -69,6 +69,9 @@
                                 colorizeIcons = false;
                             }
                             {
+                                id = "plugin:privacy-indicator";
+                            }
+                            {
                                 id = "NotificationHistory";
                                 hideWhenZero = true;
                                 showUnreadBadge = true;
