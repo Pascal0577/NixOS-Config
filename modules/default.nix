@@ -1,27 +1,64 @@
-{ username, inputs, ... }:
+{ hostname, username, inputs, pkgs, lib, ... }:
 
 {
     imports = [
+        ./applications
+        ./desktop
         ./appimage.nix
-        ./discord.nix
-        ./fastfetch.nix
-        ./ghostty.nix
-        ./git.nix
-        ./configuration.nix
-        ./hardware-configuration.nix
-        ./nvidia.nix
-        ./obs-studio.nix
+        ./boot.nix
         ./secure-boot.nix
         ./shell.nix
-        ./steam.nix
-        ./zig.nix
         ./virtualization.nix
-        ./settings.nix
-        ./mathematica.nix
-        ./neovim/ghostty-theme.nix
-        ./neovim
-        ./desktop
+        ./zig.nix
     ];
+
+    nix.settings = {
+        experimental-features = [ "nix-command" "flakes" ];
+        trusted-users = [ "${username}" ];
+    };
+
+    networking.hostName = hostname;
+    networking.networkmanager.enable = true;
+
+    time.timeZone = "America/New_York";
+
+    i18n.defaultLocale = "en_US.UTF-8";
+    i18n.extraLocaleSettings = {
+        LC_ADDRESS = "en_US.UTF-8";
+        LC_IDENTIFICATION = "en_US.UTF-8";
+        LC_MEASUREMENT = "en_US.UTF-8";
+        LC_MONETARY = "en_US.UTF-8";
+        LC_NAME = "en_US.UTF-8";
+        LC_NUMERIC = "en_US.UTF-8";
+        LC_PAPER = "en_US.UTF-8";
+        LC_TELEPHONE = "en_US.UTF-8";
+        LC_TIME = "en_US.UTF-8";
+    };
+
+    systemd.user.extraConfig = ''
+        DefaultTimeoutStopSec=10s
+    '';
+
+    zramSwap = {
+        enable = true;
+        algorithm = "zstd";
+    };
+
+    services.power-profiles-daemon.enable = true;
+
+    security.rtkit.enable = true;
+    nixpkgs.config.allowUnfree = true;
+    system.stateVersion = "26.05";
+
+    users.users.${username} = {
+        isNormalUser = true;
+        description = "Pascal";
+        extraGroups = [ "networkmanager" "wheel" ];
+        packages = with pkgs; [
+            home-manager
+            nh
+        ];
+    };
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;

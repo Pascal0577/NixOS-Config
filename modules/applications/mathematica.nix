@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-    mathematica-cuda-new = pkgs.mathematica-webdoc.override {
+    mathematica-new = pkgs.mathematica-webdoc.override {
         source = pkgs.requireFile {
             name = "Wolfram_14.3.0_LIN.sh";
             # Get this hash via a command similar to this:
@@ -16,5 +16,5 @@ let
     };
 in
 {
-    environment.systemPackages = [ mathematica-cuda-new ];
+    environment.systemPackages = [ mathematica-new ];
 }

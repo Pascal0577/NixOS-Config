@@ -1,14 +1,8 @@
 { pkgs, username, ... }:
 
 {
-    imports = [
-        ./vicinae.nix
-        ./gnome.nix
-        ./niri.nix
-        ./noctalia.nix
-        ./zen-browser.nix
-        ./kde.nix
-        ./walker.nix
+    imports =  [
+        ./niri
     ];
 
     environment.systemPackages = with pkgs; [

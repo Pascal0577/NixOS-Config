@@ -61,11 +61,10 @@
                 };
             };
 
-            profiles."pascal" = rec {
+            profiles."pascal" = {
                 settings = {
                     "zen.glance.enabled" = false;
                     "zen.welcome-screen.seen" = true;
-                    # "zen.theme.accent-color" = "#E95420";
                     "zen.urlbar.behavior" = "float";
                     "zen.theme.use-sysyem-colors" = true;
                 };
@@ -98,21 +97,18 @@
                 pins = {
                     "NixOS Packages" = {
                         id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
-                        # workspace = spaces."General".id;
                         url = "https://search.nixos.org/packages?channel=unstable&";
                         position = 1000;
                         isEssential = true;
                     };
                     "Youtube" = {
                         id = "1eabb6a3-911b-4fa9-9eaf-232a3703db19";
-                        # workspace = spaces."General".id;
                         url = "https://www.youtube.com/";
                         position = 2000;
                         isEssential = true;
                     };
                     "Home Manager Options" = {
                         id = "5065293b-1c04-40ee-ba1d-99a231873864";
-                        # workspace = spaces."General".id;
                         url = "https://home-manager-options.extranix.com/?query=&release=master";
                         position = 3000;
                         isEssential = true;
@@ -188,7 +184,6 @@
                                     algorithm = "analogous";
                                 }
                             ];
-                            # opacity = 0.2;
                         };
                     };
                 };
@@ -266,7 +261,7 @@
             };
         };
 
-        xdg.desktopEntries.zen-beta = lib.mkIf config.mySystem.nvidia.enable {
+        xdg.desktopEntries.zen-beta = lib.mkIf config.nvidia.enable {
             actions = {
                 "New-Private-Window" = {
                     exec = "nvidia-offload zen-beta --private-window %U";

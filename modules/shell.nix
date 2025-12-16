@@ -2,12 +2,8 @@
 
 {
     environment.pathsToLink = [ "/share/zsh" ];
-
     programs.zsh.enable = true;
-    users.users.${username} = {
-        shell = pkgs.zsh;
-    };
-
+    users.users.${username}.shell = pkgs.zsh;
     home-manager.users.${username} = {
         home.packages = with pkgs; [
             fzf
