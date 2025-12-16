@@ -5,14 +5,6 @@
         ./niri
     ];
 
-    environment.systemPackages = with pkgs; [
-        playerctl
-        losslesscut-bin
-        pinta
-        deluge
-        onlyoffice-desktopeditors
-    ];
-
     fonts = {
         fontconfig = {
             enable = true;
