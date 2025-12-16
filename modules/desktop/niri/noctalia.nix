@@ -22,7 +22,7 @@ in
                 setupCompleted = true;
                 bar = {
                     position = "top";
-                    backgroundOpacity = 1;
+                    backgroundOpacity = 1.0;
                     monitors = [ ];
                     density = "default";
                     showCapsule = true;
@@ -227,7 +227,7 @@ in
                 };
                 ui = {
                     fontDefault = "Ubuntu Sans";
-                    fontFixed = "Adwaita Mono";
+                    fontFixed = "Ubuntu Mono";
                     fontDefaultScale = 1.1;
                     fontFixedScale = 1.1;
                     idleInhibitorEnabled = true;
