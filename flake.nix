@@ -47,12 +47,14 @@
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
         let
             username = "pascal";
-            hostname = "nixos";
         in
     {
         nixosConfigurations = {
-            ${hostname} = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit inputs username hostname; };
+            nixos = nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                    inherit inputs username;
+                    hostname = "nixos";
+                };
                 modules = [
                     { options.nvidia.enable = nixpkgs.lib.mkEnableOption ""; }
                     home-manager.nixosModules.home-manager
@@ -62,7 +64,10 @@
             };
 
             lenovo = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit inputs username hostname; };
+                specialArgs = {
+                    inherit inputs username;
+                    hostname = "lenovo";
+                };
                 modules = [
                     { options.nvidia.enable = nixpkgs.lib.mkEnableOption ""; }
                     home-manager.nixosModules.home-manager
