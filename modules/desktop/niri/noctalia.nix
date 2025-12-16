@@ -8,7 +8,10 @@ in
         inputs.noctalia.nixosModules.default
     ];
 
-    services.noctalia-shell.enable = true;
+    services = {
+        noctalia-shell.enable = true;
+        upower.enable = true;
+    };
 
     home-manager.users.${username} = {
         imports = [
@@ -39,6 +42,14 @@ in
                                 showDiskusage = true;
                                 diskPath = "/";
                             }
+                            {
+                                displayMode = "alwaysShow";
+                                id = "Battery";
+                                showNoctaliaPerformance = true;
+                                showPowerProfiles = true;
+                                warningThreshold = 30;
+                            }
+
                             {
                                 id = "ActiveWindow";
                                 widgetWidth=290;
@@ -112,7 +123,7 @@ in
                     videoSource = "portal";
                 };
                 wallpaper = {
-                    enabled = true;
+                    enabled = false;
                     overviewEnabled = false;
                     directory = directory;
                     monitors = [
@@ -132,7 +143,7 @@ in
                     terminalCommand = "xterm -e";
                 };
                 controlCenter = {
-                    position = "close_to_bar_button";
+                    position = "top_right";
                     shortcuts = {
                         left = [
                             {
