@@ -11,7 +11,6 @@
         ./obs-studio.nix
         ./steam.nix
         # ./vicinae.nix
-        ./walker.nix
         ./zen-browser.nix
     ];
 
