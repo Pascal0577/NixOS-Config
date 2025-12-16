@@ -1,11 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+    imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
     boot = {
-        kernelPackages = pkgs.linuxPackages_lqx;
+        kernelPackages = pkgs.linuxPackages_latest;
+        bootspec.enable = true;
         plymouth = {
             enable = true;
             theme = "bgrt";
+        };
+
+
+        lanzaboote = {
+            enable = true;
+            pkiBundle = "/var/lib/sbctl/";
         };
 
         # Enable "Silent boot"
@@ -28,7 +36,6 @@
 
         loader = {
             timeout = 0;
-            systemd-boot.enable = true;
             efi.canTouchEfiVariables = true;
         };
     };

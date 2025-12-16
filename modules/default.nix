@@ -6,7 +6,6 @@
         ./desktop
         ./appimage.nix
         ./boot.nix
-        ./secure-boot.nix
         ./shell.nix
         ./virtualization.nix
         ./zig.nix
