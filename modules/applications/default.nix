@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
     imports = [
         ./discord.nix
@@ -11,5 +13,13 @@
         # ./vicinae.nix
         ./walker.nix
         ./zen-browser.nix
+    ];
+
+    environment.systemPackages = with pkgs; [
+        playerctl
+        losslesscut-bin
+        pinta
+        deluge
+        onlyoffice-desktopeditors
     ];
 }
