@@ -68,9 +68,9 @@
                                 drawerEnabled = false;
                                 colorizeIcons = false;
                             }
-                            {
-                                id = "plugin:privacy-indicator";
-                            }
+                            #{
+                            #    id = "plugin:privacy-indicator";
+                            #}
                             {
                                 id = "NotificationHistory";
                                 hideWhenZero = true;
