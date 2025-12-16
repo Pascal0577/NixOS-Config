@@ -3,7 +3,7 @@
 {
     programs.virt-manager.enable = true;
 
-    users.groups.libvirtd.members = ["${username}"];
+    users.groups.libvirtd.members = [ "${username}" ];
 
     environment.systemPackages = [ pkgs.qemu ];
 
@@ -40,8 +40,8 @@
 
     home-manager.users.${username}.dconf.settings = {
         "org/virt-manager/virt-manager/connections" = {
-            autoconnect = ["qemu:///system"];
-            uris = ["qemu:///system"];
+            autoconnect = [ "qemu:///system" ];
+            uris = [ "qemu:///system" ];
         };
    };
 }
