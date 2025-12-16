@@ -60,6 +60,12 @@
                             {
                                 id = "Workspace";
                                 labelMode = "none";
+                                characterCount = 2;
+                                colorizeIcons = true;
+                                followFocusedScreen = false;
+                                hideUnoccupied = true;
+                                showApplications = true;
+                                showLabelsOnlyWhenOccupied = false;
                             }
                         ];
                         right = [
@@ -68,9 +74,9 @@
                                 drawerEnabled = false;
                                 colorizeIcons = false;
                             }
-                            #{
-                            #    id = "plugin:privacy-indicator";
-                            #}
+                            {
+                                id = "plugin:privacy-indicator";
+                            }
                             {
                                 id = "NotificationHistory";
                                 hideWhenZero = true;
@@ -91,6 +97,15 @@
                             {
                                 id = "Clock";
                                 formatHorizontal = "h:mm AP MMM d";
+                            }
+                            {
+                                id = "ControlCenter";
+                                colorizeDistroLogo = true;
+                                colorizeSystemIcon = "primary";
+                                customIconPath = "";
+                                enableColorization = true;
+                                icon = "";
+                                useDistroLogo = true;
                             }
                         ];
                     };
