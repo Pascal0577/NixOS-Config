@@ -1,8 +1,5 @@
 { inputs, username, ... }:
-let
-    directory = "/home/${username}/Pictures/Wallpapers/Nord";
-    wallpaper = directory + "/" + "nord-arctic-fox.png";
-in
+
 {
     imports = [
         inputs.noctalia.nixosModules.default
@@ -39,7 +36,11 @@ in
                             {
                                 id = "SystemMonitor";
                                 usePrimaryColor = true;
-                                showDiskusage = true;
+                                showMemoryUsage = true;
+                                showCpuTemp = true;
+                                showCpuUsage = true;
+                                showGpuUsage = true;
+                                showDiskUsage = true;
                                 diskPath = "/";
                             }
                             {
@@ -105,7 +106,7 @@ in
                     shadowDirection = "below";
                 };
                 location = {
-                    name = "Kentucky";
+                    name = "";
                     weatherEnabled = false;
                     useFahrenheit = true;
                     use12hourFormat = true;
@@ -125,15 +126,11 @@ in
                 wallpaper = {
                     enabled = false;
                     overviewEnabled = false;
-                    directory = directory;
-                    monitors = [
-                        {
-                            name="eDP-1";
-                            wallpaper=wallpaper;
-                        }
-                    ];
                 };
                 appLauncher = {
+                    customLaunchPrefixEnabled = false;
+                    customLaunchPrefix = "";
+                    enableClipPreview = true;
                     enableClipboardHistory = false;
                     position = "center";
                     backgroundOpacity = 1;
@@ -141,30 +138,14 @@ in
                     useApp2Unit = false;
                     sortByMostUsed = true;
                     terminalCommand = "xterm -e";
+                    viewMode = "list";
                 };
                 controlCenter = {
                     position = "top_right";
                     shortcuts = {
                         left = [
                             {
-                                id = "WiFi";
-                            }
-                            {
-                                id = "Bluetooth";
-                            }
-                            {
                                 id = "ScreenRecorder";
-                            }
-                            {
-                                id = "WallpaperSelector";
-                            }
-                        ];
-                        right = [
-                            {
-                                id = "Notifications";
-                            }
-                            {
-                                id = "PowerProfile";
                             }
                             {
                                 id = "KeepAwake";
@@ -173,6 +154,8 @@ in
                                 id = "NightLight";
                             }
                         ];
+                        right = [
+                        ];
                     };
                     cards = [
                         {
@@ -180,15 +163,15 @@ in
                             id = "profile-card";
                         }
                         {
-                            enabled = true;
+                            enabled = false;
                             id = "shortcuts-card";
                         }
                         {
-                            enabled = true;
+                            enabled = false;
                             id = "audio-card";
                         }
                         {
-                            enabled = true;
+                            enabled = false;
                             id = "weather-card";
                         }
                         {
@@ -233,6 +216,7 @@ in
                     volumeOverdrive = false;
                     cavaFrameRate = 60;
                     visualizerType = "linear";
+                    visualizerQuality = "low";
                     mprisBlacklist = [ ];
                     preferredPlayer = "";
                 };
