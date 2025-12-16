@@ -173,6 +173,23 @@
         "type": "github"
       }
     },
+    "kmscon": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765859230,
+        "narHash": "sha256-emjlWSGbtMl5HsPViAPBMYq1JsdVzhNYQ8eDLtyYwjI=",
+        "path": "/home/pascal/NixOS-Config/packages/kmscon/",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/pascal/NixOS-Config/packages/kmscon/",
+        "type": "path"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -478,6 +495,7 @@
       "inputs": {
         "elephant": "elephant",
         "home-manager": "home-manager",
+        "kmscon": "kmscon",
         "lanzaboote": "lanzaboote",
         "niri": "niri",
         "nix-gaming": "nix-gaming",

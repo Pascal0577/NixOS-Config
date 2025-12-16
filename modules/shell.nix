@@ -1,9 +1,16 @@
-{ pkgs, username, ... }:
+{ pkgs, username, inputs, ... }:
 
 {
     environment.pathsToLink = [ "/share/zsh" ];
     programs.zsh.enable = true;
     users.users.${username}.shell = pkgs.zsh;
+
+    services.kmscon = {
+        enable = true;
+        hwRender = true;
+        package = inputs.kmscon.packages.${pkgs.system}.kmscon;
+    };
+
     home-manager.users.${username} = {
         home.packages = with pkgs; [
             fzf

@@ -5,7 +5,7 @@
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     hardware.nvidia = {
-        open = true;
+        open = false;
         nvidiaSettings = false;
         powerManagement.enable = false;
         powerManagement.finegrained = false;
