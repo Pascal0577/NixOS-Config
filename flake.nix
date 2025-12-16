@@ -54,7 +54,7 @@
             ${hostname} = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit inputs username hostname; };
                 modules = [
-                    { options.nvidia.enable = nixpkgs.lib.mkEnableOption; }
+                    { options.nvidia.enable = nixpkgs.lib.mkEnableOption ""; }
                     home-manager.nixosModules.home-manager
                     ./modules
                     ./systems/acer
@@ -64,7 +64,7 @@
             lenovo = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit inputs username hostname; };
                 modules = [
-                    { options.nvidia.enable = nixpkgs.lib.mkEnableOption; }
+                    { options.nvidia.enable = nixpkgs.lib.mkEnableOption ""; }
                     home-manager.nixosModules.home-manager
                     ./modules
                     ./systems/lenovo
