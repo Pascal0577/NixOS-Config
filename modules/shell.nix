@@ -12,7 +12,7 @@
             name = "JetBrainsMono Nerd Font";
             package = pkgs.nerd-fonts.jetbrains-mono;
         }];
-        package = inputs.kmscon.packages.${pkgs.system}.kmscon;
+        package = pkgs.callPackage ../packages/kmscon {};
     };
 
     home-manager.users.${username} = {
