@@ -9,6 +9,9 @@
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+        system76-scheduler-niri.url = "github:Kirottu/system76-scheduler-niri";
+        system76-scheduler-niri.inputs.nixpkgs.follows = "nixpkgs";
+
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
         zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
