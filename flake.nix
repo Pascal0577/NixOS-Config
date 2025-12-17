@@ -9,9 +9,6 @@
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-        system76-scheduler-niri.url = "github:Kirottu/system76-scheduler-niri";
-        system76-scheduler-niri.inputs.nixpkgs.follows = "nixpkgs";
-
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
         zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -32,9 +29,6 @@
 
         noctalia.url = "github:noctalia-dev/noctalia-shell";
         noctalia.inputs.nixpkgs.follows = "nixpkgs";
-
-        stylix.url = "github:nix-community/stylix";
-        stylix.inputs.nixpkgs.follows = "nixpkgs";
 
         elephant.url = "github:abenz1267/elephant";
         walker = {
