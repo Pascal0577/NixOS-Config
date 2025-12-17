@@ -16,7 +16,6 @@
     glycin-loaders,
     gobject-introspection,
     wrapGAppsHook4,
-    libadwaita,
     libglycin,
 }:
 
@@ -40,7 +39,6 @@ stdenv.mkDerivation {
         ]))
         glib
         gtk4
-        libadwaita
         libglycin
     ];
 
