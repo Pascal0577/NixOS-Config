@@ -55,6 +55,7 @@ in
             loginBackground = false;
             userIcon = true;
         })
+        (pkgs.callPackage ../../../packages/constrict {})
     ];
 
     services.displayManager.sddm = {
