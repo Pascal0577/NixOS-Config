@@ -2,10 +2,11 @@
 
 {
     imports = [
+        ./appimage.nix
         ./applications
         ./desktop
-        ./appimage.nix
         ./boot.nix
+        ./power-management.nix
         ./shell.nix
         ./virtualization.nix
         ./zig.nix
@@ -43,11 +44,7 @@
         algorithm = "zstd";
     };
 
-    services.power-profiles-daemon.enable = true;
-
     security.rtkit.enable = true;
-    nixpkgs.config.allowUnfree = true;
-    system.stateVersion = "26.05";
 
     users.users.${username} = {
         isNormalUser = true;
@@ -68,4 +65,7 @@
         home.stateVersion = "25.11";
         programs.home-manager.enable = true;
     };
+
+    nixpkgs.config.allowUnfree = true;
+    system.stateVersion = "26.05";
 }
