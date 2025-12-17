@@ -38,13 +38,31 @@
                     mode = "n";
                     action = "<cmd>lua vim.diagnostic.open_float()<CR>";
                     key = "<leader>do";
-                    options.desc = "Open diagnostic";
+                    options.desc = "Diagnostic Open";
+                }
+                {
+                    mode = "n";
+                    action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+                    key = "<leader>dg";
+                    options.desc = "Go to definition";
                 }
                 {
                     mode = "n";
                     action = "<cmd>Telescope find_files<CR>";
                     key = "<leader>ff";
-                    options.desc = "Telescope fine files";
+                    options.desc = "Telescope find files";
+                }
+                {
+                    mode = "n";
+                    action = "<cmd>lua require('telescope.builtin').lsp_document_symbols({ symbols='function' })<CR>";
+                    key = "<leader>fs";
+                    options.desc = "Telescope find functions";
+                }
+                {
+                    mode = "n";
+                    action = "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols({ symbols='function' })<CR>";
+                    key = "<leader>fw";
+                    options.desc = "Telescope find workspace symbols";
                 }
                 {
                     mode = "n";
@@ -76,13 +94,18 @@
                 }
                 {
                     mode = "n";
-                    action = "<cmd>vertical resize -10<CR>";
+                    action = "<cmd>vertical resize -5<CR>";
                     key = "<C-;>";
                 }
                 {
                     mode = "n";
-                    action = "<cmd>vertical resize +10<CR>";
+                    action = "<cmd>vertical resize +5<CR>";
                     key = "<C-'>";
+                }
+                {
+                    mode = "n";
+                    action = "<cmd>below 10split | terminal<CR>";
+                    key = "<leader>to";
                 }
             ];
 
@@ -112,9 +135,11 @@
                         };
                         completion = {
                             menu.border = "none";
+                            ghost_text.enabled = true;
+                            list.max_items = 500;
                             accept = {
                                 auto_brackets = {
-                                    enabled = false;
+                                    enabled = true;
                                     semantic_token_resolution = {
                                         enabled = false;
                                     };
@@ -124,12 +149,8 @@
                                 auto_show = false;
                             };
                         };
-                        keymap = {
-                            preset = "super-tab";
-                        };
-                        signature = {
-                            enabled = true;
-                        };
+                        keymap.preset = "super-tab";
+                        signature.enabled = true;
                         sources = {
                             cmdline = [ ];
                             providers = {
@@ -147,10 +168,7 @@
                 indent-blankline = {
                     enable = true;
                     settings = {
-                        indent = {
-                            char = "│";
-                        };
-
+                        indent.char = "│";
                     };
                 };
 
@@ -164,12 +182,9 @@
 
                 nvim-tree = {
                     enable = true;
+                    autoClose = true;
                     settings = {
-                        tab = {
-                            sync = {
-                                open = true;
-                            };
-                        };
+                        tab.sync.open = true;
                     };
                 };
 
@@ -189,9 +204,9 @@
 
                 combinePlugins = {
                     enable = true;
-                    standalonePlugins = [
-                        pkgs.vimPlugins.nord-nvim
-                        pkgs.vimPlugins.blink-cmp
+                    standalonePlugins = with pkgs.vimPlugins; [
+                        nord-nvim
+                        blink-cmp
                     ];
                 };
             };
