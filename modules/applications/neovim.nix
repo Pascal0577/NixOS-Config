@@ -31,6 +31,7 @@
                 winborder = "rounded";
                 swapfile = false;
                 linebreak = true;
+                laststatus = 3;
             };
 
             keymaps = [
@@ -124,6 +125,28 @@
                         bashls.enable = true;
                         nixd.enable = true;
                     };
+                    # highlights instances of functions/variables/etc
+                    onAttach = ''
+                        if client.server_capabilities.documentHighlightProvider then
+                            local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+                            vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+
+                            vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                                buffer = bufnr,
+                                group = group,
+                                callback = function()
+                                    vim.lsp.buf.clear_references()
+                                    vim.lsp.buf.document_highlight()
+                                end,
+                            })
+
+                            vim.api.nvim_create_autocmd("BufLeave", {
+                                buffer = bufnr,
+                                group = group,
+                                callback = vim.lsp.buf.clear_references,
+                            })
+                        end
+                    '';
                 };
 
                 blink-cmp = {
