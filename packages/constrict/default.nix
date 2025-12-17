@@ -17,6 +17,9 @@
     gobject-introspection,
     wrapGAppsHook4,
     libglycin,
+    libadwaita,
+    totem,
+    libva-utils,
 }:
 
 stdenv.mkDerivation {
@@ -32,6 +35,8 @@ stdenv.mkDerivation {
 
     buildInputs = [
         check
+        totem
+        libva-utils
         glycin-loaders
         ffmpeg-full
         (python3.withPackages (ps: with ps; [
@@ -40,6 +45,7 @@ stdenv.mkDerivation {
         glib
         gtk4
         libglycin
+        libadwaita
     ];
 
     nativeBuildInputs = [
@@ -53,7 +59,6 @@ stdenv.mkDerivation {
         wrapGAppsHook4
     ];
 
-    # Make ffmpeg tools available at runtime and configure glycin loaders
     preFixup = ''
         gappsWrapperArgs+=(
             --prefix PATH : "${lib.makeBinPath [ ffmpeg-full ]}"
@@ -62,6 +67,18 @@ stdenv.mkDerivation {
     '';
 
     enableParallelBuilding = true;
+
+    # Fixes the desktop file
+    postInstall = ''
+        desktopFile=$(find $out/share/applications -name "*.desktop")
+
+        substituteInPlace $desktopFile --replace "Exec=constrict --new-window %U" "Exec=constrict %U"
+        substituteInPlace $desktopFile --replace "Exec=constrict --new-window" "Exec=constrict"
+        substituteInPlace $desktopFile --replace "DBusActivatable=true" "DBusActivatable=false"
+
+        mv $out/share/applications/io.github.wartybix.Constrict.desktop \
+          $out/share/applications/constrict.desktop
+    '';
 
     meta = {
         description = "Compresses your videos to your chosen file size";
