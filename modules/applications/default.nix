@@ -20,5 +20,6 @@
         pinta
         deluge
         onlyoffice-desktopeditors
+        lmstudio
     ];
 }
