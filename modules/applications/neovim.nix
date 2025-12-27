@@ -158,7 +158,7 @@
                         };
                         completion = {
                             menu.border = "none";
-                            ghost_text.enabled = true;
+                            ghost_text.enabled = false;
                             list.max_items = 500;
                             accept = {
                                 auto_brackets = {
@@ -199,7 +199,7 @@
                     enable = true;
                     settings = {
                         highlight.enable = true;
-                        auto_install = true;
+                        auto_install = false;
                     };
                 };
 
