@@ -216,7 +216,7 @@ in
                 HDMI-A-1 = {
                     enable = true;
                     scale = 1.0;
-                    variable-refresh-rate = true;
+                    variable-refresh-rate = "on-demand";
                     mode.height = 1440;
                     mode.width = 2560;
                     mode.refresh = 143.967;
@@ -295,10 +295,11 @@ in
                     default-column-width.proportion = 0.5;
                 }
                 {
+                    # For games to have VRR
                     matches = [{
-                        app-id = "vesktop";
+                        app-id = "steam_app_0";
                     }];
-                    variable-refresh-rate = false;
+                    variable-refresh-rate = true;
                 }
             ];
 
