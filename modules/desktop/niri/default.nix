@@ -206,10 +206,21 @@ in
                 trackpoint.enable = false;
             };
 
-            outputs.eDP-1 = {
-                enable = true;
-                scale = 1.0;
-                variable-refresh-rate = "on-demand";
+            outputs = {
+                eDP-1 = {
+                    enable = true;
+                    scale = 1.0;
+                    variable-refresh-rate = "on-demand";
+                };
+
+                HDMI-A-1 = {
+                    enable = true;
+                    scale = 1.0;
+                    variable-refresh-rate = true;
+                    mode.height = 1440;
+                    mode.width = 2560;
+                    mode.refresh = 143.967;
+                };
             };
 
             layout = {
@@ -280,20 +291,14 @@ in
                     clip-to-geometry = true;
                 }
                 {
-                    matches = [{ is-active = false; }];
-                    # opacity = lib.mkIf config.mySystem.desktop.niri.blur.enable 0.8;
-                    # draw-border-with-background = lib.mkIf config.mySystem.desktop.niri.blur.enable false;
-                }
-                {
                     matches = [{ app-id = "com.mitchellh.ghostty"; }];
                     default-column-width.proportion = 0.5;
                 }
                 {
-                    # For games to have VRR
                     matches = [{
-                        app-id = "steam_app_0";
+                        app-id = "vesktop";
                     }];
-                    variable-refresh-rate = true;
+                    variable-refresh-rate = false;
                 }
             ];
 
