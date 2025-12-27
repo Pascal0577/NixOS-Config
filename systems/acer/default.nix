@@ -5,13 +5,15 @@
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     hardware.nvidia = {
-        open = false;
+        open = true;
+        modesetting.enable = true;
         nvidiaSettings = false;
         powerManagement.enable = false;
         powerManagement.finegrained = false;
         prime = {
-            offload.enable = true;
-            offload.enableOffloadCmd = true;
+            # offload.enable = true;
+            # offload.enableOffloadCmd = true;
+            sync.enable = true;
             intelBusId = "PCI:0:2:0";
             nvidiaBusId = "PCI:1:0:0";
         };
@@ -27,9 +29,8 @@
         };
 
         kernelParams = [
-            "i915.fastboot=1"
-            "i915.enable_guc=0"
-            "i915.enable_fbc=0"
+            "i915.enable_guc=3"
+            "i915.enable_fbc=1"
         ];
     };
 }
