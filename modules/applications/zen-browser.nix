@@ -261,32 +261,32 @@
             };
         };
 
-        xdg.desktopEntries.zen-beta = lib.mkIf config.nvidia.enable {
-            actions = {
-                "New-Private-Window" = {
-                    exec = "nvidia-offload zen-beta --private-window %U";
-                    name = "New Private Window";
-                };
-                "Profile-Manager-Window" = {
-                    exec = "nvidia-offload zen-beta --ProfileManager %U";
-                    name = "Profile Manager";
-                };
-            };
-            name = "Zen Browser (Beta)";
-            exec = "nvidia-offload zen-beta --name zen-beta %U";
-            icon = "zen-browser";
-            prefersNonDefaultGPU = true;
-            type = "Application";
-            startupNotify = true;
-            terminal = false;
-            mimeType = [
-                "text/html"
-                "text/xml"
-                "application/xhtml+xml"
-                "application/vnd.mozilla.xul+xml"
-                "x-scheme-handler/http"
-                "x-scheme-handler/https"
-            ];
-        };
+#        xdg.desktopEntries.zen-beta = lib.mkIf config.nvidia.enable {
+#            actions = {
+#                "New-Private-Window" = {
+#                    exec = "nvidia-offload zen-beta --private-window %U";
+#                    name = "New Private Window";
+#                };
+#                "Profile-Manager-Window" = {
+#                    exec = "nvidia-offload zen-beta --ProfileManager %U";
+#                    name = "Profile Manager";
+#                };
+#            };
+#            name = "Zen Browser (Beta)";
+#            exec = "nvidia-offload zen-beta --name zen-beta %U";
+#            icon = "zen-browser";
+#            prefersNonDefaultGPU = true;
+#            type = "Application";
+#            startupNotify = true;
+#            terminal = false;
+#            mimeType = [
+#                "text/html"
+#                "text/xml"
+#                "application/xhtml+xml"
+#                "application/vnd.mozilla.xul+xml"
+#                "x-scheme-handler/http"
+#                "x-scheme-handler/https"
+#            ];
+#        };
     };
 }
