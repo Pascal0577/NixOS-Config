@@ -35,6 +35,7 @@
                         left = [
                             {
                                 id = "SystemMonitor";
+                                compactMode = false;
                                 usePrimaryColor = true;
                                 showMemoryUsage = true;
                                 showCpuTemp = true;
