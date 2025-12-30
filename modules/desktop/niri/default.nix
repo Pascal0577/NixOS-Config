@@ -216,7 +216,7 @@ in
                 HDMI-A-1 = {
                     enable = true;
                     scale = 1.0;
-                    variable-refresh-rate = "on-demand";
+                    variable-refresh-rate = true;
                     mode.height = 1440;
                     mode.width = 2560;
                     mode.refresh = 143.967;
