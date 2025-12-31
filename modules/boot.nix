@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 
 {
     imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
@@ -7,7 +7,7 @@
         bootspec.enable = true;
         plymouth = {
             enable = true;
-            theme = "bgrt";
+            theme = lib.mkForce "bgrt";
         };
 
         lanzaboote = {

@@ -1,11 +1,12 @@
-{ pkgs, inputs, username, ... }:
+{ pkgs, inputs, ... }:
 
 {
-    users.users.${username}.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
         mangohud
         heroic
         unzip
         cabextract
+        prismlauncher
     ];
 
     imports = [
@@ -13,21 +14,22 @@
         inputs.nix-gaming.nixosModules.wine
     ];
 
-    programs.wine = {
-        enable = true;
-        package = pkgs.wineWowPackages.waylandFull;
-        binfmt = true;
-        ntsync = true;
-    };
+    programs = {
+        gamemode.enable = true;
+        wine = {
+            enable = true;
+            package = pkgs.wineWowPackages.waylandFull;
+            binfmt = true;
+            ntsync = true;
+        };
 
-    programs.gamemode.enable = true;
-
-    programs.steam = {
-        enable = true;
-        remotePlay.openFirewall = true;
-        dedicatedServer.openFirewall = true;
-        localNetworkGameTransfers.openFirewall = true;
-        extraCompatPackages =  [ pkgs.proton-ge-bin ];
-        platformOptimizations.enable = true;
+        steam = {
+            enable = true;
+            remotePlay.openFirewall = true;
+            dedicatedServer.openFirewall = true;
+            localNetworkGameTransfers.openFirewall = true;
+            extraCompatPackages =  [ pkgs.proton-ge-bin ];
+            platformOptimizations.enable = true;
+        };
     };
 }

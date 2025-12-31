@@ -1,4 +1,4 @@
-{ inputs, username, ... }:
+{ inputs, username, lib, ... }:
 
 {
     imports = [
@@ -152,7 +152,7 @@
                     enableClipPreview = true;
                     enableClipboardHistory = false;
                     position = "center";
-                    backgroundOpacity = 1;
+                    backgroundOpacity = 1.0;
                     pinnedExecs = [ ];
                     useApp2Unit = false;
                     sortByMostUsed = true;
@@ -202,7 +202,7 @@
                 dock = {
                     enabled = false;
                     displayMode = "auto_hide";
-                    backgroundOpacity = 1;
+                    backgroundOpacity = 1.0;
                     floatingRatio = 1;
                     onlySameOutput = true;
                     monitors = [ ];
@@ -241,7 +241,7 @@
                 };
                 ui = {
                     fontDefault = "Ubuntu Sans";
-                    fontFixed = "Ubuntu Mono";
+                    fontFixed = lib.mkForce "Ubuntu Mono";
                     fontDefaultScale = 1.1;
                     fontFixedScale = 1.1;
                     idleInhibitorEnabled = true;
@@ -265,8 +265,8 @@
                     ghostty = false;
                     foot = false;
                     fuzzel = false;
-                    discord = true;
-                    discord_vesktop = true;
+                    discord = false;
+                    discord_vesktop = false;
                     discord_webcord = false;
                     discord_armcord = false;
                     discord_equibop = false;
