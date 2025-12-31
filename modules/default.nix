@@ -10,6 +10,7 @@
         ./shell.nix
         ./virtualization.nix
         ./zig.nix
+        # ./stylix.nix
     ];
 
     nix.settings = {
