@@ -4,12 +4,12 @@
     imports = [
         ./discord.nix
         ./fastfetch.nix
+        ./gaming.nix
         ./ghostty.nix
         ./git.nix
         ./mathematica.nix
         ./neovim.nix
         ./obs-studio.nix
-        ./steam.nix
         # ./vicinae.nix
         ./zen-browser.nix
     ];
