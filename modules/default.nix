@@ -21,8 +21,10 @@
     networking.hostName = hostname;
     networking.networkmanager.enable = true;
 
-    time.timeZone = "America/New_York";
+    security.rtkit.enable = true;
+    services.openssh.enable = true;
 
+    time.timeZone = "America/New_York";
     i18n.defaultLocale = "en_US.UTF-8";
     i18n.extraLocaleSettings = {
         LC_ADDRESS = "en_US.UTF-8";
@@ -44,8 +46,6 @@
         enable = true;
         algorithm = "zstd";
     };
-
-    security.rtkit.enable = true;
 
     users.users.${username} = {
         isNormalUser = true;
