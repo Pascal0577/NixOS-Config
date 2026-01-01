@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, ... }:
+{ pkgs, inputs, username, lib, ... }:
 {
     imports = [
         inputs.stylix.nixosModules.stylix
@@ -6,9 +6,9 @@
 
     stylix = {
         enable = true;
-        autoEnable = true;
+        autoEnable = false;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-        image = ../nord-arctic-fox.png;
+        image = ../wallpapers/nord-arctic-fox.png;
 
         fonts = {
             serif = {
@@ -33,7 +33,7 @@
         };
 
         cursor = {
-            package = pkgs.bibata-cursors;
+            package = lib.mkDefault pkgs.bibata-cursors;
             name = "Bibata-Modern-Ice";
             size = 24;
         };
@@ -42,18 +42,35 @@
             enable = true;
             package = pkgs.papirus-nord;
             dark = "Papirus-Dark";
+            light = "Papirus";
         };
 
         targets = {
+            kmscon.enable = true;
         };
     };
 
     home-manager.users.${username} = {
         stylix.targets = {
-            noctalia-shell.enable = false;
             nixvim.enable = false;
             zen-browser.profileNames = [ "pascal" ];
             zen-browser.enable = false;
+            mangohud.enable = true;
+        };
+
+        dconf.settings."org/gnome/desktop/interface" = {
+            gtk-theme = "Nordic-standard-buttons";
+            accent-color = "blue";
+            color-scheme = "prefer-dark";
+            font-antialiasing = "standard";
+            font-hinting = "full";
+            font-name = "Ubuntu Sans 12";
+            monospace-font-name = "Ubuntu Sans Mono 12";
+            icon-theme = "Papirus-Dark";
+        };
+
+        dconf.settings."org/gnome/desktop/wm/preferences" = {
+            theme = "Nordic-standard-buttons";
         };
     };
 }
