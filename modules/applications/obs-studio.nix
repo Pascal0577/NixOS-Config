@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, ... }:
 
 {
     programs.obs-studio = {
@@ -12,8 +12,7 @@
             obs-vkcapture
         ];
 
-        # Nvidia hardware acceleration
-        package = lib.mkIf config.nvidia.enable (
+        package = (
             pkgs.obs-studio.override {
                 cudaSupport = true;
                 # If we're compiling from source we might as well apply optimizations

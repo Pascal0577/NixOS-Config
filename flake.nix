@@ -53,7 +53,6 @@
                     hostname = "nixos";
                 };
                 modules = [
-                    { options.nvidia.enable = nixpkgs.lib.mkEnableOption ""; }
                     home-manager.nixosModules.home-manager
                     ./modules
                     ./systems/acer
@@ -66,7 +65,6 @@
                     hostname = "lenovo";
                 };
                 modules = [
-                    { options.nvidia.enable = nixpkgs.lib.mkEnableOption ""; }
                     home-manager.nixosModules.home-manager
                     ./modules
                     ./systems/lenovo
