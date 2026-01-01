@@ -13,10 +13,11 @@
             };
 
             "org/gnome/shell/extensions/dash-to-dock" = {
-                dock-position = [ "RIGHT" ];
-                intellihide-mode = [ "MAXIMIZED_WINDOWS" ];
-                transparency-mode = [ "DYNAMIC" ];
-                running-indicator-style = [ "DOT" ];
+                dock-position = "RIGHT";
+                intellihide-mode = "MAXIMIZED_WINDOWS";
+                transparency-mode = "DYNAMIC";
+                running-indicator-style = "DOT";
+                custom-theme-shrink = true;
                 customize-alphas = true;
                 height-fraction = 0.9;
                 extend-height = true;
