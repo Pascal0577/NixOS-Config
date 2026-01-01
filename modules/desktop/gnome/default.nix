@@ -6,6 +6,7 @@
         icoextract
         celluloid
         dconf-editor
+        papirus-nord
     ];
 
     services.displayManager.gdm = {
@@ -141,7 +142,7 @@
 
                 "org/gnome/desktop/interface" = {
                     show-battery-percentage = true;
-                    accent-color = lib.mkDefault "pink";
+                    accent-color = "pink";
                     font-antialiasing = "standard";
                     font-hinting = "full";
                     font-name = "Ubuntu Sans 12";
