@@ -4,7 +4,6 @@
     imports = [
         ./discord.nix
         ./fastfetch.nix
-        ./gaming.nix
         ./ghostty.nix
         ./git.nix
         ./mathematica.nix
