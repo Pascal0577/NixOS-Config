@@ -19,8 +19,15 @@
         trusted-users = [ "${username}" ];
     };
 
-    networking.hostName = hostname;
-    networking.networkmanager.enable = true;
+    networking = {
+        hostName = hostname;
+        networkmanager.enable = true;
+        firewall = {
+            enable = true;
+            trustedInterfaces = [ "virbr0" ];
+            allowedTCPPorts = [ 25565 ]; # Minecraft
+        };
+    };
 
     security.rtkit.enable = true;
     services.openssh.enable = true;
