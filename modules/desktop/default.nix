@@ -2,8 +2,8 @@
 
 {
     imports =  [
-        # ./niri
-        ./gnome
+        ./niri
+        # ./gnome
         # ./kde
     ];
 
