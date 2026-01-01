@@ -14,6 +14,17 @@
         imports = [
             inputs.noctalia.homeModules.default
         ];
+
+        home.file.".cache/noctalia/wallpapers.json" = {
+            text = builtins.toJSON {
+                defaultWallpaper = "/home/${username}/NixOS-Config/wallpapers/nord-arctic-fox.png";
+                wallpapers = {
+                    "DP-1" = "/home/${username}/NixOS-Config/wallpapers/nord-arctic-fox.png";
+                    "eDP-1" = "/home/${username}/NixOS-Config/wallpapers/nord-arctic-fox.png";
+                };
+            };
+        };
+
         programs.noctalia-shell = {
             enable = true;
 
@@ -143,8 +154,34 @@
                     videoSource = "portal";
                 };
                 wallpaper = {
-                    enabled = false;
+                    enabled = true;
                     overviewEnabled = false;
+                    directory = "/home/${username}/NixOS-Config/wallpapers/";
+                    monitorDirectories = [ ];
+                    enableMultiMonitorDirectories = false;
+                    recursiveSearch = false;
+                    setWallpaperOnAllMonitors = true;
+                    fillMode = "crop";
+                    fillColor = "#000000";
+                    randomEnabled = false;
+                    wallpaperChangeMode = "random";
+                    randomIntervalSec = 300;
+                    transitionDuration = 1500;
+                    transitionType = "random";
+                    transitionEdgeSmoothness = 0.05;
+                    panelPosition = "follow_bar";
+                    hideWallpaperFilenames = false;
+                    useWallhaven = false;
+                    wallhavenQuery = "";
+                    wallhavenSorting = "relevance";
+                    wallhavenOrder = "desc";
+                    wallhavenCategories = "111";
+                    wallhavenPurity = "100";
+                    wallhavenRatios = "";
+                    wallhavenApiKey = "";
+                    wallhavenResolutionMode = "atleast";
+                    wallhavenResolutionWidth = "";
+                    wallhavenResolutionHeight = "";
                 };
                 appLauncher = {
                     customLaunchPrefixEnabled = false;

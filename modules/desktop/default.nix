@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 
 {
     imports =  [
@@ -6,18 +6,16 @@
     ];
 
     fonts = {
-        fontconfig = {
-            enable = true;
-            useEmbeddedBitmaps = true;
-        };
-
         packages = with pkgs; [
             ubuntu-sans
             ubuntu-sans-mono
             noto-fonts-cjk-sans
-            noto-fonts-color-emoji
-            akkadian
         ];
+
+        fontconfig = {
+            enable = true;
+            useEmbeddedBitmaps = true;
+        };
     };
 
     environment.sessionVariables = {
@@ -54,15 +52,5 @@
     hardware = {
         bluetooth.enable = true;
         graphics.enable = true;
-    };
-
-    home-manager.users.${username} = {
-        home.pointerCursor = {
-            package = pkgs.bibata-cursors;
-            name = "Bibata-Modern-Ice";
-            size = 24;
-            gtk.enable = true;
-            x11.enable = true;
-        };
     };
 }

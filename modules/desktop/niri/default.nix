@@ -324,20 +324,5 @@ in
                 WantedBy = [ "graphical-session.target" ];
             };
         };
-
-        dconf.settings."org/gnome/desktop/interface" = {
-            gtk-theme = "Nordic-standard-buttons";
-            accent-color = "blue";
-            color-scheme = "prefer-dark";
-            font-antialiasing = "standard";
-            font-hinting = "full";
-            font-name = "Ubuntu Sans 12";
-            monospace-font-name = "Ubuntu Sans Mono 12";
-            icon-theme = "Papirus-Dark";
-        };
-
-        dconf.settings."org/gnome/desktop/wm/preferences" = {
-            theme = "Nordic-standard-buttons";
-        };
     };
 }
