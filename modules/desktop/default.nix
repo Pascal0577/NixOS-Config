@@ -3,6 +3,8 @@
 {
     imports =  [
         ./niri
+        # ./gnome
+        # ./kde
     ];
 
     fonts = {
@@ -24,7 +26,6 @@
 
     services = {
         printing.enable = true;
-        openssh.enable = true;
 
         xserver = {
             enable = false;
