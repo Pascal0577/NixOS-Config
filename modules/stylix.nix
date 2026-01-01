@@ -57,7 +57,11 @@
 
     home-manager.users.${username} = {
         stylix.targets = {
-            zen-browser.profileNames = [ "pascal" ];
+            zen-browser = {
+                enable = true;
+                profileNames = [ "pascal" ];
+            };
+
             mangohud.enable = true;
             ghostty.enable = true;
             gnome.enable = true;
@@ -67,9 +71,9 @@
             gtk-theme = "Nordic-standard-buttons";
             accent-color = lib.mkDefault "blue";
             color-scheme = lib.mkForce "prefer-dark";
-            font-antialiasing = "standard";
-            font-hinting = "full";
-            font-name = "Ubuntu Sans 12";
+            font-antialiasing = lib.mkDefault "standard";
+            font-hinting = lib.mkDefault "full";
+            font-name = lib.mkDefault "Ubuntu Sans 12";
             monospace-font-name = lib.mkDefault "Ubuntu Sans Mono 12";
             icon-theme = lib.mkDefault "Papirus-Dark";
         };
