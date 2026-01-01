@@ -1,14 +1,7 @@
-{ pkgs, username, lib, config, ... }:
+{ username, ... }:
 
 {
-    environment = {
-        sessionVariables = { TERMINAL="ghostty"; };
-        systemPackages = [
-            (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
-                exec "${lib.getExe pkgs.ghostty}" -- "$@"
-            '')
-        ];
-    };
+    environment.sessionVariables = { TERMINAL="ghostty"; };
 
     home-manager.users.${username} = {
         programs.ghostty = {
@@ -19,7 +12,6 @@
                 confirm-close-surface = false;
                 quit-after-last-window-closed = true;
                 quit-after-last-window-closed-delay = "1h";
-                theme = "noctalia";
             };
         };
     };
