@@ -4,6 +4,8 @@
         inputs.stylix.nixosModules.stylix
     ];
 
+    environment.systemPackages = [ pkgs.papirus-nord ];
+
     stylix = {
         enable = true;
         autoEnable = false;
