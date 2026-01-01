@@ -49,6 +49,9 @@
             kmscon.enable = true;
             console.enable = true;
             nixos-icons.enable = true;
+            gnome.enable = true;
+            gtk.enable = true;
+            qt.enable = true;
         };
     };
 
@@ -57,17 +60,18 @@
             zen-browser.profileNames = [ "pascal" ];
             mangohud.enable = true;
             ghostty.enable = true;
+            gnome.enable = true;
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
             gtk-theme = "Nordic-standard-buttons";
-            accent-color = "blue";
-            color-scheme = "prefer-dark";
+            # accent-color = "blue";
+            # color-scheme = "prefer-dark";
             font-antialiasing = "standard";
             font-hinting = "full";
             font-name = "Ubuntu Sans 12";
-            monospace-font-name = "Ubuntu Sans Mono 12";
-            icon-theme = "Papirus-Dark";
+            # monospace-font-name = "Ubuntu Sans Mono 12";
+            # icon-theme = "Papirus-Dark";
         };
 
         dconf.settings."org/gnome/desktop/wm/preferences" = {
