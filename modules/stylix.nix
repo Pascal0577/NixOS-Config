@@ -47,14 +47,14 @@
 
         targets = {
             kmscon.enable = true;
+            console.enable = true;
+            nixos-icons.enable = true;
         };
     };
 
     home-manager.users.${username} = {
         stylix.targets = {
-            nixvim.enable = false;
             zen-browser.profileNames = [ "pascal" ];
-            zen-browser.enable = false;
             mangohud.enable = true;
             ghostty.enable = true;
         };
