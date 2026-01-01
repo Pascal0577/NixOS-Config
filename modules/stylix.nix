@@ -65,13 +65,13 @@
 
         dconf.settings."org/gnome/desktop/interface" = {
             gtk-theme = "Nordic-standard-buttons";
-            # accent-color = "blue";
-            # color-scheme = "prefer-dark";
+            accent-color = lib.mkDefault "blue";
+            color-scheme = lib.mkForce "prefer-dark";
             font-antialiasing = "standard";
             font-hinting = "full";
             font-name = "Ubuntu Sans 12";
-            # monospace-font-name = "Ubuntu Sans Mono 12";
-            # icon-theme = "Papirus-Dark";
+            monospace-font-name = lib.mkDefault "Ubuntu Sans Mono 12";
+            icon-theme = lib.mkDefault "Papirus-Dark";
         };
 
         dconf.settings."org/gnome/desktop/wm/preferences" = {
