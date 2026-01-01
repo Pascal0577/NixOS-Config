@@ -22,6 +22,7 @@
     networking = {
         hostName = hostname;
         networkmanager.enable = true;
+        modemmanager.enable = false;
         firewall = {
             enable = true;
             trustedInterfaces = [ "virbr0" ];
