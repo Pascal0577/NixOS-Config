@@ -56,6 +56,7 @@
             zen-browser.profileNames = [ "pascal" ];
             zen-browser.enable = false;
             mangohud.enable = true;
+            ghostty.enable = true;
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
