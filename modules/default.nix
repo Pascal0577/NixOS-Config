@@ -6,6 +6,7 @@
         ./applications
         ./desktop
         ./boot.nix
+        ./gaming.nix
         ./power-management.nix
         ./shell.nix
         ./virtualization.nix
