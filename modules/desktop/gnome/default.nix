@@ -3,14 +3,13 @@
 {
     imports = [
         # ./paperwm.nix
+        ./dash-to-dock.nix
     ];
 
     environment.systemPackages = with pkgs; [
         yaru-theme
         icoextract
-        celluloid
         dconf-editor
-        papirus-nord
     ];
 
     services.displayManager.gdm = {
@@ -37,21 +36,15 @@
     ]);
 
     home-manager.users.${username} = {
-        home.packages = with pkgs; [
-            gnomeExtensions.user-themes
-            # gnomeExtensions.paperwm
-        ];
-
         dconf = {
             enable = true;
             settings = {
                 "org/gnome/shell" = {
                     disable-user-extensions = false;
                     enabled-extensions = with pkgs.gnomeExtensions; [
-                        user-themes.extensionUuid
+                        dash-to-dock.extensionUuid
                     ];
                     favorite-apps = [
-                        # .desktop files can be found in "/run/current-system/sw/share/applications/"
                         "com.mitchellh.ghostty.desktop"
                         "zen-beta.desktop"
                         "vesktop.desktop"
