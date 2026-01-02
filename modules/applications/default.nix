@@ -9,7 +9,6 @@
         ./mathematica.nix
         ./neovim.nix
         ./obs-studio.nix
-        # ./vicinae.nix
         ./zen-browser.nix
     ];
 
