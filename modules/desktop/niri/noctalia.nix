@@ -283,6 +283,7 @@
                     fontFixedScale = 1.1;
                     idleInhibitorEnabled = true;
                     tooltipsEnabled = true;
+                    panelBackgroundOpacity = 1.0;
                 };
                 brightness = {
                     brightnessStep = 5;
