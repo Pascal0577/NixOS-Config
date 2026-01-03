@@ -67,6 +67,7 @@
             mangohud.enable = true;
             ghostty.enable = true;
             gnome.enable = true;
+            vicinae.enable = true;
         };
 
         dconf.settings."org/gnome/desktop/interface" = {

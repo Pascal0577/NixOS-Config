@@ -1,9 +1,9 @@
-{ lib, config, inputs, pkgs, username, ... }:
+{ inputs, pkgs, username, ... }:
 
 {
     nix.settings = {
-        substituters = [ "https://vicinae.cachix.org" ];
-        trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
+        extra-substituters = [ "https://vicinae.cachix.org" ];
+        extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
     };
 
     home-manager.users.${username} = {
@@ -11,28 +11,82 @@
             inputs.vicinae.homeManagerModules.default
         ];
 
-       services.vicinae = {
-           enable = true;
-           autoStart = true;
-           package = inputs.vicinae.packages.${pkgs.system}.default;
-           settings = {
-               faviconService = "twenty"; # twenty | google | none
-               popToRootOnClose = true;
-               rootSearch.searchFiles = false;
-               font = {
-                   normal = "Ubuntu Sans";
-                   size = 13;
-               };
-               theme = {
-                   name = "nord";
-                   iconTheme = "Yaru-dark";
-               };
-               window = {
-                   csd = true;
-                   opacity = 0.95;
-                   rounding = 10;
-               };
-           };
-       };
+        programs.niri.settings.binds."Mod+Space".action.spawn = [ "vicinae" "toggle" ];
+
+        services.vicinae = {
+            enable = true;
+            package = inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            systemd = {
+                enable = true;
+                autoStart = true;
+                environment = { USE_LAYER_SHELL = 1; };
+            };
+            settings = {
+                favicon_service = "twenty";
+                pop_to_root_on_close = true;
+                search_files_in_root = true;
+
+                font = {
+                    normal = {
+                        size = 12;
+                        normal = "Ubuntu Sans";
+                    };
+                };
+
+                theme = {
+                    light = {
+                        name = "nord-light";
+                        icon_theme = "Papirus-Light";
+                    };
+                    dark = {
+                        name = "stylix";
+                        icon_theme = "Papirus-Dark";
+                    };
+                };
+
+                launcher_window = {
+                    csd = true;
+                    opacity = 1.0;
+                };
+
+                extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
+                    nix
+                    mullvad
+                ];
+
+                favorites = [
+                    "applications:zen-beta"
+                    "applications:vesktop"
+                    "clipboard:history"
+                ];
+
+                providers = {
+                    clipboard.preferences.encryption = true;
+                    core.entrypoints = {
+                        about.enabled = false;
+                        documentation.enabled = false;
+                        keybind-settings.enabled = false;
+                        manage-fallback.enabled = false;
+                        oauth-token-store.enabled = false;
+                        open-config-file.enabled = false;
+                        open-default-config.enabled = false;
+                        report-bug.enabled = false;
+                        sponsor.enabled = false;
+                    };
+                    power.entrypoints = {
+                        lock.enabled = false;
+                        logout.enabled = false;
+                        sleep.enabled = false;
+                        soft-reboot.enabled = false;
+                        suspend.enabled = false;
+                    };
+                    developer.enabled = false;
+                    font.enabled = false;
+                    system.enabled = false;
+                    theme.enabled = false;
+                    wm.enabled = false;
+                };
+            };
+        };
     };
 }

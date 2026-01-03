@@ -46,6 +46,8 @@
             ];
         };
 
+        programs.niri.settings.binds."Mod+Space".action.spawn = [ "nc" "-U" "/run/user/1000/walker/walker.sock" ];
+
         programs.walker = {
             enable = true;
             runAsService = true;
