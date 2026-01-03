@@ -4,7 +4,6 @@
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         niri.url = "github:sodiboo/niri-flake";
-        vicinae.url = "github:vicinaehq/vicinae";
 
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +37,12 @@
             url = "github:abenz1267/walker";
             inputs.elephant.follows = "elephant";
             inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        vicinae.url = "github:vicinaehq/vicinae";
+        vicinae-extensions = {
+            url = "github:vicinaehq/extensions";
+           inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 

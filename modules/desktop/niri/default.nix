@@ -25,7 +25,8 @@ in
     imports = [
         inputs.niri.nixosModules.niri
         ./noctalia.nix
-        ./walker.nix
+        # ./walker.nix
+        ./vicinae.nix
     ];
 
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
@@ -159,7 +160,6 @@ in
                 "Shift+Print".action.screenshot-screen = [];
                 "Ctrl+Print".action.screenshot-window = [];
                 "Mod+Return".action = spawn terminal "+new-window";
-                "Mod+Space".action = spawn-sh launcher;
                 "Mod+L".action = spawn-sh "noctalia-shell ipc call lockScreen lock";
                 "Mod+P".action = spawn-sh "noctalia-shell ipc call wallpaper toggle";
                 "Ctrl+Alt+Delete".action = spawn-sh "noctalia-shell ipc call sessionMenu toggle";
