@@ -71,7 +71,7 @@
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
-            gtk-theme = "Nordic-standard-buttons";
+            gtk-theme = lib.mkDefault "Nordic-standard-buttons";
             accent-color = lib.mkDefault "blue";
             color-scheme = lib.mkForce "prefer-dark";
             font-antialiasing = lib.mkDefault "standard";

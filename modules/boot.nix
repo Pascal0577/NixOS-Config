@@ -7,7 +7,7 @@
         bootspec.enable = true;
         plymouth = {
             enable = true;
-            theme = lib.mkForce "bgrt";
+            theme = lib.mkDefault "bgrt";
         };
 
         lanzaboote = {

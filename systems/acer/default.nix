@@ -1,6 +1,11 @@
 { pkgs, ... }:
 {
-    imports = [ ./hardware-configuration.nix ];
+    # Declare mathematica module here. I have the sources for it on only one machine
+    imports = [
+        ./hardware-configuration.nix
+        ../../modules/desktop/niri
+        ../../modules/applications/mathematica.nix
+    ];
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     hardware.nvidia = {

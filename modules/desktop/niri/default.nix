@@ -1,24 +1,10 @@
 { inputs, pkgs, username, config, lib, ... }:
 let
-    niri-blur = pkgs.niri-unstable.overrideAttrs (oldAttrs: {
-        src = pkgs.fetchFromGitHub {
-            owner = "visualglitch91";
-            repo = "niri";
-            rev = "feat/blur";
-            hash = "sha256-sNAJQBP2rVL5OM6Lnblmy7EWYRsrZnmuQnnip4mX8mQ=";
-        };
-        doCheck = false;
-        version = "unstable-blur";
-        env = (oldAttrs.env or {}) // {
-            RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
-        };
-    });
     niri-optimized = pkgs.niri-unstable.overrideAttrs (oldAttrs: {
         env = (oldAttrs.env or {}) // {
             RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
         };
     });
-    launcher = "nc -U /run/user/1000/walker/walker.sock";
     terminal = "ghostty";
 in
 {
