@@ -35,7 +35,7 @@
 
                 theme = {
                     light = {
-                        name = "nord-light";
+                        name = "stylix";
                         icon_theme = "Papirus-Light";
                     };
                     dark = {
