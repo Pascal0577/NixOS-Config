@@ -1,12 +1,6 @@
 { pkgs, ... }:
 
 {
-    imports =  [
-        ./niri
-        # ./gnome
-        # ./kde
-    ];
-
     fonts = {
         packages = with pkgs; [
             ubuntu-sans
