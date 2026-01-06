@@ -25,6 +25,19 @@
             };
         };
 
+        programs.niri.settings.binds = {
+            "Mod+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
+            "Ctrl+Alt+Delete".action.spawn-sh = "noctalia-shell ipc call sessionMenu toggle";
+            "XF86MonBrightnessUp" = {
+                allow-when-locked = true;
+                action.spawn = [ "noctalia-shell" "ipc" "call" "brightness" "increase" ];
+            };
+            "XF86MonBrightnessDown" = {
+                allow-when-locked = true;
+                action.spawn = [ "noctalia-shell" "ipc" "call" "brightness" "decrease" ];
+            };
+        };
+
         programs.noctalia-shell = {
             enable = true;
 
