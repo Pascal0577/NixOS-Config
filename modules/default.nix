@@ -51,6 +51,12 @@
         DefaultTimeoutStopSec=10s
     '';
 
+    systemd.services."serial-getty@ttyS0".enable = false;
+    systemd.services."serial-getty@ttyS1".enable = false;
+    systemd.services."serial-getty@ttyS2".enable = false;
+    systemd.services."serial-getty@ttyS3".enable = false;
+    systemd.services.NetworkManager-wait-online.enable = false;
+
     zramSwap = {
         enable = true;
         algorithm = "zstd";
