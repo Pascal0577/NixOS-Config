@@ -3,7 +3,7 @@
     # Declare mathematica module here. I have the sources for it on only one machine
     imports = [
         ./hardware-configuration.nix
-        ../../modules/desktop/hyprland
+        ../../modules/desktop/niri
         ../../modules/applications/mathematica.nix
     ];
 
