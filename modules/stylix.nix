@@ -68,6 +68,8 @@
             ghostty.enable = true;
             gnome.enable = true;
             vicinae.enable = true;
+            hyprland.enable = true;
+            hyprpaper.enable = true;
         };
 
         dconf.settings."org/gnome/desktop/interface" = {

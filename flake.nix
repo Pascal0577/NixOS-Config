@@ -44,6 +44,9 @@
             url = "github:vicinaehq/extensions";
            inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        hyprland.url = "github:hyprwm/hyprland";
+        mithril-shell.url = "github:andreashgk/mithril-shell";
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
