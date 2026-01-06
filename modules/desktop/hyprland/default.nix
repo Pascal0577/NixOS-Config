@@ -1,5 +1,4 @@
 { inputs, pkgs, username, ... }:
-
 {
     nix.settings = {
         substituters = [ "https://hyprland.cachix.org" ];
@@ -9,7 +8,6 @@
 
     environment.systemPackages = with pkgs; [
         wl-clipboard
-        sddm-sugar-dark
         hyprpaper
         hyprshot
     ];
@@ -20,11 +18,8 @@
     ];
 
     programs.hyprland.enable = true;
-    services.displayManager.sddm = {
+    services.displayManager.ly = {
         enable = true;
-        wayland.enable = true;
-        package = pkgs.kdePackages.sddm;
-        theme = "${pkgs.where-is-my-sddm-theme.override { variants = [ "qt5" ]; }}/share/sddm/themes/where_is_my_sddm_theme_qt5";
     };
 
     home-manager.users.${username} = {
@@ -131,8 +126,8 @@
                 };
 
                 decoration = {
-                    rounding = 0;
-                    rounding_power = 2.0;
+                    rounding = 10;
+                    rounding_power = 3.0;
                     active_opacity = 1.0;
                     inactive_opacity = 1.0;
                     fullscreen_opacity = 1.0;
