@@ -5,7 +5,6 @@ let
             RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
         };
     });
-    terminal = "ghostty";
 in
 {
     imports = [
@@ -41,29 +40,10 @@ in
         baobab
         file-roller
         totem
-        papirus-nord
-        eyedropper
-        brightnessctl
         swaybg
-        (pkgs.catppuccin-sddm.override {
-            flavor = "macchiato";
-            accent = "peach";
-            font  = "Ubuntu Sans";
-            fontSize = "10";
-            disableBackground = false;
-            background = "/var/nixos.png";
-            loginBackground = false;
-            userIcon = true;
-        })
-        (pkgs.callPackage ../../../packages/constrict {})
     ];
 
-    services.displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-        package = pkgs.kdePackages.sddm;
-        theme = "catppuccin-macchiato-peach";
-    };
+    services.displayManager.ly.enable = true;
 
     home-manager.users.${username} = {
         programs.niri.settings = with config.home-manager.users.${username}.lib.niri.actions; {
@@ -144,10 +124,7 @@ in
                 "Print".action.screenshot = [];
                 "Shift+Print".action.screenshot-screen = [];
                 "Ctrl+Print".action.screenshot-window = [];
-                "Mod+Return".action = spawn terminal "+new-window";
-                "Mod+L".action = spawn-sh "noctalia-shell ipc call lockScreen lock";
-                "Mod+P".action = spawn-sh "noctalia-shell ipc call wallpaper toggle";
-                "Ctrl+Alt+Delete".action = spawn-sh "noctalia-shell ipc call sessionMenu toggle";
+                "Mod+Return".action.spawn = [ "ghostty" "+new-window" ];
 
                 # Control keys
                 "XF86AudioPlay" = {
@@ -185,14 +162,6 @@ in
                 "XF86AudioMute" = {
                     allow-when-locked = true;
                     action = spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-                };
-                "XF86MonBrightnessUp" = {
-                    allow-when-locked = true;
-                    action = spawn-sh "brightnessctl --class=backlight set 5%+";
-                };
-                "XF86MonBrightnessDown" = {
-                    allow-when-locked = true;
-                    action = spawn-sh "brightnessctl --class=backlight set 5%-";
                 };
             };
 
