@@ -155,17 +155,6 @@
                     use12hourFormat = true;
                     showWeekNumberInCalendar = false;
                 };
-                screenRecorder = {
-                    directory = "";
-                    frameRate = 60;
-                    audioCodec = "opus";
-                    videoCodec = "av1";
-                    quality = "very_high";
-                    colorRange = "limited";
-                    showCursor = true;
-                    audioSource = "default_output";
-                    videoSource = "portal";
-                };
                 wallpaper = {
                     enabled = true;
                     overviewEnabled = false;
@@ -293,8 +282,8 @@
                     fontDefault = "Ubuntu Sans";
                     fontFixed = lib.mkForce "Ubuntu Mono";
                     fontDefaultScale = 1.1;
-                    fontFixedScale = 1.1;
-                    idleInhibitorEnabled = true;
+                    fontFixedScale = 1.0;
+                    idlfalseibitorEnabled = true;
                     tooltipsEnabled = true;
                     panelBackgroundOpacity = 1.0;
                 };
@@ -323,8 +312,8 @@
                     discord_equibop = false;
                     discord_lightcord = false;
                     discord_dorion = false;
-                    pywalfox = true;
-                    enableUserTemplates = true;
+                    pywalfox = false;
+                    enableUserTemplates = false;
                 };
                 nightLight = {
                     enabled = false;

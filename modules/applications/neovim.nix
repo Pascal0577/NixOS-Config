@@ -205,7 +205,7 @@
 
                 nvim-tree = {
                     enable = true;
-                    autoClose = true;
+                    autoClose = false;
                     settings = {
                         tab.sync.open = true;
                     };
