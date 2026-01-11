@@ -11,7 +11,7 @@
             inputs.vicinae.homeManagerModules.default
         ];
 
-        programs.niri.settings.binds."Mod+Space".action.spawn = [ "vicinae" "toggle" ];
+        programs.niri.settings.binds."Mod+Space".action.spawn = [ "vicinae" "vicinae://toggle" ];
 
         services.vicinae = {
             enable = true;
