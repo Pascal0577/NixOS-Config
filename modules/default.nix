@@ -12,6 +12,7 @@
         ./virtualization.nix
         ./zig.nix
         ./stylix.nix
+        ./latex.nix
     ];
 
     nix.settings = {
