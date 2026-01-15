@@ -12,6 +12,15 @@
             };
 
             lsp.servers.texlab.enable = true;
+
+            keymaps = [
+                {
+                    mode = "n";
+                    action = "<cmd>VimtexCompile<CR>";
+                    key = "<leader>vc";
+                    options.desc = "Compile LaTeX document";
+                }
+            ];
         };
     };
 }
