@@ -67,12 +67,6 @@
                 }
                 {
                     mode = "n";
-                    action = "<cmd>silent !zig fmt %<CR>";
-                    key = "<leader>zf";
-                    options.desc = "Format Zig file";
-                }
-                {
-                    mode = "n";
                     action = "<cmd>tabnext<CR>";
                     key = "<leader>tt";
                     options.desc = "Go to next tab";
