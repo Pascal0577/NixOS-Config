@@ -42,6 +42,7 @@ in
         totem
         swaybg
     ];
+    services.gvfs.enable = true;
 
     services.displayManager.ly.enable = true;
 
