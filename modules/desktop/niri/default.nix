@@ -36,13 +36,11 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-        nautilus
         baobab
         file-roller
         totem
         swaybg
     ];
-    services.gvfs.enable = true;
 
     services.displayManager.ly.enable = true;
 
