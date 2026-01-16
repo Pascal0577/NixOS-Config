@@ -1,4 +1,4 @@
-{ inputs, username, lib, ... }:
+{ inputs, username, lib, config, ... }:
 
 {
     imports = [
@@ -17,10 +17,10 @@
 
         home.file.".cache/noctalia/wallpapers.json" = {
             text = builtins.toJSON {
-                defaultWallpaper = "/home/${username}/NixOS-Config/wallpapers/nord-arctic-fox.png";
+                defaultWallpaper = "${config.stylix.image}";
                 wallpapers = {
-                    "DP-1" = "/home/${username}/NixOS-Config/wallpapers/nord-arctic-fox.png";
-                    "eDP-1" = "/home/${username}/NixOS-Config/wallpapers/nord-arctic-fox.png";
+                    "DP-1" = "${config.stylix.image}";
+                    "eDP-1" = "${config.stylix.image}";
                 };
             };
         };

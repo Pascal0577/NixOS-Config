@@ -283,7 +283,7 @@ in
             };
 
             Service = {
-                ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i %h/Pictures/Wallpapers/Nord/nord-arctic-fox.png";
+                ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i ${config.stylix.image}";
                 Restart = "on-failure";
             };
 
