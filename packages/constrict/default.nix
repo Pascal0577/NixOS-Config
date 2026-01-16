@@ -24,13 +24,13 @@
 
 stdenv.mkDerivation {
     pname = "constrict";
-    version = "25.12";
+    version = "25.12.1";
 
     src = fetchFromGitHub {
         owner = "Wartybix";
         repo = "Constrict";
-        rev = "25.12";
-        sha256 = "1bhkirza65vpb9xzi97dwqidf1v6q06j0jcprfb33rvajksgd1yr";
+        rev = "25.12.1";
+        sha256 = "1d5lf7kn9lf38ci774sfsabpjh3szrwqzspxzcrsj5fdx2aq2a35";
     };
 
     buildInputs = [
@@ -67,18 +67,6 @@ stdenv.mkDerivation {
     '';
 
     enableParallelBuilding = true;
-
-    # Fixes the desktop file
-    postInstall = ''
-        desktopFile=$(find $out/share/applications -name "*.desktop")
-
-        substituteInPlace $desktopFile --replace "Exec=constrict --new-window %U" "Exec=constrict %U"
-        substituteInPlace $desktopFile --replace "Exec=constrict --new-window" "Exec=constrict"
-        substituteInPlace $desktopFile --replace "DBusActivatable=true" "DBusActivatable=false"
-
-        mv $out/share/applications/io.github.wartybix.Constrict.desktop \
-          $out/share/applications/constrict.desktop
-    '';
 
     meta = {
         description = "Compresses your videos to your chosen file size";
