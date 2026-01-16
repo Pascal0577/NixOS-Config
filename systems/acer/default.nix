@@ -4,7 +4,6 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules/desktop/niri
-        ../../modules/applications/mathematica.nix
     ];
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
