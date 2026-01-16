@@ -6,6 +6,7 @@
         ./fastfetch.nix
         ./ghostty.nix
         ./git.nix
+        ./mathematica.nix
         ./nautilus.nix
         ./neovim.nix
         ./obs-studio.nix
