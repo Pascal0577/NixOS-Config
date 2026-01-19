@@ -24,14 +24,14 @@ let
   libtsm' = pkgs.callPackage ../libtsm/default.nix { };
 in
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation {
   pname = "kmscon";
   version = "9.2.1";
 
   src = fetchFromGitHub {
     owner = "kmscon";
     repo = "kmscon";
-    tag = "v${finalAttrs.version}";
+    tag = "v9.2.1";
     hash = "sha256-MuDqZDbZOrq4n/LxEupbBPIL1747iiHD6kM0SeX2Vzc=";
   };
 
@@ -78,4 +78,4 @@ stdenv.mkDerivation (finalAttrs: {
     maintainers = [ ];
     platforms = lib.platforms.linux;
   };
-})
+}
