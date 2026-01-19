@@ -21,19 +21,23 @@
 }:
 
 let
-    libtsm' = pkgs.callPackage ./libtsm.nix {};
+    libtsm' = pkgs.callPackage ../libtsm/default.nix {};
 in
 
-stdenv.mkDerivation {
+stdenv.mkDerivation (finalAttrs: {
     pname = "kmscon";
     version = "9.2.1";
 
     src = fetchFromGitHub {
         owner = "kmscon";
         repo = "kmscon";
-        rev = "v9.2.1";
-        sha256 = "sha256-MuDqZDbZOrq4n/LxEupbBPIL1747iiHD6kM0SeX2Vzc=";
+        tag = "v${finalAttrs.version}";
+        hash = "sha256-MuDqZDbZOrq4n/LxEupbBPIL1747iiHD6kM0SeX2Vzc=";
     };
+
+    patches = [
+        ./sandbox.patch # Generate system units where they should be (nix store) instead of /etc/systemd/system
+    ];
 
     strictDeps = true;
 
@@ -66,12 +70,6 @@ stdenv.mkDerivation {
         lib.optionalString stdenv.cc.isGNU "-O "
         + "-Wno-error=maybe-uninitialized -Wno-error=unused-result -Wno-error=implicit-function-declaration";
 
-    enableParallelBuilding = true;
-
-    patches = [
-        ./sandbox.patch # Generate system units where they should be (nix store) instead of /etc/systemd/system
-    ];
-
     meta = {
         description = "KMS/DRM based System Console";
         mainProgram = "kmscon";
@@ -80,4 +78,4 @@ stdenv.mkDerivation {
         maintainers = [ ];
         platforms = lib.platforms.linux;
     };
-}
+})
