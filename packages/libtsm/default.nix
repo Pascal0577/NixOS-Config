@@ -9,14 +9,14 @@
 ,
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation {
   pname = "libtsm";
   version = "4.4.0";
 
   src = fetchFromGitHub {
     owner = "kmscon";
     repo = "libtsm";
-    tag = "v${finalAttrs.version}";
+    tag = "v4.4.0";
     hash = "sha256-xrZNVx9Ir9MCyXiV/cWLdjL2R9KNARY0sFpD5jUlP20=";
   };
 
@@ -38,4 +38,4 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;
   };
-})
+}
