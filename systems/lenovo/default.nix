@@ -1,4 +1,5 @@
 { username, pkgs, lib, ... }:
+
 {
     imports = [
         ./hardware-configuration.nix
