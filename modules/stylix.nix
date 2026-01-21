@@ -6,6 +6,19 @@
 
     environment.systemPackages = [ pkgs.papirus-nord ];
 
+    fonts = {
+        packages = with pkgs; [
+            ubuntu-sans
+            ubuntu-sans-mono
+            noto-fonts-cjk-sans
+        ];
+
+        fontconfig = {
+            enable = true;
+            useEmbeddedBitmaps = true;
+        };
+    };
+
     stylix = {
         enable = true;
         autoEnable = false;
@@ -65,7 +78,7 @@
             };
 
             mangohud.enable = true;
-            ghostty.enable = true;
+            ghostty.enable = false;
             gnome.enable = true;
             vicinae.enable = true;
             hyprland.enable = true;
@@ -86,5 +99,7 @@
         dconf.settings."org/gnome/desktop/wm/preferences" = {
             theme = "Nordic-standard-buttons";
         };
+
+        programs.ghostty.settings.theme = "Nord";
     };
 }

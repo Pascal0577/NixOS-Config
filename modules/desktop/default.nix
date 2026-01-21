@@ -1,19 +1,6 @@
 { pkgs, ... }:
 
 {
-    fonts = {
-        packages = with pkgs; [
-            ubuntu-sans
-            ubuntu-sans-mono
-            noto-fonts-cjk-sans
-        ];
-
-        fontconfig = {
-            enable = true;
-            useEmbeddedBitmaps = true;
-        };
-    };
-
     environment.sessionVariables = {
         NIXOS_OZONE_WL = "1";
     };
