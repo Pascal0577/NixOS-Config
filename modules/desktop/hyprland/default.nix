@@ -14,7 +14,7 @@
 
     imports = with inputs; [
         hyprland.nixosModules.default
-        ../walker.nix
+        ../../applications/walker.nix
     ];
 
     programs.hyprland.enable = true;
