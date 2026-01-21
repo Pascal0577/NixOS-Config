@@ -4,11 +4,11 @@
     imports = [
         ./appimage.nix
         ./applications
-        ./audio.nix
         ./boot.nix
         ./gaming.nix
         ./power-management.nix
         ./shell.nix
+        ./services.nix
         ./virtualization.nix
         ./zig.nix
         ./stylix.nix
