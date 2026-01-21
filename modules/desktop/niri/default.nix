@@ -10,7 +10,7 @@ in
     imports = [
         inputs.niri.nixosModules.niri
         ./noctalia.nix
-        ../vicinae.nix
+        ../../applications/vicinae.nix
     ];
 
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
