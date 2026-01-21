@@ -4,7 +4,7 @@
     imports = [
         ./appimage.nix
         ./applications
-        ./desktop
+        ./audio.nix
         ./boot.nix
         ./gaming.nix
         ./power-management.nix
@@ -14,6 +14,34 @@
         ./stylix.nix
         ./latex.nix
     ];
+
+    environment.sessionVariables = {
+        NIXOS_OZONE_WL = "1";
+    };
+
+    services = {
+        openssh.enable = true;
+        printing.enable = true;
+
+        xserver = {
+            enable = false;
+            excludePackages = [ pkgs.xterm ];
+            xkb = {
+              layout = "us";
+              variant = "";
+            };
+        };
+
+        mullvad-vpn = {
+            enable = true;
+            package = pkgs.mullvad-vpn;
+        };
+    };
+
+    hardware = {
+        bluetooth.enable = true;
+        graphics.enable = true;
+    };
 
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
@@ -32,7 +60,6 @@
     };
 
     security.rtkit.enable = true;
-    services.openssh.enable = true;
 
     time.timeZone = "America/Chicago";
     i18n.defaultLocale = "en_US.UTF-8";
