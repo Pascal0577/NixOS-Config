@@ -10,6 +10,7 @@
         ./nautilus.nix
         ./neovim.nix
         ./obs-studio.nix
+        ./swayidle.nix
         ./zen-browser.nix
     ];
 
