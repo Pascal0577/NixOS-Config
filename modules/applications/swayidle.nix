@@ -1,14 +1,9 @@
 { pkgs, username, ... }:
 let
-    dim-screen = pkgs.stdenv.mkDerivation {
+    dim-screen = pkgs.writeShellApplication {
         name = "dim-screen";
-        src = ../../assets/dim-screen-smooth.sh;
-        
-        installPhase = ''
-            mkdir -p $out/bin
-            cp ${../../assets/dim-screen-smooth.sh} $out/bin/dim-screen
-            chmod +x $out/bin/dim-screen
-        '';
+        runtimeInputs = [ pkgs.brightnessctl pkgs.bc pkgs.coreutils ];
+        text = builtins.readFile ../../assets/dim-screen-smooth.sh;
     };
 in
 {
@@ -17,12 +12,17 @@ in
             enable = true;
             timeouts = [
                 {
-                    timeout = 600;
-                    command = "${pkgs.systemd}/bin/systemctl suspend";
-                }
-                {
                     timeout = 300;
                     command = "${dim-screen}/bin/dim-screen set 30%";
+                    resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+                }
+                {
+                    timeout = 540;
+                    command = "${dim-screen}/bin/dim-screen --no-save set 1%";
+                }
+                {
+                    timeout = 600;
+                    command = "${pkgs.systemd}/bin/systemctl suspend";
                 }
             ];
         };

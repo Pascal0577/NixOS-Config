@@ -14,6 +14,9 @@ parse_input() {
             set)
                 INPUT="$2"
                 shift 2 ;;
+            --no-save)
+                NOSAVE=true
+                shift ;;
             *)
                 echo "Invalid input: $1" >&2
                 exit 1
@@ -24,6 +27,7 @@ parse_input() {
 set_values() {
     STEPS="${STEPS:-20}"
     TIME="${TIME:-1}"
+    NOSAVE="${NOSAVE:-false}"
 
     if [ "${INPUT%'%'}" != "$INPUT" ]; then
         PERCENT=true
@@ -46,6 +50,9 @@ set_values() {
 }
 
 set_brightness() {
+    # Save so it can be restored later if needed
+    "$NOSAVE" || brightnessctl -s set "$BRIGHTNESS_CURRENT"
+
     for ((i=1; i<=STEPS; i++)); do
         brightnessctl set "$BRIGHTNESS_CURRENT"
         BRIGHTNESS_CURRENT="$((BRIGHTNESS_CURRENT - STEP))"
