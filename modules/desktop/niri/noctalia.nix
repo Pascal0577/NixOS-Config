@@ -108,6 +108,9 @@
                                 showUnreadBadge = true;
                             }
                             {
+                                id = "KeepAwake";
+                            }
+                            {
                                 id = "Bluetooth";
                             }
                             {
