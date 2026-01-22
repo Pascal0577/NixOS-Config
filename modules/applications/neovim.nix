@@ -151,31 +151,43 @@
                             nerd_font_variant = "mono";
                         };
                         completion = {
-                            menu.border = "none";
+                            menu = {
+                                border = "rounded";
+                                draw = {
+                                #    columns = [
+                                #        [ "kind_icon" "kind" ]
+                                #        [ "label" "label_description" ]
+                                #    ];
+                                    treesitter = [ "lsp" ];  # Show treesitter info for LSP items
+                                };
+                            };
                             ghost_text.enabled = false;
                             list.max_items = 500;
                             accept = {
                                 auto_brackets = {
                                     enabled = true;
                                     semantic_token_resolution = {
-                                        enabled = false;
+                                        enabled = true;
                                     };
                                 };
                             };
                             documentation = {
-                                auto_show = false;
+                                auto_show = true;
+                                window.border = "rounded";
                             };
                         };
                         keymap.preset = "super-tab";
                         signature.enabled = true;
                         sources = {
-                            cmdline = [ ];
                             providers = {
+                                snippets.async = true;
                                 buffer = {
                                     score_offset = -7;
+                                    async = true;
                                 };
                                 lsp = {
-                                    fallbacks = [ ];
+                                    fallbacks = [ "buffer" ];
+                                    async = true;
                                 };
                             };
                         };
