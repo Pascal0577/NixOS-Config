@@ -23,7 +23,7 @@
         enable = true;
         autoEnable = false;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-        image = ../wallpapers/nord-arctic-fox.png;
+        image = ../assets/nord-arctic-fox.png;
 
         fonts = {
             serif = {
