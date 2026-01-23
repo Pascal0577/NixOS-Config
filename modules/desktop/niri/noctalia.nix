@@ -10,6 +10,11 @@
         upower.enable = true;
     };
 
+    # Try to set icon theme
+    environment.sessionVariables = {
+        QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
+    };
+
     home-manager.users.${username} = {
         imports = [
             inputs.noctalia.homeModules.default
