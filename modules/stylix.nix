@@ -4,7 +4,10 @@
         inputs.stylix.nixosModules.stylix
     ];
 
-    environment.systemPackages = [ pkgs.papirus-nord ];
+    environment.systemPackages = with pkgs; [
+        papirus-nord
+        nordic
+    ];
 
     fonts = {
         packages = with pkgs; [
@@ -83,10 +86,11 @@
             vicinae.enable = true;
             hyprland.enable = true;
             hyprpaper.enable = true;
+            gtk.enable = true;
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
-            gtk-theme = lib.mkDefault "Nordic-standard-buttons";
+            gtk-theme = lib.mkForce "Nordic-standard-buttons";
             accent-color = lib.mkDefault "blue";
             color-scheme = lib.mkForce "prefer-dark";
             font-antialiasing = lib.mkDefault "standard";
