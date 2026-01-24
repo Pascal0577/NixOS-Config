@@ -306,9 +306,9 @@
                     generateTemplatesForPredefined = false;
                 };
                 templates = {
-                    gtk = true;
-                    qt = true;
-                    kcolorscheme = true;
+                    gtk = false;
+                    qt = false;
+                    kcolorscheme = false;
                     kitty = false;
                     ghostty = false;
                     foot = false;
