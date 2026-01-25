@@ -15,16 +15,16 @@ in
             enable = true;
             timeouts = [
                 {
-                    timeout = 300;
+                    timeout = 120;
                     command = "${dim-screen}/bin/dim-screen set 30%";
                     resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
                 }
                 {
-                    timeout = 540;
+                    timeout = 240;
                     command = "${dim-screen}/bin/dim-screen --no-save set 1%";
                 }
                 {
-                    timeout = 600;
+                    timeout = 300;
                     command = "${pkgs.systemd}/bin/systemctl suspend";
                 }
             ];
