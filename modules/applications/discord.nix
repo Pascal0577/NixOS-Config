@@ -1,11 +1,7 @@
-{ pkgs, username, ... }:
+{ username, ... }:
 
 {
     home-manager.users.${username} = {
-        home.packages = with pkgs; [
-            vesktop
-        ];
-
         home.file.".config/vesktop/settings/quickCss.css".text = ''
             body {
               font-family: 'Ubuntu Sans';
@@ -28,9 +24,9 @@
             };
 
             vencord.settings = {
-                autoUpdate = false;
+                autoUpdate = true;
                 useQuickCss = true;
-                enabledThemes = [ "nordic.theme.css" ];
+                enabledThemes = [ "nordic.vencord.css" ];
                 plugins = {
                     FakeNitro.enabled = true;
                     FixYoutubeEmbeds.enabled = true;
