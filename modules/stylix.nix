@@ -89,6 +89,14 @@
             gtk.enable = true;
         };
 
+        programs.nixvim.colorschemes.nord = {
+            enable = true;
+            settings = {
+                borders = true;
+                contrast = true;
+            };
+        };
+
         dconf.settings."org/gnome/desktop/interface" = {
             gtk-theme = lib.mkForce "Nordic-standard-buttons";
             accent-color = lib.mkDefault "blue";

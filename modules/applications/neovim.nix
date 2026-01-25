@@ -104,14 +104,6 @@
                 }
             ];
 
-            colorschemes.nord = {
-                enable = true;
-                settings = {
-                    borders = true;
-                    contrast = true;
-                };
-            };
-
             plugins = {
                 lsp = {
                     enable = true;
