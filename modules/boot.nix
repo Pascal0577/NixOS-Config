@@ -23,14 +23,21 @@
         };
 
         kernelParams = [
+            # silent boot
             "quiet"
             "splash"
             "nowatchdog"
             "boot.shell_on_fail"
             "udev.log_priority=3"
             "rd.systemd.show_status=auto"
+            # security stuff
             "rcupdate.rcu_expedited=1"
             "page_alloc.shuffle=1"
+            # zswap
+            "zswap.enabled=1"
+            "zswap.compressor=lz4"
+            "zswap.max_pool_percent=50"
+            "zswap.shrinker_enabled=1"
         ];
 
         loader = {
