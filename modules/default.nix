@@ -3,7 +3,6 @@
 {
     imports = [
         ./appimage.nix
-        ./applications
         ./boot.nix
         ./gaming.nix
         ./power-management.nix
@@ -13,6 +12,24 @@
         ./zig.nix
         ./stylix.nix
         ./latex.nix
+        ./applications/discord.nix
+        ./applications/fastfetch.nix
+        ./applications/ghostty.nix
+        ./applications/git.nix
+        ./applications/mathematica.nix
+        ./applications/nautilus.nix
+        ./applications/neovim.nix
+        ./applications/obs-studio.nix
+        ./applications/swayidle.nix
+        ./applications/zen-browser.nix
+    ];
+
+    environment.systemPackages = with pkgs; [
+        playerctl
+        losslesscut-bin
+        pinta
+        deluge
+        onlyoffice-desktopeditors
     ];
 
     environment.sessionVariables = {
@@ -54,11 +71,6 @@
         LC_PAPER = "en_US.UTF-8";
         LC_TELEPHONE = "en_US.UTF-8";
         LC_TIME = "en_US.UTF-8";
-    };
-
-    zramSwap = {
-        enable = true;
-        algorithm = "zstd";
     };
 
     users.users.${username} = {
