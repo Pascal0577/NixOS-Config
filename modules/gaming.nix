@@ -25,7 +25,7 @@ in
         gamemode.enable = true;
         wine = {
             enable = true;
-            package = gamePkgs.wine-ge;
+            package = pkgs.wine-staging;
             binfmt = true;
             ntsync = true;
         };
