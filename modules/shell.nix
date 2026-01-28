@@ -5,16 +5,6 @@
     programs.zsh.enable = true;
     users.users.${username}.shell = pkgs.zsh;
 
-    services.kmscon = {
-        enable = true;
-        hwRender = true;
-        fonts = [{
-            name = "JetBrainsMono Nerd Font";
-            package = pkgs.nerd-fonts.jetbrains-mono;
-        }];
-        package = pkgs.callPackage ../packages/kmscon {};
-    };
-
     home-manager.users.${username} = {
         home.packages = with pkgs; [
             fzf

@@ -26,6 +26,16 @@
             enable = true;
             package = pkgs.mullvad-vpn;
         };
+
+        kmscon = {
+            enable = true;
+            hwRender = true;
+            fonts = [{
+                name = "JetBrainsMono Nerd Font";
+                package = pkgs.nerd-fonts.jetbrains-mono;
+            }];
+            package = pkgs.callPackage ../packages/kmscon {};
+        };
     };
 
     systemd.user.extraConfig = ''
