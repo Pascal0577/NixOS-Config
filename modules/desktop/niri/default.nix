@@ -9,7 +9,7 @@ in
 {
     imports = [
         inputs.niri.nixosModules.niri
-        ./noctalia.nix
+        ../../applications/noctalia.nix
         ../../applications/vicinae.nix
     ];
 
