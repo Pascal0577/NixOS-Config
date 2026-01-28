@@ -5,13 +5,14 @@
         ./appimage.nix
         ./boot.nix
         ./gaming.nix
+        ./latex.nix
+        ./locale-time.nix
         ./power-management.nix
         ./shell.nix
         ./services.nix
         ./virtualization.nix
         ./zig.nix
         ./stylix.nix
-        ./latex.nix
         ./applications/discord.nix
         ./applications/fastfetch.nix
         ./applications/ghostty.nix
@@ -24,16 +25,18 @@
         ./applications/zen-browser.nix
     ];
 
-    environment.systemPackages = with pkgs; [
-        playerctl
-        losslesscut-bin
-        pinta
-        deluge
-        onlyoffice-desktopeditors
-    ];
+    environment = {
+        systemPackages = with pkgs; [
+            playerctl
+            losslesscut-bin
+            pinta
+            deluge
+            onlyoffice-desktopeditors
+        ];
 
-    environment.sessionVariables = {
-        NIXOS_OZONE_WL = "1";
+        sessionVariables = {
+            NIXOS_OZONE_WL = "1";
+        };
     };
 
     hardware = {
@@ -58,20 +61,6 @@
     };
 
     security.rtkit.enable = true;
-
-    time.timeZone = "America/Chicago";
-    i18n.defaultLocale = "en_US.UTF-8";
-    i18n.extraLocaleSettings = {
-        LC_ADDRESS = "en_US.UTF-8";
-        LC_IDENTIFICATION = "en_US.UTF-8";
-        LC_MEASUREMENT = "en_US.UTF-8";
-        LC_MONETARY = "en_US.UTF-8";
-        LC_NAME = "en_US.UTF-8";
-        LC_NUMERIC = "en_US.UTF-8";
-        LC_PAPER = "en_US.UTF-8";
-        LC_TELEPHONE = "en_US.UTF-8";
-        LC_TIME = "en_US.UTF-8";
-    };
 
     users.users.${username} = {
         isNormalUser = true;
