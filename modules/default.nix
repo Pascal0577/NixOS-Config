@@ -12,7 +12,7 @@
         ./services.nix
         ./virtualization.nix
         ./zig.nix
-        ./stylix.nix
+        ./themes/nord.nix
         ./applications/discord.nix
         ./applications/fastfetch.nix
         ./applications/ghostty.nix
