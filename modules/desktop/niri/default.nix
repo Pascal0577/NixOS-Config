@@ -266,7 +266,7 @@ in
                     matches = [{
                         app-id = "steam_app_0";
                     }];
-                    variable-refresh-rate = true;
+                    # variable-refresh-rate = true;
                 }
             ];
 

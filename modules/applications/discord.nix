@@ -26,7 +26,6 @@
             vencord.settings = {
                 autoUpdate = true;
                 useQuickCss = true;
-                enabledThemes = [ "nordic.vencord.css" ];
                 plugins = {
                     FakeNitro.enabled = true;
                     FixYoutubeEmbeds.enabled = true;

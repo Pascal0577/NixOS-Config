@@ -226,7 +226,6 @@
                 combinePlugins = {
                     enable = true;
                     standalonePlugins = with pkgs.vimPlugins; [
-                        nord-nvim
                         blink-cmp
                     ];
                 };
