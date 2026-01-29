@@ -89,12 +89,22 @@
             gtk.enable = true;
         };
 
-        programs.nixvim.colorschemes.nord = {
-            enable = true;
-            settings = {
-                borders = true;
-                contrast = true;
+        programs = {
+            nixvim = {
+                colorschemes.nord = {
+                    enable = true;
+                    settings = {
+                        borders = true;
+                        contrast = true;
+                    };
+                };
+
+                performance.combinePlugins.standalonePlugins = [
+                    pkgs.vimPlugins.nord-nvim
+                ];
             };
+
+            vesktop.vencord.settings.enabledThemes = [ "nordic.vencord.css" ];
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
