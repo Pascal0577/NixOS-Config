@@ -46,16 +46,16 @@
         };
 
         cursor = {
-            package = lib.mkDefault pkgs.everforest-cursors;
-            name = "everforest-cursors";
-            size = 32;
+            package = lib.mkDefault pkgs.bibata-cursors;
+            name = "Bibata-Modern-Ice";
+            size = 24;
         };
 
         icons = {
             enable = true;
-            package = pkgs.tokyonight-gtk-theme;
-            dark = "Tokyonight-Dark";
-            light = "Tokyonight-Dark";
+            package = pkgs.papirus-icon-theme;
+            dark = "Papirus-Dark";
+            light = "Papirus";
         };
 
         targets = {
@@ -90,7 +90,7 @@
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
-            accent-color = lib.mkDefault "green";
+            accent-color = lib.mkDefault "blue";
             color-scheme = lib.mkForce "prefer-dark";
             font-antialiasing = lib.mkDefault "standard";
             font-hinting = lib.mkDefault "full";
