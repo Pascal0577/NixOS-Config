@@ -4,11 +4,6 @@
         inputs.stylix.nixosModules.stylix
     ];
 
-    environment.systemPackages = with pkgs; [
-        papirus-nord
-        everforest-gtk-theme
-    ];
-
     fonts = {
         packages = with pkgs; [
             ubuntu-sans
@@ -24,7 +19,7 @@
 
     stylix = {
         enable = true;
-        autoEnable = false;
+        autoEnable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
         image = ../../assets/flowers.png;
 
@@ -53,15 +48,15 @@
         cursor = {
             package = lib.mkDefault pkgs.everforest-cursors;
             name = "everforest-cursors";
-            size = 24;
+            size = 32;
         };
 
-        #icons = {
-        #    enable = true;
-        #    package = pkgs.papirus-nord;
-        #    dark = "Papirus-Dark";
-        #    light = "Papirus";
-        #};
+        icons = {
+            enable = true;
+            package = pkgs.everforest-gtk-theme;
+            dark = "Everforest-Dark";
+            light = "Everforest-Light";
+        };
 
         targets = {
             kmscon.enable = true;
@@ -80,13 +75,7 @@
                 profileNames = [ "pascal" ];
             };
 
-            mangohud.enable = true;
-            ghostty.enable = false;
-            gnome.enable = true;
-            vicinae.enable = true;
-            hyprland.enable = true;
-            hyprpaper.enable = true;
-            gtk.enable = true;
+            nixvim.enable = false;
         };
 
         programs = {
@@ -102,25 +91,13 @@
                     pkgs.vimPlugins.everforest
                 ];
             };
-
-            vesktop.vencord.settings.enabledThemes = [ "nordic.vencord.css" ];
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
-            gtk-theme = lib.mkForce "Everforest-Dark-Soft";
-            accent-color = lib.mkDefault "blue";
+            accent-color = lib.mkDefault "green";
             color-scheme = lib.mkForce "prefer-dark";
             font-antialiasing = lib.mkDefault "standard";
             font-hinting = lib.mkDefault "full";
-            font-name = lib.mkDefault "Ubuntu Sans 12";
-            monospace-font-name = lib.mkDefault "Ubuntu Sans Mono 12";
-            icon-theme = lib.mkDefault "Papirus-Dark";
         };
-
-        dconf.settings."org/gnome/desktop/wm/preferences" = {
-            theme = "Everforest-Dark-Soft";
-        };
-
-        programs.ghostty.settings.theme = "Everforest";
     };
 }

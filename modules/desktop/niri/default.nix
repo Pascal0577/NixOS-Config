@@ -45,6 +45,7 @@ in
     services.displayManager.ly.enable = true;
 
     home-manager.users.${username} = {
+        stylix.targets.niri.enable = true;
         programs.niri.settings = with config.home-manager.users.${username}.lib.niri.actions; {
             hotkey-overlay.skip-at-startup = true;
             prefer-no-csd = true;
@@ -208,16 +209,6 @@ in
                 border = {
                     enable = true;
                     width = 4;
-                    active = {
-                        gradient = {
-                            angle = 45;
-                            from = "#8fbcbb";
-                            to = "#88c0d0";
-                            relative-to = "workspace-view";
-                        };
-                    };
-                    inactive.color = "#505050";
-                    urgent.color = "#9b0000";
                 };
 
                 shadow = {
