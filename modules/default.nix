@@ -12,7 +12,7 @@
         ./services.nix
         ./virtualization.nix
         ./zig.nix
-        ./themes/tokyonight.nix
+        ./themes/everforest.nix
         ./applications/discord.nix
         ./applications/fastfetch.nix
         ./applications/ghostty.nix

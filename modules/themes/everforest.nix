@@ -59,11 +59,7 @@
         };
 
         targets = {
-            kmscon.enable = true;
-            console.enable = true;
-            nixos-icons.enable = true;
-            gnome.enable = true;
-            gtk.enable = true;
+            plymouth.enable = false;
             qt.enable = false;
         };
     };
