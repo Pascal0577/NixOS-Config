@@ -12,6 +12,7 @@
                 confirm-close-surface = false;
                 quit-after-last-window-closed = true;
                 quit-after-last-window-closed-delay = "1h";
+                clipboard-paste-protection = false;
             };
         };
     };

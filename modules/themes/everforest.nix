@@ -75,6 +75,13 @@
         };
 
         programs = {
+            vesktop.vencord.themes.stylix = lib.mkAfter ''
+                ::selection {
+                    background-color: #7FBBB3;
+                    color: #333C43;
+                }
+            '';
+
             nixvim = {
                 colorschemes.everforest = {
                     enable = true;
