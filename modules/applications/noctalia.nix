@@ -20,16 +20,6 @@
             inputs.noctalia.homeModules.default
         ];
 
-        home.file.".cache/noctalia/wallpapers.json" = {
-            text = builtins.toJSON {
-                defaultWallpaper = "${config.stylix.image}";
-                wallpapers = {
-                    "DP-1" = "${config.stylix.image}";
-                    "eDP-1" = "${config.stylix.image}";
-                };
-            };
-        };
-
         programs.niri.settings.binds = {
             "Mod+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
             "Ctrl+Alt+Delete".action.spawn-sh = "noctalia-shell ipc call sessionMenu toggle";
@@ -166,7 +156,7 @@
                 wallpaper = {
                     enabled = true;
                     overviewEnabled = false;
-                    directory = "/home/${username}/NixOS-Config/wallpapers/";
+                    directory = "/home/${username}/NixOS-Config/assets/";
                     monitorDirectories = [ ];
                     enableMultiMonitorDirectories = false;
                     recursiveSearch = false;
@@ -174,7 +164,7 @@
                     fillMode = "crop";
                     fillColor = "#000000";
                     randomEnabled = false;
-                    wallpaperChangeMode = "random";
+                    wallpaperChangeMode = "none";
                     randomIntervalSec = 300;
                     transitionDuration = 1500;
                     transitionType = "random";
@@ -300,7 +290,6 @@
                 };
                 colorSchemes = {
                     useWallpaperColors = false;
-                    predefinedScheme = "Nord";
                     darkMode = true;
                     matugenSchemeType = "scheme-fruit-salad";
                     generateTemplatesForPredefined = false;

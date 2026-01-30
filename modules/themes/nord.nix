@@ -1,4 +1,5 @@
-{ pkgs, inputs, username, lib, ... }:
+{ pkgs, inputs, username, lib, config, ... }:
+
 {
     imports = [
         inputs.stylix.nixosModules.stylix
@@ -105,6 +106,16 @@
             };
 
             vesktop.vencord.settings.enabledThemes = [ "nordic.vencord.css" ];
+        };
+
+        home.file.".cache/noctalia/wallpapers.json" = {
+            text = builtins.toJSON {
+                defaultWallpaper = "${config.stylix.image}";
+                wallpapers = {
+                    "DP-1" = "${config.stylix.image}";
+                    "eDP-1" = "${config.stylix.image}";
+                };
+            };
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
