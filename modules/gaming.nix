@@ -1,13 +1,6 @@
 { pkgs, inputs, ... }:
-let
-    gamePkgs = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system};
-in
-{
-    nix.settings = {
-        substituters = ["https://nix-gaming.cachix.org"];
-        trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
-    };
 
+{
     environment.systemPackages = with pkgs; [
         mangohud
         heroic
@@ -31,7 +24,7 @@ in
         };
 
         steam = {
-            enable = true;
+            enable = false;
             remotePlay.openFirewall = true;
             dedicatedServer.openFirewall = true;
             localNetworkGameTransfers.openFirewall = true;
