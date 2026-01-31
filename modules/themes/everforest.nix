@@ -53,9 +53,9 @@
 
         icons = {
             enable = true;
-            package = pkgs.everforest-gtk-theme;
-            dark = "Everforest-Dark";
-            light = "Everforest-Light";
+            package = pkgs.papirus-icon-theme;
+            dark = "Papirus";
+            light = "Papirus";
         };
 
         targets = {
