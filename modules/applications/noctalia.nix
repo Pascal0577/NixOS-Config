@@ -1,4 +1,4 @@
-{ inputs, username, lib, config, ... }:
+{ inputs, username, lib, config, pkgs, ... }:
 
 {
     imports = [
@@ -14,6 +14,8 @@
     environment.sessionVariables = {
         QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
     };
+
+    environment.systemPackages = [ pkgs.gpu-screen-recorder ];
 
     home-manager.users.${username} = {
         imports = [
@@ -89,6 +91,9 @@
                             }
                         ];
                         right = [
+                            {
+                                id = "plugin:screen-recorder";
+                            }
                             {
                                 id = "Tray";
                                 drawerEnabled = false;
