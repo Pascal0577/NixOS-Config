@@ -34,7 +34,7 @@
                 name = "JetBrainsMono Nerd Font";
                 package = pkgs.nerd-fonts.jetbrains-mono;
             }];
-            package = pkgs.callPackage ../packages/kmscon {};
+            # package = pkgs.callPackage ../packages/kmscon {};
         };
     };
 
