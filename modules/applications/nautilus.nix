@@ -1,6 +1,11 @@
 { pkgs, username, ... }:
 {
-    environment.systemPackages = [ pkgs.nautilus ];
+    environment.systemPackages = with pkgs; [ 
+        nautilus
+        unzip
+        cabextract
+    ];
+
     services.gvfs.enable = true;
 
     programs.nautilus-open-any-terminal = {

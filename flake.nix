@@ -20,9 +20,6 @@
         lanzaboote.url = "github:nix-community/lanzaboote";
         lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
-        nix-gaming.url = "github:fufexan/nix-gaming";
-        nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
-
         quickshell.url = "github:outfoxxed/quickshell";
         quickshell.inputs.nixpkgs.follows = "nixpkgs";
 
