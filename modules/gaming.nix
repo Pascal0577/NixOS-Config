@@ -8,7 +8,7 @@
 
     programs.gamemode = {
         enable = true;
-        renice = 10;
+        settings.general.renice = 10;
     };
 
     home-manager.users.${username} = {
