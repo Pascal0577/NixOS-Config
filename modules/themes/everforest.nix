@@ -1,4 +1,5 @@
 { pkgs, inputs, username, lib, ... }:
+
 {
     imports = [
         inputs.stylix.nixosModules.stylix

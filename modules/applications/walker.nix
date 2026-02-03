@@ -1,4 +1,5 @@
 { username, inputs, pkgs, ... }:
+
 {
     nix.settings = {
         extra-substituters = [
