@@ -1,4 +1,4 @@
-{ pkgs, username, inputs, ... }:
+{ pkgs, username, ... }:
 
 {
     environment.pathsToLink = [ "/share/zsh" ];
@@ -86,7 +86,8 @@
                     zstyle ':fzf-tab:complete:*' fzf-preview '
                         case "$realpath" in
                             *.pdf) pdftotext "$realpath" - | head -200 ;;
-                            *.tar.gz|*.tgz|*.zst) tar -tzf "$realpath" ;;
+                            *.tar.gz|*.tgz) tar -tzf "$realpath" ;;
+                            *.tar*) tar -tf "$realpath" ;;
                             *.zip) unzip -l "$realpath" ;;
                             *.md) glow -s dark "$realpath" ;;
                             *)
