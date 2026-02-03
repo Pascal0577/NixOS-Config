@@ -9,7 +9,6 @@
         ./locale-time.nix
         ./power-management.nix
         ./shell.nix
-        ./services.nix
         ./virtualization.nix
         ./zig.nix
         ./themes/everforest.nix
@@ -23,6 +22,7 @@
         ./applications/obs-studio.nix
         ./applications/swayidle.nix
         ./applications/zen-browser.nix
+        ./services
     ];
 
     environment = {
