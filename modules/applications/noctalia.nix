@@ -62,7 +62,8 @@
                                 showCpuTemp = true;
                                 showCpuUsage = true;
                                 showGpuUsage = true;
-                                showDiskUsage = true;
+                                showSwapUsage = true;
+                                showDiskUsage = false;
                                 diskPath = "/";
                             }
                             {
