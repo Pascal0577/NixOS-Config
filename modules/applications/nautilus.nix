@@ -1,4 +1,5 @@
 { pkgs, username, ... }:
+
 {
     environment.systemPackages = with pkgs; [ 
         nautilus
