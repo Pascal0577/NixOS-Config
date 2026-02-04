@@ -33,7 +33,7 @@
             portalPackage = null;
             settings = {
                 monitor = [
-                    "eDP-1, 1920x1200@165, 0x0, 1, bitdepth, 10"
+                    "eDP-1, 1920x1080@60, 0x0, 1, bitdepth, 10"
                 ];
                 "$mod" = "SUPER";
                 bind = [
