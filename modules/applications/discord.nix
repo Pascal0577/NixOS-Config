@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ username, pkgs, lib, config, ... }:
 
 {
     environment.systemPackages = [ pkgs.gajim ];
@@ -24,19 +24,28 @@
                 enableSplashScreen = false;
             };
 
-            vencord.settings = {
-                autoUpdate = true;
-                useQuickCss = true;
-                plugins = {
-                    FakeNitro.enabled = true;
-                    FixYoutubeEmbeds.enabled = true;
-                    YoutubeAdblock.enabled = true;
-                    BetterUploadButton.enabled = true;
-                    WebScreenShareFixes.enabled = true;
-                    FixImagesQuality.enabled = true;
-                    NoTrack = {
-                        enabled = true;
-                        disableAnalytics = true;
+            vencord = {
+                themes.stylix = lib.mkAfter ''
+                    ::selection {
+                        background-color: #${config.lib.stylix.colors.base02-hex};
+                        color: #${config.lib.stylix.colors.base05-hex};
+                    }
+                '';
+
+                settings = {
+                    autoUpdate = true;
+                    useQuickCss = true;
+                    plugins = {
+                        FakeNitro.enabled = true;
+                        FixYoutubeEmbeds.enabled = true;
+                        YoutubeAdblock.enabled = true;
+                        BetterUploadButton.enabled = true;
+                        WebScreenShareFixes.enabled = true;
+                        FixImagesQuality.enabled = true;
+                        NoTrack = {
+                            enabled = true;
+                            disableAnalytics = true;
+                        };
                     };
                 };
             };
