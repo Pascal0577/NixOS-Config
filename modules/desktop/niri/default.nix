@@ -119,6 +119,7 @@ in
                     action = toggle-keyboard-shortcuts-inhibit;
                     allow-inhibiting = false;
                 };
+                "Mod+Space".action.spawn = [ "vicinae vicinae://toggle" ];
 
                 # Execs
                 "Print".action.screenshot = [];
