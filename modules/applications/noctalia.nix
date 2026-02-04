@@ -22,10 +22,10 @@
             inputs.noctalia.homeModules.default
         ];
 
-        #programs.niri.settings.binds = {
-        #    "Mod+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
-        #    "Ctrl+Alt+Delete".action.spawn-sh = "noctalia-shell ipc call sessionMenu toggle";
-        #};
+        programs.niri.settings.binds = {
+            "Mod+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
+            "Ctrl+Alt+Delete".action.spawn-sh = "noctalia-shell ipc call sessionMenu toggle";
+        };
 
         programs.noctalia-shell = {
             enable = true;
