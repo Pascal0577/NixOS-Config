@@ -119,13 +119,13 @@ in
                     action = toggle-keyboard-shortcuts-inhibit;
                     allow-inhibiting = false;
                 };
-                "Mod+Space".action.spawn = [ "vicinae vicinae://toggle" ];
 
                 # Execs
                 "Print".action.screenshot = [];
                 "Shift+Print".action.screenshot-screen = [];
                 "Ctrl+Print".action.screenshot-window = [];
                 "Mod+Return".action.spawn = [ "ghostty" "+new-window" ];
+                "Mod+Space".action.spawn = [ "vicinae" "vicinae://toggle" ];
 
                 # Control keys
                 "XF86AudioPlay" = {
@@ -163,6 +163,14 @@ in
                 "XF86AudioMute" = {
                     allow-when-locked = true;
                     action = spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+                };
+                "XF86MonBrightnessUp" = {
+                    allow-when-locked = true;
+                    action.spawn = [ "${lib.getExe pkgs.brightnessctl}" "set" "5%+" ];
+                };
+                "XF86MonBrightnessDown" = {
+                    allow-when-locked = true;
+                    action.spawn = [ "${lib.getExe pkgs.brightnessctl}" "set" "5%-" ];
                 };
             };
 
