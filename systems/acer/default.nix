@@ -3,6 +3,7 @@
 {
     imports = [
         ./hardware-configuration.nix
+        ../../modules/applications/discord.nix
         ../../modules/desktop/niri
     ];
 
