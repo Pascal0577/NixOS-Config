@@ -12,7 +12,6 @@
         ./virtualization.nix
         ./zig.nix
         ./themes/everforest.nix
-        ./applications/discord.nix
         ./applications/fastfetch.nix
         ./applications/ghostty.nix
         ./applications/git.nix
