@@ -39,10 +39,10 @@
         vicinae.url = "github:vicinaehq/vicinae";
         vicinae-extensions = {
             url = "github:vicinaehq/extensions";
-           inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        hyprland.url = "github:hyprwm/hyprland";
+        hyprland.url = "github:vaxerski/Hyprland/layouts-rethonked";
         mithril-shell.url = "github:andreashgk/mithril-shell";
     };
 

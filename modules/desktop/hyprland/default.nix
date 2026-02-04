@@ -7,6 +7,11 @@
         trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
 
+    environment.pathsToLink = [
+        "/share/applications"
+        "/share/xdg-desktop-portal"
+    ];
+
     environment.systemPackages = with pkgs; [
         wl-clipboard
         hyprpaper
@@ -15,28 +20,29 @@
 
     imports = with inputs; [
         hyprland.nixosModules.default
-        ../../applications/walker.nix
+        ../../applications/vicinae.nix
+        ../../applications/noctalia.nix
     ];
 
-    programs.hyprland.enable = true;
-    services.displayManager.ly = {
-        enable = true;
-    };
+#    programs.hyprland = {
+#        enable = true;
+#        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+#    };
+    services.displayManager.ly.enable = true;
 
     home-manager.users.${username} = {
-        imports = [ inputs.mithril-shell.homeManagerModules.default ];
         wayland.windowManager.hyprland = {
             enable = true;
-            package = null;
-            portalPackage = null;
+            package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+            portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
             settings = {
                 monitor = [
-                    "eDP-1, 1920x1200@165, 0x0, 1"
+                    "eDP-1, 1920x1200@165, 0x0, 1, bitdepth, 10"
                 ];
                 "$mod" = "SUPER";
                 bind = [
                     "$mod, return, exec, ghostty"
-                    "$mod, SPACE, exec, nc -U /run/user/1000/walker/walker.sock"
+                    "$mod, SPACE, exec, vicinae vicinae://toggle"
                     "$mod, Q, killactive," 
                     "$mod, M, exit,"
                     "$mod, TAB, exec, nautilus"
@@ -101,7 +107,7 @@
 
                 general = {
                     border_size = 2;
-                    gaps_in = 8;
+                    gaps_in = 4;
                     gaps_out = 8;
                     float_gaps = 8;
                     gaps_workspaces = 8;
@@ -109,7 +115,7 @@
                     #"col.active_border" = "rgba(ffffffff)";
                     #"col.nogroup_border" = "rgba(ffffaaff)";
                     #"col.nogroup_border_active" = "rgba(ffff00ff)";
-                    layout = "master";
+                    layout = "scrolling";
                     no_focus_fallback = false;
                     resize_on_border = false;
                     extend_border_grab_area = 15;
@@ -177,9 +183,9 @@
                         "easeOut, 0.6, 1, 0.6, 1"
                     ];
                     animation = [
-                        "windows, 1, 1, easeOut, popin"
-                        "fade, 1, 1, easeOut"
-                        "workspaces, 1, 1, easeOut, slidevert"
+                        "windows, 1, 2, easeOut, popin"
+                        "fade, 1, 2, easeOut"
+                        "workspaces, 1, 2, easeOut, slidevert"
                         "specialWorkspace, 1, 1, easeOut, fade"
                     ];
                 };
@@ -343,7 +349,6 @@
                     movefocus_cycles_fullscreen = false;
                     movefocus_cycles_groupfirst = false;
                     disable_keybind_grabbing = false;
-                    window_direction_monitor_fallback = true;
                     allow_pin_fullscreen = false;
                     drag_threshold = 0;
                 };
@@ -392,11 +397,6 @@
                     zoom_disable_aa = false;
                 };
             };
-        };
-
-        services.mithril-shell = {
-            enable = true;
-            integrations.hyprland.enable = true;
         };
     };
 }

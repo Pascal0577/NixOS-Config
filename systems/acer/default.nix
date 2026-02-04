@@ -3,7 +3,7 @@
 {
     imports = [
         ./hardware-configuration.nix
-        ../../modules/desktop/niri
+        ../../modules/desktop/hyprland
     ];
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
