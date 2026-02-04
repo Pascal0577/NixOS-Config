@@ -7,11 +7,6 @@
         trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
 
-    environment.pathsToLink = [
-        "/share/applications"
-        "/share/xdg-desktop-portal"
-    ];
-
     environment.systemPackages = with pkgs; [
         wl-clipboard
         hyprpaper
@@ -24,17 +19,18 @@
         ../../applications/noctalia.nix
     ];
 
-#    programs.hyprland = {
-#        enable = true;
-#        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-#    };
+    programs.hyprland = {
+        enable = true;
+        withUWSM = true;
+    };
+
     services.displayManager.ly.enable = true;
 
     home-manager.users.${username} = {
         wayland.windowManager.hyprland = {
             enable = true;
-            package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-            portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+            package = null;
+            portalPackage = null;
             settings = {
                 monitor = [
                     "eDP-1, 1920x1200@165, 0x0, 1, bitdepth, 10"
