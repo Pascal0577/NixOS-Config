@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, lib, ... }:
+{ pkgs, inputs, username, lib, config, ... }:
 
 {
     imports = [
@@ -76,13 +76,6 @@
         };
 
         programs = {
-            vesktop.vencord.themes.stylix = lib.mkAfter ''
-                ::selection {
-                    background-color: #7FBBB3;
-                    color: #333C43;
-                }
-            '';
-
             nixvim = {
                 colorschemes.everforest = {
                     enable = true;
@@ -98,7 +91,6 @@
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
-            accent-color = lib.mkDefault "green";
             color-scheme = lib.mkForce "prefer-dark";
             font-antialiasing = lib.mkDefault "standard";
             font-hinting = lib.mkDefault "full";
