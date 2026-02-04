@@ -1,11 +1,12 @@
-{ username, ... }:
+{ username, pkgs, ... }:
 
 {
+    environment.systemPackages = [ pkgs.gajim ];
     home-manager.users.${username} = {
         home.file.".config/vesktop/settings/quickCss.css".text = ''
             body {
-              font-family: 'Ubuntu Sans';
-              font-weight: normal;
+                font-family: 'Ubuntu Sans';
+                font-weight: normal;
             }
         '';
 
