@@ -36,6 +36,11 @@
                     "eDP-1, 1920x1080@60, 0x0, 1, bitdepth, 10"
                 ];
                 "$mod" = "SUPER";
+
+                gesture = [
+                    "3, vertical, workspace"
+                ];
+
                 bind = [
                     "$mod, return, exec, ghostty"
                     "$mod, SPACE, exec, vicinae vicinae://toggle"
@@ -126,6 +131,11 @@
                         border_overlap = false;
                         respect_gaps = false;
                     };
+                };
+
+                scrolling = {
+                    fullscreen_on_one_column = true;
+                    follow_debounce_ms = 100;
                 };
 
                 decoration = {
@@ -234,7 +244,7 @@
                 };
 
                 gestures = {
-                    workspace_swipe_distance = 300;
+                    workspace_swipe_distance = 100;
                     workspace_swipe_touch = false;
                     workspace_swipe_invert = true;
                     workspace_swipe_touch_invert = false;

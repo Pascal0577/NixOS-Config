@@ -3,7 +3,7 @@
 {
     imports = [
         ./hardware-configuration.nix
-        ../../modules/desktop/hyprland
+        ../../modules/desktop/niri
     ];
     programs.niri.package = lib.mkForce pkgs.niri-stable;
 }
