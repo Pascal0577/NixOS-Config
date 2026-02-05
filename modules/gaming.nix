@@ -1,7 +1,7 @@
 { pkgs, username, ... }:
+
 {
     environment.systemPackages = with pkgs; [
-        heroic
         prismlauncher
     ];
 

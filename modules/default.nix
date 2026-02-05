@@ -15,6 +15,7 @@
         ./applications/fastfetch.nix
         ./applications/ghostty.nix
         ./applications/git.nix
+        ./applications/heroic.nix
         ./applications/mathematica.nix
         ./applications/nautilus.nix
         ./applications/neovim.nix
