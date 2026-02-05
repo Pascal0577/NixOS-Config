@@ -1,6 +1,11 @@
 { inputs, pkgs, username, ... }:
 
 {
+    imports = [
+        ./latex.nix
+        ./zig.nix
+    ];
+
     home-manager.users.${username} = {
         imports = [
             inputs.nixvim.homeModules.nixvim
