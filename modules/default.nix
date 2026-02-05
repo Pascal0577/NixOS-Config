@@ -2,25 +2,27 @@
 
 {
     imports = [
-        ./appimage.nix
         ./boot.nix
         ./gaming.nix
         ./locale-time.nix
         ./power-management.nix
-        ./shell.nix
-        ./virtualization.nix
         ./themes/everforest.nix
-        ./applications/neovim
+        ./services
+        ./applications/appimage.nix
         ./applications/fastfetch.nix
         ./applications/ghostty.nix
         ./applications/git.nix
         ./applications/heroic.nix
+        ./applications/kmscon.nix
         ./applications/mathematica.nix
+        ./applications/mullvad.nix
         ./applications/nautilus.nix
+        ./applications/neovim
         ./applications/obs-studio.nix
         ./applications/swayidle.nix
+        ./applications/virt-manager.nix
         ./applications/zen-browser.nix
-        ./services
+        ./applications/zsh.nix
     ];
 
     environment = {
