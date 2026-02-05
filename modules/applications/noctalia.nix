@@ -59,7 +59,7 @@
                                 diskPath = "/";
                             }
                             {
-                                displayMode = "alwaysShow";
+                                displayMode = "icon-always";
                                 id = "Battery";
                                 showNoctaliaPerformance = true;
                                 showPowerProfiles = true;
