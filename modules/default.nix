@@ -1,13 +1,13 @@
-{ hostname, username, inputs, pkgs, ... }:
+{ hostname, pkgs, ... }:
 
 {
     imports = [
         ./boot.nix
-        ./gaming.nix
         ./locale-time.nix
         ./power-management.nix
-        ./themes/everforest.nix
         ./services
+        ./users.nix
+        ./themes/everforest.nix
         ./applications/appimage.nix
         ./applications/fastfetch.nix
         ./applications/ghostty.nix
@@ -25,29 +25,14 @@
         ./applications/zsh.nix
     ];
 
-    environment = {
-        systemPackages = with pkgs; [
-            playerctl
-            losslesscut-bin
-            pinta
-            deluge
-            onlyoffice-desktopeditors
-        ];
-
-        sessionVariables = {
-            NIXOS_OZONE_WL = "1";
-        };
-    };
-
-    hardware = {
-        bluetooth.enable = true;
-        graphics.enable = true;
-    };
-
-    nix.settings = {
-        experimental-features = [ "nix-command" "flakes" ];
-        trusted-users = [ "${username}" ];
-    };
+    environment.systemPackages = with pkgs; [
+        playerctl
+        losslesscut-bin
+        pinta
+        deluge
+        onlyoffice-desktopeditors
+        prismlauncher
+    ];
 
     networking = {
         hostName = hostname;
@@ -61,26 +46,6 @@
     };
 
     security.rtkit.enable = true;
-
-    users.users.${username} = {
-        isNormalUser = true;
-        description = "Pascal";
-        extraGroups = [ "networkmanager" "wheel" ];
-        packages = with pkgs; [
-            home-manager
-            nh
-        ];
-    };
-
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-    home-manager.extraSpecialArgs = { inherit inputs username; };
-    home-manager.users.${username} = {
-        home.username = username;
-        home.homeDirectory = "/home/${username}";
-        home.stateVersion = "25.11";
-        programs.home-manager.enable = true;
-    };
 
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "26.05";

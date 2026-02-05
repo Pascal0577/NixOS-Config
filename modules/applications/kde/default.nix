@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, config, lib, ... }:
+{ pkgs, inputs, username, ... }:
 
 {
     services = {
@@ -7,25 +7,27 @@
         displayManager.sddm.wayland.enable = true;
     };
 
-    environment.plasma6.excludePackages = with pkgs.kdePackages; [
-        elisa
-        kdepim-runtime 
-        kmahjongg 
-        kmines 
-        konversation 
-        kpat 
-        ksudoku 
-        ktorrent 
-    ];
+    environment = {
+        sessionVariables = { NIXOS_OZONE_WL = "1"; };
+        systemPackages = with pkgs; [
+            papirus-icon-theme
+            kdePackages.karousel
+        ];
+        plasma6.excludePackages = with pkgs.kdePackages; [
+            elisa
+            kdepim-runtime 
+            kmahjongg 
+            kmines 
+            konversation 
+            kpat 
+            ksudoku 
+            ktorrent 
+        ];
+    };
 
     home-manager.users.${username} = {
         imports = [
             inputs.plasma-manager.homeModules.plasma-manager
-        ];
-
-        home.packages = with pkgs; [
-            papirus-icon-theme
-            kdePackages.karousel
         ];
 
         programs.plasma = {

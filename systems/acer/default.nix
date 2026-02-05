@@ -24,6 +24,7 @@
     );
 
     hardware = {
+        bluetooth.enable = true;
         nvidia = {
             open = true;
             modesetting.enable = true;
@@ -37,9 +38,10 @@
             };
         };
 
-        graphics.extraPackages = with pkgs; [
-            intel-media-driver
-        ];
+        graphics = {
+            enable = true;
+            extraPackages = [ pkgs.intel-media-driver ];
+        };
     };
 
     boot = {

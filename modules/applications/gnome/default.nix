@@ -6,11 +6,14 @@
         ./dash-to-dock.nix
     ];
 
-    environment.systemPackages = with pkgs; [
-        yaru-theme
-        icoextract
-        dconf-editor
-    ];
+    environment = {
+        sessionVariables = { NIXOS_OZONE_WL = "1"; };
+        systemPackages = with pkgs; [
+            yaru-theme
+            icoextract
+            dconf-editor
+        ];
+    };
 
     services.displayManager.gdm = {
         enable = true;

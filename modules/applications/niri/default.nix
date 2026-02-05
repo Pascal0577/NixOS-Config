@@ -35,12 +35,15 @@ in
         };
     };
 
-    environment.systemPackages = with pkgs; [
-        baobab
-        file-roller
-        totem
-        swaybg
-    ];
+    environment = {
+        sessionVariables = { NIXOS_OZONE_WL = "1"; };
+        systemPackages = with pkgs; [
+            baobab
+            file-roller
+            totem
+            swaybg
+        ];
+    };
 
     services.displayManager.ly.enable = true;
 
