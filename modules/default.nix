@@ -5,20 +5,18 @@
         ./appimage.nix
         ./boot.nix
         ./gaming.nix
-        ./latex.nix
         ./locale-time.nix
         ./power-management.nix
         ./shell.nix
         ./virtualization.nix
-        ./zig.nix
         ./themes/everforest.nix
+        ./applications/neovim
         ./applications/fastfetch.nix
         ./applications/ghostty.nix
         ./applications/git.nix
         ./applications/heroic.nix
         ./applications/mathematica.nix
         ./applications/nautilus.nix
-        ./applications/neovim.nix
         ./applications/obs-studio.nix
         ./applications/swayidle.nix
         ./applications/zen-browser.nix
