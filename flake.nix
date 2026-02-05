@@ -26,7 +26,7 @@
         noctalia.url = "github:noctalia-dev/noctalia-shell";
         noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
-        stylix.url = "github:Pascal0577/stylix/zen-browser-selection-css";
+        stylix.url = "github:nix-community/stylix";
         stylix.inputs.nixpkgs.follows = "nixpkgs";
 
         elephant.url = "github:abenz1267/elephant";
