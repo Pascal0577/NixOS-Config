@@ -44,9 +44,6 @@
             settings = {
                 "org/gnome/shell" = {
                     disable-user-extensions = false;
-                    enabled-extensions = with pkgs.gnomeExtensions; [
-                        dash-to-dock.extensionUuid
-                    ];
                     favorite-apps = [
                         "com.mitchellh.ghostty.desktop"
                         "zen-beta.desktop"
