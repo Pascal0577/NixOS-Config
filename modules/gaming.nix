@@ -1,8 +1,10 @@
 { pkgs, username, ... }:
-
+let
+    heroic-old = pkgs.callPackage ../packages/heroic_2_18 {};
+in
 {
     environment.systemPackages = with pkgs; [
-        heroic
+        heroic-old
         prismlauncher
     ];
 
