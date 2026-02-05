@@ -9,8 +9,8 @@ in
 {
     imports = [
         inputs.niri.nixosModules.niri
-        ../../applications/noctalia.nix
-        ../../applications/vicinae.nix
+        ../vicinae.nix
+        ../noctalia.nix
     ];
 
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];

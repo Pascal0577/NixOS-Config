@@ -3,7 +3,7 @@
 {
     imports = [
         ./hardware-configuration.nix
-        ../../modules/desktop/niri
+        ../../modules/applications/niri
     ];
     programs.niri.package = lib.mkForce pkgs.niri-stable;
 }

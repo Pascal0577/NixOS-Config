@@ -5,7 +5,7 @@
         ./hardware-configuration.nix
         ../../modules/gaming.nix
         ../../modules/applications/discord.nix
-        ../../modules/desktop/niri
+        ../../modules/applications/niri
     ];
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
