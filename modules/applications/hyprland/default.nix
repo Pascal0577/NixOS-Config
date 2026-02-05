@@ -15,8 +15,8 @@
 
     imports = with inputs; [
         hyprland.nixosModules.default
-        ../../applications/vicinae.nix
-        ../../applications/noctalia.nix
+        ../vicinae.nix
+        ../noctalia.nix
     ];
 
     programs.hyprland = {
