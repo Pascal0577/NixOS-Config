@@ -8,6 +8,7 @@
         ./git.nix
         ./heroic.nix
         ./kmscon.nix
+        ./launcher
         ./mathematica.nix
         ./mullvad.nix
         ./nautilus.nix
