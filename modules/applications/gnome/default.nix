@@ -15,12 +15,13 @@
         ];
     };
 
-    services.displayManager.gdm = {
-        enable = true;
-        wayland = true;
+    services = {
+        desktopManager.gnome.enable = true;
+        displayManager.gdm = {
+            enable = true;
+            wayland = true;
+        };
     };
-
-    services.desktopManager.gnome.enable = true;
 
     environment.gnome.excludePackages = (with pkgs; [
         yelp             epiphany
@@ -61,9 +62,7 @@
                 };
 
                 "org/gnome/desktop/wm/keybindings" = {
-                    toggle-fullscreen = [
-                        "F11"
-                    ];
+                    toggle-fullscreen = [ "F11" ];
                 };
 
                 "org/gnome/desktop/interface" = {
