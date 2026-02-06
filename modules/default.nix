@@ -1,11 +1,12 @@
 {
     imports = [
+        ./applications
         ./boot.nix
         ./locale-time.nix
+        ./networking.nix
         ./power-management.nix
         ./services
         ./users.nix
-        ./applications
     ];
 
     security.rtkit.enable = true;

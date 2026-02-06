@@ -1,7 +1,5 @@
 {
     imports = [
-        ./kmscon.nix
-        ./mullvad-vpn.nix
         ./pipewire.nix
         ./xserver.nix
     ];
