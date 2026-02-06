@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, ... }:
+{ inputs, pkgs, username, config, ... }:
 
 {
     nix.settings = {
@@ -18,7 +18,6 @@
 
     imports = with inputs; [
         hyprland.nixosModules.default
-        ../vicinae.nix
         ../noctalia.nix
     ];
 
@@ -46,7 +45,7 @@
 
                 bind = [
                     "$mod, return, exec, ghostty"
-                    "$mod, SPACE, exec, vicinae vicinae://toggle"
+                    "$mod, SPACE, exec, ${config.launcherCommand}"
                     "$mod, Q, killactive," 
                     "$mod, M, exit,"
                     "$mod, TAB, exec, nautilus"
