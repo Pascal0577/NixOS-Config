@@ -1,6 +1,7 @@
 { username, inputs, pkgs, ... }:
 
 {
+    launcherCommand = "nc -U /run/user/1000/walker/walker.sock";
     nix.settings = {
         extra-substituters = [
             "https://walker.cachix.org"
