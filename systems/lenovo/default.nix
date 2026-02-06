@@ -5,7 +5,7 @@
         ./hardware-configuration.nix
         ../../modules
         ../../modules/applications/niri
-        ../../modules/themes/everforest.nix
+        ../../modules/themes/valua.nix
     ];
 
     hardware = {
