@@ -9,7 +9,6 @@ in
 {
     imports = [
         inputs.niri.nixosModules.niri
-        ../vicinae.nix
         ../noctalia.nix
     ];
 
@@ -21,19 +20,8 @@ in
         package = niri-optimized;
     };
 
-    systemd.user.services.niri-flake-polkit = {
-        description = "PolicyKit Authentication Agent provided by niri-flake";
-        wantedBy = [ "niri.service" ];
-        after = [ "graphical-session.target" ];
-        partOf = [ "graphical-session.target" ];
-        serviceConfig = {
-            Type = "simple";
-            ExecStart = lib.mkForce "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-            Restart = "on-failure";
-            RestartSec = 1;
-            TimeoutStopSec = 10;
-        };
-    };
+    systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart = 
+        lib.mkForce "${lib.getExe pkgs.polkit_gnome}";
 
     environment = {
         sessionVariables = { NIXOS_OZONE_WL = "1"; };
