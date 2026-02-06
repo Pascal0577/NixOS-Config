@@ -5,7 +5,7 @@
         ./hardware-configuration.nix
         ../../modules
         ../../modules/applications/niri
-        ../../modules/themes/valua.nix
+        ../../modules/themes/sakura.nix
     ];
 
     hardware = {
