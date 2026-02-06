@@ -49,7 +49,7 @@
         cursor = {
             package = lib.mkDefault pkgs.bibata-cursors;
             name = "Bibata-Modern-Ice";
-            size = 32;
+            size = 24;
         };
 
         icons = {
