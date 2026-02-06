@@ -13,8 +13,10 @@
         ./nautilus.nix
         ./neovim
         ./obs-studio.nix
+        ./pipewire.nix
         ./swayidle.nix
         ./virt-manager.nix
+        ./xserver.nix
         ./zen-browser.nix
         ./zsh.nix
     ];

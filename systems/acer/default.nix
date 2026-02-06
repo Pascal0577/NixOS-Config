@@ -11,6 +11,8 @@
     ];
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+    services.printing.enable = true;
+
     programs.obs-studio.package = (
         pkgs.obs-studio.override {
             cudaSupport = true;
