@@ -47,31 +47,28 @@
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
-        let
-            username = "pascal";
-        in
     {
         nixosConfigurations = {
             nixos = nixpkgs.lib.nixosSystem {
                 specialArgs = {
-                    inherit inputs username;
+                    inherit inputs;
                     hostname = "nixos";
+                    username = "pascal";
                 };
                 modules = [
                     home-manager.nixosModules.home-manager
-                    ./modules
                     ./systems/acer
                 ];
             };
 
             lenovo = nixpkgs.lib.nixosSystem {
                 specialArgs = {
-                    inherit inputs username;
+                    inherit inputs;
                     hostname = "lenovo";
+                    username = "pascal";
                 };
                 modules = [
                     home-manager.nixosModules.home-manager
-                    ./modules
                     ./systems/lenovo
                 ];
             };

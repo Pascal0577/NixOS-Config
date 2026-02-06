@@ -3,7 +3,9 @@
 {
     imports = [
         ./hardware-configuration.nix
+        ../../modules
         ../../modules/applications/niri
+        ../../modules/themes/everforest.nix
     ];
 
     hardware = {

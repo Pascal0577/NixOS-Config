@@ -3,9 +3,11 @@
 {
     imports = [
         ./hardware-configuration.nix
-        ../../modules/gaming.nix
+        ../../modules
+        ../../modules/applications/heroic.nix
         ../../modules/applications/discord.nix
         ../../modules/applications/niri
+        ../../modules/themes/everforest.nix
     ];
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
