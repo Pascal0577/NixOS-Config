@@ -21,7 +21,7 @@ in
     };
 
     systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart = 
-        lib.mkForce "${lib.getExe pkgs.polkit_gnome}";
+        lib.mkForce "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
 
     environment = {
         sessionVariables = { NIXOS_OZONE_WL = "1"; };
@@ -116,7 +116,7 @@ in
                 "Shift+Print".action.screenshot-screen = [];
                 "Ctrl+Print".action.screenshot-window = [];
                 "Mod+Return".action.spawn = [ "ghostty" "+new-window" ];
-                "Mod+Space".action.spawn = [ "vicinae" "vicinae://toggle" ];
+                "Mod+Space".action.spawn-sh = [ "${config.launcherCommand}" ];
 
                 # Control keys
                 "XF86AudioPlay" = {
