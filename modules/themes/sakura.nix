@@ -79,7 +79,7 @@
         };
 
         dconf.settings."org/gnome/desktop/interface" = {
-            color-scheme = lib.mkForce "prefer-dark";
+            color-scheme = lib.mkForce "prefer-light";
             font-antialiasing = lib.mkDefault "standard";
             font-hinting = lib.mkDefault "full";
         };
