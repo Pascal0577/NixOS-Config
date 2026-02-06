@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, lib, config, ... }:
+{ pkgs, inputs, username, lib, ... }:
 
 {
     imports = [
@@ -48,7 +48,7 @@
 
         cursor = {
             package = lib.mkDefault pkgs.bibata-cursors;
-            name = "Bibata Modern Ice";
+            name = "Bibata-Modern-Ice";
             size = 32;
         };
 
@@ -70,6 +70,11 @@
             zen-browser = {
                 enable = true;
                 profileNames = [ "pascal" ];
+            };
+
+            nixvim = {
+                transparentBackground.numberLine = true;
+                transparentBackground.signColumn = true;
             };
         };
 
