@@ -1,7 +1,6 @@
-{ pkgs, lib, username, config, ... }:
+{ lib, username, config, ... }:
 
 {
-    environment.systemPackages = [ pkgs.dmenu ];
     services = {
         displayManager.ly.enable = true;
         xserver = {
