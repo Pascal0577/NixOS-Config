@@ -29,6 +29,10 @@
             ".config/oxwm/launcher.lua".text = ''
                 oxwm.key.bind({ "Mod4" }, "D", oxwm.spawn({ "sh", "-c", "${config.launcherCommand}" }))
             '';
+
+            ".config/oxwm/terminal.lua".text = ''
+                terminal = "${config.terminalOpenWindow}"
+            '';
         };
     };
 }

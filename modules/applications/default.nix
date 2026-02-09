@@ -5,7 +5,6 @@
         ./appimage.nix
         ./discord.nix
         ./fastfetch.nix
-        ./ghostty.nix
         ./git.nix
         ./heroic.nix
         ./kmscon.nix
@@ -17,6 +16,7 @@
         ./obs-studio.nix
         ./pipewire.nix
         ./swayidle.nix
+        ./terminal
         ./virt-manager.nix
         ./xserver.nix
         ./zen-browser.nix
