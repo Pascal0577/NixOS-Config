@@ -44,6 +44,9 @@
 
         hyprland.url = "github:vaxerski/Hyprland/layouts-rethonked";
         mithril-shell.url = "github:andreashgk/mithril-shell";
+
+        oxwm.url = "github:tonybanters/oxwm";
+        oxwm.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
