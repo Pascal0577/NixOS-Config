@@ -115,7 +115,7 @@ in
                 "Print".action.screenshot = [];
                 "Shift+Print".action.screenshot-screen = [];
                 "Ctrl+Print".action.screenshot-window = [];
-                "Mod+Return".action.spawn = [ "ghostty" "+new-window" ];
+                "Mod+Return".action.spawn-sh = [ "${config.terminalOpenWindow}" ];
                 "Mod+Space".action.spawn-sh = [ "${config.launcherCommand}" ];
 
                 # Control keys
