@@ -5,7 +5,7 @@
         ./hardware-configuration.nix
         ../../modules
         ../../modules/applications/heroic.nix
-        ../../modules/applications/oxwm
+        ../../modules/applications/hyprland
         ../../modules/themes/everforest.nix
     ];
 
