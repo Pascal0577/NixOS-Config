@@ -1003,6 +1003,26 @@
         "type": "github"
       }
     },
+    "oxwm": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769353233,
+        "narHash": "sha256-sw7VkfefdRr1H7wQnB5n+uAZTTRfFOVMPEDOkcw5tsk=",
+        "owner": "tonybanters",
+        "repo": "oxwm",
+        "rev": "115d06e029495531c127c7eccbd8ea79bf98946a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tonybanters",
+        "repo": "oxwm",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": "home-manager_3",
@@ -1101,6 +1121,7 @@
         "nixpkgs": "nixpkgs_5",
         "nixvim": "nixvim",
         "noctalia": "noctalia",
+        "oxwm": "oxwm",
         "plasma-manager": "plasma-manager",
         "quickshell": "quickshell",
         "stylix": "stylix",

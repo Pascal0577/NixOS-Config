@@ -2,8 +2,11 @@
 
 {
     environment.systemPackages = [ pkgs.dmenu ];
-    services.xserver = {
-        enable = lib.mkForce true;
-        windowManager.oxwm.enable = true;
+    services = {
+        displayManager.ly.enable = true;
+        xserver = {
+            enable = lib.mkForce true;
+            windowManager.oxwm.enable = true;
+        };
     };
 }
