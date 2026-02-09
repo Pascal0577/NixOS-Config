@@ -137,6 +137,8 @@
 
                 scrolling = {
                     fullscreen_on_one_column = true;
+                    follow_focus = true;
+                    follow_min_visible = 0.0;
                 };
 
                 decoration = {
@@ -187,13 +189,15 @@
                     enabled = true;
                     workspace_wraparound = false;
                     bezier = [
-                        "easeOut, 0.6, 1, 0.6, 1"
+                        "easeOut, 0.00, 0.00, 0.58, 1.00"
+                        "smooth, 0.6, 1, 0.6, 1"
+                        "easeInOut, 0.42, 0.00, 0.58, 1.00"
                     ];
                     animation = [
-                        "windows, 1, 2, easeOut, popin"
-                        "fade, 1, 2, easeOut"
-                        "workspaces, 1, 2, easeOut, slidevert"
-                        "specialWorkspace, 1, 1, easeOut, fade"
+                        "windows, 1, 1.6, easeInOut, popin 80%"
+                        "fade, 1, 2, easeInOut"
+                        "workspaces, 1, 1.6, easeInOut, slidevert"
+                        "specialWorkspace, 1, 1, easeInOut, fade"
                     ];
                 };
 
