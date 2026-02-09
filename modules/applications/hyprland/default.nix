@@ -44,7 +44,7 @@
                 ];
 
                 bind = [
-                    "$mod, return, exec, ghostty"
+                    "$mod, return, exec, ${config.terminalOpenWindow}"
                     "$mod, SPACE, exec, ${config.launcherCommand}"
                     "$mod, Q, killactive," 
                     "$mod, M, exit,"
