@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 
 {
     options = {
@@ -10,10 +10,10 @@
 
         terminalRunCommand = lib.mkOption {
             type = lib.types.str;
-            default = "ghostty -e";
+            default = "${config.terminalOpenWindow} -e";
             description = "Command used to run a command in a new terminal window";
         };
     };
 
-    imports = [ ./ghostty.nix ];
+    imports = [ ./alacritty.nix ];
 }
