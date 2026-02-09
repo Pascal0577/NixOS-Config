@@ -7,5 +7,5 @@
         description = "Command used to open the launcher";
     };
 
-    imports = [ ./vicinae.nix ];
+    imports = [ ./dmenu.nix ];
 }
