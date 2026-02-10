@@ -15,5 +15,5 @@
         };
     };
 
-    imports = [ ./alacritty.nix ];
+    imports = [ ./ghostty.nix ];
 }
