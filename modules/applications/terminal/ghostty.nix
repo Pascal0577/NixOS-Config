@@ -1,8 +1,8 @@
 { username, ... }:
 
 {
-    environment.sessionVariables = { TERMINAL="ghostty"; };
-
+    terminalRunCommand = "ghostty -e";
+    terminalOpenWindow = "ghostty +new-window";
     home-manager.users.${username} = {
         programs.ghostty = {
             enable = true;

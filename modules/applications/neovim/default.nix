@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, ... }:
+{ inputs, pkgs, username, config, ... }:
 
 {
     imports = [
@@ -7,15 +7,7 @@
     ];
 
     home-manager.users.${username} = {
-        imports = [
-            inputs.nixvim.homeModules.nixvim
-        ];
-
-        home.packages = with pkgs; [
-            (writeShellScriptBin "nvim-wrapper" ''
-                exec ${"$"}TERMINAL -e nvim "$@"
-            '')
-        ];
+        imports = [ inputs.nixvim.homeModules.nixvim ];
 
         programs.nixvim = {
             enable = true;
@@ -155,7 +147,7 @@
                                 #        [ "kind_icon" "kind" ]
                                 #        [ "label" "label_description" ]
                                 #    ];
-                                    treesitter = [ "lsp" ];  # Show treesitter info for LSP items
+                                    treesitter = [ "lsp" ];
                                 };
                             };
                             ghost_text.enabled = false;
@@ -193,9 +185,7 @@
 
                 indent-blankline = {
                     enable = true;
-                    settings = {
-                        indent.char = "│";
-                    };
+                    settings.indent.char = "│";
                 };
 
                 treesitter = {
@@ -209,9 +199,7 @@
                 nvim-tree = {
                     enable = true;
                     autoClose = false;
-                    settings = {
-                        tab.sync.open = true;
-                    };
+                    settings.tab.sync.open = true;
                 };
 
                 lualine.enable = true;
@@ -243,7 +231,7 @@
             name = "Neovim";
             genericName = "Text Editor";
             comment = "Edit text files";
-            exec = "nvim-wrapper %F";
+            exec = "${config.terminalRunCommand} nvim %F";
             terminal = false;
             icon = "nvim";
             categories = [ "Utility" "TextEditor" ];
