@@ -4,6 +4,7 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules
+        ../../modules/applications/terminal/alacritty.nix
         ../../modules/themes/everforest.nix
     ];
 
