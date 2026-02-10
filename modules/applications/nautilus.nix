@@ -7,11 +7,8 @@
         cabextract
     ];
 
+    programs.nautilus-open-any-terminal.enable = true;
     services.gvfs.enable = true;
-
-    programs.nautilus-open-any-terminal = {
-        enable = true;
-    };
 
     home-manager.users.${username} = {
         dconf.settings."org/gnome/nautilus/preferences" = {
