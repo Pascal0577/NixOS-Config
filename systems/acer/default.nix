@@ -4,6 +4,7 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules
+        ../../modules/applications/launcher/vicinae.nix
         ../../modules/applications/terminal/ghostty.nix
         ../../modules/applications/heroic.nix
         ../../modules/themes/everforest.nix

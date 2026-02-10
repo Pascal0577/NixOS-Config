@@ -14,6 +14,4 @@
             description = "Command used to run a command in a new terminal window";
         };
     };
-
-    # imports = [ ./ghostty.nix ];
 }

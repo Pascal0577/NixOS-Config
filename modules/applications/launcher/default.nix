@@ -6,6 +6,4 @@
         default = "vicinae vicinae://toggle";
         description = "Command used to open the launcher";
     };
-
-    imports = [ ./fuzzel.nix ];
 }
