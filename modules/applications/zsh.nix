@@ -5,16 +5,15 @@
     programs.zsh.enable = true;
     users.users.${username}.shell = pkgs.zsh;
 
-    home-manager.users.${username} = {
-        home.packages = with pkgs; [
-            fzf
-            eza
-            zoxide
-            bat
-            glow
-            poppler-utils
-        ];
+    environment.systemPackages = with pkgs; [
+        fzf
+        eza
+        zoxide
+        glow
+        poppler-utils
+    ];
 
+    home-manager.users.${username} = {
         programs = {
             fzf.enableZshIntegration = true;
             eza.enableZshIntegration = true;
@@ -22,8 +21,6 @@
             
             zsh = {
                 enable = true;
-                autosuggestion.enable = true;
-                enableCompletion = true;
                 history = {
                     size = 1000;
                     save = 1000;
@@ -38,9 +35,7 @@
                 shellAliases = {
                     ls = "eza --color=always --icons=always --group-directories-first -a";
                     lsl = "eza --color=always --icons=always --group-directories-first -lAh --total-size";
-                    nviz = "nvim $(fzf)";
                     nivm = "nvim";
-                    cat = "bat --theme Nord -p -u -P";
                 };
 
                 initContent = ''
@@ -65,10 +60,12 @@
                     zinit ice wait'0' lucid
                     zinit light zdharma-continuum/fast-syntax-highlighting
                     zinit light Aloxaf/fzf-tab
+                    zinit light zsh-users/zsh-autosuggestions
+                    zinit light zsh-users/zsh-completions
 
                     zinit cdreplay -q
 
-                    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+                    [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
                     bindkey -e
                     bindkey '^p' history-search-backward
