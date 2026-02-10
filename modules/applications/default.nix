@@ -13,6 +13,7 @@
         ./mullvad.nix
         ./nautilus.nix
         ./neovim
+        ./niri
         ./obs-studio.nix
         ./pipewire.nix
         ./swayidle.nix

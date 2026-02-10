@@ -4,7 +4,6 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/applications/oxwm
         ../../modules/themes/everforest.nix
     ];
 
