@@ -1,15 +1,17 @@
-{ username, ... }:
+{ username, config, ... }:
 
 {
     launcherCommand = "fuzzel";
     home-manager.users.${username} = {
         programs.fuzzel = {
             enable = true;
-              main = {
-                    # terminal = "${pkgs.foot}/bin/foot";
+            settings = {
+                main = {
+                    terminal = "${config.terminalOpenWindow}";
                     layer = "overlay";
-              };
-              colors.background = "ffffffff";
+                };
+                border.width = 4;
+            };
         };
     };
 }
