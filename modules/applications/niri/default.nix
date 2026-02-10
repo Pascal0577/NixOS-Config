@@ -98,6 +98,7 @@ in
                 "Mod+T".action = toggle-column-tabbed-display;
                 "Mod+Shift+E".action = quit;
                 "Mod+C".action = center-column;
+                "Mod+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
                 "Mod+O" = { 
                     action = toggle-overview;
                     repeat = false;
@@ -272,12 +273,10 @@ in
                 After = "graphical-session.target";
                 Requisite = "graphical-session.target";
             };
-
             Service = {
                 ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i ${config.stylix.image}";
                 Restart = "on-failure";
             };
-
             Install = {
                 WantedBy = [ "graphical-session.target" ];
             };

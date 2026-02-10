@@ -1,9 +1,7 @@
 { inputs, username, lib, pkgs, ... }:
 
 {
-    imports = [
-        inputs.noctalia.nixosModules.default
-    ];
+    imports = [ inputs.noctalia.nixosModules.default ];
 
     services = {
         noctalia-shell.enable = true;
@@ -18,15 +16,10 @@
     environment.systemPackages = [ pkgs.gpu-screen-recorder ];
 
     home-manager.users.${username} = {
-        imports = [
-            inputs.noctalia.homeModules.default
-        ];
-
-        # programs.niri.settings.binds."Mod+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
+        imports = [ inputs.noctalia.homeModules.default ];
 
         programs.noctalia-shell = {
             enable = true;
-
             settings = {
                 settingsVersion = 16;
                 setupCompleted = true;
