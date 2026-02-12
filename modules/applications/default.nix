@@ -3,6 +3,7 @@
 {
     imports = [
         ./appimage.nix
+        ./bash.nix
         ./discord.nix
         ./fastfetch.nix
         ./git.nix
