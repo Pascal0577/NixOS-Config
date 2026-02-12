@@ -1,6 +1,7 @@
-{ username, ... }:
+{ pkgs, username, ... }:
 
 {
+    terminalPackage = pkgs.alacritty;
     terminalOpenWindow = "alacritty";
     home-manager.users.${username} = {
         programs.alacritty = {

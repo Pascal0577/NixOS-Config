@@ -1,7 +1,13 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
     options = {
+        terminalPackage = lib.mkOption {
+            type = lib.types.package;
+            default = pkgs.ghostty;
+            description = "Terminal package";
+        };
+
         terminalOpenWindow = lib.mkOption {
             type = lib.types.str;
             default = "ghostty +new-window";

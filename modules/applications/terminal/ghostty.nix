@@ -1,6 +1,7 @@
-{ username, ... }:
+{ pkgs, username, ... }:
 
 {
+    terminalPackage = pkgs.ghostty;
     terminalRunCommand = "ghostty -e";
     terminalOpenWindow = "ghostty +new-window";
     home-manager.users.${username} = {
