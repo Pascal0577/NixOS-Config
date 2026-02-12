@@ -260,6 +260,12 @@ in
                     }];
                     # variable-refresh-rate = true;
                 }
+                {
+                    matches = [{
+                        app-id = "my.file-chooser";
+                    }];
+                    open-floating = true;
+                }
             ];
 
             switch-events = {
