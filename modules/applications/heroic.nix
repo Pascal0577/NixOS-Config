@@ -1,7 +1,7 @@
 { pkgs, username, ... }:
 
 {
-    environment.systemPackages = [ pkgs.heroic ];
+    environment.systemPackages = [ pkgs.heroic pkgs.wineWow64Packages.staging ];
 
     programs.gamemode = {
         enable = true;
