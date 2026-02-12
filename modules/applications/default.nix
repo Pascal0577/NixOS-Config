@@ -2,6 +2,7 @@
 
 {
     imports = [
+        ./thunar.nix
         ./appimage.nix
         ./discord.nix
         ./fastfetch.nix
