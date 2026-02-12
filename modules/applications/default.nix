@@ -2,17 +2,16 @@
 
 {
     imports = [
-        ./yazi.nix
         ./appimage.nix
         ./discord.nix
         ./fastfetch.nix
+        ./file-manager/yazi.nix
         ./git.nix
         ./heroic.nix
         ./kmscon.nix
         ./launcher
         ./mathematica.nix
         ./mullvad.nix
-        ./nautilus.nix
         ./neovim
         ./niri
         ./obs-studio.nix
