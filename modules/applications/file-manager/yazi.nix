@@ -30,29 +30,37 @@ let
     '';
 in
 {
-    programs.yazi = {
-        enable = true;
+    options.file-manager.yazi.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Enable my Yazi module";
     };
 
-    xdg.portal = {
-        enable = true;
-        extraPortals = with pkgs; [
-            xdg-desktop-portal-termfilechooser
-            xdg-desktop-portal-gnome
-        ];
-        config.common = {
-            default = [ "gnome" ];
-            "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+    config = lib.mkIf config.file-manager.yazi.enable {
+        file-manager.package = pkgs.yazi;
+
+        programs.yazi.enable = true;
+
+        xdg.portal = {
+            enable = true;
+            extraPortals = with pkgs; [
+                xdg-desktop-portal-termfilechooser
+                xdg-desktop-portal-gnome
+            ];
+            config.common = {
+                default = [ "gnome" ];
+                "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+            };
         };
-    };
 
-    home-manager.users.${username} = {
-        home.file.".config/xdg-desktop-portal-termfilechooser/config".text = ''
-            [filechooser]
-            cmd=${yaziChooser}
-            default_dir=$HOME
-            open_mode=suggested
-            save_mode=last
-        '';
+        home-manager.users.${username} = {
+            home.file.".config/xdg-desktop-portal-termfilechooser/config".text = ''
+                [filechooser]
+                cmd=${yaziChooser}
+                default_dir=$HOME
+                open_mode=suggested
+                save_mode=last
+            '';
+        };
     };
 }
