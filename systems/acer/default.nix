@@ -4,11 +4,14 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/applications/launcher/vicinae.nix
-        ../../modules/applications/terminal/ghostty.nix
-        ../../modules/applications/heroic.nix
         ../../modules/themes/everforest.nix
     ];
+
+    launcher.vicinae.enable = true;
+    terminal.ghostty.enable = true;
+    file-manager.yazi.enable = true;
+    desktop.niri.enable = true;
+    applications.noctalia.enable = true;
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     services.printing.enable = true;
