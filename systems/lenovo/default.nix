@@ -8,7 +8,7 @@
         ../../modules/themes/everforest.nix
     ];
 
-    terminal.alacritty = true;
+    terminal.alacritty.enable = true;
     launcher.fuzzel.enable = true;
 
     hardware = {

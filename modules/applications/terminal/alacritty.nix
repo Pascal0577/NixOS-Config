@@ -1,13 +1,13 @@
 { pkgs, username, lib, config, ... }:
 
 {
-    options.terminal.alacritty = lib.mkOption {
+    options.terminal.alacritty.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my Alacritty module";
     };
 
-    config = lib.mkIf config.terminal.alacritty {
+    config = lib.mkIf config.terminal.alacritty.enable {
         terminal.package = pkgs.alacritty;
         terminal.openWindow = "alacritty";
         home-manager.users.${username} = {
