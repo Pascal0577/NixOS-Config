@@ -1,7 +1,7 @@
 { username, pkgs, lib, config, ... }:
 
 {
-    option.applications.discord.enable = lib.mkOption {
+    options.applications.discord.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my discord module";
