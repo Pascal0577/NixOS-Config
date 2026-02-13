@@ -17,7 +17,7 @@ let
             set -- --chooser-file="$out" "$path"
         fi
 
-        ${lib.getExe config.terminalPackage} --class=my.file-chooser -e ${lib.getExe pkgs.yazi} "$@"
+        ${lib.getExe config.terminal.package} --class=my.file-chooser -e ${lib.getExe pkgs.yazi} "$@"
 
         if [ "$directory" = "1" ]; then
             if [ ! -s "$out" ] && [ -s "$out.1" ]; then
