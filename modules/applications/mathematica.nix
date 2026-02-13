@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 let
     mathematica-new = pkgs.mathematica-webdoc.override {
         source = pkgs.requireFile {
@@ -15,5 +15,13 @@ let
     };
 in
 {
-    environment.systemPackages = [ mathematica-new ];
+    options.applications.mathematica.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Whether to enable my Mathematica module";
+    };
+
+    config = lib.mkIf config.applications.mathematica.enable {
+        environment.systemPackages = [ mathematica-new ];
+    };
 }
