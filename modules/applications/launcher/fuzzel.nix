@@ -7,7 +7,7 @@
             enable = true;
             settings = {
                 main = {
-                    terminal = "${config.terminalOpenWindow}";
+                    terminal = "${config.terminal.openWindow}";
                     layer = "overlay";
                 };
                 border.width = 4;

@@ -116,7 +116,7 @@ in
                 "Print".action.screenshot = [];
                 "Shift+Print".action.screenshot-screen = [];
                 "Ctrl+Print".action.screenshot-window = [];
-                "Mod+Return".action.spawn-sh = [ "${config.terminalOpenWindow}" ];
+                "Mod+Return".action.spawn-sh = [ "${config.terminal.openWindow}" ];
                 "Mod+Space".action.spawn-sh = [ "${config.launcherCommand}" ];
 
                 # Control keys

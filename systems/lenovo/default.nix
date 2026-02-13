@@ -1,14 +1,16 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/applications/terminal/alacritty.nix
+        # ../../modules/applications/terminal/alacritty.nix
         ../../modules/applications/launcher/fuzzel.nix
         ../../modules/applications/swayidle.nix
         ../../modules/themes/everforest.nix
     ];
+
+    terminal.alacritty = true;
 
     hardware = {
         graphics.enable = true;
