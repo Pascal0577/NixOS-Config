@@ -4,7 +4,7 @@
     options.applications.appimage.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
-        descripton = "Whether to enable my AppImage module";
+        description = "Whether to enable my AppImage module";
     };
 
     config = lib.mkIf config.applications.appimage.enable {
