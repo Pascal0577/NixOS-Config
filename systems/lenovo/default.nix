@@ -4,8 +4,9 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/applications/launcher/fuzzel.nix
         ../../modules/applications/terminal/alacritty.nix
+        ../../modules/applications/launcher/fuzzel.nix
+        ../../modules/applications/swayidle.nix
         ../../modules/themes/everforest.nix
     ];
 
