@@ -44,8 +44,8 @@
                 ];
 
                 bind = [
-                    "$mod, return, exec, ${config.terminalOpenWindow}"
-                    "$mod, SPACE, exec, ${config.launcherCommand}"
+                    "$mod, return, exec, ${config.terminal.openWindow}"
+                    "$mod, SPACE, exec, ${config.launcher.command}"
                     "$mod, Q, killactive," 
                     "$mod, M, exit,"
                     "$mod, TAB, exec, nautilus"
