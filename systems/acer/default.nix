@@ -8,10 +8,11 @@
     ];
 
     launcher.vicinae.enable = true;
-    terminal.ghostty.enable = true;
+    terminal.alacritty.enable = true;
     file-manager.yazi.enable = true;
     desktop.niri.enable = true;
     applications.noctalia.enable = true;
+    applications.swayidle.enable = false;
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     services.printing.enable = true;
