@@ -1,10 +1,10 @@
-{ pkgs, username, config, lib, ... }:
+{ username, config, lib, ... }:
 
 {
     options.applications.fastfetch.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
-        descripton = "Whether to enable my fastfetch module";
+        description = "Whether to enable my fastfetch module";
     };
 
     config = lib.mkIf config.applications.fastfetch.enable {
