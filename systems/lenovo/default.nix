@@ -11,6 +11,7 @@
     terminal.alacritty.enable = true;
     launcher.fuzzel.enable = true;
     file-manager.yazi.enable = true;
+    desktop.niri.enable = true;
 
     hardware = {
         graphics.enable = true;
