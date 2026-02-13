@@ -16,6 +16,7 @@
         ./neovim
         ./obs-studio.nix
         ./pipewire.nix
+        ./swayidle.nix
         ./terminal
         ./virt-manager.nix
         ./xserver.nix
