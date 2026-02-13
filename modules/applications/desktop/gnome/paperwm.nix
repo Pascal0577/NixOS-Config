@@ -1,4 +1,4 @@
-{ pkgs, username, config, lib ... }:
+{ pkgs, username, config, lib, ... }:
 
 {
     options.desktop.gnome.paperwm.enable = lib.mkOption {
