@@ -7,6 +7,11 @@
         description = "Whether to enable my Hyprland module";
     };
 
+    imports = [
+        inputs.hyprland.nixosModules.default
+        ../../noctalia.nix
+    ];
+
     config = lib.mkIf config.desktop.hyprland.enable {
         nix.settings = {
             substituters = [ "https://hyprland.cachix.org" ];
@@ -22,11 +27,6 @@
                 hyprshot
             ];
         };
-
-        imports = with inputs; [
-            hyprland.nixosModules.default
-            ../noctalia.nix
-        ];
 
         programs.hyprland = {
             enable = true;

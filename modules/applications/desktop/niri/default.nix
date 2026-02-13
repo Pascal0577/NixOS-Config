@@ -7,17 +7,18 @@ let
     });
 in
 {
-    options.desktop.niri.enable = {
+    options.desktop.niri.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my Niri module";
     };
 
+    imports = [
+        inputs.niri.nixosModules.niri
+        ../../noctalia.nix
+    ];
+
     config = lib.mkIf config.desktop.niri.enable {
-        imports = [
-            inputs.niri.nixosModules.niri
-            ../noctalia.nix
-        ];
 
         nixpkgs.overlays = [ inputs.niri.overlays.niri ];
         niri-flake.cache.enable = true;

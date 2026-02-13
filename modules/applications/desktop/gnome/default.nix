@@ -6,12 +6,13 @@
         default = false;
         description = "Whether to enable my GNOME module";
     };
+
+    imports = [
+        ./paperwm.nix
+        ./dash-to-dock.nix
+    ];
     
     config = lib.mkIf config.desktop.gnome.enable {
-        imports = [
-            # ./paperwm.nix
-            ./dash-to-dock.nix
-        ];
 
         environment = {
             sessionVariables = { NIXOS_OZONE_WL = "1"; };
