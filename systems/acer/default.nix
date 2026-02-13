@@ -8,7 +8,7 @@
     ];
 
     launcher.vicinae.enable = true;
-    terminal.alacritty.enable = true;
+    terminal.foot.enable = true;
     file-manager.yazi.enable = true;
     desktop.niri.enable = true;
     applications.noctalia.enable = true;

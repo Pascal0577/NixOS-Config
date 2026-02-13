@@ -17,7 +17,7 @@ let
             set -- --chooser-file="$out" "$path"
         fi
 
-        ${lib.getExe config.terminal.package} --class=my.file-chooser -e ${lib.getExe pkgs.yazi} "$@"
+        ${lib.getExe pkgs.foot} --app-id=my.file-chooser -e ${lib.getExe pkgs.yazi} "$@"
 
         if [ "$directory" = "1" ]; then
             if [ ! -s "$out" ] && [ -s "$out.1" ]; then
@@ -54,6 +54,7 @@ in
         };
 
         home-manager.users.${username} = {
+            programs.foot.enable = true;
             home.file.".config/xdg-desktop-portal-termfilechooser/config".text = ''
                 [filechooser]
                 cmd=${yaziChooser}

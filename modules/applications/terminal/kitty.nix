@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
     options.terminal.kitty.enable = lib.mkOption {
@@ -14,6 +14,8 @@
             runCommand = "kitty -e";
         };
 
-        environment.systemPackages = [ pkgs.kitty ];
+        home-manager.users.${username} = {
+            programs.kitty.enable = true;
+        };
     };
 }
