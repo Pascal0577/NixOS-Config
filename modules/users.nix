@@ -16,13 +16,17 @@
         ];
     };
 
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-    home-manager.extraSpecialArgs = { inherit inputs username; };
-    home-manager.users.${username} = {
-        home.username = username;
-        home.homeDirectory = "/home/${username}";
-        home.stateVersion = "25.11";
-        programs.home-manager.enable = true;
+    home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = { inherit inputs username; };
+        users.${username} = {
+            programs.home-manager.enable = true;
+            home = {
+                username = username;
+                homeDirectory = "/home/${username}";
+                stateVersion = "25.11";
+            };
+        };
     };
 }
