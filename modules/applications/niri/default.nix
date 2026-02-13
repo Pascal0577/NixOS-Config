@@ -117,7 +117,7 @@ in
                 "Shift+Print".action.screenshot-screen = [];
                 "Ctrl+Print".action.screenshot-window = [];
                 "Mod+Return".action.spawn-sh = [ "${config.terminal.openWindow}" ];
-                "Mod+Space".action.spawn-sh = [ "${config.launcherCommand}" ];
+                "Mod+Space".action.spawn-sh = [ "${config.launcher.command}" ];
 
                 # Control keys
                 "XF86AudioPlay" = {
