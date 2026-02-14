@@ -44,7 +44,6 @@
         losslesscut-bin
         pinta
         deluge
-        prismlauncher
     ];
 
     security.rtkit.enable = true;
