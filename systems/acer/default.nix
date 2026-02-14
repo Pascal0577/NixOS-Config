@@ -7,7 +7,7 @@
         ../../modules/themes/everforest.nix
     ];
 
-    launcher.vicinae.enable = true;
+    launcher.fuzzel.enable = true;
     terminal.foot.enable = true;
     file-manager.yazi.enable = true;
     desktop.niri.enable = true;
