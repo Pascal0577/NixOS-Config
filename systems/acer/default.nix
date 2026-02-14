@@ -10,7 +10,7 @@
     launcher.fuzzel.enable = true;
     terminal.foot.enable = true;
     file-manager.yazi.enable = true;
-    desktop.niri.enable = true;
+    desktop.cosmic.enable = true;
     applications.swayidle.enable = false;
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];

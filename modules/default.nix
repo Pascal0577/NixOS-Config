@@ -30,6 +30,7 @@
         ./applications/desktop/niri
         ./applications/desktop/hyprland
         ./applications/desktop/oxwm
+        ./applications/desktop/cosmic
 
         ./boot.nix
         ./locale-time.nix
