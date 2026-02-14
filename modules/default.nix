@@ -5,16 +5,21 @@
         ./applications/appimage.nix
         ./applications/discord.nix
         ./applications/fastfetch.nix
+        ./applications/file-manager
         ./applications/git.nix
         ./applications/heroic.nix
         ./applications/kmscon.nix
+        ./applications/launcher
         ./applications/mathematica.nix
         ./applications/mullvad.nix
+        ./applications/neovim
         ./applications/noctalia.nix
         ./applications/obs-studio.nix
+        ./applications/onlyoffice.nix
         ./applications/pipewire.nix
         ./applications/ssh.nix
         ./applications/swayidle.nix
+        ./applications/terminal
         ./applications/virt-manager.nix
         ./applications/zen-browser.nix
         ./applications/zsh.nix
