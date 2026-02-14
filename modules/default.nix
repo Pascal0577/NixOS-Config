@@ -17,6 +17,7 @@
         ./applications/obs-studio.nix
         ./applications/onlyoffice.nix
         ./applications/pipewire.nix
+        ./applications/prismlauncher.nix
         ./applications/ssh.nix
         ./applications/swayidle.nix
         ./applications/terminal
