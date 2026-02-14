@@ -13,7 +13,6 @@
     ];
     
     config = lib.mkIf config.desktop.gnome.enable {
-
         environment = {
             sessionVariables = { NIXOS_OZONE_WL = "1"; };
             systemPackages = with pkgs; [

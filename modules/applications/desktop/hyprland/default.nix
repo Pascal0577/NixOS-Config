@@ -9,7 +9,7 @@
 
     imports = [
         inputs.hyprland.nixosModules.default
-        ../../noctalia.nix
+        ./mithril-shell.nix
     ];
 
     config = lib.mkIf config.desktop.hyprland.enable {

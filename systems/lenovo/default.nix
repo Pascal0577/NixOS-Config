@@ -13,10 +13,5 @@
     file-manager.yazi.enable = true;
     desktop.niri.enable = true;
 
-    hardware = {
-        graphics.enable = true;
-        bluetooth.enable = true;
-    };
-
     programs.niri.package = lib.mkForce pkgs.niri-stable;
 }
