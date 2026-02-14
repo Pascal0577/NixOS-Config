@@ -13,13 +13,9 @@ in
         description = "Whether to enable my Niri module";
     };
 
-    imports = [
-        inputs.niri.nixosModules.niri
-        ../../noctalia.nix
-    ];
+    imports = [ inputs.niri.nixosModules.niri ];
 
     config = lib.mkIf config.desktop.niri.enable {
-
         nixpkgs.overlays = [ inputs.niri.overlays.niri ];
         niri-flake.cache.enable = true;
 
@@ -28,6 +24,7 @@ in
             package = niri-optimized;
         };
 
+        applications.noctalia.enable = true;
         systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart = 
             lib.mkForce "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
 

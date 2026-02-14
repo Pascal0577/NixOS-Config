@@ -13,6 +13,7 @@
         ./launcher
         ./mathematica.nix
         ./mullvad.nix
+        ./noctalia.nix
         ./neovim
         ./obs-studio.nix
         ./pipewire.nix

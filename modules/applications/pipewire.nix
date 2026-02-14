@@ -8,6 +8,7 @@
     };
 
     config = lib.mkIf config.applications.pipewire.enable {
+        hardware.bluetooth.enable = true;
         services.pipewire = {
             enable = true;
             alsa.enable = true;
