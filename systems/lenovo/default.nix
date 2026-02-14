@@ -4,7 +4,6 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/applications/swayidle.nix
         ../../modules/themes/everforest.nix
     ];
 
