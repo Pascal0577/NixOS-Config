@@ -1,10 +1,18 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.applications.virt-manager.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my virt-manager module";
+    options.applications.virt-manager = {
+        enable = lib.mkOption {
+            type = lib.types.bool;
+            default = true;
+            description = "Whether to enable my virt-manager module";
+        };
+
+        blacklistNvidia = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = "Whether to blacklist nvidia drivers to set up PCI passthrough";
+        };
     };
 
     config = lib.mkIf config.applications.virt-manager.enable {
@@ -26,30 +34,30 @@
 
         users.users.${username}.extraGroups = [ "libvirtd" ];
 
-        # boot = {
-        #     blacklistedKernelModules = [ "nouveau" "nvidia" ];
-
-        #     initrd.kernelModules = [
-        #         "vfio_pci"
-        #         "vfio"
-        #         "vfio_iommu_type1"
-        #     ];            
-
-        #     kernelParams = [
-        #         "intel_iommu=on"
-        #         "iommu=pt"
-        #     ];
-
-        #     extraModprobeConfig = ''
-        #         options vfio-pci ids=10de:28e1,10de:22be
-        #     '';
-        # };
-
         home-manager.users.${username}.dconf.settings = {
             "org/virt-manager/virt-manager/connections" = {
                 autoconnect = [ "qemu:///system" ];
                 uris = [ "qemu:///system" ];
             };
-       };
+        };
+
+        boot = lib.mkIf config.applications.virt-manager.blacklistNvidia {
+            blacklistedKernelModules = [ "nouveau" "nvidia" ];
+
+            initrd.kernelModules = [
+                "vfio_pci"
+                "vfio"
+                "vfio_iommu_type1"
+            ];
+
+            kernelParams = [
+                "intel_iommu=on"
+                "iommu=pt"
+            ];
+
+            extraModprobeConfig = ''
+                options vfio-pci ids=10de:28e1,10de:22be
+            '';
+        };
     };
 }
