@@ -9,7 +9,7 @@
 
     config = lib.mkIf config.terminal.foot.enable {
         terminal.package = pkgs.foot;
-        terminal.openWindow = "foot";
+        terminal.openWindow = "${lib.getExe pkgs.foot}";
         home-manager.users.${username} = {
             programs.foot = {
                 enable = true;
