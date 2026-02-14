@@ -32,7 +32,7 @@
     hardware = {
         graphics.extraPackages = [ pkgs.intel-media-driver ];
         nvidia = {
-            open = true;
+            open = false;
             modesetting.enable = true;
             nvidiaSettings = false;
             powerManagement.enable = false;
