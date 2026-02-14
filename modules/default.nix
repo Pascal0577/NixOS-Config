@@ -44,6 +44,8 @@
         losslesscut-bin
         pinta
         deluge
+        baobab
+        totem
     ];
 
     security.rtkit.enable = true;
