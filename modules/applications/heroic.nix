@@ -1,56 +1,64 @@
-{ pkgs, username, ... }:
+{ pkgs, username, config, lib, ... }:
 
 {
-    environment.systemPackages = [ pkgs.heroic pkgs.wineWow64Packages.staging ];
-
-    programs.gamemode = {
-        enable = true;
-        settings.general.renice = 10;
+    options.applications.heroic.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Whether to enable my Heroic module";
     };
 
-    home-manager.users.${username} = {
-        programs.mangohud = {
+    config = lib.mkIf config.applications.heroic.enable {
+        environment.systemPackages = [ pkgs.heroic pkgs.wineWow64Packages.staging ];
+
+        programs.gamemode = {
             enable = true;
-            settings.preset = 3;
+            settings.general.renice = 10;
         };
 
-        home.file.".config/heroic/themes/stylix.css".text = ''
-            body.stylix {
-                --accent: #b57614;
-                --accent-overlay: #d79921;
-                --navbar-accent: #f9f5d7;
-                --background: #1d2021;
-                --body-background: #282828;
-                --background-darker: var(--body-background);
-                --current-background: var(--body-background);
-                --navbar-background: #32302f;
-                --navbar-active-background: #282828;
-                --gradient-body-background: linear-gradient(
-                    90deg, var(--background-darker) -32px,
-                    var(--body-background) 64px,
-                    var(--body-background) 100%
-                );
-                --input-background: #32302f;
-                --modal-background: var(--body-background);
-                --modal-border: var(--body-background);
-                --success: #98971a;
-                --success-hover: #b8bb26;
-                --primary: #458588;
-                --primary-hover: #83a598;
-                --danger: #cc241d;
-                --danger-hover: #fb4934;
-                --anticheat-denied: #9d0006;
-                --anticheat-broken: #af3a03;
-                --anticheat-running: #076678;
-                --anticheat-supported: #79740e;
-                --anticheat-planned: #8f3f71;
-                --text-title: #f9f5d7;
-                --icons-background: #3c3836;
-                --action-icon: #f9f5d7;
-                --action-icon-hover: #b16286;
-                --action-icon-active: #8ec07c;
-                --icon-disabled: #928374;
-            }
-        '';
+        home-manager.users.${username} = {
+            programs.mangohud = {
+                enable = true;
+                settings.preset = 3;
+            };
+
+            home.file.".config/heroic/themes/stylix.css".text = ''
+                body.stylix {
+                    --accent: #b57614;
+                    --accent-overlay: #d79921;
+                    --navbar-accent: #f9f5d7;
+                    --background: #1d2021;
+                    --body-background: #282828;
+                    --background-darker: var(--body-background);
+                    --current-background: var(--body-background);
+                    --navbar-background: #32302f;
+                    --navbar-active-background: #282828;
+                    --gradient-body-background: linear-gradient(
+                        90deg, var(--background-darker) -32px,
+                        var(--body-background) 64px,
+                        var(--body-background) 100%
+                    );
+                    --input-background: #32302f;
+                    --modal-background: var(--body-background);
+                    --modal-border: var(--body-background);
+                    --success: #98971a;
+                    --success-hover: #b8bb26;
+                    --primary: #458588;
+                    --primary-hover: #83a598;
+                    --danger: #cc241d;
+                    --danger-hover: #fb4934;
+                    --anticheat-denied: #9d0006;
+                    --anticheat-broken: #af3a03;
+                    --anticheat-running: #076678;
+                    --anticheat-supported: #79740e;
+                    --anticheat-planned: #8f3f71;
+                    --text-title: #f9f5d7;
+                    --icons-background: #3c3836;
+                    --action-icon: #f9f5d7;
+                    --action-icon-hover: #b16286;
+                    --action-icon-active: #8ec07c;
+                    --icon-disabled: #928374;
+                }
+            '';
+        };
     };
 }

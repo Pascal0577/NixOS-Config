@@ -231,7 +231,7 @@
             name = "Neovim";
             genericName = "Text Editor";
             comment = "Edit text files";
-            exec = "${config.terminalRunCommand} nvim %F";
+            exec = "${config.terminal.runCommand} nvim %F";
             terminal = false;
             icon = "nvim";
             categories = [ "Utility" "TextEditor" ];

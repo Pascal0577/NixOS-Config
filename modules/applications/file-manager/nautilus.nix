@@ -1,20 +1,28 @@
-{ pkgs, username, ... }:
+{ pkgs, username, lib, config, ... }:
 
 {
-    environment.systemPackages = with pkgs; [ 
-        nautilus
-        unzip
-        cabextract
-    ];
+    options.file-manager.nautilus.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether to enable my Nautilus module";
+    };
 
-    programs.nautilus-open-any-terminal.enable = true;
-    services.gvfs.enable = true;
+    config = lib.mkIf config.file-manager.nautilus.enable {
+        environment.systemPackages = with pkgs; [ 
+            nautilus
+            unzip
+            cabextract
+        ];
 
-    home-manager.users.${username} = {
-        dconf.settings."org/gnome/nautilus/preferences" = {
-            click-policy = "single";
-            show-create-link = true;
-            show-delete-permanently = true;
+        programs.nautilus-open-any-terminal.enable = true;
+        services.gvfs.enable = true;
+
+        home-manager.users.${username} = {
+            dconf.settings."org/gnome/nautilus/preferences" = {
+                click-policy = "single";
+                show-create-link = true;
+                show-delete-permanently = true;
+            };
         };
     };
 }

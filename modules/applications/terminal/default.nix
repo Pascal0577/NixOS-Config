@@ -1,23 +1,30 @@
 { pkgs, lib, config, ... }:
 
 {
-    options = {
-        terminalPackage = lib.mkOption {
+    options.terminal = {
+        package = lib.mkOption {
             type = lib.types.package;
             default = pkgs.ghostty;
             description = "Terminal package";
         };
 
-        terminalOpenWindow = lib.mkOption {
+        openWindow = lib.mkOption {
             type = lib.types.str;
             default = "ghostty +new-window";
             description = "Command used to open a new terminal window";
         };
 
-        terminalRunCommand = lib.mkOption {
+        runCommand = lib.mkOption {
             type = lib.types.str;
-            default = "${config.terminalOpenWindow} -e";
+            default = "${config.terminal.openWindow} -e";
             description = "Command used to run a command in a new terminal window";
         };
     };
+
+    imports = [
+        ./alacritty.nix
+        ./ghostty.nix
+        ./kitty.nix
+        ./foot.nix
+    ];
 }

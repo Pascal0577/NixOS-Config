@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, config, lib, ... }:
 let
     dim-screen = pkgs.writeShellApplication {
         name = "dim-screen";
@@ -7,27 +7,35 @@ let
     };
 in
 {
-    # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988
-    systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE";
+    options.applications.swayidle.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Whether to enable my swayidle module";
+    };
 
-    home-manager.users.${username} = {
-        services.swayidle = {
-            enable = true;
-            timeouts = [
-                {
-                    timeout = 120;
-                    command = "${dim-screen}/bin/dim-screen set 30%";
-                    resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
-                }
-                {
-                    timeout = 240;
-                    command = "${dim-screen}/bin/dim-screen --no-save set 1%";
-                }
-                {
-                    timeout = 300;
-                    command = "${pkgs.systemd}/bin/systemctl suspend";
-                }
-            ];
+    config = lib.mkIf config.applications.swayidle.enable {
+        # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988
+        systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE";
+
+        home-manager.users.${username} = {
+            services.swayidle = {
+                enable = true;
+                timeouts = [
+                    {
+                        timeout = 120;
+                        command = "${dim-screen}/bin/dim-screen set 30%";
+                        resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+                    }
+                    {
+                        timeout = 240;
+                        command = "${dim-screen}/bin/dim-screen --no-save set 1%";
+                    }
+                    {
+                        timeout = 300;
+                        command = "${pkgs.systemd}/bin/systemctl suspend";
+                    }
+                ];
+            };
         };
     };
 }
