@@ -25,34 +25,22 @@ in
         };
 
         applications.noctalia.enable = true;
+        environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
+        services.displayManager.ly.enable = true;
         systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart = 
             lib.mkForce "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
 
-        environment = {
-            sessionVariables = { NIXOS_OZONE_WL = "1"; };
-            systemPackages = with pkgs; [
-                baobab
-                file-roller
-                totem
-                swaybg
-            ];
-        };
-
-        services.displayManager.ly.enable = true;
 
         home-manager.users.${username} = {
             stylix.targets.niri.enable = true;
             programs.niri.settings = with config.home-manager.users.${username}.lib.niri.actions; {
                 hotkey-overlay.skip-at-startup = true;
                 prefer-no-csd = true;
+                environment.QT_QPA_PLATFORM = "wayland";
 
                 xwayland-satellite = {
                     enable = true;
                     path = lib.getExe pkgs.xwayland-satellite;
-                };
-
-                environment = {
-                    QT_QPA_PLATFORM = "wayland";
                 };
 
                 spawn-at-startup = [
