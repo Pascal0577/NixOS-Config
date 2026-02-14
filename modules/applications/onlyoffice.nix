@@ -10,13 +10,13 @@
     config = lib.mkIf config.applications.onlyoffice.enable {
         home-manager.users.${username}.programs.onlyoffice = {
             enable = true;
-            settings = ''
+            settings = {
                 UITheme = "theme-night";
-                openPath=/home/pascal/Documents
-                savePath=/home/pascal/Documents
+                openPath = "/home/pascal/Documents";
+                savePath = "/home/pascal/Documents";
                 titlebar = "custom";
-                editorWindowMode=false
-            '';
+                editorWindowMode = false;
+            };
         };
     };
 }
