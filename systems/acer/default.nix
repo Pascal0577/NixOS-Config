@@ -4,14 +4,16 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/applications/launcher/vicinae.nix
-        ../../modules/applications/terminal/ghostty.nix
-        ../../modules/applications/heroic.nix
         ../../modules/themes/everforest.nix
     ];
 
+    launcher.vicinae.enable = true;
+    terminal.foot.enable = true;
+    file-manager.yazi.enable = true;
+    desktop.niri.enable = true;
+    applications.swayidle.enable = false;
+
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
-    services.printing.enable = true;
 
     programs.obs-studio.package = (
         pkgs.obs-studio.override {
@@ -28,7 +30,7 @@
     );
 
     hardware = {
-        bluetooth.enable = true;
+        graphics.extraPackages = [ pkgs.intel-media-driver ];
         nvidia = {
             open = true;
             modesetting.enable = true;
@@ -42,15 +44,10 @@
             };
         };
 
-        graphics = {
-            enable = true;
-            extraPackages = [ pkgs.intel-media-driver ];
-        };
     };
 
     boot = {
         initrd.kernelModules = [ "i915" ];
-
         kernelParams = [
             "i915.enable_guc=3"
             "i915.enable_fbc=1"

@@ -3,19 +3,21 @@
 {
     imports = [
         ./appimage.nix
+        ./desktop
         ./discord.nix
         ./fastfetch.nix
-        ./file-manager/yazi.nix
+        ./file-manager
         ./git.nix
         ./heroic.nix
         ./kmscon.nix
         ./launcher
         ./mathematica.nix
         ./mullvad.nix
+        ./noctalia.nix
         ./neovim
-        ./niri
         ./obs-studio.nix
         ./pipewire.nix
+        ./swayidle.nix
         ./terminal
         ./virt-manager.nix
         ./xserver.nix

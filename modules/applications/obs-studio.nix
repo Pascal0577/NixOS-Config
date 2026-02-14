@@ -1,12 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
-    programs.obs-studio = {
-        enable = true;
+    options.applications.obs.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Whether to enable my OBS Studio module";
+    };
 
-        plugins = with pkgs.obs-studio-plugins; [
-            obs-pipewire-audio-capture
-            obs-vaapi
-        ];
+    config = lib.mkIf config.applications.obs.enable {
+        programs.obs-studio = {
+            enable = true;
+            plugins = with pkgs.obs-studio-plugins; [
+                obs-pipewire-audio-capture
+                obs-vaapi
+            ];
+        };
     };
 }
