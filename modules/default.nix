@@ -38,10 +38,6 @@
         ./xserver.nix
     ];
 
-    security.rtkit.enable = true;
-    nixpkgs.config.allowUnfree = true;
-    system.stateVersion = "26.05";
-
     environment.systemPackages = with pkgs; [
         playerctl
         losslesscut-bin
@@ -49,6 +45,10 @@
         deluge
         prismlauncher
     ];
+
+    security.rtkit.enable = true;
+    nixpkgs.config.allowUnfree = true;
+    system.stateVersion = "26.05";
 
     systemd = {
         # If a service has tried to stop for longer than 10s 
