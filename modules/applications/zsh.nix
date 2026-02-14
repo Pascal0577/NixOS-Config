@@ -102,7 +102,7 @@
                                     if [ -d "$realpath" ]; then
                                         eza --color=always --icons=always --group-directories-first -1 "$realpath"
                                     else
-                                        bat --theme="Nord" -p --color=always -- "$realpath"
+                                        cat "$realpath"
                                     fi
                                 ;;
                             esac
@@ -111,7 +111,6 @@
                         eval "$(fzf --zsh)"
                         eval "$(zoxide init zsh)"
                     '';
-
                 };
             };
         };
