@@ -255,7 +255,10 @@ in
                         clip-to-geometry = true;
                     }
                     {
-                        matches = [{ app-id = "com.mitchellh.ghostty"; }];
+                        matches = [
+                            { app-id = "com.mitchellh.ghostty"; }
+                            { app-id = "foot"; }
+                        ];
                         default-column-width.proportion = 0.5;
                     }
                     {
