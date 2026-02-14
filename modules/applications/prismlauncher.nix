@@ -16,17 +16,17 @@ in
                 colors = {
                     AlternateBase = "#${hue.base01-hex}";
                     Base = "#${hue.base00-hex}";
-                    BrightText = "#${hue.base07-hex}";
+                    BrightText = "#${hue.base06-hex}";
                     Button = "#${hue.base02-hex}";
-                    ButtonText = "#${hue.base07-hex}";
-                    Highlight = "#${hue.base02-hex}";
-                    HighlightedText = "#${hue.base07-hex}";
-                    Link = "#${hue.base04-hex}";
+                    ButtonText = "#${hue.base05-hex}";
+                    Highlight = "#${hue.base0D-hex}";
+                    HighlightedText = "#${hue.base00-hex}";
+                    Link = "#${hue.base0D-hex}";
                     Text = "#${hue.base05-hex}";
-                    ToolTipBase = "#${hue.base06-hex}";
-                    ToolTipText = "#${hue.base06-hex}";
+                    ToolTipBase = "#${hue.base02-hex}";
+                    ToolTipText = "#${hue.base05-hex}";
                     Window = "#${hue.base01-hex}";
-                    WindowText = "#${hue.base07-hex}";
+                    WindowText = "#${hue.base05-hex}";
                     fadeAmount = 0;
                     fadeColor = "#${hue.base00-hex}";
                 };
