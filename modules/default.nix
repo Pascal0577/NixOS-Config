@@ -47,7 +47,6 @@
         losslesscut-bin
         pinta
         deluge
-        onlyoffice-desktopeditors
         prismlauncher
     ];
 
