@@ -1,20 +1,54 @@
+{ pkgs, ... }:
+
 {
     imports = [
-        ./applications
+        ./applications/appimage.nix
+        ./applications/discord.nix
+        ./applications/fastfetch.nix
+        ./applications/git.nix
+        ./applications/heroic.nix
+        ./applications/kmscon.nix
+        ./applications/mathematica.nix
+        ./applications/mullvad.nix
+        ./applications/noctalia.nix
+        ./applications/obs-studio.nix
+        ./applications/pipewire.nix
+        ./applications/ssh.nix
+        ./applications/swayidle.nix
+        ./applications/virt-manager.nix
+        ./applications/zen-browser.nix
+        ./applications/zsh.nix
+
+        ./applications/desktop/gnome
+        ./applications/desktop/kde
+        ./applications/desktop/niri
+        ./applications/desktop/hyprland
+        ./applications/desktop/oxwm
+
         ./boot.nix
         ./locale-time.nix
         ./networking.nix
         ./power-management.nix
         ./users.nix
+        ./xserver.nix
     ];
 
     security.rtkit.enable = true;
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "26.05";
-    services.openssh.enable = true;
+
+    environment.systemPackages = with pkgs; [
+        playerctl
+        losslesscut-bin
+        pinta
+        deluge
+        onlyoffice-desktopeditors
+        prismlauncher
+    ];
 
     systemd = {
-        # If a service has tried to stop for longer than 10s something has gone wrong
+        # If a service has tried to stop for longer than 10s 
+        # something has gone wrong and it should be force stopped
         user.extraConfig = "DefaultTimeoutStopSec=10s";
         settings.Manager = {
             DefaultTimeoutStopSec = "10s";
