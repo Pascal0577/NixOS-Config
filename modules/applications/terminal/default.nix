@@ -25,5 +25,6 @@
         ./alacritty.nix
         ./ghostty.nix
         ./kitty.nix
+        ./foot.nix
     ];
 }
