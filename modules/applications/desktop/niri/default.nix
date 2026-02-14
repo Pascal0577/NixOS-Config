@@ -47,7 +47,7 @@ in
                 prefer-no-csd = true;
 
                 xwayland-satellite = {
-                    enable = false;
+                    enable = true;
                     path = lib.getExe pkgs.xwayland-satellite;
                 };
 
