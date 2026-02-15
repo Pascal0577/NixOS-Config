@@ -206,6 +206,12 @@ in
                             blue: ${hue.base03-dec-b},
                             alpha: 1.0,
                         ),
+                        ext_red: (
+                            red: ${hue.base08-dec-r},
+                            green: ${hue.base08-dec-g},
+                            blue: ${hue.base08-dec-b},
+                            alpha: 1.0,
+                        ),
                         ext_orange: (
                             red: ${hue.base09-dec-r},
                             green: ${hue.base09-dec-g},
@@ -218,10 +224,22 @@ in
                             blue: ${hue.base0A-dec-b},
                             alpha: 1.0,
                         ),
+                        ext_green: (
+                            red: ${hue.base0B-dec-r},
+                            green: ${hue.base0B-dec-g},
+                            blue: ${hue.base0B-dec-b},
+                            alpha: 1.0,
+                        ),
                         ext_blue: (
                             red: ${hue.base0C-dec-r},
                             green: ${hue.base0C-dec-g},
                             blue: ${hue.base0C-dec-b},
+                            alpha: 1.0,
+                        ),
+                        ext_indigo: (
+                            red: ${hue.base0D-dec-r},
+                            green: ${hue.base0D-dec-g},
+                            blue: ${hue.base0D-dec-b},
                             alpha: 1.0,
                         ),
                         ext_purple: (
@@ -234,12 +252,6 @@ in
                             red: ${hue.base0E-dec-r},
                             green: ${hue.base0E-dec-g},
                             blue: ${hue.base0E-dec-b},
-                            alpha: 1.0,
-                        ),
-                        ext_indigo: (
-                            red: ${hue.base0D-dec-r},
-                            green: ${hue.base0D-dec-g},
-                            blue: ${hue.base0D-dec-b},
                             alpha: 1.0,
                         ),
                     )),
