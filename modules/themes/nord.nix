@@ -25,7 +25,7 @@
 
     stylix = {
         enable = true;
-        autoEnable = false;
+        autoEnable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
         image = ../../assets/nord-arctic-fox.png;
 
@@ -81,13 +81,7 @@
                 profileNames = [ "pascal" ];
             };
 
-            mangohud.enable = true;
             ghostty.enable = false;
-            gnome.enable = true;
-            vicinae.enable = true;
-            hyprland.enable = true;
-            hyprpaper.enable = true;
-            gtk.enable = true;
         };
 
         programs = {
