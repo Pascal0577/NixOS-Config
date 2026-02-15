@@ -14,6 +14,7 @@
         accentBlue = "${config.lib.stylix.colors.base0D-dec-b}";
     };
     terminal.foot.enable = true;
+    applications.swayidle.enable = false;
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
