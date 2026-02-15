@@ -4,14 +4,14 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/themes/nord.nix
+        ../../modules/themes/everforest.nix
     ];
 
     desktop.cosmic = {
         enable = true;
-        accentRed = "${config.lib.stylix.colors.base0D-dec-r}";
-        accentGreen = "${config.lib.stylix.colors.base0D-dec-g}";
-        accentBlue = "${config.lib.stylix.colors.base0D-dec-b}";
+        accentRed = "${config.lib.stylix.colors.base09-dec-r}";
+        accentGreen = "${config.lib.stylix.colors.base09-dec-g}";
+        accentBlue = "${config.lib.stylix.colors.base09-dec-b}";
     };
     terminal.foot.enable = true;
     applications.swayidle.enable = false;
