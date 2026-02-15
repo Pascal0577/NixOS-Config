@@ -81,6 +81,7 @@
                 profileNames = [ "pascal" ];
             };
 
+            nixvim.enable = false;
             ghostty.enable = false;
         };
 
