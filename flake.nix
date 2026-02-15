@@ -47,14 +47,6 @@
 
         oxwm.url = "github:tonybanters/oxwm";
         oxwm.inputs.nixpkgs.follows = "nixpkgs";
-
-        cosmic-manager = {
-            url = "github:HeitorAugustoLN/cosmic-manager";
-            inputs = {
-                nixpkgs.follows = "nixpkgs";
-                home-manager.follows = "home-manager";
-            };
-        };
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:

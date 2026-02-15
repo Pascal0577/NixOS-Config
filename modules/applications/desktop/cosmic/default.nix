@@ -1,8 +1,7 @@
-{ config, lib, username, inputs, ... }:
+{ config, lib, username, ... }:
 let
     hue = config.lib.stylix.colors;
     cfg = config.desktop.cosmic;
-    cosmicLib = inputs.cosmic-manager.lib.cosmic;
 in
 {
     options.desktop.cosmic = {
@@ -30,10 +29,6 @@ in
             description = "The blue component of the accent color";
         };
     };
-
-    imports = [
-        ./applibrary.nix
-    ] { inherit cosmicLib; };
 
     config = lib.mkIf config.desktop.cosmic.enable {
         services.displayManager.cosmic-greeter.enable = true;
