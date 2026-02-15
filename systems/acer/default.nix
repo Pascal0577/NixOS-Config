@@ -1,17 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/themes/everforest.nix
+        ../../modules/themes/nord.nix
     ];
 
-    launcher.fuzzel.enable = true;
+    desktop.cosmic = {
+        enable = true;
+        accentRed = "${config.lib.stylix.colors.base08-dec-r}";
+        accentGreen = "${config.lib.stylix.colors.base08-dec-g}";
+        accentBlue = "${config.lib.stylix.colors.base08-dec-b}";
+    };
     terminal.foot.enable = true;
-    # file-manager.yazi.enable = true;
-    desktop.cosmic.enable = true;
-    applications.swayidle.enable = false;
 
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 

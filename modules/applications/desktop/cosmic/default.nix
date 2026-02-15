@@ -1,12 +1,33 @@
-{ config, lib, username, pkgs, ... }:
+{ config, lib, username, ... }:
 let
     hue = config.lib.stylix.colors;
+    cfg = config.desktop.cosmic;
 in
 {
-    options.desktop.cosmic.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my COSMIC module";
+    options.desktop.cosmic = {
+        enable = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = "Whether to enable my COSMIC module";
+        };
+
+        accentRed = lib.mkOption {
+            type = lib.types.str;
+            default = "${hue.base0D-dec-r}";
+            description = "The red component of the accent color";
+        };
+
+        accentGreen = lib.mkOption {
+            type = lib.types.str;
+            default = "${hue.base0D-dec-g}";
+            description = "The green component of the accent color";
+        };
+
+        accentBlue = lib.mkOption {
+            type = lib.types.str;
+            default = "${hue.base0D-dec-b}";
+            description = "The blue component of the accent color";
+        };
     };
 
     config = lib.mkIf config.desktop.cosmic.enable {
@@ -266,9 +287,9 @@ in
                         blue: ${hue.base05-dec-b},
                     )),
                     accent: Some((
-                        red: ${hue.base0D-dec-r},
-                        green: ${hue.base0D-dec-g},
-                        blue: ${hue.base0D-dec-b},
+                        red: ${cfg.accentRed},
+                        green: ${cfg.accentGreen},
+                        blue: ${cfg.accentBlue},
                     )),
                     success: None,
                     warning: None,
@@ -277,9 +298,9 @@ in
                     gaps: (0, 8),
                     active_hint: 3,
                     window_hint: Some((
-                        red: ${hue.base0D-dec-r},
-                        green: ${hue.base0D-dec-g},
-                        blue: ${hue.base0D-dec-b},
+                        red: ${cfg.accentRed},
+                        green: ${cfg.accentGreen},
+                        blue: ${cfg.accentBlue},
                     )),
                 )
             '';
