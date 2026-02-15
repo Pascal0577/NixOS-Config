@@ -9,9 +9,9 @@
 
     desktop.cosmic = {
         enable = true;
-        accentRed = "${config.lib.stylix.colors.base0B-dec-r}";
-        accentGreen = "${config.lib.stylix.colors.base0B-dec-g}";
-        accentBlue = "${config.lib.stylix.colors.base0B-dec-b}";
+        accentRed = "${config.lib.stylix.colors.base0D-dec-r}";
+        accentGreen = "${config.lib.stylix.colors.base0D-dec-g}";
+        accentBlue = "${config.lib.stylix.colors.base0D-dec-b}";
     };
     terminal.foot.enable = true;
 
