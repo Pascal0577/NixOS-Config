@@ -17,7 +17,7 @@ let
     # The parent repo only provides session/config files
     sessionSrc = fetchgit {
         url = "https://github.com/Drakulix/cosmic-ext-extra-sessions";
-        # rev = 
+        rev = "refs/heads/main";
         hash = "sha256-uSkxcYztCVWPwdX1q/JDK1/psUmB5/8zLhYQcDp8Dg4=";
     };
 in
