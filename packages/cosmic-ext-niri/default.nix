@@ -4,6 +4,10 @@
     fetchgit,
     rustPlatform,
     just,
+    dbus,
+    cosmic-session,
+    makeWrapper,
+    bash,
 }:
 let
     # The actual Rust binary lives in the submodule, not the parent repo
@@ -28,17 +32,32 @@ rustPlatform.buildRustPackage {
     src = rustSrc;
 
     cargoHash = "sha256-DeMkAG2iINGden0Up013M9mWDN4QHrF+FXoNqpGB+mg=";
-    nativeBuildInputs = [ just ];
+    nativeBuildInputs = [
+        just
+        makeWrapper
+    ];
 
     installPhase = ''
         runHook preInstall
         install -Dm0755 target/release/cosmic-ext-alternative-startup $out/bin/cosmic-ext-alternative-startup
         
         mkdir -p $out/share/wayland-sessions
-        substitute ${sessionSrc}/niri/cosmic-ext-niri.desktop $out/share/wayland-sessions/cosmic-ext-niri.desktop \
+        substitute ${sessionSrc}/niri/cosmic-ext-niri.desktop \
+            $out/share/wayland-sessions/cosmic-ext-niri.desktop \
             --replace-fail "/usr/local/bin/start-cosmic-ext-niri" "$out/bin/start-cosmic-ext-niri"
+
+        substitute ${sessionSrc}/niri/start-cosmic-ext-niri \
+            $out/bin/start-cosmic-ext-niri \
+            --replace-fail "#!/usr/bin/bash" "#!${bash}/bin/bash" \
+            --replace-fail "/usr/bin/dbus-run-session" "dbus-run-session" \
+            --replace-fail "/usr/bin/cosmic-session" "cosmic-session"
+
+        chmod +x $out/bin/start-cosmic-ext-niri
+        patchShebangs $out/bin/start-cosmic-ext-niri
         
-        install -Dm0755 ${sessionSrc}/niri/start-cosmic-ext-niri $out/bin/start-cosmic-ext-niri
+        wrapProgram $out/bin/start-cosmic-ext-niri \
+            --prefix PATH : ${lib.makeBinPath [ dbus cosmic-session ]}
+
         runHook postInstall
     '';
 
