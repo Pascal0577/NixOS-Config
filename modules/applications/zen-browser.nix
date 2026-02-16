@@ -44,6 +44,22 @@
                         "gfx.webrender.all" = true;
                         "network.http.http3.enabled" = true;
                         "privacy.resistFingerprinting" = true;
+
+                        "datareporting.policy.dataSubmissionEnabled" = false;
+                        "datareporting.healthreport.uploadEnabled" = false;
+                        "toolkit.telemetry.unified" = false;
+                        "toolkit.telemetry.enabled" = false;
+                        "toolkit.telemetry.server" = "data:,";
+                        "toolkit.telemetry.archive.enabled" = false;
+                        "toolkit.telemetry.newProfilePing.enabled" = false;
+                        "toolkit.telemetry.shutdownPingSender.enabled" = false;
+                        "toolkit.telemetry.updatePing.enabled" = false;
+                        "toolkit.telemetry.bhrPing.enabled" = false;
+                        "toolkit.telemetry.firstShutdownPing.enabled" = false;
+                        "toolkit.telemetry.coverage.opt-out" = true;
+                        "toolkit.coverage.opt-out" = true;
+                        "toolkit.coverage.endpoint.base" = "";
+
                         "widget.use-xdg-desktop-portal.mime-handler" = 1;
                         "widget.use-xdg-desktop-portal.file-picker" = 1;
                     };
@@ -264,7 +280,7 @@
                             };
                             bing.metaData.hidden = "true";
                         };
-                      };
+                    };
                 };
             };
         };
