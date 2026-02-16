@@ -24,9 +24,9 @@ in
             package = niri-optimized;
         };
 
-        applications.noctalia.enable = true;
+        # applications.noctalia.enable = true;
         environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
-        services.displayManager.ly.enable = true;
+        # services.displayManager.ly.enable = true;
         systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart = 
             lib.mkForce "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
 
