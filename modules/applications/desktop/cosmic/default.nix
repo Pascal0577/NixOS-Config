@@ -11,6 +11,12 @@ in
             description = "Whether to enable my COSMIC module";
         };
 
+        accentColor = lib.mkOption {
+            type = lib.types.str;
+            default = "${hue.base0D-hex}";
+            description = "The accent color";
+        };
+
         accentRed = lib.mkOption {
             type = lib.types.str;
             default = "${hue.base0D-dec-r}";
@@ -30,8 +36,9 @@ in
         };
     };
 
+    imports = [ ./cosmic-on-niri.nix ];
+
     config = lib.mkIf config.desktop.cosmic.enable {
-        environment.pathsToLink = [ "/share/wayland-sessions" ];
         services.displayManager.cosmic-greeter.enable = true;
         services.system76-scheduler.enable = true;
         services.desktopManager.cosmic = {

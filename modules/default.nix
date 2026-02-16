@@ -47,7 +47,6 @@
         deluge
         baobab
         totem
-        (pkgs.callPackage ../packages/cosmic-ext-niri/default.nix {})
     ];
 
     security.rtkit.enable = true;

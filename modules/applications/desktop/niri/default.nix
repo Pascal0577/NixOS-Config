@@ -44,6 +44,7 @@ in
                 };
 
                 spawn-at-startup = [
+                    { argv = [ "cosmic-ext-alternative-startup" ]; }
                 ];
 
                 binds = {
