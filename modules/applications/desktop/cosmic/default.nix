@@ -31,6 +31,7 @@ in
     };
 
     config = lib.mkIf config.desktop.cosmic.enable {
+        environment.pathsToLink = [ "/share/wayland-sessions" ];
         services.displayManager.cosmic-greeter.enable = true;
         services.system76-scheduler.enable = true;
         services.desktopManager.cosmic = {

@@ -13,6 +13,7 @@
         accentGreen = "${config.lib.stylix.colors.base09-dec-g}";
         accentBlue = "${config.lib.stylix.colors.base09-dec-b}";
     };
+    desktop.niri.enable = true;
     terminal.foot.enable = true;
     applications.swayidle.enable = false;
 
