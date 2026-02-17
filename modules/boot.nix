@@ -1,7 +1,7 @@
 { pkgs, inputs, config, lib, ... }:
 
 {
-    options.boot = {
+    options.mySystem.boot = {
         enableSecureBoot = lib.mkOption {
             type = lib.types.bool;
             default = true;
@@ -47,7 +47,7 @@
             ];
         }
 
-        (lib.mkIf config.boot.enablePlymouth {
+        (lib.mkIf config.mySystem.boot.enablePlymouth {
             plymouth = {
                 enable = true;
                 theme = lib.mkDefault "bgrt";
@@ -73,7 +73,7 @@
             ];
         })
 
-        (lib.mkIf config.boot.enableSecureBoot {
+        (lib.mkIf config.mySystem.boot.enableSecureBoot {
             lanzaboote = {
                 enable = true;
                 pkiBundle = "/var/lib/sbctl/";

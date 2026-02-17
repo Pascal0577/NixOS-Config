@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 {
-    options.file-manager = {
+    options.mySystem.applications.file-manager = {
         package = lib.mkOption {
             type = lib.types.package;
             default = pkgs.nautilus;

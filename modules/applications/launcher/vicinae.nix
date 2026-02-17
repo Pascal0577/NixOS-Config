@@ -3,15 +3,18 @@ let
     hostSystem = pkgs.stdenv.hostPlatform.system;
 in
 {
-    options.launcher.vicinae.enable = lib.mkOption {
+    options.mySystem.applications.launcher.vicinae.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my vicinae module";
     };
 
-    config = lib.mkIf config.launcher.vicinae.enable {
-        launcher.package = inputs.vicinae.packages.${hostSystem}.default;
-        launcher.command = "vicinae vicinae://toggle";
+    config = lib.mkIf config.mySystem.applications.launcher.vicinae.enable {
+        mySystem.applications.launcher = {
+            package = inputs.vicinae.packages.${hostSystem}.default;
+            command = "vicinae vicinae://toggle";
+        };
+
         nix.settings = {
             extra-substituters = [ "https://vicinae.cachix.org" ];
             extra-trusted-public-keys = [ 

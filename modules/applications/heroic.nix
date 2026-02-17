@@ -1,13 +1,13 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.applications.heroic.enable = lib.mkOption {
+    options.mySystem.applications.heroic.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my Heroic module";
     };
 
-    config = lib.mkIf config.applications.heroic.enable {
+    config = lib.mkIf config.mySystem.applications.heroic.enable {
         environment.systemPackages = [ pkgs.heroic pkgs.wineWow64Packages.staging ];
 
         programs.gamemode = {

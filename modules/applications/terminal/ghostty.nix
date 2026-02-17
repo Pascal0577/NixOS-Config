@@ -1,16 +1,19 @@
 { pkgs, username, lib, config, ... }:
 
 {
-    options.terminal.ghostty.enable = lib.mkOption {
+    options.mySystem.applications.terminal.ghostty.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my Ghostty module";
     };
 
-    config = lib.mkIf config.terminal.ghostty.enable {
-        terminal.package = pkgs.ghostty;
-        terminal.runCommand = "ghostty -e";
-        terminal.openWindow = "ghostty +new-window";
+    config = lib.mkIf config.mySystem.applications.terminal.ghostty.enable {
+        mySystem.applications.terminal = {
+            package = pkgs.ghostty;
+            runCommand = "ghostty -e";
+            openWindow = "ghostty +new-window";
+        };
+
         home-manager.users.${username} = {
             programs.ghostty = {
                 enable = true;

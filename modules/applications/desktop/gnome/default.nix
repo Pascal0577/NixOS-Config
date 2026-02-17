@@ -1,7 +1,7 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.desktop.gnome.enable = lib.mkOption {
+    options.mySystem.desktop.gnome.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my GNOME module";
@@ -12,7 +12,7 @@
         ./dash-to-dock.nix
     ];
     
-    config = lib.mkIf config.desktop.gnome.enable {
+    config = lib.mkIf config.mySystem.desktop.gnome.enable {
         environment = {
             sessionVariables = { NIXOS_OZONE_WL = "1"; };
             systemPackages = with pkgs; [
