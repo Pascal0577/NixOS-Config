@@ -46,7 +46,7 @@
                     }
                     {
                         mode = "n";
-                        action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+                        action = "<cmd>lua vim.lsp.buf.definition()<CR>";
                         key = "<leader>dg";
                         options.desc = "Go to definition";
                     }
