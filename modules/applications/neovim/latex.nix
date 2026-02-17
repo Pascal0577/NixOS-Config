@@ -1,13 +1,13 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.applications.neovim.enableLatex = lib.mkOption {
+    options.mySystem.applications.neovim.enableLatex = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable latex editing for my neovim module";
     };
 
-    config = lib.mkIf config.applications.neovim.enableLatex {
+    config = lib.mkIf config.mySystem.applications.neovim.enableLatex {
         environment.systemPackages = with pkgs; [
             texliveMedium
             zathura

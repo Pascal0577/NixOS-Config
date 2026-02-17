@@ -7,7 +7,7 @@ let
     });
 in
 {
-    options.desktop.niri.enable = lib.mkOption {
+    options.mySystem.desktop.niri.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my Niri module";
@@ -15,7 +15,7 @@ in
 
     imports = [ inputs.niri.nixosModules.niri ];
 
-    config = lib.mkIf config.desktop.niri.enable {
+    config = lib.mkIf config.mySystem.desktop.niri.enable {
         nixpkgs.overlays = [ inputs.niri.overlays.niri ];
         niri-flake.cache.enable = true;
 
@@ -110,8 +110,8 @@ in
                     "Print".action.screenshot = [];
                     "Shift+Print".action.screenshot-screen = [];
                     "Ctrl+Print".action.screenshot-window = [];
-                    "Mod+Return".action.spawn-sh = [ "${config.terminal.openWindow}" ];
-                    "Mod+Space".action.spawn-sh = [ "${config.launcher.command}" ];
+                    "Mod+Return".action.spawn-sh = [ "${config.mySystem.applications.terminal.openWindow}" ];
+                    "Mod+Space".action.spawn-sh = [ "${config.mySystem.applications.launcher.command}" ];
 
                     # Control keys
                     "XF86AudioPlay" = {

@@ -1,13 +1,13 @@
 { lib, config, pkgs, username, ... }: 
 
 {
-    options.desktop.cosmic.cosmicOnNiri.enable = lib.mkOption {
+    options.mySystem.desktop.cosmic.cosmicOnNiri.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable the Niri compositor for the COSMIC session";
     };
 
-    config = lib.mkIf config.desktop.cosmic.cosmicOnNiri.enable {
+    config = lib.mkIf config.mySystem.desktop.cosmic.cosmicOnNiri.enable {
         environment = {
             systemPackages = [
                 (pkgs.callPackage ../../../../packages/cosmic-ext-niri/default.nix {})
@@ -36,14 +36,14 @@
             };
         };
 
-        launcher = {
+        mySystem.applications.launcher = {
             command = "cosmic-launcher";
             package = pkgs.cosmic-launcher;
         };
 
         home-manager.users.${username} = {
             programs.niri.settings.layout.border = {
-                active.color = lib.mkForce "#${config.desktop.cosmic.accentColor}";
+                active.color = lib.mkForce "#${config.mySystem.desktop.cosmic.accentColor}";
             };
             stylix.targets.gtk.enable = false;
         };

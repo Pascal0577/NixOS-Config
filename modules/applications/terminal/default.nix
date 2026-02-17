@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 {
-    options.terminal = {
+    options.mySystem.applications.terminal = {
         package = lib.mkOption {
             type = lib.types.package;
             default = pkgs.ghostty;
@@ -16,7 +16,7 @@
 
         runCommand = lib.mkOption {
             type = lib.types.str;
-            default = "${config.terminal.openWindow} -e";
+            default = "${config.mySystem.applications.terminal.openWindow} -e";
             description = "Command used to run a command in a new terminal window";
         };
     };

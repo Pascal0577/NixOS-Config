@@ -3,15 +3,18 @@ let
     hostSystem = pkgs.stdenv.hostPlatform.system;
 in
 {
-    options.launcher.walker.enable = lib.mkOption {
+    options.mySystem.applications.launcher.walker.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my walker module";
     };
 
-    config = lib.mkIf config.launcher.walker.enable {
-        launcher.package = inputs.walker.packages.${hostSystem}.default;
-        launcher.command = "nc -U /run/user/1000/walker/walker.sock";
+    config = lib.mkIf config.mySystem.applications.launcher.walker.enable {
+        mySystem.applications.launcher = {
+            package = inputs.walker.packages.${hostSystem}.default;
+            command = "nc -U /run/user/1000/walker/walker.sock";
+        };
+
         nix.settings = {
             extra-substituters = [
                 "https://walker.cachix.org"

@@ -7,13 +7,13 @@ let
     };
 in
 {
-    options.applications.swayidle.enable = lib.mkOption {
+    options.mySystem.applications.swayidle.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my swayidle module";
     };
 
-    config = lib.mkIf config.applications.swayidle.enable {
+    config = lib.mkIf config.mySystem.applications.swayidle.enable {
         # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988
         systemd.services.display-manager.environment.XDG_CURRENT_DESKTOP = "X-NIXOS-SYSTEMD-AWARE";
 

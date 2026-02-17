@@ -1,13 +1,13 @@
 { config, lib, ... }:
 
 {
-    options.applications.pipewire.enable = lib.mkOption {
+    options.mySystem.applications.pipewire.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my pipewire module";
     };
 
-    config = lib.mkIf config.applications.pipewire.enable {
+    config = lib.mkIf config.mySystem.applications.pipewire.enable {
         hardware.bluetooth.enable = true;
         services.pipewire = {
             enable = true;

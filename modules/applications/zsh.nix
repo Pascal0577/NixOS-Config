@@ -1,13 +1,13 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.applications.zsh.enable = lib.mkOption {
+    options.mySystem.applications.zsh.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my Zsh module";
     };
 
-    config = lib.mkIf config.applications.zsh.enable {
+    config = lib.mkIf config.mySystem.applications.zsh.enable {
         environment.pathsToLink = [ "/share/zsh" ];
         programs.zsh.enable = true;
         users.users.${username}.shell = pkgs.zsh;

@@ -1,7 +1,7 @@
 { inputs, pkgs, username, config, lib, ... }:
 
 {
-    options.desktop.hyprland.enable = lib.mkOption {
+    options.mySystem.desktop.hyprland.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my Hyprland module";
@@ -12,7 +12,7 @@
         ./mithril-shell.nix
     ];
 
-    config = lib.mkIf config.desktop.hyprland.enable {
+    config = lib.mkIf config.mySystem.desktop.hyprland.enable {
         nix.settings = {
             substituters = [ "https://hyprland.cachix.org" ];
             trusted-substituters = [ "https://hyprland.cachix.org" ];
@@ -51,8 +51,8 @@
                     ];
 
                     bind = [
-                        "$mod, return, exec, ${config.terminal.openWindow}"
-                        "$mod, SPACE, exec, ${config.launcher.command}"
+                        "$mod, return, exec, ${config.mySystem.applications.terminal.openWindow}"
+                        "$mod, SPACE, exec, ${config.mySystem.applications.launcher.command}"
                         "$mod, Q, killactive," 
                         "$mod, M, exit,"
                         "$mod, TAB, exec, nautilus"
