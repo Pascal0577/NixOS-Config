@@ -1,13 +1,13 @@
 { username, pkgs, lib, config, ... }:
 
 {
-    options.applications.discord.enable = lib.mkOption {
+    options.mySystem.applications.discord.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my discord module";
     };
 
-    config = lib.mkIf config.applications.discord.enable {
+    config = lib.mkIf config.mySystem.applications.discord.enable {
         environment.systemPackages = [ pkgs.gajim ];
         home-manager.users.${username} = {
             home.file.".config/vesktop/settings/quickCss.css".text = ''

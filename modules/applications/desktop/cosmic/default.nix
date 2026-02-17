@@ -1,10 +1,10 @@
 { config, lib, username, ... }:
 let
     hue = config.lib.stylix.colors;
-    cfg = config.desktop.cosmic;
+    cfg = config.mySystem.desktop.cosmic;
 in
 {
-    options.desktop.cosmic = {
+    options.mySystem.desktop.cosmic = {
         enable = lib.mkOption {
             type = lib.types.bool;
             default = false;
@@ -38,7 +38,7 @@ in
 
     imports = [ ./cosmic-on-niri.nix ];
 
-    config = lib.mkIf config.desktop.cosmic.enable {
+    config = lib.mkIf config.mySystem.desktop.cosmic.enable {
         services.displayManager.cosmic-greeter.enable = true;
         services.system76-scheduler.enable = true;
         services.desktopManager.cosmic = {

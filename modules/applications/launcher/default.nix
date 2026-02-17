@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 {
-    options.launcher = {
+    options.mySystem.applications.launcher = {
         package = lib.mkOption {
             type = lib.types.package;
             default = pkgs.fuzzel;

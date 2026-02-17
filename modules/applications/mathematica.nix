@@ -15,13 +15,13 @@ let
     };
 in
 {
-    options.applications.mathematica.enable = lib.mkOption {
+    options.mySystem.applications.mathematica.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my Mathematica module";
     };
 
-    config = lib.mkIf config.applications.mathematica.enable {
+    config = lib.mkIf config.mySystem.applications.mathematica.enable {
         environment.systemPackages = [ mathematica-new ];
     };
 }

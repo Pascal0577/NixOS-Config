@@ -1,13 +1,13 @@
 { config, lib, ... }:
 
 {
-    options.applications.ssh.enable = lib.mkOption {
+    options.mySystem.applications.ssh.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my SSH module";
     };
 
-    config = lib.mkIf config.applications.ssh.enable {
+    config = lib.mkIf config.mySystem.applications.ssh.enable {
         services.openssh = {
             enable = true;
             startWhenNeeded = true;

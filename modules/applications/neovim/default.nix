@@ -1,7 +1,7 @@
 { inputs, pkgs, username, config, lib, ... }:
 
 {
-    options.applications.neovim.enable = lib.mkOption {
+    options.mySystem.applications.neovim.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my Neovim module";
@@ -12,7 +12,7 @@
         ./zig.nix
     ];
 
-    config = lib.mkIf config.applications.neovim.enable {
+    config = lib.mkIf config.mySystem.applications.neovim.enable {
         home-manager.users.${username} = {
             imports = [ inputs.nixvim.homeModules.nixvim ];
             programs.nixvim = {
@@ -46,7 +46,7 @@
                     }
                     {
                         mode = "n";
-                        action = "<cmd>lua vim.diagnostic.open_float()<CR>";
+                        action = "<cmd>lua vim.lsp.buf.definition()<CR>";
                         key = "<leader>dg";
                         options.desc = "Go to definition";
                     }
@@ -237,7 +237,7 @@
                 name = "Neovim";
                 genericName = "Text Editor";
                 comment = "Edit text files";
-                exec = "${config.terminal.runCommand} nvim %F";
+                exec = "${config.mySystem.applications.terminal.runCommand} nvim %F";
                 terminal = false;
                 icon = "nvim";
                 categories = [ "Utility" "TextEditor" ];

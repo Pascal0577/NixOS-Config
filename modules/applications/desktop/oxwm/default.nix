@@ -3,13 +3,13 @@ let
     hue = config.lib.stylix.colors;
 in
 {
-    options.desktop.oxwm.enable = lib.mkOption {
+    options.mySystem.desktop.oxwm.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my OXWM module";
     };
 
-    config = lib.mkIf config.desktop.oxwm.enable {
+    config = lib.mkIf config.mySystem.desktop.oxwm.enable {
         services = {
             displayManager.ly.enable = true;
             xserver = {
