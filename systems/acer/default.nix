@@ -34,9 +34,14 @@
             stdenv = pkgs.stdenvAdapters.withCFlags [
                 "-O3"
                 "-march=native"
-                "-mtune=native"
                 "-fomit-frame-pointer"
-                "-flto"
+                "-flto=auto"
+                "-ffat-lto-objects"
+                "-fdebug-types-section"
+                "-femit-struct-debug-baseonly"
+                "-g1"
+                "-gno-column-info"
+                "-gno-variable-location-views"
             ] pkgs.stdenv;
         }
     );
