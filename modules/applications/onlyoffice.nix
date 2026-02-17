@@ -1,5 +1,7 @@
 { config, lib, username, ... }:
-
+let
+    hmDir = config.home-manager.users.home.homeDirectory;
+in
 {
     options.mySystem.applications.onlyoffice.enable = lib.mkOption {
         type = lib.types.bool;
@@ -12,8 +14,8 @@
             enable = true;
             settings = {
                 UITheme = "theme-night";
-                openPath = "/home/pascal/Documents";
-                savePath = "/home/pascal/Documents";
+                openPath = "${hmDir}/Documents";
+                savePath = "${hmDir}/Documents";
                 titlebar = "custom";
                 editorWindowMode = false;
             };

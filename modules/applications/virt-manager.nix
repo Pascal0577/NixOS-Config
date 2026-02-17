@@ -32,8 +32,6 @@
 
         virtualisation.spiceUSBRedirection.enable = true;
 
-        users.users.${username}.extraGroups = [ "libvirtd" ];
-
         home-manager.users.${username}.dconf.settings = {
             "org/virt-manager/virt-manager/connections" = {
                 autoconnect = [ "qemu:///system" ];
