@@ -13,6 +13,7 @@
         users.users.${username}.shell = pkgs.zsh;
 
         environment.systemPackages = with pkgs; [
+            zinit
             fzf
             eza
             glow
@@ -54,25 +55,17 @@
                             source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
                         fi
 
-                        ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share}/zinit/zinit.git"
-
-                        # Install zinit if it's not already present
-                        if [ ! -f "$ZINIT_HOME/zinit.zsh" ]; then
-                            mkdir -p "$(dirname "$ZINIT_HOME")"
-                            git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-                        fi
-
-                        source "''${ZINIT_HOME}/zinit.zsh"
+                        source ${pkgs.zinit}/share/zinit/zinit.zsh
 
                         # Load everything as fast as possible
                         zinit ice depth=1
                         zinit light romkatv/powerlevel10k
 
-                        zinit ice wait'0' lucid
-                        zinit light zdharma-continuum/fast-syntax-highlighting
-                        zinit light Aloxaf/fzf-tab
-                        zinit light zsh-users/zsh-autosuggestions
-                        zinit light zsh-users/zsh-completions
+                        zinit wait lucid light-mode for \
+                            zdharma-continuum/fast-syntax-highlighting \
+                            Aloxaf/fzf-tab \
+                            zsh-users/zsh-autosuggestions \
+                            zsh-users/zsh-completions
 
                         zinit cdreplay -q
 
