@@ -1,5 +1,7 @@
 { lib, config, pkgs, username, ... }: 
-
+let
+    cosmicCfg = config.mySystem.desktop.cosmic;
+in
 {
     options.mySystem.desktop.cosmic.cosmicOnNiri.enable = lib.mkOption {
         type = lib.types.bool;
@@ -7,7 +9,7 @@
         description = "Whether to enable the Niri compositor for the COSMIC session";
     };
 
-    config = lib.mkIf config.mySystem.desktop.cosmic.cosmicOnNiri.enable {
+    config = lib.mkIf (cosmicCfg.cosmicOnNiri.enable && cosmicCfg.enable) {
         environment = {
             systemPackages = [
                 (pkgs.callPackage ../../../../packages/cosmic-ext-niri/default.nix {})
