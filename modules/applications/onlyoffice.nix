@@ -1,6 +1,6 @@
 { config, lib, username, ... }:
 let
-    hmDir = config.home-manager.users.home.homeDirectory;
+    hmDir = config.home-manager.users.${username}.home.homeDirectory;
 in
 {
     options.mySystem.applications.onlyoffice.enable = lib.mkOption {
