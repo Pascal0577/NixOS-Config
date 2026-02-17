@@ -151,7 +151,6 @@
                     wallpaper = {
                         enabled = true;
                         overviewEnabled = false;
-                        directory = "/home/${username}/NixOS-Config/assets/";
                         monitorDirectories = [ ];
                         enableMultiMonitorDirectories = false;
                         recursiveSearch = false;
@@ -276,7 +275,7 @@
                         fontFixed = lib.mkForce "Ubuntu Mono";
                         fontDefaultScale = 1.1;
                         fontFixedScale = 1.0;
-                        idlfalseibitorEnabled = true;
+                        idleInhibitorEnabled = true;
                         tooltipsEnabled = true;
                         panelBackgroundOpacity = 1.0;
                     };
