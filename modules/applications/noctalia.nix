@@ -1,7 +1,7 @@
 { inputs, username, config, lib, pkgs, ... }:
 
 {
-    options.applications.noctalia.enable = lib.mkOption {
+    options.mySystem.applications.noctalia.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my Noctalia Shell module";
@@ -9,7 +9,7 @@
 
     imports = [ inputs.noctalia.nixosModules.default ];
 
-    config = lib.mkIf config.applications.noctalia.enable {
+    config = lib.mkIf config.mySystem.applications.noctalia.enable {
         services = {
             noctalia-shell.enable = true;
             upower.enable = true;
@@ -151,7 +151,6 @@
                     wallpaper = {
                         enabled = true;
                         overviewEnabled = false;
-                        directory = "/home/${username}/NixOS-Config/assets/";
                         monitorDirectories = [ ];
                         enableMultiMonitorDirectories = false;
                         recursiveSearch = false;
@@ -276,7 +275,7 @@
                         fontFixed = lib.mkForce "Ubuntu Mono";
                         fontDefaultScale = 1.1;
                         fontFixedScale = 1.0;
-                        idlfalseibitorEnabled = true;
+                        idleInhibitorEnabled = true;
                         tooltipsEnabled = true;
                         panelBackgroundOpacity = 1.0;
                     };

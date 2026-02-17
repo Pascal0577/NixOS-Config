@@ -7,22 +7,25 @@
         ../../modules/themes/everforest.nix
     ];
 
-    desktop.cosmic = {
-        enable = false;
-        accentColor = "${config.lib.stylix.colors.base09-hex}";
-        accentRed = "${config.lib.stylix.colors.base09-dec-r}";
-        accentGreen = "${config.lib.stylix.colors.base09-dec-g}";
-        accentBlue = "${config.lib.stylix.colors.base09-dec-b}";
-        cosmicOnNiri.enable = false;
-    };
-    desktop.niri.enable = true;
-    launcher.vicinae.enable = true;
-    terminal.foot.enable = true;
-    file-manager.yazi.enable = true;
-    applications.noctalia.enable = true;
-    applications.swayidle.enable = false;
+    mySystem = {
+        desktop.niri.enable = true;
+        desktop.cosmic = {
+            enable = false;
+            accentColor = "${config.lib.stylix.colors.base09-hex}";
+            accentRed = "${config.lib.stylix.colors.base09-dec-r}";
+            accentGreen = "${config.lib.stylix.colors.base09-dec-g}";
+            accentBlue = "${config.lib.stylix.colors.base09-dec-b}";
+            cosmicOnNiri.enable = false;
+        };
 
-    services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+        applications = {
+            noctalia.enable = true;
+            swayidle.enable = false;
+            launcher.vicinae.enable = true;
+            terminal.foot.enable = true;
+            file-manager.yazi.enable = true;
+        };
+    };
 
     programs.obs-studio.package = (
         pkgs.obs-studio.override {
@@ -31,13 +34,19 @@
             stdenv = pkgs.stdenvAdapters.withCFlags [
                 "-O3"
                 "-march=native"
-                "-mtune=native"
                 "-fomit-frame-pointer"
-                "-flto"
+                "-flto=auto"
+                "-ffat-lto-objects"
+                "-fdebug-types-section"
+                "-femit-struct-debug-baseonly"
+                "-g1"
+                "-gno-column-info"
+                "-gno-variable-location-views"
             ] pkgs.stdenv;
         }
     );
 
+    services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     hardware = {
         graphics.extraPackages = [ pkgs.intel-media-driver ];
         nvidia = {
@@ -70,7 +79,6 @@
                 });
             };
         };
-
     };
 
     boot = {

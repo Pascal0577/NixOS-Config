@@ -1,13 +1,13 @@
 { pkgs, inputs, username, config, lib, ... }:
 
 {
-    options.desktop.kde.enable = lib.mkOption {
+    options.mySystem.desktop.kde.enable = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Whether to enable my KDE module";
     };
 
-    config = lib.mkIf config.desktop.kde.enable {
+    config = lib.mkIf config.mySystem.desktop.kde.enable {
         services = {
             desktopManager.plasma6.enable = true;
             displayManager.sddm.enable = true;

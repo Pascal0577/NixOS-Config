@@ -1,7 +1,7 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.applications.virt-manager = {
+    options.mySystem.applications.virt-manager = {
         enable = lib.mkOption {
             type = lib.types.bool;
             default = true;
@@ -15,7 +15,7 @@
         };
     };
 
-    config = lib.mkIf config.applications.virt-manager.enable {
+    config = lib.mkIf config.mySystem.applications.virt-manager.enable {
         programs.virt-manager.enable = true;
 
         users.groups.libvirtd.members = [ "${username}" ];
@@ -32,8 +32,6 @@
 
         virtualisation.spiceUSBRedirection.enable = true;
 
-        users.users.${username}.extraGroups = [ "libvirtd" ];
-
         home-manager.users.${username}.dconf.settings = {
             "org/virt-manager/virt-manager/connections" = {
                 autoconnect = [ "qemu:///system" ];
@@ -41,7 +39,7 @@
             };
         };
 
-        boot = lib.mkIf config.applications.virt-manager.blacklistNvidia {
+        boot = lib.mkIf config.mySystem.applications.virt-manager.blacklistNvidia {
             blacklistedKernelModules = [ "nouveau" "nvidia" ];
 
             initrd.kernelModules = [

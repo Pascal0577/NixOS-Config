@@ -3,13 +3,13 @@ let
     hue = config.lib.stylix.colors;
 in
 {
-    options.applications.prismlauncher.enable = lib.mkOption {
+    options.mySystem.applications.prismlauncher.enable = lib.mkOption {
         type = lib.types.bool;
         default = true;
         description = "Whether to enable my PrismLauncher module";
     };
 
-    config = lib.mkIf config.applications.prismlauncher.enable {
+    config = lib.mkIf config.mySystem.applications.prismlauncher.enable {
         environment.systemPackages = [ pkgs.prismlauncher ];
         home-manager.users.${username} = {
             home.file.".local/share/PrismLauncher/themes/Stylix/theme.json".text = builtins.toJSON {
