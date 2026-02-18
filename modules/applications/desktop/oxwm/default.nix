@@ -1,4 +1,4 @@
-{ lib, username, config, ... }:
+{ lib, username, config, inputs, pkgs, ... }:
 let
     hue = config.lib.stylix.colors;
 in
@@ -14,34 +14,138 @@ in
             displayManager.ly.enable = true;
             xserver = {
                 enable = lib.mkForce true;
-                windowManager.oxwm.enable = true;
+                windowManager.oxwm = {
+                    enable = true;
+                    package = inputs.oxwm.packages.${pkgs.stdenv.hostPlatform.system}.oxwm;
+                };
             };
         };
 
         home-manager.users.${username} = {
-            home.file = {
-                ".config/oxwm/colors.lua".text = ''
-                    colors = {
-                        fg = "#${hue.base05-hex}",
-                        bg = "#${hue.base00-hex}",
-                        red = "#${hue.base08-hex}",
-                        orange = "#${hue.base09-hex}",
-                        yellow = "#${hue.base0A-hex}",
-                        green = "#${hue.base0B-hex}",
-                        cyan = "#${hue.base0C-hex}",
-                        blue = "#${hue.base0D-hex}",
-                        purple = "#${hue.base0E-hex}",
-                        brown = "#${hue.base0F-hex}",
-                    }
-                '';
-
-                ".config/oxwm/launcher.lua".text = ''
-                    oxwm.key.bind({ "Mod4" }, "D", oxwm.spawn({ "sh", "-c", "${config.launcherCommand}" }))
-                '';
-
-                ".config/oxwm/terminal.lua".text = ''
-                    terminal = "${config.terminal.openWindow}"
-                '';
+            imports = [ inputs.oxwm.homeManagerModules.default ];
+            programs.oxwm = {
+                enable = true;
+                settings = {
+                    terminal = "alacritty";
+                    modkey = "Mod4";
+                    layoutSymbol = {
+                        tiling = "[T]";
+                        normie = "[F]";
+                        tabbed = "[=]";
+                    };
+                    autostart = [
+                        
+                    ];
+                    binds = [
+                        {
+                            key = "Space";
+                            action = ''oxwm.spawn({ "sh", "-c", "${config.mySystem.applications.launcher.command}" })'';
+                        }
+                        {
+                            key = "Return";
+                            action = ''oxwm.spawn_terminal()'';
+                        }
+                    ];
+                    chords = [
+                        {
+                            notes = [
+                                {
+                                    mods = [ "Mod4" "Shift" ];
+                                    key = "Space";
+                                }
+                                {
+                                    mods = [];
+                                    key = "T";
+                                }
+                            ];
+                            action = ''oxwm.spawn_terminal()'';
+                        }
+                    ];
+                    border = {
+                        width = 3;
+                        focusedColor = "${hue.base0D-hex}";
+                        unfocusedColor = "${hue.base03-hex}";
+                    };
+                    gaps = {
+                        smart = "enabled";
+                        inner = [5 5];
+                        outer = [5 5];
+                    };
+                    bar = {
+                        font = "JetBrainsMono Nerd Font:style=Regular:size=12";
+                        hideVacantTags = false;
+                        unoccupiedScheme = [
+                            "${hue.base05-hex}"
+                            "${hue.base00-hex}"
+                            "${hue.base03-hex}"
+                        ];
+                        occupiedScheme = [
+                            "${hue.base0C-hex}"
+                            "${hue.base00-hex}"
+                            "${hue.base0C-hex}"
+                        ];
+                        selectedScheme = [
+                            "${hue.base0C-hex}"
+                            "${hue.base00-hex}"
+                            "${hue.base0E-hex}"
+                        ];
+                        urgentScheme = [
+                            "${hue.base08-hex}"
+                            "${hue.base00-hex}"
+                            "${hue.base08-hex}"
+                        ];
+                        blocks = [
+                            {
+                                kind = "ram";
+                                format = "Ram: {used}/{total} GB";
+                                interval = 5;
+                                color = "${hue.base0C-hex}";
+                                underline = true;
+                            }
+                            {
+                                kind = "static";
+                                text = "|";
+                                interval = 999999999;
+                                color = "${hue.base0E-hex}";
+                                underline = false;
+                            }
+                            {
+                                kind = "shell";
+                                format = "{}";
+                                command = "uname -r";
+                                interval = 999999999;
+                                color = "${hue.base08-hex}";
+                                underline = true;
+                            }
+                            {
+                                kind = "static";
+                                text = "|";
+                                interval = 999999999;
+                                color = "${hue.base0E-hex}";
+                                underline = false;
+                            }
+                            {
+                                kind = "datetime";
+                                format = "{}";
+                                date_format = "%a, %b %d - %-I:%M %P";
+                                interval = 1;
+                                color = "${hue.base0C-hex}";
+                                underline = true;
+                            }
+                            {
+                                kind = "battery";
+                                format = "Bat: {}%";
+                                charging = "⚡ Bat: {}%";
+                                discharging = "- Bat: {}%";
+                                full = "✓ Bat: {}%";
+                                interval = 30;
+                                color = "${hue.base0B-hex}";
+                                underline = true;
+                            }
+                        ];
+                    };
+                    rules = [];
+                };
             };
         };
     };
