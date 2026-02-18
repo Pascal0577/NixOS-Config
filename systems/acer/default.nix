@@ -23,7 +23,7 @@
             noctalia.enable = false;
             swayidle.enable = false;
             launcher.vicinae.enable = false;
-            launcher.dmenu.enable = true;
+            launcher.rofi.enable = true;
             terminal.foot.enable = false;
             terminal.alacritty.enable = true;
             file-manager.yazi.enable = true;
