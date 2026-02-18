@@ -8,17 +8,19 @@
     ];
 
     mySystem = {
-        applications.terminal.foot.enable = true;
-        desktop.niri.enable = true;
+        applications.terminal.alacritty.enable = true;
+        applications.launcher.dmenu.enable = true;
+        desktop.oxwm.enable = true;
         desktop.cosmic = {
-            enable = true;
+            enable = false;
             accentColor = "${config.lib.stylix.colors.base09-hex}";
             accentRed = "${config.lib.stylix.colors.base09-dec-r}";
             accentGreen = "${config.lib.stylix.colors.base09-dec-g}";
             accentBlue = "${config.lib.stylix.colors.base09-dec-b}";
-            cosmicOnNiri.enable = true;
+            cosmicOnNiri.enable = false;
         };
     };
 
-    programs.niri.package = lib.mkForce pkgs.niri-stable;
+    services.displayManager.ly.enable = true;
+    # programs.niri.package = lib.mkForce pkgs.niri-stable;
 }
