@@ -8,7 +8,8 @@
     ];
 
     mySystem = {
-        desktop.niri.enable = true;
+        desktop.niri.enable = false;
+        desktop.oxwm.enable = true;
         desktop.cosmic = {
             enable = false;
             accentColor = "${config.lib.stylix.colors.base09-hex}";
@@ -19,13 +20,17 @@
         };
 
         applications = {
-            noctalia.enable = true;
+            noctalia.enable = false;
             swayidle.enable = false;
-            launcher.vicinae.enable = true;
-            terminal.foot.enable = true;
+            launcher.vicinae.enable = false;
+            launcher.dmenu.enable = true;
+            terminal.foot.enable = false;
+            terminal.alacritty.enable = true;
             file-manager.yazi.enable = true;
         };
     };
+
+    services.displayManager.ly.enable = true;
 
     programs.obs-studio.package = (
         pkgs.obs-studio.override {
