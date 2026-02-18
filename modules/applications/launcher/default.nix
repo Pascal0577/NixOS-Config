@@ -20,6 +20,5 @@
         ./fuzzel.nix
         ./vicinae.nix
         ./walker.nix
-        ./rofi.nix
     ];
 }
