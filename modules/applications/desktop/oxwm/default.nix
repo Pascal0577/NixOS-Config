@@ -1,6 +1,7 @@
 { lib, username, config, inputs, pkgs, ... }:
 let
     hue = config.lib.stylix.colors;
+    inherit (lib) toInt;
 in
 {
     options.mySystem.desktop.oxwm.enable = lib.mkOption {
@@ -10,6 +11,7 @@ in
     };
 
     config = lib.mkIf config.mySystem.desktop.oxwm.enable {
+        environment.systemPackages = with pkgs; [ xclip maim ];
         services = {
             displayManager.ly.enable = true;
             xserver = {
@@ -37,26 +39,56 @@ in
                         
                     ];
                     binds = [
+                        { key = "Space"; action = ''oxwm.spawn({ "sh", "-c", "${config.mySystem.applications.launcher.command}" })''; }
+                        { key = "Return"; action = ''oxwm.spawn_terminal()''; }
+                        { key = "Q"; action = ''oxwm.client.kill()''; }
+                        { key = "A"; action = "oxwm.toggle_gaps()"; }
+                        { key = "J"; action = "oxwm.client.focus_stack(1)"; }
+                        { key = "Up"; action = "oxwm.client.focus_stack(1)"; }
+                        { key = "K"; action = "oxwm.client.focus_stack(-1)"; }
+                        { key = "Down"; action = "oxwm.client.focus_stack(-1)"; }
+                        { key = "H"; action = "oxwm.set_master_factor(5)"; }
+                        { key = "L"; action = "oxwm.set_master_factor(-5)"; }
+                        { key = "V"; action = "oxwm.client.toggle_floating()"; }
                         {
-                            key = "Space";
-                            action = ''oxwm.spawn({ "sh", "-c", "${config.mySystem.applications.launcher.command}" })'';
+                            mods = [ "Mod4" "Shift" ];
+                            key = "F";
+                            action = "oxwm.client.toggle_fullscreen()";
                         }
                         {
-                            key = "Return";
-                            action = ''oxwm.spawn_terminal()'';
+                            mods = [ "Mod4" "Shift" ];
+                            key = "Q";
+                            action = "oxwm.quit()";
                         }
-                    ];
+                        {
+                            mods = [ "Mod4" "Shift" ];
+                            key = "R";
+                            action = "oxwm.restart()";
+                        }
+                        {
+                            mods = [ "Mod4" "Shift" ];
+                            key = "J";
+                            action = "oxwm.client.move_stack(1)";
+                        }
+                        {
+                            mods = [ "Mod4" "Shift" ];
+                            key = "K";
+                            action = "oxwm.client.move_stack(-1)";
+                        }
+                    ] ++
+                    (lib.concatMap (num: [
+                        { key = "${num}"; action = "oxwm.tag.view(${toString (toInt num - 1)})"; }
+                        {
+                            mods = [ "Mod4" "Shift" ];
+                            key = "${num}";
+                            action = "oxwm.tag.move_to(${toString (toInt num - 1)})";
+                        }
+                    ]) [ "1" "2" "3" "4" "5" "6" "7" "8" "9" ]);
                     chords = [
                         {
                             notes = [
-                                {
-                                    mods = [ "Mod4" "Shift" ];
-                                    key = "Space";
-                                }
-                                {
-                                    mods = [];
-                                    key = "T";
-                                }
+                                { mods = [ "Mod4" "Shift" ]; key = "Space"; }
+                                { mods = []; key = "T"; }
                             ];
                             action = ''oxwm.spawn_terminal()'';
                         }
