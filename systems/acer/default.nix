@@ -20,7 +20,6 @@
         };
 
         applications = {
-            picom.enable = true;
             noctalia.enable = false;
             swayidle.enable = false;
             launcher.vicinae.enable = false;

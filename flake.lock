@@ -1010,11 +1010,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771431624,
-        "narHash": "sha256-N7Dqg2C1BMDC/nWiPv2j6VM9nRXWInGysJrqYtnz6gw=",
+        "lastModified": 1771451999,
+        "narHash": "sha256-/fHMWI3OPN5uyg5Q2rKYLMvqD3vpUoRdAbXxGlqyPys=",
         "owner": "tonybanters",
         "repo": "oxwm",
-        "rev": "721f67aa6e034d5f138efc2302486c7a94f6283a",
+        "rev": "e9c4933199e069999187c8119b8013a4623f094c",
         "type": "github"
       },
       "original": {
