@@ -16,6 +16,7 @@
         ./applications/noctalia.nix
         ./applications/obs-studio.nix
         ./applications/onlyoffice.nix
+        ./applications/picom.nix
         ./applications/pipewire.nix
         ./applications/prismlauncher.nix
         ./applications/ssh.nix
