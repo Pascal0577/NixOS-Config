@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, username, ... }:
 
 {
     options.mySystem.applications.launcher.rofi.enable = lib.mkOption {
@@ -12,6 +12,8 @@
             package = pkgs.rofi;
             command = "rofi -modes drun -show drun";
         };
-        environment.systemPackages = [ pkgs.rofi ];
+        home-manager.users.${username} = {
+            programs.rofi.enable = true;
+        };
     };
 }
