@@ -11,7 +11,7 @@ in
     };
 
     config = lib.mkIf config.mySystem.desktop.oxwm.enable {
-        environment.systemPackages = with pkgs; [ xclip maim ];
+        environment.systemPackages = with pkgs; [ xclip maim bc sysstat ];
         services = {
             displayManager.ly.enable = true;
             xserver = {
@@ -133,7 +133,7 @@ in
                                 format = "Ram: {used}/{total} GB";
                                 interval = 5;
                                 color = "${hue.base0C-hex}";
-                                underline = true;
+                                underline = false;
                             }
                             {
                                 kind = "static";
@@ -144,11 +144,11 @@ in
                             }
                             {
                                 kind = "shell";
-                                format = "{}";
-                                command = "uname -r";
-                                interval = 999999999;
+                                format = "CPU: {}%";
+                                command = ''echo 100 - $(mpstat | awk 'NR == 4 {print $13}') | bc'';
+                                interval = 3;
                                 color = "${hue.base08-hex}";
-                                underline = true;
+                                underline = false;
                             }
                             {
                                 kind = "static";
@@ -163,7 +163,14 @@ in
                                 date_format = "%a, %b %d - %-I:%M %P";
                                 interval = 1;
                                 color = "${hue.base0C-hex}";
-                                underline = true;
+                                underline = false;
+                            }
+                            {
+                                kind = "static";
+                                text = "|";
+                                interval = 999999999;
+                                color = "${hue.base0E-hex}";
+                                underline = false;
                             }
                             {
                                 kind = "battery";
@@ -173,7 +180,7 @@ in
                                 full = "✓ Bat: {}%";
                                 interval = 30;
                                 color = "${hue.base0B-hex}";
-                                underline = true;
+                                underline = false;
                             }
                         ];
                     };
