@@ -1010,14 +1010,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1771463295,
-        "narHash": "sha256-eSV3Iv+T8EWrYvOcqXsAsN2SIgvstPuNj4CmXbM5e78=",
-        "path": "/home/pascal/src/oxwm",
-        "type": "path"
+        "lastModified": 1771475860,
+        "narHash": "sha256-AX4SNqLPuNsBfpe+PgpZseyXVzCDlSxS5u8tRiUxeMo=",
+        "owner": "tonybanters",
+        "repo": "oxwm",
+        "rev": "3205bfc1d251545bda5a4ae0ad56b5bc1648a56d",
+        "type": "github"
       },
       "original": {
-        "path": "/home/pascal/src/oxwm",
-        "type": "path"
+        "owner": "tonybanters",
+        "repo": "oxwm",
+        "type": "github"
       }
     },
     "plasma-manager": {
