@@ -22,14 +22,17 @@
                         Status = "locked";
                     });
 
-#                    mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
-#                        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
-#                        installation_mode = "force_installed";
-#                    });
+                    mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
+                        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
+                        installation_mode = "force_installed";
+                    });
                 in {
-#                    ExtensionSettings = mkExtensionSettings {
-#
-#                    };
+                    ExtensionSettings = mkExtensionSettings {
+                        "uBlock0@raymondhill.net" = "ublock-origin";
+                        "jid1-MnnxcxisBPnSXQ@jetpack" = "privacy-badger17";
+                        "firefox@tampermonkey.net" = "tampermonkey";
+                        "{73a6fe31-595d-460b-a920-fcc0f8843232}" = "noscript";
+                    };
 
                     Preferences = mkLockedAttrs {
                         "browser.tabs.warnOnClose" = false;
@@ -42,9 +45,20 @@
                         "browser.urlbar.suggest.openpage" = false;
                         "browser.urlbar.suggest.yelp" = false;
                         "browser.urlbar.suggest.addons" = false;
+                        "browser.urlbar.suggest.sports" = false;
+                        "browser.urlbar.suggest.trending" = false;
+                        "browser.urlbar.suggest.weather" = false;
+                        "browser.urlbar.suggest.engines" = false;
+
                         "gfx.webrender.all" = true;
                         "network.http.http3.enabled" = true;
+
                         "privacy.resistFingerprinting" = true;
+                        "privacy.resistFingerprinting.randomization.canvas.use_siphash" = true;
+                        "privacy.resistFingerprinting.randomization.daily_reset.enabled" = true;
+                        "privacy.resistFingerprinting.randomization.daily_reset.private.enabled" = true;
+                        "privacy.resistFingerprinting.block_mozAddonManager" = true;
+                        "privacy.clearOnShutdown.cookies" = true;
 
                         "datareporting.policy.dataSubmissionEnabled" = false;
                         "datareporting.healthreport.uploadEnabled" = false;
@@ -63,6 +77,10 @@
 
                         "widget.use-xdg-desktop-portal.mime-handler" = 1;
                         "widget.use-xdg-desktop-portal.file-picker" = 1;
+
+                        "zen.workspaces.separate-essentials" = false;
+                        "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
+                        "zen.workspaces.continue-where-left-off" = true;
                     };
 
                     AutofillAddressEnabled = false;
@@ -109,80 +127,48 @@
                         };
                     };
 
-                    pins = {
-                        "NixOS Packages" = {
-                            id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
-                            url = "https://search.nixos.org/packages?channel=unstable&";
-                            position = 101;
-                            isEssential = true;
-                        };
-                        "Youtube" = {
-                            id = "1eabb6a3-911b-4fa9-9eaf-232a3703db19";
-                            url = "https://www.youtube.com/";
-                            position = 102;
-                            isEssential = true;
-                        };
-                        "Home Manager Options" = {
-                            id = "5065293b-1c04-40ee-ba1d-99a231873864";
-                            url = "https://home-manager-options.extranix.com/?query=&release=master";
-                            position = 103;
-                            isEssential = true;
-                        };
-                    };
-
                     spaces = {
                         "General" = {
-                            id = "c6de089c-410d-4206-961d-ab11f988d40a";
-                            container = containers."General".id;
+                            id = "2fb789ed-1362-4b70-b2f9-aece628a156d";
                             position = 1000;
-                            theme = {
-                                type = "gradient";
-                                colors = [
-                                    {
-                                        red = 46;
-                                        green = 52;
-                                        blue = 64;
-                                        algorithm = "floating";
-                                    }
-                                ];
-                            };
+                            container = containers.General.id;
                         };
                         "Pascal" = {
-                            id = "cdd10fab-4fc5-494b-9041-325e5759195b";
-                            icon = "❗";
-                            container = containers."Pascal".id;
+                            id = "5eb97172-5a03-4402-9f86-7ce270851c86";
+                            icon = "❄️";
                             position = 2000;
+                            container = containers.Pascal.id;
                             theme = {
                                 type = "gradient";
                                 colors = [
                                     {
-                                        red = 46;
-                                        green = 52;
-                                        blue = 64;
+                                        red = 185;
+                                        green = 200;
+                                        blue = 215;
                                         algorithm = "floating";
                                     }
                                 ];
                             };
                         };
                         "School" = {
-                            id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
+                            id = "129a2fbb-3247-48c9-84dc-19283d2a75d7";
                             icon = "🎓";
-                            container = containers."School".id;
                             position = 4000;
+                            container = containers.School.id;
                             theme = {
                                 type = "gradient";
                                 colors = [
                                     {
-                                        red = 97;
-                                        green = 58;
-                                        blue = 66;
+                                        red = 150;
+                                        green = 190;
+                                        blue = 230;
                                         algorithm = "floating";
                                     }
                                 ];
                             };
                         };
                         "Personal" = {
-                            id = "42ccc4c6-c0a2-0ff8-0ef4-eaa8dadbaa87";
+                            id = "bf6500c6-b86d-4430-a23b-7fa11c2f0f9d";
                             icon = "🐉";
                             container = containers."Personal".id;
                             position = 3000;
@@ -193,10 +179,37 @@
                                         red = 21;
                                         green = 18;
                                         blue = 32;
-                                        algorithm = "analogous";
+                                        algorithm = "floating";
                                     }
                                 ];
                             };
+                        };
+                    };
+
+                    pins = {
+                        "GitHub" = {
+                            id = "d1308ffd-cc13-45bf-89d0-658cef0f00b3";
+                            workspace = spaces.General.id;
+                            container = containers.General.id;
+                            url = "https://github.com";
+                            isEssential = true;
+                            position = 101;
+                        };
+                        "Youtube" = {
+                            id = "7daece55-7a2a-4d8c-bdc7-feb43da50e57";
+                            workspace = spaces.General.id;
+                            container = containers.General.id;
+                            url = "https://youtube.com";
+                            isEssential = true;
+                            position = 102;
+                        };
+                        "Blackboard" = {
+                            id = "1289ea9b-2285-4bab-8f19-0750700747ec";
+                            workspace = spaces.School.id;
+                            container = containers.School.id;
+                            url = "https://wku.blackboard.com/";
+                            isEssential = true;
+                            position = 401;
                         };
                     };
                 in {
@@ -209,8 +222,11 @@
                         "zen.glance.enabled" = false;
                         "zen.welcome-screen.seen" = true;
                         "zen.urlbar.behavior" = "float";
-                        "zen.theme.use-sysyem-colors" = true;
+                        "zen.theme.use-system-colors" = true;
+                        "zen.tabs.show-newtab-vertical" = false;
                     };
+
+                    mods = [ "7d577b21-4685-4db2-bb17-d39d08eec199" ];
 
                     search = {
                         force = true;
