@@ -39,7 +39,7 @@ in
                         
                     ];
                     binds = [
-                        { key = "Space"; action = ''oxwm.spawn({ "sh", "-c", "${config.mySystem.applications.launcher.command}" })''; }
+                        { key = "D"; action = ''oxwm.spawn({ "sh", "-c", "dmenu_run -l 10" })''; }
                         { key = "Return"; action = ''oxwm.spawn_terminal()''; }
                         { key = "Q"; action = ''oxwm.client.kill()''; }
                         { key = "A"; action = "oxwm.toggle_gaps()"; }
