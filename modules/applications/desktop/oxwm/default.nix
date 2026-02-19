@@ -50,6 +50,7 @@ in
                         { key = "H"; action = "oxwm.set_master_factor(5)"; }
                         { key = "L"; action = "oxwm.set_master_factor(-5)"; }
                         { key = "V"; action = "oxwm.client.toggle_floating()"; }
+                        { key = "S"; action = ''oxwm.spawn({ "sh", "-c", "maim -s | xclip -selection clipboard -t image/png" })''; }
                         {
                             mods = [ "Mod4" "Shift" ];
                             key = "F";
@@ -176,7 +177,9 @@ in
                             }
                         ];
                     };
-                    rules = [];
+                    rules = [
+                        # { match.class = "Zen"; focus = true; tag = 0; }
+                    ];
                 };
             };
         };

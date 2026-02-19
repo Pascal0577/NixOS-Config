@@ -8,8 +8,8 @@
     ];
 
     mySystem = {
-        desktop.niri.enable = false;
-        desktop.oxwm.enable = true;
+        desktop.niri.enable = true;
+        desktop.oxwm.enable = false;
         desktop.cosmic = {
             enable = false;
             accentColor = "${config.lib.stylix.colors.base09-hex}";
@@ -20,12 +20,12 @@
         };
 
         applications = {
-            noctalia.enable = false;
+            noctalia.enable = true;
             swayidle.enable = false;
-            launcher.vicinae.enable = false;
-            launcher.rofi.enable = true;
-            terminal.foot.enable = false;
-            terminal.alacritty.enable = true;
+            launcher.vicinae.enable = true;
+            launcher.dmenu.enable = false;
+            terminal.foot.enable = true;
+            terminal.alacritty.enable = false;
             file-manager.yazi.enable = true;
         };
     };

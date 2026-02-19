@@ -45,7 +45,8 @@
         hyprland.url = "github:vaxerski/Hyprland/layouts-rethonked";
         mithril-shell.url = "github:andreashgk/mithril-shell";
 
-        oxwm.url = "github:tonybanters/oxwm";
+        #oxwm.url = "github:tonybanters/oxwm";
+        oxwm.url = "path:/home/pascal/src/oxwm";
         oxwm.inputs.nixpkgs.follows = "nixpkgs";
     };
 
