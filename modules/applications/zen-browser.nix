@@ -15,20 +15,21 @@
 
             programs.zen-browser = {
                 enable = true;
-                policies = let
+                policies =
+                let
                     mkLockedAttrs = builtins.mapAttrs (_: value: {
                         Value = value;
                         Status = "locked";
                     });
 
-                    mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
-                        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
-                        installation_mode = "force_installed";
-                    });
+#                    mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
+#                        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
+#                        installation_mode = "force_installed";
+#                    });
                 in {
-                    ExtensionSettings = mkExtensionSettings {
-
-                    };
+#                    ExtensionSettings = mkExtensionSettings {
+#
+#                    };
 
                     Preferences = mkLockedAttrs {
                         "browser.tabs.warnOnClose" = false;
@@ -84,15 +85,7 @@
                     };
                 };
 
-                profiles."pascal" = {
-                    settings = {
-                        "zen.glance.enabled" = false;
-                        "zen.welcome-screen.seen" = true;
-                        "zen.urlbar.behavior" = "float";
-                        "zen.theme.use-sysyem-colors" = true;
-                    };
-
-                    containersForce = true;
+                profiles."pascal" = let
                     containers = {
                         General = {
                             color = "blue";
@@ -116,32 +109,28 @@
                         };
                     };
 
-                    pinsForce = true;
                     pins = {
                         "NixOS Packages" = {
                             id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
                             url = "https://search.nixos.org/packages?channel=unstable&";
-                            position = 1000;
+                            position = 101;
                             isEssential = true;
                         };
                         "Youtube" = {
                             id = "1eabb6a3-911b-4fa9-9eaf-232a3703db19";
                             url = "https://www.youtube.com/";
-                            position = 2000;
+                            position = 102;
                             isEssential = true;
                         };
                         "Home Manager Options" = {
                             id = "5065293b-1c04-40ee-ba1d-99a231873864";
                             url = "https://home-manager-options.extranix.com/?query=&release=master";
-                            position = 3000;
+                            position = 103;
                             isEssential = true;
                         };
                     };
 
-                    spacesForce = true;
-                    spaces = let
-                        containers = config.home-manager.users.${username}.programs.zen-browser.profiles."pascal".containers;
-                    in {
+                    spaces = {
                         "General" = {
                             id = "c6de089c-410d-4206-961d-ab11f988d40a";
                             container = containers."General".id;
@@ -209,6 +198,18 @@
                                 ];
                             };
                         };
+                    };
+                in {
+                    containersForce = true;
+                    pinsForce = true;
+                    spacesForce = true;
+                    inherit containers pins spaces;
+
+                    settings = {
+                        "zen.glance.enabled" = false;
+                        "zen.welcome-screen.seen" = true;
+                        "zen.urlbar.behavior" = "float";
+                        "zen.theme.use-sysyem-colors" = true;
                     };
 
                     search = {
