@@ -185,7 +185,8 @@ in
                         ];
                     };
                     rules = [
-                        # { match.class = "Zen"; focus = true; tag = 0; }
+                        { match.class = "Zen"; focus = true; tag = 0; }
+                        { match.class = "Vesktop"; focus = true; tag = 1; }
                     ];
                 };
             };
