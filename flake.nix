@@ -3,6 +3,7 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+        nixos-hardware.url = "github:nixos/nixos-hardware";
         niri.url = "github:sodiboo/niri-flake";
 
         home-manager.url = "github:nix-community/home-manager";
@@ -49,9 +50,11 @@
         oxwm.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs:
     {
-        nixosConfigurations = {
+        nixosConfigurations = let
+            images.pi5 = self.nixosConfigurations.raspberry.system.build.image;
+        in {
             nixos = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs;
@@ -75,6 +78,39 @@
                     ./systems/lenovo
                 ];
             };
+
+            raspberry = nixpkgs.lib.nixosSystem {
+                system = "aarch64-linux";
+                specialArgs = {
+                    inherit inputs;
+                    hostname = "raspberry";
+                    username = "pascal";
+                };
+                modules = [
+                    nixos-hardware.nixosModules.raspberry-pi-5
+                    home-manager.nixosModules.home-manager
+                    ./systems/raspberry
+                ];
+            };
+
+            packages.aarch64-linux.pi5-image = (nixpkgs.lib.nixosSystem {
+                system = "aarch64-linux";
+                specialArgs = {
+                    inherit inputs;
+                    hostname = "raspberry";
+                    username = "pascal";
+                };
+                modules = [
+                    nixos-hardware.nixosModules.raspberry-pi-5
+                    home-manager.nixosModules.home-manager
+                    ./systems/raspberry
+                    "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+                    {
+                        sdImage.compressImage = false;
+                        nixpkgs.crossSystem.config = "aarch64-unknown-linux-gnu";
+                    }
+                ];
+            }).config.system.build.sdImage;
         };
     };
 }
