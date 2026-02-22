@@ -32,6 +32,15 @@
 
     services.displayManager.ly.enable = true;
 
+    environment.systemPackages = with pkgs; [
+        playerctl
+        losslesscut-bin
+        pinta
+        deluge
+        baobab
+        totem
+    ];
+
     programs.obs-studio.package = (
         pkgs.obs-studio.override {
             cudaSupport = true;
@@ -88,6 +97,7 @@
 
     boot = {
         initrd.kernelModules = [ "i915" ];
+        binfmt.emulatedSystems = [ "aarch64-linux" ];
         kernelParams = [
             "i915.enable_guc=3"
             "i915.enable_fbc=1"

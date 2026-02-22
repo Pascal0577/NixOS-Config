@@ -1,15 +1,4 @@
-{ pkgs, ... }:
-
 {
-    environment.systemPackages = with pkgs; [
-        playerctl
-        losslesscut-bin
-        pinta
-        deluge
-        baobab
-        totem
-    ];
-
     security.rtkit.enable = true;
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "26.05";
