@@ -25,12 +25,9 @@ in
                         else pkgs.niri-stable;
         };
 
-        # applications.noctalia.enable = true;
         environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
-        services.displayManager.ly.enable = true;
         systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart = 
             lib.mkForce "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-
 
         home-manager.users.${username} = {
             stylix.targets.niri.enable = true;
@@ -43,10 +40,6 @@ in
                     enable = true;
                     path = lib.getExe pkgs.xwayland-satellite;
                 };
-
-                spawn-at-startup = [
-                    { argv = [ "cosmic-ext-alternative-startup" ]; }
-                ];
 
                 binds = {
                     # Focusing

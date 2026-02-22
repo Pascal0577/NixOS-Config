@@ -44,10 +44,11 @@ in
         };
 
         home-manager.users.${username} = {
-            programs.niri.settings.layout.border = {
-                active.color = lib.mkForce "#${config.mySystem.desktop.cosmic.accentColor}";
-            };
             stylix.targets.gtk.enable = false;
+            programs.niri.settings = {
+                spawn-at-startup = [{argv = ["cosmic-ext-alternative-startup" ];}];
+                layout.border.active.color = lib.mkForce "#${cosmicCfg.accentColor}";
+            };
         };
     };
 }
