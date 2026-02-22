@@ -7,10 +7,7 @@
         description = "Whether to enable my Hyprland module";
     };
 
-    imports = [
-        inputs.hyprland.nixosModules.default
-        ./mithril-shell.nix
-    ];
+    imports = [ inputs.hyprland.nixosModules.default ];
 
     config = lib.mkMerge [
         {

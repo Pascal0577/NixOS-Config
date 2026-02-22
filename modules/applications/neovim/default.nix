@@ -7,11 +7,6 @@
         description = "Whether to enable my Neovim module";
     };
 
-    imports = [
-        ./latex.nix
-        ./zig.nix
-    ];
-
     config = lib.mkIf config.mySystem.applications.neovim.enable {
         home-manager.users.${username} = {
             imports = [ inputs.nixvim.homeModules.nixvim ];

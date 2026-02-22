@@ -36,8 +36,6 @@ in
         };
     };
 
-    imports = [ ./cosmic-on-niri.nix ];
-
     config = lib.mkIf config.mySystem.desktop.cosmic.enable {
         services.displayManager.cosmic-greeter.enable = true;
         services.system76-scheduler.enable = true;

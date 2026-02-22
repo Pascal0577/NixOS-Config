@@ -3,12 +3,7 @@ let
     inherit (lib) mkDefault mkForce;
 in
 {
-    imports = [
-        inputs.stylix.nixosModules.stylix
-        ./nord.nix
-        ./everforest.nix
-        ./tokyonight.nix
-    ];
+    imports = [ inputs.stylix.nixosModules.stylix ];
 
     fonts = {
         packages = with pkgs; [

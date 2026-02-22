@@ -20,11 +20,4 @@
             description = "Command used to run a command in a new terminal window";
         };
     };
-
-    imports = [
-        ./alacritty.nix
-        ./ghostty.nix
-        ./kitty.nix
-        ./foot.nix
-    ];
 }

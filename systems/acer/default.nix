@@ -3,8 +3,7 @@
 {
     imports = [
         ./hardware-configuration.nix
-        ../../modules
-    ];
+    ] ++ lib.filesystem.listFilesRecursive ../../modules;
 
     mySystem = {
         theme.everforest.enable = true;

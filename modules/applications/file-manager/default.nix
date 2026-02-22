@@ -7,9 +7,4 @@
             default = pkgs.nautilus;
         };
     };
-
-    imports = [
-        ./nautilus.nix
-        ./yazi.nix
-    ];
 }

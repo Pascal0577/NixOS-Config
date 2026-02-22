@@ -6,8 +6,6 @@
         default = false;
     };
 
-    imports = [ inputs.stylix.nixosModules.stylix ];
-
     config = lib.mkIf config.mySystem.theme.tokyonight.enable {
         stylix = {
             base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-moon.yaml";
