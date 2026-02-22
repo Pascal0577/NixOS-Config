@@ -6,6 +6,7 @@
     ] ++ lib.filesystem.listFilesRecursive ../../modules;
 
     mySystem = {
+        theme.everforest.enable = true;
         applications.terminal.alacritty.enable = true;
         applications.launcher.dmenu.enable = true;
         desktop = {
