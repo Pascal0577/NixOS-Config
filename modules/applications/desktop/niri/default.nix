@@ -7,10 +7,9 @@ let
     });
 in
 {
-    options.mySystem.desktop.niri.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my Niri module";
+    options.mySystem.desktop.niri = {
+        enable = lib.mkEnableOption "niri";
+        stable = lib.mkEnableOption "niri-stable";
     };
 
     imports = [ inputs.niri.nixosModules.niri ];
@@ -21,7 +20,9 @@ in
 
         programs.niri = {
             enable = true;
-            package = niri-optimized;
+            package = if config.mySystem.desktop.niri.stable
+                        then niri-optimized
+                        else pkgs.niri-stable;
         };
 
         # applications.noctalia.enable = true;
