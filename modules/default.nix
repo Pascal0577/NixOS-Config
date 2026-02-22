@@ -24,7 +24,6 @@
         ./applications/virt-manager.nix
         ./applications/zen-browser.nix
         ./applications/zsh.nix
-        ./applications/helix
 
         ./applications/desktop/gnome
         ./applications/desktop/kde
@@ -37,10 +36,11 @@
         ./locale-time.nix
         ./networking.nix
         ./power-management.nix
+        ./themes
         ./users.nix
         ./xserver.nix
     ];
-
+    
     environment.systemPackages = with pkgs; [
         playerctl
         losslesscut-bin

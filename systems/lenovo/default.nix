@@ -3,9 +3,7 @@
 {
     imports = [
         ./hardware-configuration.nix
-        ../../modules
-        ../../modules/themes/everforest.nix
-    ];
+    ] ++ lib.filesystem.listFilesRecursive ../../modules;
 
     mySystem = {
         applications.terminal.alacritty.enable = true;

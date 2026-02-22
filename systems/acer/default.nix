@@ -1,13 +1,13 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
     imports = [
         ./hardware-configuration.nix
         ../../modules
-        ../../modules/themes/everforest.nix
     ];
 
     mySystem = {
+        theme.everforest.enable = true;
         desktop.niri.enable = true;
         desktop.oxwm.enable = false;
         desktop.cosmic = {
