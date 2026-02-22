@@ -21,8 +21,8 @@ in
         programs.niri = {
             enable = true;
             package = if config.mySystem.desktop.niri.stable
-                        then niri-optimized
-                        else pkgs.niri-stable;
+                        then pkgs.niri-stable
+                        else niri-optimized;
         };
 
         environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
