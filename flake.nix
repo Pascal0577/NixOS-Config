@@ -52,9 +52,7 @@
 
     outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs:
     {
-        nixosConfigurations = let
-            images.pi5 = self.nixosConfigurations.raspberry.system.build.image;
-        in {
+        nixosConfigurations = {
             nixos = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs;
@@ -92,25 +90,22 @@
                     ./systems/raspberry
                 ];
             };
-
-            packages.aarch64-linux.pi5-image = (nixpkgs.lib.nixosSystem {
-                system = "aarch64-linux";
-                specialArgs = {
-                    inherit inputs;
-                    hostname = "raspberry";
-                    username = "pascal";
-                };
-                modules = [
-                    nixos-hardware.nixosModules.raspberry-pi-5
-                    home-manager.nixosModules.home-manager
-                    ./systems/raspberry
-                    "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-                    {
-                        sdImage.compressImage = false;
-                        nixpkgs.crossSystem.config = "aarch64-unknown-linux-gnu";
-                    }
-                ];
-            }).config.system.build.sdImage;
         };
+
+        packages.aarch64-linux.pi5-image = (nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = {
+                inherit inputs;
+                hostname = "raspberry";
+                username = "pascal";
+            };
+            modules = [
+                nixos-hardware.nixosModules.raspberry-pi-5
+                home-manager.nixosModules.home-manager
+                ./systems/raspberry
+                "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+                { sdImage.compressImage = false; }
+            ];
+        }).config.system.build.sdImage;
     };
 }
