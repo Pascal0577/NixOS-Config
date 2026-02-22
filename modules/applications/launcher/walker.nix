@@ -40,9 +40,7 @@ in
             ];
 
             home-manager.users.${username} = {
-                imports = [ 
-                    inputs.walker.homeManagerModules.default
-                ];
+                imports = [ inputs.walker.homeManagerModules.default ];
 
                 # Needed so walker can find gstreamer stuff and not crash
                 # when trying to preview a video

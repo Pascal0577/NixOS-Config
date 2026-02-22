@@ -26,9 +26,7 @@ in
             };
 
             home-manager.users.${username} = {
-                imports = [
-                    inputs.vicinae.homeManagerModules.default
-                ];
+                imports = [ inputs.vicinae.homeManagerModules.default ];
 
                 services.vicinae = {
                     enable = true;

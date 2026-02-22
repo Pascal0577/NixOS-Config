@@ -14,11 +14,4 @@
             description = "Command used to open the launcher";
         };
     };
-
-    imports = [
-        ./dmenu.nix
-        ./fuzzel.nix
-        ./vicinae.nix
-        ./walker.nix
-    ];
 }

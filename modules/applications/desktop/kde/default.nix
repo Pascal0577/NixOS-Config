@@ -33,9 +33,7 @@
         };
 
         home-manager.users.${username} = {
-            imports = [
-                inputs.plasma-manager.homeModules.plasma-manager
-            ];
+            imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
 
             programs.plasma = {
                 enable = true;

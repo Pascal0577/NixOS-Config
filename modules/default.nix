@@ -1,46 +1,6 @@
 { pkgs, ... }:
 
 {
-    imports = [
-        ./applications/appimage.nix
-        ./applications/discord.nix
-        ./applications/fastfetch.nix
-        ./applications/file-manager
-        ./applications/git.nix
-        ./applications/heroic.nix
-        ./applications/kmscon.nix
-        ./applications/launcher
-        ./applications/mathematica.nix
-        ./applications/mullvad.nix
-        ./applications/neovim
-        ./applications/noctalia.nix
-        ./applications/obs-studio.nix
-        ./applications/onlyoffice.nix
-        ./applications/pipewire.nix
-        ./applications/prismlauncher.nix
-        ./applications/ssh.nix
-        ./applications/swayidle.nix
-        ./applications/terminal
-        ./applications/virt-manager.nix
-        ./applications/zen-browser.nix
-        ./applications/zsh.nix
-
-        ./applications/desktop/gnome
-        ./applications/desktop/kde
-        ./applications/desktop/niri
-        ./applications/desktop/hyprland
-        ./applications/desktop/oxwm
-        ./applications/desktop/cosmic
-
-        ./boot.nix
-        ./locale-time.nix
-        ./networking.nix
-        ./power-management.nix
-        ./themes
-        ./users.nix
-        ./xserver.nix
-    ];
-    
     environment.systemPackages = with pkgs; [
         playerctl
         losslesscut-bin

@@ -9,9 +9,7 @@
 
     config = lib.mkIf config.mySystem.applications.zen-browser.enable {
         home-manager.users.${username} = {
-            imports = [
-                inputs.zen-browser.homeModules.beta
-            ];
+            imports = [ inputs.zen-browser.homeModules.beta ];
 
             programs.zen-browser = {
                 enable = true;

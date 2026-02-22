@@ -12,7 +12,7 @@
             image = ../../assets/flowers.png;
 
             cursor = {
-                package = lib.mkDefault pkgs.everforest-cursors;
+                package = pkgs.everforest-cursors;
                 name = "everforest-cursors";
                 size = 32;
             };
