@@ -1,99 +1,34 @@
 { pkgs, inputs, username, lib, config, ... }:
 
 {
-    imports = [
-        inputs.stylix.nixosModules.stylix
-    ];
-
-    fonts = {
-        packages = with pkgs; [
-            ubuntu-sans
-            ubuntu-sans-mono
-            noto-fonts-cjk-sans
-        ];
-
-        fontconfig = {
-            enable = true;
-            useEmbeddedBitmaps = true;
-        };
+    options.mySystem.theme.everforest.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;  
     };
 
-    stylix = {
-        enable = true;
-        autoEnable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
-        image = ../../assets/flowers.png;
+    config = lib.mkIf config.mySystem.theme.everforest.enable {
+        stylix = {
+            base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
+            image = ../../assets/flowers.png;
 
-        fonts = {
-            serif = {
-                package = pkgs.ubuntu-sans;
-                name = "Ubuntu Sans";
-            };
-
-            sansSerif = {
-                package = pkgs.ubuntu-sans;
-                name = "Ubuntu Sans";
-            };
-
-            monospace = {
-                package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "JetBrainsMono Nerd Font";
-            };
-
-            emoji = {
-                package = pkgs.noto-fonts-color-emoji;
-                name = "Noto Color Emoji";
+            cursor = {
+                package = lib.mkDefault pkgs.everforest-cursors;
+                name = "everforest-cursors";
+                size = 32;
             };
         };
 
-        cursor = {
-            package = lib.mkDefault pkgs.everforest-cursors;
-            name = "everforest-cursors";
-            size = 32;
-        };
-
-        icons = {
-            enable = true;
-            package = pkgs.papirus-icon-theme;
-            dark = "Papirus-Dark";
-            light = "Papirus-Light";
-        };
-
-        targets = {
-            plymouth.enable = false;
-            qt.enable = false;
-        };
-    };
-
-    home-manager.users.${username} = {
-        stylix.targets = {
-            zen-browser = {
-                enable = true;
-                profileNames = [ "pascal" ];
-            };
-
-            nixvim.enable = false;
-        };
-
-        programs = {
-            nixvim = {
+        home-manager.users.${username} = {
+            programs.nixvim = {
                 colorschemes.everforest = {
                     enable = true;
-                    settings = {
-                        background = "soft";
-                    };
+                    settings.background = "soft";
                 };
 
                 performance.combinePlugins.standalonePlugins = [
                     pkgs.vimPlugins.everforest
                 ];
             };
-        };
-
-        dconf.settings."org/gnome/desktop/interface" = {
-            color-scheme = lib.mkForce "prefer-dark";
-            font-antialiasing = lib.mkDefault "standard";
-            font-hinting = lib.mkDefault "full";
         };
     };
 }
