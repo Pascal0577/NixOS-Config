@@ -24,6 +24,7 @@
         ./applications/virt-manager.nix
         ./applications/zen-browser.nix
         ./applications/zsh.nix
+        ./applications/helix
 
         ./applications/desktop/gnome
         ./applications/desktop/kde
