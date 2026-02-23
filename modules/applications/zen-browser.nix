@@ -13,6 +13,7 @@
 
             programs.zen-browser = {
                 enable = true;
+                suppressXdgMigrationWarning = true;
                 policies =
                 let
                     mkLockedAttrs = builtins.mapAttrs (_: value: {
