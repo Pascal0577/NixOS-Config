@@ -11,6 +11,7 @@
         users.users.${username}.openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMCi86K7NBo6vMNdGSItXFDthrLSx9Q0l9acqGlQdmoc pascal@nixos"
         ];
+        services.avahi.enable = true;
         services.openssh = {
             enable = true;
             settings = {
