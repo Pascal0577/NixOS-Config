@@ -61,10 +61,10 @@
                         zinit ice depth=1
                         zinit light romkatv/powerlevel10k
 
+                        zinit light zsh-users/zsh-autosuggestions
                         zinit wait lucid light-mode for \
                             zdharma-continuum/fast-syntax-highlighting \
                             Aloxaf/fzf-tab \
-                            zsh-users/zsh-autosuggestions \
                             zsh-users/zsh-completions
 
                         zinit cdreplay -q
