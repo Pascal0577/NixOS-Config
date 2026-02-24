@@ -2,16 +2,20 @@
 
 {
     networking.useDHCP = lib.mkDefault true;
-    hardware.enableAllHardware = lib.mkForce true;
+    hardware.enableAllHardware = lib.mkForce false;
 
     boot = {
-        kernelPackages = lib.mkForce (pkgs.linuxPackagesFor
-            (pkgs.callPackage "${inputs.nixos-hardware}/raspberry-pi/common/kernel.nix" { rpiVersion = 5; })
-        );
-        supportedFilesystems = lib.mkForce [ "ext4" "vfat" ];
+        # kernelPackages = lib.mkForce (pkgs.linuxPackagesFor
+        #     (pkgs.callPackage "${inputs.nixos-hardware}/raspberry-pi/common/kernel.nix" { rpiVersion = 5; })
+        # );
+        # supportedFilesystems = lib.mkForce [ "ext4" "vfat" ];
         bootspec.enable = lib.mkForce false;
         loader.efi.canTouchEfiVariables = lib.mkForce false;
         initrd.systemd.enable = lib.mkForce false;
-        blacklistedKernelModules = [ "dw-hdmi" ];
+    };
+
+    raspberry-pi-nix = {
+        board = "bcm2712";
+        uboot.enable = true;
     };
 }

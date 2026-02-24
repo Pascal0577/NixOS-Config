@@ -15,11 +15,11 @@ in
         };
     };
 
-    imports = [ inputs.niri.nixosModules.niri ];
+    imports = lib.optional (!pkgs.stdenv.hostPlatform.isAarch64) inputs.niri.nixosModules.niri;
 
     config = lib.mkMerge [
         {
-            nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+            nixpkgs.overlays = inputs.niri.overlays.niri;
             niri-flake.cache.enable = true;
         }
 
