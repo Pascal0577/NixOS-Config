@@ -8,7 +8,7 @@
     };
 
     config = lib.mkIf config.mySystem.applications.discord.enable {
-        environment.systemPackages = [ pkgs.gajim ];
+        # environment.systemPackages = [ pkgs.gajim ];
         home-manager.users.${username} = {
             home.file.".config/vesktop/settings/quickCss.css".text = ''
                 body {
