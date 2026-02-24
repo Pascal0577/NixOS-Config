@@ -7,6 +7,7 @@
 
     mySystem = {
         theme.everforest.enable = true;
+        applications.helix.enable = true;
         applications.terminal.alacritty.enable = true;
         applications.launcher.dmenu.enable = true;
         desktop = {
