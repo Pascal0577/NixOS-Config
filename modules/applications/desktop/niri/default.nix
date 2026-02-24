@@ -19,7 +19,7 @@ in
 
     config = lib.mkMerge [
         {
-            nixpkgs.overlays = inputs.niri.overlays.niri;
+            nixpkgs.overlays = [ inputs.niri.overlays.niri ];
             niri-flake.cache.enable = true;
         }
 
