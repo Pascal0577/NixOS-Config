@@ -3,9 +3,8 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        nixos-hardware.url = "github:nixos/nixos-hardware";
-        raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix/";
-
+        nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
+        
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -87,10 +86,7 @@
                     username = "pascal";
                 };
                 modules = [
-                    nixos-hardware.nixosModules.raspberry-pi-5
                     home-manager.nixosModules.home-manager
-                    inputs.raspberry-pi-nix.nixosModules.raspberry-pi
-                    inputs.raspberry-pi-nix.nixosModules.sd-image
                     ./systems/raspberry
                 ];
             };
