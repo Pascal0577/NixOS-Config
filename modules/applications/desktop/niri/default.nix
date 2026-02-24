@@ -15,7 +15,7 @@ in
         };
     };
 
-    imports = lib.optional (!pkgs.stdenv.hostPlatform.isAarch64) inputs.niri.nixosModules.niri;
+    imports = inputs.niri.nixosModules.niri;
 
     config = lib.mkMerge [
         {
