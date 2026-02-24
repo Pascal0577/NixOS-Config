@@ -25,7 +25,7 @@ in
 
         (lib.mkIf config.mySystem.desktop.niri.enable {
             programs.niri = {
-                enable = false;
+                enable = true;
                 package = if config.mySystem.desktop.niri.stable
                             then pkgs.niri-stable
                             else
