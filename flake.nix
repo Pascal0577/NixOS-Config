@@ -4,7 +4,7 @@
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         nixos-hardware.url = "github:nixos/nixos-hardware";
-        niri.url = "github:sodiboo/niri-flake";
+        raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix/";
 
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +14,8 @@
 
         nixvim.url = "github:nix-community/nixvim";
         nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+        niri.url = "github:sodiboo/niri-flake";
 
         plasma-manager.url = "github:nix-community/plasma-manager";
         plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -87,25 +89,13 @@
                 modules = [
                     nixos-hardware.nixosModules.raspberry-pi-5
                     home-manager.nixosModules.home-manager
+                    inputs.raspberry-pi-nix.nixosModules.raspberry-pi
+                    inputs.raspberry-pi-nix.nixosModules.sd-image
                     ./systems/raspberry
                 ];
             };
         };
 
-        packages.aarch64-linux.pi5-image = (nixpkgs.lib.nixosSystem {
-            system = "aarch64-linux";
-            specialArgs = {
-                inherit inputs;
-                hostname = "raspberry";
-                username = "pascal";
-            };
-            modules = [
-                nixos-hardware.nixosModules.raspberry-pi-5
-                home-manager.nixosModules.home-manager
-                ./systems/raspberry
-                "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-                { sdImage.compressImage = false; }
-            ];
-        }).config.system.build.sdImage;
+        packages.aarch64-linux.pi5-image = self.nixosConfigurations.raspberry.config.system.build.sdImage;
     };
 }
