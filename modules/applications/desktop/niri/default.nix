@@ -15,7 +15,7 @@ in
         };
     };
 
-    imports = inputs.niri.nixosModules.niri;
+    imports = [ inputs.niri.nixosModules.niri ];
 
     config = lib.mkMerge [
         {
