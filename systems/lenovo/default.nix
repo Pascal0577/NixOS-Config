@@ -9,9 +9,14 @@
         theme.everforest.enable = true;
         applications.helix.enable = true;
         applications.terminal.alacritty.enable = true;
-        applications.launcher.dmenu.enable = true;
+        applications.launcher.vicinae.enable = true;
+        applications.file-manager.yazi.enable = true;
         desktop = {
-            oxwm.enable = true;
+            oxwm.enable = false;
+            hyprland = {
+                enable = true;
+                mithril-shell.enable = true;
+            };
             niri = {
                 enable = false;
                 stable = true;
