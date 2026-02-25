@@ -10,8 +10,6 @@ in
         description = "Whether to enable my OXWM module";
     };
 
-    imports = [ inputs.oxwm.nixosModules.default ];
-
     config = lib.mkIf config.mySystem.desktop.oxwm.enable {
         environment.systemPackages = with pkgs; [ xclip maim bc sysstat ];
         services = {

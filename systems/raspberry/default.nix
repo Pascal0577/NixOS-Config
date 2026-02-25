@@ -41,16 +41,10 @@
     };
 
     security.sudo.wheelNeedsPassword = false;
+    boot.loader.systemd-boot.enable = lib.mkForce false;
 
     networking.interfaces.end0.ipv4.addresses = [{
         address = "169.254.0.2";
         prefixLength = 24;
     }];
-
-    nixpkgs.overlays = [
-        (final: prev: {
-            xrdb = prev.xorg.xrdb;
-        })
-    ];
-    boot.loader.systemd-boot.enable = lib.mkForce false;
 }
