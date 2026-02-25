@@ -1,9 +1,9 @@
-{ pkgs, username, lib, stylix, ... }:
+{ pkgs, username, lib, inputs, ... }:
 let
     inherit (lib) mkDefault mkForce;
 in
 {
-    imports = [ stylix.nixosModules.stylix ];
+    imports = [ inputs.stylix.nixosModules.stylix ];
     programs.dconf.enable = true;
 
     fonts = {
