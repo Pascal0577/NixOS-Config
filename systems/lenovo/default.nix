@@ -7,6 +7,7 @@
 
     mySystem = {
         theme.everforest.enable = true;
+        applications.gtk4-apps.enable = true;
         applications.helix.enable = true;
         applications.terminal.alacritty.enable = true;
         applications.launcher.vicinae.enable = true;
