@@ -40,7 +40,6 @@
         boot.enablePlymouth = false;
     };
 
-    security.sudo.wheelNeedsPassword = false;
     boot.loader.systemd-boot.enable = lib.mkForce false;
 
     networking.interfaces.end0.ipv4.addresses = [{
