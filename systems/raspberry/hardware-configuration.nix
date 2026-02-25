@@ -1,21 +1,13 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, nixos-raspberrypi, ... }:
 
 {
     networking.useDHCP = lib.mkDefault true;
     hardware.enableAllHardware = lib.mkForce false;
 
     boot = {
-        # kernelPackages = lib.mkForce (pkgs.linuxPackagesFor
-        #     (pkgs.callPackage "${inputs.nixos-hardware}/raspberry-pi/common/kernel.nix" { rpiVersion = 5; })
-        # );
-        # supportedFilesystems = lib.mkForce [ "ext4" "vfat" ];
+        kernelPackages = lib.mkForce nixos-raspberrypi.packages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_rpi5;
         bootspec.enable = lib.mkForce false;
         loader.efi.canTouchEfiVariables = lib.mkForce false;
         initrd.systemd.enable = lib.mkForce false;
-    };
-
-    raspberry-pi-nix = {
-        board = "bcm2712";
-        uboot.enable = true;
     };
 }
