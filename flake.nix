@@ -10,15 +10,8 @@
         stylix.url = "github:nix-community/stylix";
         stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-
-        home-manager-stable.url = "github:nix-community/home-manager/release-25.11";
-        home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
-
-        stylix-stable.url = "github:nix-community/stylix/release-25.11";
-        stylix-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
-
-        nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
+        nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/develop";
+        nixos-raspberrypi.inputs.nixpkgs.follows = "nixpkgs";
 
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
         zen-browser.inputs.nixpkgs.follows = "nixpkgs";
@@ -69,13 +62,12 @@
         ];
     };
 
-    outputs = { self, nixpkgs, nixos-raspberrypi, home-manager, home-manager-stable, ... }@inputs:
+    outputs = { self, nixpkgs, nixos-raspberrypi, home-manager, ... }@inputs:
     {
         nixosConfigurations = {
             nixos = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs;
-                    stylix = inputs.stylix;
                     hostname = "nixos";
                     username = "pascal";
                 };
@@ -88,7 +80,6 @@
             lenovo = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs;
-                    stylix = inputs.stylix;
                     hostname = "lenovo";
                     username = "pascal";
                 };
@@ -101,12 +92,11 @@
             raspberry = nixos-raspberrypi.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs nixos-raspberrypi;
-                    stylix = inputs.stylix-stable;
                     hostname = "raspberry";
                     username = "pascal";
                 };
                 modules = [
-                    home-manager-stable.nixosModules.home-manager
+                    home-manager.nixosModules.home-manager
                     nixos-raspberrypi.nixosModules.sd-image
                     ./systems/raspberry
                     { sdImage.compressImage = false; }
@@ -114,7 +104,6 @@
             };
         };
 
-        disabledModules = [ "rename.nix" ];
         packages.aarch64-linux.pi5-image = self.nixosConfigurations.raspberry.config.system.build.sdImage;
     };
 }
