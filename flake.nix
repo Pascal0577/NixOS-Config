@@ -75,6 +75,7 @@
             nixos = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs;
+                    stylix = inputs.stylix;
                     hostname = "nixos";
                     username = "pascal";
                 };
@@ -87,6 +88,7 @@
             lenovo = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs;
+                    stylix = inputs.stylix;
                     hostname = "lenovo";
                     username = "pascal";
                 };
