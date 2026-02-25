@@ -1,4 +1,4 @@
-{ username, inputs, config, lib, ... }:
+{ pkgs, username, inputs, config, lib, ... }:
 let
     hypr = config.mySystem.desktop.hyprland;
 in
@@ -12,6 +12,8 @@ in
     config = lib.mkIf (hypr.mithril-shell.enable && hypr.enable) {
         home-manager.users.${username} = {
             imports = [ inputs.mithril-shell.homeManagerModules.default ];
+
+            services.swaync.enable = true;
 
             services.mithril-shell = {
                 enable = true;
