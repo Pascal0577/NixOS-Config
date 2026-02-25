@@ -1,5 +1,7 @@
-{ inputs, pkgs, username, lib, config, ... }:
-
+{ pkgs, username, lib, config, ... }:
+let
+    nvim = config.mySystem.applications.neovim;
+in
 {
     options.mySystem.theme.tokyonight.enable = lib.mkOption {
         type = lib.types.bool;
@@ -13,7 +15,7 @@
         };
 
         home-manager.users.${username} = {
-            programs.nixvim = {
+            programs.nixvim = lib.mkIf nvim.enable {
                 colorschemes.tokyonight = {
                     enable = true;
                     settings.style = "moon";

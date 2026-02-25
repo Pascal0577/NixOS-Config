@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, lib, config, stylix, ... }:
+{ pkgs, username, lib, stylix, ... }:
 let
     inherit (lib) mkDefault mkForce;
 in
