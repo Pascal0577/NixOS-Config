@@ -12,13 +12,10 @@
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMCi86K7NBo6vMNdGSItXFDthrLSx9Q0l9acqGlQdmoc pascal@nixos"
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG/wHEHpwkF1VwCS/MxZf2cvECIeUHdbiLjO1J1jz0LL pascal@lenovo"
         ];
-        networking.firewall.extraInputRules = ''
-            ip daddr 224.0.0.251 udp dport 5353 accept
-        '';
+
         services.avahi = {
             enable = true;
             nssmdns4 = true;
-            reflector = true;
             openFirewall = true;
             publish = {
                 enable = true;
@@ -26,6 +23,7 @@
                 domain = true;
             };
         };
+
         services.openssh = {
             enable = true;
             settings = {
