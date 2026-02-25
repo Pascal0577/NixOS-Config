@@ -16,6 +16,7 @@
     mySystem = {
         theme.everforest.enable = true;
         applications = {
+            neovim.enable = true;
             zsh.enable = true;
             appimage.enable = false;
             discord.enable = false;

@@ -1,5 +1,7 @@
-{ pkgs, inputs, username, lib, config, ... }:
-
+{ pkgs, username, lib, config, ... }:
+let
+    nvim = config.mySystem.applications.neovim;
+in
 {
     options.mySystem.theme.everforest.enable = lib.mkOption {
         type = lib.types.bool;
@@ -18,7 +20,7 @@
             };
         };
 
-        home-manager.users.${username} = {
+        home-manager.users.${username} = lib.mkIf nvim.enable {
             programs.nixvim = {
                 colorschemes.everforest = {
                     enable = true;

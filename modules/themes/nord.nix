@@ -1,5 +1,7 @@
 { pkgs, username, config, lib, ... }:
-
+let
+    nvim = config.mySystem.applications.neovim;
+in
 {
     options.mySystem.theme.nord.enable = lib.mkOption {
         type = lib.types.bool;
@@ -18,7 +20,7 @@
             programs = {
                 ghostty.settings.theme = "Nord";
                 vesktop.vencord.settings.enabledThemes = [ "nordic.vencord.css" ];
-                nixvim = {
+                nixvim = lib.mkIf nvim.enable {
                     colorschemes.nord = {
                         enable = true;
                         settings = {

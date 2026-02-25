@@ -1,5 +1,7 @@
 { pkgs, username, config, lib, ... }:
-
+let
+    nvim = config.mySystem.applications.neovim;
+in
 {
     options.mySystem.applications.neovim.enableLatex = lib.mkOption {
         type = lib.types.bool;
@@ -7,7 +9,7 @@
         description = "Whether to enable latex editing for my neovim module";
     };
 
-    config = lib.mkIf config.mySystem.applications.neovim.enableLatex {
+    config = lib.mkIf (nvim.enableLatex && nvim.enable) {
         environment.systemPackages = with pkgs; [
             texliveMedium
             zathura

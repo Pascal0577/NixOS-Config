@@ -1,5 +1,7 @@
 { pkgs, username, config, lib, ... }:
-
+let
+    nvim = config.mySystem.applications.neovim;
+in
 {
     options.mySystem.applications.neovim.enableZig = lib.mkOption {
         type = lib.types.bool;
@@ -7,7 +9,7 @@
         description = "Whether to enable zig editing for my neovim module";
     };
 
-    config = lib.mkIf config.mySystem.applications.neovim.enableZig {
+    config = lib.mkIf (nvim.enableZig && nvim.enable) {
         environment.systemPackages = with pkgs; [
             zig
             zig-shell-completions
