@@ -8,6 +8,7 @@
             showtime
             baobab
             constrict
+            deluge
         ];
     };
 }

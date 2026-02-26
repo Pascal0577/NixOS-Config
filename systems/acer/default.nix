@@ -37,9 +37,6 @@
         playerctl
         losslesscut-bin
         pinta
-        deluge
-        baobab
-        totem
     ];
 
     programs.obs-studio.package = (
