@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ lib, config, username, ... }:
 
 {
     imports = [
@@ -34,5 +34,12 @@
         };
     };
 
-    services.displayManager.ly.enable = true;
+    stylix.targets.plymouth.enable = lib.mkForce true;
+    services.displayManager = {
+        ly.enable = true;
+        autoLogin = {
+            user = "${username}";
+            enable = true;
+        };
+    };
 }
