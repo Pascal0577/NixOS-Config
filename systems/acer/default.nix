@@ -20,6 +20,7 @@
 
         applications = {
             helix.enable = true;
+            gtk4-apps.enable = true;
             noctalia.enable = true;
             swayidle.enable = false;
             launcher.vicinae.enable = true;
