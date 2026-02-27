@@ -3,11 +3,7 @@ let
     cosmicCfg = config.mySystem.desktop.cosmic;
 in
 {
-    options.mySystem.desktop.cosmic.cosmicOnNiri.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable the Niri compositor for the COSMIC session";
-    };
+    options.mySystem.desktop.cosmic.cosmicOnNiri.enable = lib.mkEnableOption "cosmicOnNiri";
 
     config = lib.mkIf (cosmicCfg.cosmicOnNiri.enable && cosmicCfg.enable) {
         environment = {
