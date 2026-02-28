@@ -32,6 +32,7 @@
     };
 
     services.displayManager.ly.enable = true;
+    networking.hostId = "618f1264";
 
     environment.systemPackages = with pkgs; [
         playerctl
