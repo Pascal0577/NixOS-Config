@@ -1,5 +1,18 @@
 { pkgs, inputs, config, lib, ... }:
+let
+    zfsCompatibleKernelPackages = lib.filterAttrs (
+        name: kernelPackages:
+        (builtins.match "linux_[0-9]+_[0-9]+" name) != null
+        && (builtins.tryEval kernelPackages).success
+        && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+    ) pkgs.linuxKernel.packages;
 
+    latestZfsKernel = lib.last (
+        lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+            builtins.attrValues zfsCompatibleKernelPackages
+        )
+    );
+in
 {
     options.mySystem.boot = {
         enableSecureBoot = lib.mkOption {
@@ -19,7 +32,8 @@
 
     config.boot = lib.mkMerge [
         {
-            kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+            kernelPackages = lib.mkDefault latestZfsKernel;
+            supportedFilesystems = [ "zfs" ];
             bootspec.enable = true;
             initrd.systemd.enable = true;
 
