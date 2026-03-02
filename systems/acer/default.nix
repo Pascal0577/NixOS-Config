@@ -9,6 +9,7 @@
         theme.everforest.enable = true;
         desktop.niri.enable = true;
         desktop.oxwm.enable = false;
+        boot.enableZfs = true;
         desktop.cosmic = {
             enable = false;
             accentColor = "${config.lib.stylix.colors.base09-hex}";
