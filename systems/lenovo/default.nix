@@ -13,6 +13,7 @@
         applications.launcher.vicinae.enable = true;
         applications.file-manager.nautilus.enable = true;
         applications.heroic.enable = false;
+        boot.enableZfs = false;
         desktop = {
             oxwm.enable = false;
             hyprland = {
@@ -35,6 +36,7 @@
     };
 
     stylix.targets.plymouth.enable = lib.mkForce true;
+    networking.hostId = "4e98920d";
     services.displayManager = {
         ly.enable = true;
         autoLogin = {

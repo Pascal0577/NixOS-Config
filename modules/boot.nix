@@ -26,14 +26,15 @@ in
             default = true;
             description = "Whether to enable the Plymouth bootsplash screen";
         };
+
+        enableZfs = lib.mkEnableOption "enableZfs";
     };
 
     imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 
     config.boot = lib.mkMerge [
         {
-            kernelPackages = lib.mkDefault latestZfsKernel;
-            supportedFilesystems = [ "zfs" ];
+            kernelPackages = pkgs.linuxPackages_latest;
             bootspec.enable = true;
             initrd.systemd.enable = true;
 
@@ -59,6 +60,11 @@ in
                 "zswap.shrinker_enabled=1"
             ];
         }
+
+        (lib.mkIf config.mySystem.boot.enableZfs {
+            kernelPackages = latestZfsKernel;
+            supportedFilesystems = [ "zfs" ];
+        })
 
         (lib.mkIf config.mySystem.boot.enablePlymouth {
             plymouth = {
