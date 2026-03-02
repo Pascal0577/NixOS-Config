@@ -164,7 +164,7 @@
                             border_part_of_window = true;
 
                             blur = {
-                                enabled = true;
+                                enabled = false;
                                 size = 8;
                                 passes = 2;
                                 ignore_opacity = true;
