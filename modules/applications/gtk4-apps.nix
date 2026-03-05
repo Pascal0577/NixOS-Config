@@ -5,8 +5,8 @@
 
     config = lib.mkIf config.mySystem.applications.gtk4-apps.enable {
         environment.systemPackages = with pkgs; [
-            showtime
             baobab
+            totem
             constrict
             deluge
         ];
