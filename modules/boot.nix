@@ -34,7 +34,7 @@ in
 
     config.boot = lib.mkMerge [
         {
-            kernelPackages = pkgs.linuxPackages_latest;
+            kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
             bootspec.enable = true;
             initrd.systemd.enable = true;
 
