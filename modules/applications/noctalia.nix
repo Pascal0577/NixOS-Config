@@ -10,10 +10,7 @@
     imports = [ inputs.noctalia.nixosModules.default ];
 
     config = lib.mkIf config.mySystem.applications.noctalia.enable {
-        services = {
-            noctalia-shell.enable = true;
-            upower.enable = true;
-        };
+        services.upower.enable = true;
 
         # Try to set icon theme
         environment.sessionVariables = {
@@ -30,7 +27,6 @@
 
             programs.noctalia-shell = {
                 enable = true;
-                package = null;
                 settings = {
                     settingsVersion = 0;
                     setupCompleted = true;
