@@ -20,15 +20,19 @@
             QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
         };
 
-        environment.systemPackages = [ pkgs.gpu-screen-recorder ];
+        environment.systemPackages = [
+            inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+            pkgs.gpu-screen-recorder
+        ];
 
         home-manager.users.${username} = {
             imports = [ inputs.noctalia.homeModules.default ];
 
             programs.noctalia-shell = {
                 enable = true;
+                package = null;
                 settings = {
-                    settingsVersion = 16;
+                    settingsVersion = 0;
                     setupCompleted = true;
                     bar = {
                         position = "top";
