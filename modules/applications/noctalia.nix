@@ -82,9 +82,6 @@
                             ];
                             right = [
                                 {
-                                    id = "plugin:screen-recorder";
-                                }
-                                {
                                     id = "Tray";
                                     drawerEnabled = false;
                                     colorizeIcons = false;
@@ -93,12 +90,12 @@
                                     id = "plugin:privacy-indicator";
                                 }
                                 {
+                                    id = "plugin:screen-recorder";
+                                }
+                                {
                                     id = "NotificationHistory";
                                     hideWhenZero = true;
                                     showUnreadBadge = true;
-                                }
-                                {
-                                    id = "KeepAwake";
                                 }
                                 {
                                     id = "Bluetooth";
@@ -149,8 +146,9 @@
                         showWeekNumberInCalendar = false;
                     };
                     wallpaper = {
+                        skipStartupTransition = true;
                         enabled = true;
-                        overviewEnabled = false;
+                        overviewEnabled = true;
                         monitorDirectories = [ ];
                         enableMultiMonitorDirectories = false;
                         recursiveSearch = false;
