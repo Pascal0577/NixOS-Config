@@ -28,6 +28,8 @@ in
             home-manager.users.${username} = {
                 imports = [ inputs.vicinae.homeManagerModules.default ];
 
+                systemd.user.services.vicinae.Service.RestartSec = lib.mkForce 0;
+
                 services.vicinae = {
                     enable = true;
                     package = inputs.vicinae.packages.${hostSystem}.default;
