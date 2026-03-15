@@ -43,6 +43,10 @@ in
                     prefer-no-csd = true;
                     environment.QT_QPA_PLATFORM = "wayland";
 
+                    spawn-at-startup = [
+                        { argv = [ "noctalia-shell" ]; }
+                    ];
+
                     xwayland-satellite = {
                         enable = true;
                         path = lib.getExe pkgs.xwayland-satellite;
