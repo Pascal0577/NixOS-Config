@@ -39,6 +39,7 @@
         playerctl
         losslesscut-bin
         pinta
+        lmstudio
     ];
 
     programs.obs-studio.package = (
