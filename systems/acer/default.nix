@@ -17,7 +17,7 @@
             launcher.vicinae.enable = true;
             terminal.foot.enable = true;
             file-manager.yazi.enable = true;
-            heroic.enable = false;
+            heroic.enable = true;
         };
     };
 
