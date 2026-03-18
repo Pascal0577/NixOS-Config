@@ -8,27 +8,16 @@
     mySystem = {
         theme.everforest.enable = true;
         desktop.niri.enable = true;
-        desktop.oxwm.enable = false;
-        boot.enableZfs = true;
-        desktop.cosmic = {
-            enable = false;
-            accentColor = "${config.lib.stylix.colors.base09-hex}";
-            accentRed = "${config.lib.stylix.colors.base09-dec-r}";
-            accentGreen = "${config.lib.stylix.colors.base09-dec-g}";
-            accentBlue = "${config.lib.stylix.colors.base09-dec-b}";
-            cosmicOnNiri.enable = false;
-        };
-
+        boot.enableZfs = false;
         applications = {
             helix.enable = true;
             gtk4-apps.enable = true;
             noctalia.enable = true;
             swayidle.enable = false;
             launcher.vicinae.enable = true;
-            launcher.dmenu.enable = false;
             terminal.foot.enable = true;
-            terminal.alacritty.enable = false;
             file-manager.yazi.enable = true;
+            heroic.enable = false;
         };
     };
 
@@ -40,6 +29,7 @@
         losslesscut-bin
         pinta
         lmstudio
+        wineWow64Packages.unstableFull
     ];
 
     programs.obs-studio.package = (
