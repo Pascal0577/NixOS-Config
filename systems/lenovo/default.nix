@@ -7,38 +7,24 @@
 
     mySystem = {
         theme.everforest.enable = true;
+        applications.neovim.enable = false;
         applications.gtk4-apps.enable = true;
         applications.helix.enable = true;
         applications.terminal.alacritty.enable = true;
-        applications.launcher.vicinae.enable = true;
+        applications.launcher.vicinae.enable = false;
         applications.file-manager.nautilus.enable = true;
         applications.heroic.enable = false;
         boot.enableZfs = false;
-        desktop = {
-            oxwm.enable = false;
-            hyprland = {
-                enable = true;
-                mithril-shell.enable = true;
-            };
-            niri = {
-                enable = false;
-                stable = true;
-            };
-            cosmic = {
-                enable = false;
-                accentColor = "${config.lib.stylix.colors.base09-hex}";
-                accentRed = "${config.lib.stylix.colors.base09-dec-r}";
-                accentGreen = "${config.lib.stylix.colors.base09-dec-g}";
-                accentBlue = "${config.lib.stylix.colors.base09-dec-b}";
-                cosmicOnNiri.enable = false;
-            };
+        desktop.gnome = {
+            enable = true;
+            dash-to-dock.enable = true;
         };
     };
 
     stylix.targets.plymouth.enable = lib.mkForce true;
     networking.hostId = "4e98920d";
     services.displayManager = {
-        ly.enable = true;
+        # ly.enable = true;
         autoLogin = {
             user = "${username}";
             enable = true;
