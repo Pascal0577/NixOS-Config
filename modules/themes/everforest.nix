@@ -1,6 +1,8 @@
 { pkgs, username, lib, config, ... }:
 let
     nvim = config.mySystem.applications.neovim;
+    niri = config.mySystem.desktop.niri;
+    hue = config.lib.stylix.colors;
 in
 {
     options.mySystem.theme.everforest.enable = lib.mkOption {
@@ -31,6 +33,9 @@ in
                     pkgs.vimPlugins.everforest
                 ];
             };
+
+            programs.niri.settings.layout.border.active.color =
+                lib.mkIf niri.enable "#${hue.base09-hex}";
         };
     };
 }
