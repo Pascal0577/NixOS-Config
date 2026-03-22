@@ -94,7 +94,7 @@
                                 }
                                 {
                                     id = "NotificationHistory";
-                                    hideWhenZero = true;
+                                    hideWhenZero = false;
                                     showUnreadBadge = true;
                                 }
                                 {
@@ -102,12 +102,15 @@
                                 }
                                 {
                                     id = "WiFi";
+                                    displayMode = "always_hide";
                                 }
                                 {
                                     id = "Volume";
+                                    displayMode = "always_hide";
                                 }
                                 {
                                     id = "Brightness";
+                                    displayMode = "always_hide";
                                 }
                                 {
                                     id = "Clock";
