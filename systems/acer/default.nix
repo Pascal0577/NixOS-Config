@@ -10,7 +10,7 @@
         desktop.niri.enable = true;
         applications = {
             helix.enable = true;
-            gtk4-apps.enable = true;
+            gtk-apps.enable = true;
             noctalia.enable = true;
             swayidle.enable = false;
             launcher.vicinae.enable = true;
@@ -24,8 +24,6 @@
 
     environment.systemPackages = with pkgs; [
         playerctl
-        losslesscut-bin
-        pinta
         lmstudio
         wineWow64Packages.unstableFull
     ];
