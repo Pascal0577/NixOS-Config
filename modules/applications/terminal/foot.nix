@@ -17,6 +17,14 @@
             programs.foot = {
                 enable = true;
                 server.enable = true;
+                settings.cursor = {
+                    style = "beam";
+                    blink = true;
+                };
+            };
+
+            xdg.mimeApps.defaultApplications = {
+                "x-scheme-handler/terminal" = [ "foot.desktop" ];
             };
         };
     };
