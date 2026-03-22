@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
     imports = [
@@ -8,7 +8,6 @@
     mySystem = {
         theme.everforest.enable = true;
         desktop.niri.enable = true;
-        boot.enableZfs = false;
         applications = {
             helix.enable = true;
             gtk4-apps.enable = true;
@@ -17,7 +16,6 @@
             launcher.vicinae.enable = true;
             terminal.foot.enable = true;
             file-manager.yazi.enable = true;
-            heroic.enable = true;
         };
     };
 
