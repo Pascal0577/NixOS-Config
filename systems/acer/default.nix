@@ -3,11 +3,13 @@
 {
     imports = [
         ./hardware-configuration.nix
+        ./disko.nix
     ] ++ lib.filesystem.listFilesRecursive ../../modules;
 
     mySystem = {
         theme.everforest.enable = true;
         desktop.niri.enable = true;
+        boot.enableZfs = true;
         applications = {
             helix.enable = true;
             gtk-apps.enable = true;

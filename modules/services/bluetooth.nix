@@ -6,14 +6,11 @@
                 DiscoverableTimeout = 0;
                 PairableTimeout = 0;
                 Discoverable = false;
-                # FastConnectable = false;
             };
         };
     };
 
     systemd.services.bluetooth.serviceConfig = {
-        ProtectKernelTunables = true;
-        ProtectKernelModules = true;
         ProtectKernelLogs = true;
         ProtectHostname = true;
         ProtectControlGroups = true;
@@ -27,7 +24,6 @@
         ];
         SystemCallArchitectures = "native";
 
-        # From earlier
         PrivateTmp = true;
         ProtectSystem = "strict";
         ProtectHome = true;

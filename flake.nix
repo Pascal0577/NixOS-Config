@@ -10,6 +10,9 @@
         stylix.url = "github:nix-community/stylix";
         stylix.inputs.nixpkgs.follows = "nixpkgs";
 
+        disko.url = "github:nix-community/disko/latest";
+        disko.inputs.nixpkgs.follows = "nixpkgs";
+
         nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/develop";
         nixos-raspberrypi.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -1,10 +1,13 @@
-{ username, ... }:
+{ username, inputs, ... }:
 
 {
+    imports = [ inputs.disko.nixosModules.disko ];
+
     disko.devices = {
         disk = {
             main = {
                 type = "disk";
+                device = "/dev/disk/by-id/nvme-HFS512GEJ9X125N_SYC2N009317202F4F";
                 content = {
                     type = "gpt";
                     partitions = {

@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, ... }:
+{ inputs, pkgs, username, config, ... }:
 
 {
     nix.settings = {
@@ -7,6 +7,7 @@
     };
 
     users.users.${username} = {
+        initialHashedPassword = "$y$j9T$iDJwBp5OSsoKPJbw06Kuj.$5A5MOzRkUHt7/9vyKoGMyD1LQ2qRdIL3.sQaAHXgpC5";
         isNormalUser = true;
         description = "Pascal";
         extraGroups = [ "networkmanager" "wheel" ];
