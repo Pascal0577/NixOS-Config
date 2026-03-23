@@ -19,6 +19,7 @@
         };
     };
 
+    services.hardware.bolt.enable = true;
     services.displayManager.ly.enable = true;
     networking.hostId = "618f1264";
 
@@ -71,6 +72,8 @@
         kernelParams = [
             "i915.enable_guc=3"
             "i915.enable_fbc=1"
+            "intel_iommu=on"
+            "iommu=pt"
         ];
     };
 }

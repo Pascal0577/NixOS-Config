@@ -91,6 +91,10 @@
                     DontCheckDefaultBrowser = true;
                     NoDefaultBookmarks = true;
                     OfferToSaveLogins = false;
+                    DNSOverHTTPS = {
+                        Enabled = false;
+                        Locked = true;
+                    };
                     EnableTrackingProtection = {
                         Value = true;
                         Locked = true;
