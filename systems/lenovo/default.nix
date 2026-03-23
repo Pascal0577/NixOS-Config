@@ -24,11 +24,5 @@
 
     stylix.targets.plymouth.enable = lib.mkForce true;
     networking.hostId = "4e98920d";
-    services.displayManager = {
-        ly.enable = true;
-        autoLogin = {
-            user = "${username}";
-            enable = true;
-        };
-    };
+    services.displayManager.ly.enable = true;
 }
