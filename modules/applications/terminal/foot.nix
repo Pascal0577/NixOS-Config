@@ -13,6 +13,10 @@
             openWindow = "${lib.getExe pkgs.foot}";
         };
 
+        xdg.mime.defaultApplications = {
+            "x-scheme-handler/terminal" = "foot.desktop";
+        };
+
         home-manager.users.${username} = {
             programs.foot = {
                 enable = true;
@@ -23,9 +27,6 @@
                 };
             };
 
-            xdg.mimeApps.defaultApplications = {
-                "x-scheme-handler/terminal" = [ "foot.desktop" ];
-            };
         };
     };
 }

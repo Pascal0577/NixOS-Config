@@ -2,6 +2,7 @@
     security.rtkit.enable = true;
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "26.05";
+    services.dbus.implementation = "broker";
 
     systemd = {
         # If a service has tried to stop for longer than 10s 
