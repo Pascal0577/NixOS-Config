@@ -6,7 +6,6 @@
         // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.pipewire.enable {
-        hardware.bluetooth.enable = true;
         services.pipewire = {
             enable = true;
             alsa.enable = true;

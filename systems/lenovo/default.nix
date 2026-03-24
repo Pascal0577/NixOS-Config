@@ -7,13 +7,10 @@
 
     mySystem = {
         theme.everforest.enable = true;
-        applications.neovim.enable = true;
-        applications.gtk-apps.enable = true;
         applications.helix.enable = true;
         applications.terminal.foot.enable = true;
         applications.launcher.vicinae.enable = true;
         applications.file-manager.yazi.enable = true;
-        applications.noctalia.enable = true;
         applications.heroic.enable = false;
         desktop.niri.enable = true;
     };

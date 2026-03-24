@@ -31,7 +31,7 @@
                 zsh = {
                     enable = true;
                     history = {
-                        size = 1000;
+                        size = 10000;
                         save = 1000;
                         path = "/home/${username}/.local/share/zsh/history";
                         share = true;
