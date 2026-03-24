@@ -9,8 +9,10 @@
     mySystem = {
         theme.everforest.enable = true;
         desktop.niri.enable = true;
+        desktop.niri.stable = true;
         boot.enableZfs = true;
         applications = {
+            obs.enable = false;
             helix.enable = true;
             gtk-apps.enable = true;
             noctalia.enable = true;
