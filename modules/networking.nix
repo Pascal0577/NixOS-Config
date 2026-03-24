@@ -1,10 +1,10 @@
-{ hostname, ... }:
+{ hostname, lib, ... }:
 
 {
     networking = {
         hostName = hostname;
         modemmanager.enable = false;
-        useDHCP = true;
+        useDHCP = lib.mkDefault true;
         networkmanager = {
             enable = true;
             dns = "systemd-resolved";
