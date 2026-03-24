@@ -1,6 +1,7 @@
 { lib, username, config, inputs, pkgs, ... }:
 let
     hue = config.lib.stylix.colors;
+    hostSystem = pkgs.stdenv.hostPlatform.system;
     inherit (lib) toInt;
 in
 {
@@ -12,10 +13,11 @@ in
         services = {
             displayManager.ly.enable = true;
             xserver = {
-                enable = lib.mkForce true;
+                enable = true;
+                excludePackages = [ pkgs.xterm ];
                 windowManager.oxwm = {
                     enable = true;
-                    package = inputs.oxwm.packages.${pkgs.stdenv.hostPlatform.system}.oxwm;
+                    package = inputs.oxwm.packages.${hostSystem}.oxwm;
                 };
             };
         };
