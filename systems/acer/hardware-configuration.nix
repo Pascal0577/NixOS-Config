@@ -3,6 +3,7 @@
 {
     imports = [ inputs.disko.nixosModules.disko ];
 
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     services.hardware.bolt.enable = true;
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     hardware = {
@@ -38,9 +39,6 @@
             kernelModules = [ "i915" "dm-snapshot" ];
         };
     };
-
-    networking.useDHCP = lib.mkDefault true;
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     # ZFS Stuff
     networking.hostId = "5eafa8c8";

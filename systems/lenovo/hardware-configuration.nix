@@ -1,15 +1,20 @@
 { config, lib, ... }:
 
 {
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     hardware.enableRedistributableFirmware = lib.mkDefault true;
 
-    boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
-    boot.initrd.kernelModules = [ "dm-snapshot" ];
-    boot.kernelModules = [ "kvm-amd" ];
-
-    boot.initrd.luks.devices.root = {
-        device = "/dev/disk/by-uuid/e66aa624-e1c3-4f8a-9908-03d3ffedee8d";
-        preLVM = true;
+    boot = {
+        kernelModules = [ "kvm-amd" ];
+        initrd = {
+            availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
+            kernelModules = [ "dm-snapshot" ];
+            luks.devices.root = {
+                device = "/dev/disk/by-uuid/e66aa624-e1c3-4f8a-9908-03d3ffedee8d";
+                preLVM = true;
+            };
+        };
     };
 
     fileSystems."/boot" = {
@@ -28,7 +33,4 @@
     }];
 
     networking.hostId = "4e98920d";
-    networking.useDHCP = lib.mkDefault true;
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

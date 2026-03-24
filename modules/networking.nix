@@ -4,6 +4,7 @@
     networking = {
         hostName = hostname;
         modemmanager.enable = false;
+        useDHCP = true;
         networkmanager = {
             enable = true;
             dns = "systemd-resolved";
