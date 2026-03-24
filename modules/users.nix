@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, config, ... }:
+{ inputs, pkgs, username, ... }:
 
 {
     nix.settings = {
