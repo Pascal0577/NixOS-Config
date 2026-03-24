@@ -15,11 +15,7 @@
         applications.file-manager.yazi.enable = true;
         applications.noctalia.enable = true;
         applications.heroic.enable = false;
-        boot.enableZfs = false;
-        desktop.niri = {
-            enable = true;
-            stable = true;
-        };
+        desktop.niri.enable = true;
     };
 
     stylix.targets.plymouth.enable = lib.mkForce true;

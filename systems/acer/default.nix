@@ -9,7 +9,7 @@
     mySystem = {
         theme.everforest.enable = true;
         impermanence.enable = true;
-        boot.enableZfs = true;
+        ZFS.enable = true;
         desktop.niri = {
             enable = true;
             unstable = true;

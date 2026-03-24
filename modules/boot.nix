@@ -1,6 +1,7 @@
 { pkgs, inputs, config, lib, ... }:
 let
     boot = config.mySystem.boot;
+    zfs = config.mySystem.ZFS;
 
     zfsCompatibleKernelPackages = lib.filterAttrs (
         name: kernelPackages:
@@ -16,33 +17,35 @@ let
     );
 in
 {
-    options.mySystem.boot = {
-        enableSecureBoot = lib.mkOption {
-            type = lib.types.bool;
-            default = true;
-            description = "Whether to enable secure boot";
+    options.mySystem = {
+        boot = {
+            enableSecureBoot = lib.mkOption {
+                type = lib.types.bool;
+                default = true;
+                description = "Whether to enable secure boot";
+            };
+
+            enablePlymouth = lib.mkOption {
+                type = lib.types.bool;
+                default = true;
+                description = "Whether to enable the Plymouth bootsplash screen";
+            };
         };
 
-        enablePlymouth = lib.mkOption {
-            type = lib.types.bool;
-            default = true;
-            description = "Whether to enable the Plymouth bootsplash screen";
-        };
-
-        enableZfs = lib.mkEnableOption "enableZfs";
+        ZFS.enable = lib.mkEnableOption "enableZfs";
     };
 
     imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 
     config.boot = lib.mkMerge [
         {
-            kernelPackages = lib.mkDefault (if boot.enableZfs
+            kernelPackages = lib.mkDefault (if zfs.enable
                 then latestZfsKernel
                 else pkgs.linuxPackages_latest);
 
             bootspec.enable = true;
             initrd.systemd.enable = true;
-            supportedFilesystems = lib.mkIf boot.enableZfs [ "zfs" ];
+            supportedFilesystems = lib.mkIf zfs.enable [ "zfs" ];
 
             loader = {
                 efi.canTouchEfiVariables = true;
@@ -59,7 +62,7 @@ in
               # security stuff
               "rcupdate.rcu_expedited=1"
               "page_alloc.shuffle=1"
-            ] ++ (lib.optionals (!boot.enableZfs) [
+            ] ++ (lib.optionals (!zfs.enable) [
               # zswap if we aren't using zfs
               "zswap.enabled=1"
               "zswap.compressor=zstd"
