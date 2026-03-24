@@ -7,7 +7,8 @@
     };
 
     users.users.${username} = {
-        initialHashedPassword = "$y$j9T$iDJwBp5OSsoKPJbw06Kuj.$5A5MOzRkUHt7/9vyKoGMyD1LQ2qRdIL3.sQaAHXgpC5";
+        # initialHashedPassword = "$y$j9T$iDJwBp5OSsoKPJbw06Kuj.$5A5MOzRkUHt7/9vyKoGMyD1LQ2qRdIL3.sQaAHXgpC5";
+        initialPassword = "user";
         isNormalUser = true;
         description = "Pascal";
         extraGroups = [ "networkmanager" "wheel" ];

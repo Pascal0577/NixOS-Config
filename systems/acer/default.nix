@@ -23,7 +23,7 @@
 
     services.hardware.bolt.enable = true;
     services.displayManager.ly.enable = true;
-    networking.hostId = "618f1264";
+    networking.hostId = "5eafa8c8";
 
     environment.systemPackages = with pkgs; [
         playerctl

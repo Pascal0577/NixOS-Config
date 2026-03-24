@@ -7,7 +7,7 @@
         disk = {
             main = {
                 type = "disk";
-                device = "/dev/disk/by-id/nvme-HFS512GEJ9X125N_SYC2N009317202F4F";
+                device = "/dev/disk/by-id/nvme-MSI_M450_1TB_511241004122004966";
                 content = {
                     type = "gpt";
                     partitions = {
@@ -87,7 +87,7 @@
                     };
                     "local/persist" = {
                         type = "zfs_fs";
-                        mountpoint = "/persist";
+                        mountpoint = "/nix/persist";
                         options."com.sun:auto-snapshot" = "false";
                     };
                     "local/root" = {
