@@ -1,5 +1,7 @@
 { pkgs, username, config, lib, ... }:
-
+let
+    playerctl = lib.getExe pkgs.playerctl;
+in
 {
     options.mySystem.desktop.gnome.enable =
         lib.mkEnableOption "GNOME Desktop Environment";
@@ -102,13 +104,13 @@
 
                     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/playerctl-forward" = {
                         name = "Go forward in playing media";
-                        command = "playerctl position 5+";
+                        command = "${playerctl} position 5+";
                         binding = "<Super>XF86AudioNext";
                     };
 
                     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/playerctl-backward" = {
                         name = "Go backward in playing media";
-                        command = "playerctl position 5-";
+                        command = "${playerctl} position 5-";
                         binding = "<Super>XF86AudioPrev";
                     };
                 };

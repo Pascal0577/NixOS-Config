@@ -1,5 +1,8 @@
 { inputs, pkgs, username, config, lib, ... }:
 let
+    playerctl = lib.getExe pkgs.playerctl;
+    brightnessctl = lib.getExe pkgs.brightnessctl;
+
     niri-optimized = pkgs.niri-unstable.overrideAttrs (oldAttrs: {
         env = (oldAttrs.env or {}) // {
             RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
@@ -118,27 +121,27 @@ in
                         # Control keys
                         "XF86AudioPlay" = {
                             allow-when-locked = true;
-                            action = spawn-sh "playerctl play-pause";
+                            action = spawn-sh "${playerctl} play-pause";
                         };
                         "XF86AudioStop" = {
                             allow-when-locked = true;
-                            action = spawn-sh "playerctl stop";
+                            action = spawn-sh "${playerctl} stop";
                         };
                         "XF86AudioPrev" = {
                             allow-when-locked = true;
-                            action = spawn-sh "playerctl previous";
+                            action = spawn-sh "${playerctl} previous";
                         };
                         "XF86AudioNext" = {
                             allow-when-locked = true;
-                            action = spawn-sh "playerctl next";
+                            action = spawn-sh "${playerctl} next";
                         };
                         "Mod+XF86AudioPrev" = {
                             allow-when-locked = true;
-                            action = spawn-sh "playerctl position 5-";
+                            action = spawn-sh "${playerctl} position 5-";
                         };
                         "Mod+XF86AudioNext" = {
                             allow-when-locked = true;
-                            action = spawn-sh "playerctl position 5+";
+                            action = spawn-sh "${playerctl} position 5+";
                         };
                         "XF86AudioRaiseVolume" = {
                             allow-when-locked = true;
@@ -154,11 +157,11 @@ in
                         };
                         "XF86MonBrightnessUp" = {
                             allow-when-locked = true;
-                            action.spawn = [ "${lib.getExe pkgs.brightnessctl}" "set" "5%+" ];
+                            action.spawn = [ "${brightnessctl}" "set" "5%+" ];
                         };
                         "XF86MonBrightnessDown" = {
                             allow-when-locked = true;
-                            action.spawn = [ "${lib.getExe pkgs.brightnessctl}" "set" "5%-" ];
+                            action.spawn = [ "${brightnessctl}" "set" "5%-" ];
                         };
                     };
 

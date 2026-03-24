@@ -24,8 +24,5 @@
         };
     };
 
-    environment.systemPackages = with pkgs; [
-        playerctl
-        lmstudio
-    ];
+    environment.systemPackages = [ pkgs.lmstudio ];
 }
