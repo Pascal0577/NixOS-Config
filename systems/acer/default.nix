@@ -12,7 +12,6 @@
         desktop.niri.enable = true;
         boot.enableZfs = true;
         applications = {
-            virt-manager.enable = false;
             obs.enable = false;
             helix.enable = true;
             gtk-apps.enable = true;
