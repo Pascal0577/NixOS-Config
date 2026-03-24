@@ -74,17 +74,12 @@ in
                 theme = lib.mkDefault "bgrt";
             };
 
-            # Enable "Silent boot"
+            # silent boot
             consoleLogLevel = 4;
             initrd.verbose = false;
-
-            loader = {
-                timeout = 0;
-                systemd-boot.enable = lib.mkForce false;
-            };
+            loader.timeout = 0;
 
             kernelParams = [
-                # silent boot
                 "quiet"
                 "splash"
                 "nowatchdog"
@@ -95,9 +90,10 @@ in
         })
 
         (lib.mkIf boot.enableSecureBoot {
+            systemd-boot.enable = lib.mkForce false;
             lanzaboote = {
                 enable = true;
-                pkiBundle = "/var/lib/sbctl/";
+                pkiBundle = "/var/lib/sbctl";
                 autoGenerateKeys.enable = true;
                 autoEnrollKeys.enable = true;
             };
