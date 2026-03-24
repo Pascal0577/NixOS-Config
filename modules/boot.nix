@@ -90,7 +90,7 @@ in
         })
 
         (lib.mkIf boot.enableSecureBoot {
-            systemd-boot.enable = lib.mkForce false;
+            loader.systemd-boot.enable = lib.mkForce false;
             lanzaboote = {
                 enable = true;
                 pkiBundle = "/var/lib/sbctl";
