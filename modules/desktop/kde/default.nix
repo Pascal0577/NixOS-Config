@@ -1,11 +1,8 @@
 { pkgs, inputs, username, config, lib, ... }:
 
 {
-    options.mySystem.desktop.kde.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my KDE module";
-    };
+    options.mySystem.desktop.kde.enable =
+        lib.mkEnableOption "KDE Desktop Environment";
 
     config = lib.mkIf config.mySystem.desktop.kde.enable {
         services = {

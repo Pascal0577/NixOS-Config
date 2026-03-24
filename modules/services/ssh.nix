@@ -1,11 +1,8 @@
 { config, lib, username, ... }:
 
 {
-    options.mySystem.applications.ssh.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my SSH module";
-    };
+    options.mySystem.applications.ssh.enable =
+        lib.mkEnableOption "SSH service configuration" // { default = true; };
 
     config = lib.mkIf config.mySystem.applications.ssh.enable {
         users.users.${username}.openssh.authorizedKeys.keys = [

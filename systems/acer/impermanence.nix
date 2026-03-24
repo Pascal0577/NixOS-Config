@@ -1,7 +1,7 @@
 { inputs, config, lib, username, ... }:
 
 {
-    options.mySystem.impermanence.enable = lib.mkEnableOption "impermanence";
+    options.mySystem.impermanence.enable = lib.mkEnableOption "Impermanence";
 
     imports = [ inputs.impermanence.nixosModules.impermanence ];
 

@@ -2,17 +2,10 @@
 
 {
     options.mySystem.applications.virt-manager = {
-        enable = lib.mkOption {
-            type = lib.types.bool;
-            default = true;
-            description = "Whether to enable my virt-manager module";
-        };
-
-        blacklistNvidia = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = "Whether to blacklist nvidia drivers to set up PCI passthrough";
-        };
+        enable =
+            lib.mkEnableOption "virt-manager module"
+            // { default = !config.mySystem.server.enable; };
+        blacklistNvidia = lib.mkEnableOption "Blacklist nvidia drivers for PCI passthrough";
     };
 
     config = lib.mkIf config.mySystem.applications.virt-manager.enable {

@@ -5,11 +5,7 @@ let
 in
 {
     options.mySystem.desktop.cosmic = {
-        enable = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = "Whether to enable my COSMIC module";
-        };
+        enable = lib.mkEnableOption "COSMIC desktop";
 
         accentColor = lib.mkOption {
             type = lib.types.str;

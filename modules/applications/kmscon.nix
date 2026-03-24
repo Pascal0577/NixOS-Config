@@ -1,11 +1,8 @@
 { pkgs, config, lib, ... }:
 
 {
-    options.mySystem.applications.kmscon.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my kmscon module";
-    };
+    options.mySystem.applications.kmscon.enable =
+        lib.mkEnableOption "KMSCON console module" // { default = true; };        
 
     config = lib.mkIf config.mySystem.applications.kmscon.enable {
         services.kmscon = {

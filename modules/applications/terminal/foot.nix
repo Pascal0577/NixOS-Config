@@ -1,11 +1,8 @@
 { pkgs, config, lib, username, ... }:
 
 {
-    options.mySystem.applications.terminal.foot.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable foot terminal";
-    };
+    options.mySystem.applications.terminal.foot.enable =
+        lib.mkEnableOption "Foot terminal module";
 
     config = lib.mkIf config.mySystem.applications.terminal.foot.enable {
         mySystem.applications.terminal = {

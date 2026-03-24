@@ -1,6 +1,8 @@
+{ config, ... }:
+
 {
     hardware.bluetooth = {
-        enable = true;
+        enable = !config.mySystem.server.enable;
         settings = {
             General = {
                 DiscoverableTimeout = 0;

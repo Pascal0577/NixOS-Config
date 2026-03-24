@@ -1,7 +1,9 @@
 { pkgs, lib, config, ... }:
 
 {
-    options.mySystem.applications.gtk-apps.enable = lib.mkEnableOption "gtk-apps";
+    options.mySystem.applications.gtk-apps.enable =
+        lib.mkEnableOption "Common GTK apps module"
+        // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.gtk-apps.enable {
         environment.systemPackages = with pkgs; [

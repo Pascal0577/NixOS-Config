@@ -5,10 +5,7 @@ let
     hue = config.lib.stylix.colors;
 in
 {
-    options.mySystem.theme.everforest.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;  
-    };
+    options.mySystem.theme.everforest.enable = lib.mkEnableOption "everforest theme";
 
     config = lib.mkIf config.mySystem.theme.everforest.enable {
         stylix = {

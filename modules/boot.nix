@@ -19,17 +19,13 @@ in
 {
     options.mySystem = {
         boot = {
-            enableSecureBoot = lib.mkOption {
-                type = lib.types.bool;
-                default = true;
-                description = "Whether to enable secure boot";
-            };
+            enableSecureBoot =
+                lib.mkEnableOption "Enable secure boot"
+                // { default = !config.mySystem.server.enable; };
 
-            enablePlymouth = lib.mkOption {
-                type = lib.types.bool;
-                default = true;
-                description = "Whether to enable the Plymouth bootsplash screen";
-            };
+            enablePlymouth =
+                lib.mkEnableOption "Enable Plymouth for pretty bootsplash"
+                // { default = !config.mySystem.server.enable; };
         };
 
         ZFS.enable = lib.mkEnableOption "enableZfs";

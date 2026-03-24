@@ -1,11 +1,9 @@
 { pkgs, config, lib, ... }:
 
 {
-    options.mySystem.applications.appimage.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my AppImage module";
-    };
+    options.mySystem.applications.appimage.enable =
+        lib.mkEnableOption "AppImage module"
+        // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.appimage.enable {
         programs.appimage = {

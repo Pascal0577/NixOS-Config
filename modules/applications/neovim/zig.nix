@@ -3,11 +3,8 @@ let
     nvim = config.mySystem.applications.neovim;
 in
 {
-    options.mySystem.applications.neovim.enableZig = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable zig editing for my neovim module";
-    };
+    options.mySystem.applications.neovim.enableZig =
+        lib.mkEnableOption "Zig integration into Neovim" // { default = true; };
 
     config = lib.mkIf (nvim.enableZig && nvim.enable) {
         environment.systemPackages = with pkgs; [

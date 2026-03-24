@@ -1,11 +1,8 @@
 { inputs, pkgs, username, config, lib, ... }:
 
 {
-    options.mySystem.desktop.hyprland.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my Hyprland module";
-    };
+    options.mySystem.desktop.hyprland.enable =
+        lib.mkEnableOption "Hyprland window manager";
 
     imports = [ inputs.hyprland.nixosModules.default ];
 

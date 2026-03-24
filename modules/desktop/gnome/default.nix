@@ -1,11 +1,8 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.mySystem.desktop.gnome.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my GNOME module";
-    };
+    options.mySystem.desktop.gnome.enable =
+        lib.mkEnableOption "GNOME Desktop Environment";
 
     config = lib.mkIf config.mySystem.desktop.gnome.enable {
         environment = {

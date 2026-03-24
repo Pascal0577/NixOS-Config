@@ -8,11 +8,8 @@ let
 in
 {
     options.mySystem.desktop.niri = {
-        enable = lib.mkOption { type = lib.types.bool; default = false; };
-        unstable = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-        };
+        enable = lib.mkEnableOption "Niri window manager";
+        unstable = lib.mkEnableOption "Use the latest version of Niri";
     };
 
     imports = [ inputs.niri.nixosModules.niri ];

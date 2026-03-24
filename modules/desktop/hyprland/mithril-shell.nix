@@ -3,11 +3,8 @@ let
     hypr = config.mySystem.desktop.hyprland;
 in
 {
-    options.mySystem.desktop.hyprland.mithril-shell.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my mithril-shell module";
-    };
+    options.mySystem.desktop.hyprland.mithril-shell.enable =
+        lib.mkEnableOption "Mithril Shell for Hyprland";
 
     config = lib.mkIf (hypr.mithril-shell.enable && hypr.enable) {
         home-manager.users.${username} = {

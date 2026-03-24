@@ -3,11 +3,8 @@ let
     hostSystem = pkgs.stdenv.hostPlatform.system;
 in
 {
-    options.mySystem.applications.launcher.walker.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my walker module";
-    };
+    options.mySystem.applications.launcher.walker.enable =
+        lib.mkEnableOption "Walker launcher modules";
 
     config = lib.mkMerge [
         {
@@ -92,154 +89,154 @@ in
                                 @define-color nord_aurora #b48ead;
 
                                 * {
-                                  all: unset;
+                                    all: unset;
                                 }
 
                                 .normal-icons {
-                                  -gtk-icon-size: 16px;
+                                    -gtk-icon-size: 16px;
                                 }
 
                                 .large-icons {
-                                  -gtk-icon-size: 32px;
+                                    -gtk-icon-size: 32px;
                                 }
 
                                 scrollbar {
-                                  opacity: 0;
+                                    opacity: 0;
                                 }
 
                                 @keyframes slideInUp {
-                                  from {
-                                    opacity: 0;
-                                    transform: translateY(20px);
-                                  }
-                                  to {
-                                    opacity: 1;
-                                    transform: translateY(0);
-                                  }
+                                    from {
+                                        opacity: 0;
+                                        transform: translateY(20px);
+                                    }
+                                    to {
+                                        opacity: 1;
+                                        transform: translateY(0);
+                                    }
                                 }
 
                                 @keyframes slideInDown {
-                                  from {
-                                    opacity: 0;
-                                    transform: translateY(-10px);
-                                  }
-                                  to {
-                                    opacity: 1;
-                                    transform: translateY(0);
-                                  }
+                                    from {
+                                        opacity: 0;
+                                        transform: translateY(-10px);
+                                    }
+                                    to {
+                                        opacity: 1;
+                                        transform: translateY(0);
+                                    }
                                 }
 
                                 @keyframes scaleIn {
-                                  from {
-                                    opacity: 0;
-                                    transform: scale(0.95);
-                                  }
-                                  to {
-                                    opacity: 1;
-                                    transform: scale(1);
-                                  }
+                                    from {
+                                        opacity: 0;
+                                        transform: scale(0.95);
+                                    }
+                                    to {
+                                        opacity: 1;
+                                        transform: scale(1);
+                                    }
                                 }
 
                                 @keyframes pulse {
-                                  0%, 100% {
-                                    opacity: 1;
-                                  }
+                                    0%, 100% {
+                                        opacity: 1;
+                                    }
                                   50% {
                                     opacity: 0.6;
                                   }
                                 }
 
                                 @keyframes glow {
-                                  0%, 100% {
-                                    box-shadow: 0 0 20px alpha(@accent_bg_color, 0.2);
-                                  }
-                                  50% {
-                                    box-shadow: 0 0 30px alpha(@accent_bg_color, 0.4);
-                                  }
+                                    0%, 100% {
+                                        box-shadow: 0 0 20px alpha(@accent_bg_color, 0.2);
+                                    }
+                                    50% {
+                                        box-shadow: 0 0 30px alpha(@accent_bg_color, 0.4);
+                                    }
                                 }
 
                                 .box-wrapper {
-                                  box-shadow:
-                                    0 19px 38px rgba(0, 0, 0, 0.5),
-                                    0 15px 12px rgba(0, 0, 0, 0.4);
-                                  background: @window_bg_color;
-                                  padding: 8px;
-                                  border-radius: 20px;
-                                  border: 1px solid alpha(@accent_bg_color, 0.4);
-                                  min-width: 600px;
-                                  min-height: 400px;
-                                  animation: scaleIn 200ms ease-out;
+                                    box-shadow:
+                                        0 19px 38px rgba(0, 0, 0, 0.5),
+                                        0 15px 12px rgba(0, 0, 0, 0.4);
+                                    background: @window_bg_color;
+                                    padding: 8px;
+                                    border-radius: 20px;
+                                    border: 1px solid alpha(@accent_bg_color, 0.4);
+                                    min-width: 600px;
+                                    min-height: 400px;
+                                    animation: scaleIn 200ms ease-out;
                                 }
 
                                 .preview-box,
                                 .elephant-hint,
                                 .placeholder {
-                                  color: @theme_fg_color;
-                                  animation: slideInUp 300ms ease-out;
+                                    color: @theme_fg_color;
+                                    animation: slideInUp 300ms ease-out;
                                 }
 
                                 .box {
-                                  min-height: 400px;
+                                    min-height: 400px;
                                 }
 
                                 .search-container {
-                                  border-radius: 14px;
-                                  animation: slideInDown 250ms ease-out;
+                                    border-radius: 14px;
+                                    animation: slideInDown 250ms ease-out;
                                 }
 
                                 .input placeholder {
-                                  opacity: 0.5;
-                                  transition: opacity 200ms ease;
+                                    opacity: 0.5;
+                                    transition: opacity 200ms ease;
                                 }
 
                                 .input:focus placeholder,
                                 .input:active placeholder {
-                                  opacity: 0.3;
+                                    opacity: 0.3;
                                 }
 
                                 .input {
-                                  caret-color: @nord_frost;
-                                  background: rgba(59, 66, 82, 0.8);
-                                  padding: 10px 14px;
-                                  color: @theme_fg_color;
-                                  border-radius: 14px;
-                                  border: 2px solid transparent;
-                                  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-                                  transform: scale(1);
+                                    caret-color: @nord_frost;
+                                    background: rgba(59, 66, 82, 0.8);
+                                    padding: 10px 14px;
+                                    color: @theme_fg_color;
+                                    border-radius: 14px;
+                                    border: 2px solid transparent;
+                                    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+                                    transform: scale(1);
                                 }
 
                                 .input:focus,
                                 .input:active {
-                                  border-color: alpha(@accent_bg_color, 0.6);
-                                  background: rgba(67, 76, 94, 0.85);
-                                  box-shadow: 0 0 20px alpha(@accent_bg_color, 0.2);
-                                  transform: scale(1.01);
+                                    border-color: alpha(@accent_bg_color, 0.6);
+                                    background: rgba(67, 76, 94, 0.85);
+                                    box-shadow: 0 0 20px alpha(@accent_bg_color, 0.2);
+                                    transform: scale(1.01);
                                 }
 
                                 .content-container {
-                                  margin-top: 8px;
-                                  min-height: 400px;
+                                    margin-top: 8px;
+                                    min-height: 400px;
                                 }
 
                                 .placeholder {
-                                  padding: 20px;
-                                  min-height: 280px;
+                                    padding: 20px;
+                                    min-height: 280px;
                                 }
 
                                 .scroll {
-                                  min-height: 280px;
+                                    min-height: 280px;
                                 }
 
                                 .list {
-                                  color: @theme_fg_color;
-                                  min-height: 280px;
-                                  overflow: visible;
-                                  padding: 6px;
+                                    color: @theme_fg_color;
+                                    min-height: 280px;
+                                    overflow: visible;
+                                    padding: 6px;
                                 }
 
                                 child {
-                                  animation: slideInUp 200ms ease-out;
-                                  animation-fill-mode: backwards;
+                                    animation: slideInUp 200ms ease-out;
+                                    animation-fill-mode: backwards;
                                 }
 
                                 child:nth-child(1) { animation: none; }
@@ -254,206 +251,206 @@ in
                                 child:nth-child(10) { animation-delay: 270ms; }
 
                                 .item-box {
-                                  border-radius: 12px;
-                                  padding: 6px 10px;
-                                  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-                                  border: 1px solid transparent;
-                                  transform: scale(1);
+                                    border-radius: 12px;
+                                    padding: 6px 10px;
+                                    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+                                    border: 1px solid transparent;
+                                    transform: scale(1);
                                 }
 
                                 .item-quick-activation {
-                                  background: alpha(@nord_frost, 0.25);
-                                  border-radius: 6px;
-                                  padding: 4px 6px;
-                                  margin-right: 8px;
-                                  border: 1px solid alpha(@nord_frost, 0.4);
-                                  transition: all 150ms ease;
-                                  transform: scale(1);
+                                    background: alpha(@nord_frost, 0.25);
+                                    border-radius: 6px;
+                                    padding: 4px 6px;
+                                    margin-right: 8px;
+                                    border: 1px solid alpha(@nord_frost, 0.4);
+                                    transition: all 150ms ease;
+                                    transform: scale(1);
                                 }
 
                                 child:hover .item-quick-activation {
-                                  transform: scale(1.05);
-                                  background: alpha(@nord_frost, 0.35);
+                                    transform: scale(1.05);
+                                    background: alpha(@nord_frost, 0.35);
                                 }
 
                                 child:hover .item-box {
-                                  background: alpha(@accent_bg_color, 0.25);
-                                  transform: translateX(4px) scale(1.01);
+                                    background: alpha(@accent_bg_color, 0.25);
+                                    transform: translateX(4px) scale(1.01);
                                 }
 
                                 child:selected .item-box {
-                                  background: alpha(@accent_bg_color, 0.4);
-                                  border: 1px solid alpha(@accent_bg_color, 0.5);
-                                  box-shadow: 0 4px 12px alpha(@accent_bg_color, 0.3);
-                                  transform: scale(1.015);
+                                    background: alpha(@accent_bg_color, 0.4);
+                                    border: 1px solid alpha(@accent_bg_color, 0.5);
+                                    box-shadow: 0 4px 12px alpha(@accent_bg_color, 0.3);
+                                    transform: scale(1.015);
                                 }
 
                                 .item-text-box {
-                                  transition: transform 200ms ease;
+                                    transition: transform 200ms ease;
                                 }
 
                                 child:hover .item-text-box {
-                                  transform: translateX(2px);
+                                    transform: translateX(2px);
                                 }
 
                                 .item-subtext {
-                                  font-size: 11px;
-                                  opacity: 0.7;
-                                  color: #d8dee9;
-                                  margin-top: 2px;
-                                  transition: opacity 200ms ease;
+                                    font-size: 11px;
+                                    opacity: 0.7;
+                                    color: #d8dee9;
+                                    margin-top: 2px;
+                                    transition: opacity 200ms ease;
                                 }
 
                                 child:hover .item-subtext {
-                                  opacity: 0.85;
+                                    opacity: 0.85;
                                 }
 
                                 .providerlist .item-subtext {
-                                  font-size: unset;
-                                  opacity: 0.75;
+                                    font-size: unset;
+                                    opacity: 0.75;
                                 }
 
                                 .item-image-text {
-                                  font-size: 24px;
-                                  transition: transform 200ms ease;
+                                    font-size: 24px;
+                                    transition: transform 200ms ease;
                                 }
 
                                 child:hover .item-image-text {
-                                  transform: scale(1.1);
+                                    transform: scale(1.1);
                                 }
 
                                 .preview {
-                                  border: 1px solid alpha(@accent_bg_color, 0.4);
-                                  padding: 10px;
-                                  border-radius: 12px;
-                                  color: @theme_fg_color;
-                                  background: rgba(59, 66, 82, 0.6);
-                                  margin-top: 8px;
-                                  animation: slideInUp 300ms ease-out;
-                                  transition: all 200ms ease;
+                                    border: 1px solid alpha(@accent_bg_color, 0.4);
+                                    padding: 10px;
+                                    border-radius: 12px;
+                                    color: @theme_fg_color;
+                                    background: rgba(59, 66, 82, 0.6);
+                                    margin-top: 8px;
+                                    animation: slideInUp 300ms ease-out;
+                                    transition: all 200ms ease;
                                 }
 
                                 .calc .item-text {
-                                  font-size: 20px;
-                                  color: @nord_frost;
-                                  transition: all 200ms ease;
+                                    font-size: 20px;
+                                    color: @nord_frost;
+                                    transition: all 200ms ease;
                                 }
 
                                 child:hover .calc .item-text {
-                                  transform: scale(1.05);
-                                  text-shadow: 0 0 8px alpha(@nord_frost, 0.4);
+                                    transform: scale(1.05);
+                                    text-shadow: 0 0 8px alpha(@nord_frost, 0.4);
                                 }
 
                                 .calc .item-subtext {
                                 }
 
                                 .symbols .item-image {
-                                  font-size: 20px;
-                                  transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                                    font-size: 20px;
+                                    transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
                                 }
 
                                 child:hover .symbols .item-image {
-                                  transform: rotate(5deg) scale(1.1);
+                                    transform: rotate(5deg) scale(1.1);
                                 }
 
                                 .todo.done .item-text-box {
-                                  opacity: 0.25;
-                                  transition: opacity 300ms ease;
+                                    opacity: 0.25;
+                                    transition: opacity 300ms ease;
                                 }
 
                                 .todo.urgent {
-                                  font-size: 20px;
-                                  color: #d08770;
-                                  animation: pulse 2s ease-in-out infinite;
+                                    font-size: 20px;
+                                    color: #d08770;
+                                    animation: pulse 2s ease-in-out infinite;
                                 }
 
                                 .todo.active {
-                                  font-weight: bold;
-                                  color: @nord_frost;
+                                    font-weight: bold;
+                                    color: @nord_frost;
                                 }
 
                                 child:hover .todo.active .item-text-box {
-                                  animation: pulse 1s ease-in-out;
+                                    animation: pulse 1s ease-in-out;
                                 }
 
                                 .bluetooth.disconnected {
-                                  opacity: 0.5;
-                                  transition: opacity 300ms ease;
+                                    opacity: 0.5;
+                                    transition: opacity 300ms ease;
                                 }
 
                                 .preview .large-icons {
-                                  -gtk-icon-size: 48px;
-                                  transition: transform 200ms ease;
+                                    -gtk-icon-size: 48px;
+                                    transition: transform 200ms ease;
                                 }
 
                                 .preview:hover .large-icons {
-                                  transform: scale(1.05);
+                                    transform: scale(1.05);
                                 }
 
                                 .keybinds-wrapper {
-                                  border-top: 1px solid rgba(59, 66, 82, 0.6);
-                                  font-size: 11px;
-                                  opacity: 0.7;
-                                  color: @theme_fg_color;
-                                  margin-top: 8px;
-                                  padding-top: 8px;
-                                  animation: slideInUp 400ms ease-out;
+                                    border-top: 1px solid rgba(59, 66, 82, 0.6);
+                                    font-size: 11px;
+                                    opacity: 0.7;
+                                    color: @theme_fg_color;
+                                    margin-top: 8px;
+                                    padding-top: 8px;
+                                    animation: slideInUp 400ms ease-out;
                                 }
 
                                 .keybinds {
                                 }
 
                                 .keybind {
-                                  margin: 2px 0;
-                                  transition: transform 150ms ease;
+                                    margin: 2px 0;
+                                    transition: transform 150ms ease;
                                 }
 
                                 .keybind:hover {
-                                  transform: translateX(4px);
+                                    transform: translateX(4px);
                                 }
 
                                 .keybind-bind {
-                                  color: @nord_frost;
-                                  font-weight: bold;
-                                  text-transform: lowercase;
-                                  background: alpha(@nord_frost, 0.2);
-                                  padding: 2px 6px;
-                                  border-radius: 4px;
-                                  margin-right: 6px;
-                                  transition: all 150ms ease;
+                                    color: @nord_frost;
+                                    font-weight: bold;
+                                    text-transform: lowercase;
+                                    background: alpha(@nord_frost, 0.2);
+                                    padding: 2px 6px;
+                                    border-radius: 4px;
+                                    margin-right: 6px;
+                                    transition: all 150ms ease;
                                 }
 
                                 .keybind:hover .keybind-bind {
-                                  background: alpha(@nord_frost, 0.3);
-                                  transform: scale(1.05);
+                                    background: alpha(@nord_frost, 0.3);
+                                    transform: scale(1.05);
                                 }
 
                                 .keybind-label {
-                                  transition: opacity 150ms ease;
+                                    transition: opacity 150ms ease;
                                 }
 
                                 .keybind:hover .keybind-label {
-                                  opacity: 1;
+                                    opacity: 1;
                                 }
 
                                 .error {
-                                  padding: 10px 12px;
-                                  background: alpha(@error_bg_color, 0.9);
-                                  color: @error_fg_color;
-                                  border-radius: 10px;
-                                  border: 1px solid alpha(@error_bg_color, 0.6);
-                                  margin: 4px;
-                                  animation: slideInDown 250ms ease-out, pulse 2s ease-in-out infinite;
+                                    padding: 10px 12px;
+                                    background: alpha(@error_bg_color, 0.9);
+                                    color: @error_fg_color;
+                                    border-radius: 10px;
+                                    border: 1px solid alpha(@error_bg_color, 0.6);
+                                    margin: 4px;
+                                    animation: slideInDown 250ms ease-out, pulse 2s ease-in-out infinite;
                                 }
 
                                 :not(.calc).current {
-                                  font-style: italic;
-                                  color: @nord_aurora;
-                                  transition: all 200ms ease;
+                                    font-style: italic;
+                                    color: @nord_aurora;
+                                    transition: all 200ms ease;
                                 }
 
                                 child:hover :not(.calc).current {
-                                  text-shadow: 0 0 8px alpha(@nord_aurora, 0.4);
+                                    text-shadow: 0 0 8px alpha(@nord_aurora, 0.4);
                                 }
                             '';
                         };

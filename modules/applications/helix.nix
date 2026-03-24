@@ -1,7 +1,7 @@
 { lib, config, username, pkgs, ... }:
 
 {
-    options.mySystem.applications.helix.enable = lib.mkEnableOption "helix";
+    options.mySystem.applications.helix.enable = lib.mkEnableOption "Helix module";
 
     config = lib.mkIf config.mySystem.applications.helix.enable {
         home-manager.users.${username} = {

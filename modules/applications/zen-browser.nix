@@ -1,11 +1,9 @@
 { inputs, config, username, lib, pkgs, ... }:
 
 {
-    options.mySystem.applications.zen-browser.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my Zen Browser module";
-    };
+    options.mySystem.applications.zen-browser.enable =
+        lib.mkEnableOption "Zen Browser module"
+        // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.zen-browser.enable {
         home-manager.users.${username} = {

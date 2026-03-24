@@ -3,12 +3,9 @@ let
     hue = config.lib.stylix.colors;
 in
 {
-    options.mySystem.applications.launcher.dmenu.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my dmenu module";
-    };
-
+    options.mySystem.applications.launcher.dmenu.enable =
+        lib.mkEnableOption "dmenu module";
+    
     config = lib.mkIf config.mySystem.applications.launcher.dmenu.enable {
         environment.systemPackages = [ pkgs.dmenu ];
         mySystem.applications.launcher = {

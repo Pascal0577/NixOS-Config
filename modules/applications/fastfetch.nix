@@ -1,11 +1,8 @@
 { username, config, lib, ... }:
 
 {
-    options.mySystem.applications.fastfetch.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my fastfetch module";
-    };
+    options.mySystem.applications.fastfetch.enable =
+        lib.mkEnableOption "Fastfetch module" // { default = true; };
 
     config = lib.mkIf config.mySystem.applications.fastfetch.enable {
         home-manager.users.${username} = {

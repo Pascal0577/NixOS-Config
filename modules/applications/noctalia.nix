@@ -1,13 +1,11 @@
 { inputs, username, config, lib, pkgs, ... }:
 
 {
-    options.mySystem.applications.noctalia.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my Noctalia Shell module";
-    };
-
     imports = [ inputs.noctalia.nixosModules.default ];
+
+    options.mySystem.applications.noctalia.enable =
+        lib.mkEnableOption "Noctalia Shell module"
+        // { default = config.mySystem.desktop.niri.enable; };
 
     config = lib.mkIf config.mySystem.applications.noctalia.enable {
         services.upower.enable = true;

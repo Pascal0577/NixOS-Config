@@ -4,11 +4,8 @@ let
     inherit (lib) toInt;
 in
 {
-    options.mySystem.desktop.oxwm.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my OXWM module";
-    };
+    options.mySystem.desktop.oxwm.enable =
+        lib.mkEnableOption "OXWM window manager";
 
     config = lib.mkIf config.mySystem.desktop.oxwm.enable {
         environment.systemPackages = with pkgs; [ xclip maim bc sysstat ];

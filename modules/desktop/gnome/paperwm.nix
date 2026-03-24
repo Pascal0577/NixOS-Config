@@ -1,11 +1,8 @@
 { pkgs, username, config, lib, ... }:
 
 {
-    options.mySystem.desktop.gnome.paperwm.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my PaperWM module";
-    };
+    options.mySystem.desktop.gnome.paperwm.enable =
+        lib.mkEnableOption "PaperWM extension for GNOME";
 
     config = lib.mkIf config.mySystem.desktop.gnome.paperwm.enable {
         environment.systemPackages = with pkgs; [

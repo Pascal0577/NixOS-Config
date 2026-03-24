@@ -1,27 +1,34 @@
-{ username, ... }:
+{ username, lib, ... }:
 
 {
-    security.rtkit.enable = true;
-    nixpkgs.config.allowUnfree = true;
-    system.stateVersion = "26.05";
-    services.dbus.implementation = "broker";
+    options.mySystem.server.enable = lib.mkEnableOption ''
+        Whether to use system as a server.
+        Disable graphical apps, pipewire, etc
+    '';
 
-    nix.settings = {
-        experimental-features = [ "nix-command" "flakes" ];
-        trusted-users = [ "${username}" ];
-    };
+    config = {
+        security.rtkit.enable = true;
+        nixpkgs.config.allowUnfree = true;
+        system.stateVersion = "26.05";
+        services.dbus.implementation = "broker";
 
-    systemd = {
-        # If a service has tried to stop for longer than 10s 
-        # something has gone wrong and it should be force stopped
-        user.extraConfig = "DefaultTimeoutStopSec=10s";
-        settings.Manager = {
-            DefaultTimeoutStopSec = "10s";
+        nix.settings = {
+            experimental-features = [ "nix-command" "flakes" ];
+            trusted-users = [ "${username}" ];
         };
 
-        services = {
-            "serial-getty@".enable = false;
-            NetworkManager-wait-online.enable = false;
+        systemd = {
+            # If a service has tried to stop for longer than 10s 
+            # something has gone wrong and it should be force stopped
+            user.extraConfig = "DefaultTimeoutStopSec=10s";
+            settings.Manager = {
+                DefaultTimeoutStopSec = "10s";
+            };
+
+            services = {
+                "serial-getty@".enable = false;
+                NetworkManager-wait-online.enable = false;
+            };
         };
     };
 }

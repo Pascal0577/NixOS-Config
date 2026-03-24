@@ -3,11 +3,9 @@ let
     hue = config.lib.stylix.colors;
 in
 {
-    options.mySystem.applications.prismlauncher.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my PrismLauncher module";
-    };
+    options.mySystem.applications.prismlauncher.enable =
+        lib.mkEnableOption "Prism Launcher (Minecraft) module"
+        // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.prismlauncher.enable {
         environment.systemPackages = [ pkgs.prismlauncher ];

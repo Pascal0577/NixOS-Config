@@ -3,10 +3,7 @@ let
     nvim = config.mySystem.applications.neovim;
 in
 {
-    options.mySystem.theme.tokyonight.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-    };
+    options.mySystem.theme.tokyonight.enable = lib.mkEnableOption "Tokyo Night theme";
 
     config = lib.mkIf config.mySystem.theme.tokyonight.enable {
         stylix = {

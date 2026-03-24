@@ -1,11 +1,8 @@
 { username, pkgs, config, lib, ... }:
 
 {
-    options.mySystem.desktop.gnome.dash-to-dock.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable and configure Dash to Dock";
-    };
+    options.mySystem.desktop.gnome.dash-to-dock.enable =
+        lib.mkEnableOption "Dash to Dock extension for GNOME";
 
     config = lib.mkIf config.mySystem.desktop.gnome.dash-to-dock.enable {
         environment.systemPackages = with pkgs; [

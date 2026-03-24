@@ -1,11 +1,8 @@
 { inputs, pkgs, username, config, lib, ... }:
 
 {
-    options.mySystem.applications.neovim.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my Neovim module";
-    };
+    options.mySystem.applications.neovim.enable =
+        lib.mkEnableOption "Neovim editor module" // { default = true; };
 
     config = lib.mkIf config.mySystem.applications.neovim.enable {
         home-manager.users.${username} = {

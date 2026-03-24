@@ -3,10 +3,7 @@ let
     nvim = config.mySystem.applications.neovim;
 in
 {
-    options.mySystem.theme.nord.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-    };
+    options.mySystem.theme.nord.enable = lib.mkEnableOption "Nord theme";
 
     config = lib.mkIf config.mySystem.theme.nord.enable {
         stylix = {

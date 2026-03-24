@@ -1,11 +1,8 @@
 { config, lib, pkgs, username, ... }:
 
 {
-    options.mySystem.applications.terminal.kitty.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable Kitty module";
-    };
+    options.mySystem.applications.terminal.kitty.enable =
+        lib.mkEnableOption "Kitty terminal module";
 
     config = lib.mkIf config.mySystem.applications.terminal.kitty.enable {
         mySystem.applications.terminal = {

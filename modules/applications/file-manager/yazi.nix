@@ -30,11 +30,8 @@ let
     '';
 in
 {
-    options.mySystem.applications.file-manager.yazi.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Enable my Yazi module";
-    };
+    options.mySystem.applications.file-manager.yazi.enable =
+        lib.mkEnableOption "Enable my Yazi module";
 
     config = lib.mkIf config.mySystem.applications.file-manager.yazi.enable {
         mySystem.applications.file-manager.package = pkgs.yazi;

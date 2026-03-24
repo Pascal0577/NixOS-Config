@@ -3,11 +3,8 @@ let
     hostSystem = pkgs.stdenv.hostPlatform.system;
 in
 {
-    options.mySystem.applications.launcher.vicinae.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my vicinae module";
-    };
+    options.mySystem.applications.launcher.vicinae.enable =
+        lib.mkEnableOption "Vicinae (Raycast for Linux) module";
 
     config = lib.mkMerge [
         {
@@ -66,7 +63,7 @@ in
                             opacity = 1.0;
                         };
 
-                        extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
+                        extensions = with inputs.vicinae-extensions.packages.${hostSystem}; [
                         ];
 
                         favorites = [

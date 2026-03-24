@@ -3,14 +3,15 @@ let
     hue = config.lib.stylix.colors;
 in
 {
-    options.mySystem.applications.heroic.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable my Heroic module";
-    };
+    options.mySystem.applications.heroic.enable =
+        lib.mkEnableOption "Heroic Games launcher module"
+        // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.heroic.enable {
-        environment.systemPackages = [ pkgs.heroic pkgs.wineWow64Packages.staging ];
+        environment.systemPackages = with pkgs; [
+            heroic
+            wineWow64Packages.unstableFull
+        ];
 
         programs.gamemode = {
             enable = true;

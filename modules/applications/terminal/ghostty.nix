@@ -1,11 +1,8 @@
 { pkgs, username, lib, config, ... }:
 
 {
-    options.mySystem.applications.terminal.ghostty.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable my Ghostty module";
-    };
+    options.mySystem.applications.terminal.ghostty.enable =
+        lib.mkEnableOption "Ghostty terminal module";
 
     config = lib.mkIf config.mySystem.applications.terminal.ghostty.enable {
         mySystem.applications.terminal = {

@@ -3,11 +3,8 @@ let
     nvim = config.mySystem.applications.neovim;
 in
 {
-    options.mySystem.applications.neovim.enableLatex = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-        description = "Whether to enable latex editing for my neovim module";
-    };
+    options.mySystem.applications.neovim.enableLatex =
+        lib.mkEnableOption "LaTeX integration in Neovim" // { default = true; };
 
     config = lib.mkIf (nvim.enableLatex && nvim.enable) {
         environment.systemPackages = with pkgs; [
