@@ -1,7 +1,6 @@
 { lib, pkgs, nixos-raspberrypi, ... }:
 
 {
-    networking.useDHCP = lib.mkDefault true;
     hardware.enableAllHardware = lib.mkForce false;
 
     boot = {

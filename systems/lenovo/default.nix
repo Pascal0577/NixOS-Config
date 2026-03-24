@@ -19,5 +19,4 @@
     };
 
     stylix.targets.plymouth.enable = lib.mkForce true;
-    networking.hostId = "4e98920d";
 }
