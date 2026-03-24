@@ -1,4 +1,4 @@
-{ pkgs, username, config, lib, ... }:
+{ pkgs, config, lib, ... }:
 
 {
     options.mySystem.applications.git.enable = lib.mkOption {
@@ -9,6 +9,6 @@
 
     config = lib.mkIf config.mySystem.applications.git.enable {
         environment.systemPackages = [ pkgs.gh ];
-        home-manager.users.${username}.programs.git.enable = true;
+        programs.git.enable = true;
     };
 }
