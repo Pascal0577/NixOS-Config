@@ -9,7 +9,7 @@ in
 {
     options.mySystem.desktop.niri = {
         enable = lib.mkOption { type = lib.types.bool; default = false; };
-        stable = lib.mkOption {
+        unstable = lib.mkOption {
             type = lib.types.bool;
             default = false;
         };
@@ -26,10 +26,9 @@ in
         (lib.mkIf config.mySystem.desktop.niri.enable {
             programs.niri = {
                 enable = true;
-                package = if config.mySystem.desktop.niri.stable
-                            then pkgs.niri-stable
-                            else
-                            niri-optimized;
+                package = if config.mySystem.desktop.niri.unstable
+                    then niri-optimized
+                    else pkgs.niri-stable;
             };
 
             services.displayManager.ly.enable = true;
@@ -44,7 +43,7 @@ in
                     prefer-no-csd = true;
                     environment.QT_QPA_PLATFORM = "wayland";
 
-                    spawn-at-startup = [
+                    spawn-at-startup = lib.mkIf config.mySystem.applications.noctalia.enable [
                         { argv = [ "noctalia-shell" ]; }
                     ];
 

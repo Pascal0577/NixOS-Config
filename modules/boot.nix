@@ -1,5 +1,7 @@
 { pkgs, inputs, config, lib, ... }:
 let
+    boot = config.mySystem.boot;
+
     zfsCompatibleKernelPackages = lib.filterAttrs (
         name: kernelPackages:
         (builtins.match "linux_[0-9]+_[0-9]+" name) != null
@@ -34,9 +36,13 @@ in
 
     config.boot = lib.mkMerge [
         {
-            kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+            kernelPackages = lib.mkDefault (if boot.enableZfs
+                then latestZfsKernel
+                else pkgs.linuxPackages_latest);
+
             bootspec.enable = true;
             initrd.systemd.enable = true;
+            supportedFilesystems = lib.mkIf boot.enableZfs [ "zfs" ];
 
             loader = {
                 efi.canTouchEfiVariables = true;
@@ -50,23 +56,19 @@ in
             };
 
             kernelParams = [
-                # security stuff
-                "rcupdate.rcu_expedited=1"
-                "page_alloc.shuffle=1"
-                # zswap
-                "zswap.enabled=1"
-                "zswap.compressor=zstd"
-                "zswap.max_pool_percent=50"
-                "zswap.shrinker_enabled=1"
-            ];
+              # security stuff
+              "rcupdate.rcu_expedited=1"
+              "page_alloc.shuffle=1"
+            ] ++ (lib.optionals (!boot.enableZfs) [
+              # zswap if we aren't using zfs
+              "zswap.enabled=1"
+              "zswap.compressor=zstd"
+              "zswap.max_pool_percent=50"
+              "zswap.shrinker_enabled=1"
+            ]);
         }
 
-        (lib.mkIf config.mySystem.boot.enableZfs {
-            kernelPackages = latestZfsKernel;
-            supportedFilesystems = [ "zfs" ];
-        })
-
-        (lib.mkIf config.mySystem.boot.enablePlymouth {
+        (lib.mkIf boot.enablePlymouth {
             plymouth = {
                 enable = true;
                 theme = lib.mkDefault "bgrt";
@@ -92,7 +94,7 @@ in
             ];
         })
 
-        (lib.mkIf config.mySystem.boot.enableSecureBoot {
+        (lib.mkIf boot.enableSecureBoot {
             lanzaboote = {
                 enable = true;
                 pkiBundle = "/var/lib/sbctl/";

@@ -9,8 +9,11 @@
     mySystem = {
         theme.everforest.enable = true;
         impermanence.enable = true;
-        desktop.niri.enable = true;
         boot.enableZfs = true;
+        desktop.niri = {
+            enable = true;
+            unstable = true;
+        };
         applications = {
             obs.enable = false;
             helix.enable = true;
