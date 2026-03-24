@@ -1,4 +1,4 @@
-{ pkgs, lib, username, ... }:
+{ pkgs, lib, ... }:
 
 {
     imports = [
@@ -22,11 +22,6 @@
             file-manager.yazi.enable = true;
         };
     };
-
-    services.hardware.bolt.enable = true;
-    services.displayManager.ly.enable = true;
-
-    users.users.${username}.hashedPasswordFile = "/nix/persist/passwords/pascal-acer";
 
     environment.systemPackages = with pkgs; [
         playerctl

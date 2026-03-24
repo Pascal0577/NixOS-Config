@@ -1,4 +1,4 @@
-{ inputs, config, lib, ... }:
+{ inputs, config, lib, username, ... }:
 
 {
     options.mySystem.impermanence.enable = lib.mkEnableOption "impermanence";
@@ -6,6 +6,7 @@
     imports = [ inputs.impermanence.nixosModules.impermanence ];
 
     config = lib.mkIf config.mySystem.impermanence.enable {
+        users.users.${username}.hashedPasswordFile = "/nix/persist/passwords/pascal";
         fileSystems."/nix/persist".neededForBoot = true;
         boot.initrd.systemd.services.rollback = {
             description = "Rollback root ZFS dataset";

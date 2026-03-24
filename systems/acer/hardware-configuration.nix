@@ -3,6 +3,7 @@
 {
     imports = [ inputs.disko.nixosModules.disko ];
 
+    services.hardware.bolt.enable = true;
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     hardware = {
         cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

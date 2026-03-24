@@ -32,6 +32,7 @@ in
                             niri-optimized;
             };
 
+            services.displayManager.ly.enable = true;
             environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
             systemd.user.services.niri-flake-polkit.serviceConfig.ExecStart = 
                 lib.mkForce "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
