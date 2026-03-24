@@ -3,6 +3,11 @@
 {
     imports = [ inputs.disko.nixosModules.disko ];
 
+    services.zfs.autoScrub = {
+        enable = true;
+        interval = "monthly";
+    };
+
     disko.devices = {
         disk = {
             main = {
@@ -53,7 +58,10 @@
                     xattr = "sa";
                     dnodesize = "auto";
                 };
-                options.ashift = "12";
+                options = {
+                    ashift = "12";
+                    autotrim = "on";
+                };
 
                 datasets = {
                     "local" = {
@@ -73,6 +81,9 @@
                             recordsize = "1M";
                             primarycache = "metadata";
                             logbias = "throughput";
+                            secondarycache = "none";
+                            sync = "disabled";
+                            redundant_metadata = "most";
                             "com.sun:auto-snapshot" = "false";
                         };
                     };
