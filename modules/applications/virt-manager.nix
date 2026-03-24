@@ -48,11 +48,6 @@
                 "vfio_iommu_type1"
             ];
 
-            kernelParams = [
-                "intel_iommu=on"
-                "iommu=pt"
-            ];
-
             extraModprobeConfig = ''
                 options vfio-pci ids=10de:28e1,10de:22be
             '';
