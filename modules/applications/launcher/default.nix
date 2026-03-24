@@ -5,7 +5,7 @@
         package = lib.mkOption {
             type = lib.types.package;
             default = pkgs.fuzzel;
-            description = "Package for the launcher aapplication";
+            description = "Package for the launcher application";
         };
 
         command = lib.mkOption {

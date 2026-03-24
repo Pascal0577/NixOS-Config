@@ -35,7 +35,7 @@ in
                 widgets = "Fusion";
             };
 
-            home.file.".local/share/PrismLauncher/themes/themeStyle.ccs".text = ''
+            home.file.".local/share/PrismLauncher/themes/themeStyle.css".text = ''
                 QToolTip {
                     color: #${hue.base07-hex};
                     background-color: #${hue.base0D-hex};
