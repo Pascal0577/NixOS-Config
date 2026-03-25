@@ -10,7 +10,7 @@
         lanzaboote    = { url = "github:nix-community/lanzaboote";   inputs.nixpkgs.follows = "nixpkgs"; };
         impermanence  = { url = "github:nix-community/impermanence"; inputs.nixpkgs.follows = ""; inputs.home-manager.follows = ""; };
 
-        nixos-raspberrypi = { url = "github:nvmd/nixos-raspberrypi/develop"; inputs.nixpkgs.follows = "nixpkgs"; };
+        nixos-raspberrypi = { url = "github:nvmd/nixos-raspberrypi/main"; inputs.nixpkgs.follows = "nixpkgs"; };
 
         niri.url       = "github:sodiboo/niri-flake";
         hyprland.url   = "github:vaxerski/Hyprland/layouts-rethonked";
@@ -28,6 +28,11 @@
         noctalia-qs = { url = "github:noctalia-dev/noctalia-qs";    inputs.nixpkgs.follows = "nixpkgs"; };
         noctalia    = { url = "github:noctalia-dev/noctalia-shell"; inputs.nixpkgs.follows = "nixpkgs";   inputs.noctalia-qs.follows = "noctalia-qs"; };
 
+    };
+
+    nixConfig = {
+        extra-substituters = [ "https://nixos-raspberrypi.cachix.org" ];
+        extra-trusted-public-keys = [ "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI=" ];
     };
     
     outputs = { self, nixpkgs, nixos-raspberrypi, home-manager, ... }@inputs:
@@ -54,22 +59,10 @@
                 name = "raspberry";
                 lib = nixos-raspberrypi.lib;
                 extraArgs = { inherit nixos-raspberrypi; useNiri = false; };
-                extraModules = [
-                    nixos-raspberrypi.nixosModules.sd-image
-                    { sdImage.compressImage = false; }
-                ];
+                extraModules = [{ sdImage.compressImage = false; }];
             };
         };
 
         packages.aarch64-linux.pi5-image = self.nixosConfigurations.raspberry.config.system.build.sdImage;
-        apps.x86_64-linux.build-pi = {
-            type = "app";
-            program = toString (nixpkgs.legacyPackages.x86_64-linux.writeShellScript "build-pi" ''
-                nix build .#packages.aarch64-linux.pi5-image \
-                    --extra-substituters "https://nixos-raspberrypi.cachix.org" \
-                    --extra-trusted-public-keys "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI=" \
-                    "$@"
-            '');
-        };
     };
 }
