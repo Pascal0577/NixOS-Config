@@ -5,7 +5,7 @@
 
     boot = {
         kernelPackages =
-            lib.mkForce nixos-raspberrypi.packages.aarch64.linuxPackages_rpi5;
+            lib.mkForce nixos-raspberrypi.packages.aarch64-linux.linuxPackages_rpi5;
         bootspec.enable = lib.mkForce false;
         loader.efi.canTouchEfiVariables = lib.mkForce false;
         loader.systemd-boot.enable = lib.mkForce false;

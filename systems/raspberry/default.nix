@@ -9,13 +9,16 @@
         raspberry-pi-5.page-size-16k
         raspberry-pi-5.display-vc4
         raspberry-pi-5.bluetooth
-    ] ++ (lib.filter 
-        (f: !(lib.hasSuffix "desktop/niri/default.nix" (toString f)))
-        (lib.filesystem.listFilesRecursive ../../modules));
+    ] ++ lib.filesystem.listFilesRecursive ../../modules;
+        # (lib.filter 
+        # (f: !(lib.hasSuffix "desktop/niri/default.nix" (toString f)))
+        # (lib.filesystem.listFilesRecursive ../../modules));
      
     mySystem = {
         server.enable = true;
         theme.everforest.enable = true;
+        applications.neovim.enable = false;
+        applications.helix.enable = true;
     };
 
     networking.interfaces.end0.ipv4.addresses = [{

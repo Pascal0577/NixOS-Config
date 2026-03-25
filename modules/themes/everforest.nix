@@ -19,20 +19,23 @@ in
             };
         };
 
-        home-manager.users.${username} = lib.mkIf nvim.enable {
-            programs.nixvim = {
-                colorschemes.everforest = {
-                    enable = true;
-                    settings.background = "soft";
+        home-manager.users.${username} = lib.mkMerge [
+            (lib.mkIf nvim.enable {
+                programs.nixvim = {
+                    colorschemes.everforest = {
+                        enable = true;
+                        settings.background = "soft";
+                    };
+
+                    performance.combinePlugins.standalonePlugins = [
+                        pkgs.vimPlugins.everforest
+                    ];
                 };
+            })
 
-                performance.combinePlugins.standalonePlugins = [
-                    pkgs.vimPlugins.everforest
-                ];
-            };
-
-            programs.niri.settings.layout.border.active.color =
-                lib.mkIf niri.enable "#${hue.base09-hex}";
-        };
+            (lib.mkIf niri.enable {
+                programs.niri.settings.layout.border.active.color = "#${hue.base09-hex}";
+            })
+        ];
     };
 }

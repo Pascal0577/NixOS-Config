@@ -65,15 +65,6 @@
         oxwm.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixConfig = {
-        extra-substituters = [
-            "https://nixos-raspberrypi.cachix.org"
-        ];
-        extra-trusted-public-keys = [
-            "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI="
-        ];
-    };
-
     outputs = { self, nixpkgs, nixos-raspberrypi, home-manager, ... }@inputs:
     {
         nixosConfigurations = {
@@ -106,6 +97,7 @@
                     inherit inputs nixos-raspberrypi;
                     hostname = "raspberry";
                     username = "pascal";
+                    useNiri = false;
                 };
                 modules = [
                     home-manager.nixosModules.home-manager
@@ -117,5 +109,14 @@
         };
 
         packages.aarch64-linux.pi5-image = self.nixosConfigurations.raspberry.config.system.build.sdImage;
+        apps.x86_64-linux.build-pi = {
+            type = "app";
+            program = toString (nixpkgs.legacyPackages.x86_64-linux.writeShellScript "build-pi" ''
+                nix build .#packages.aarch64-linux.pi5-image \
+                    --extra-substituters "https://nixos-raspberrypi.cachix.org" \
+                    --extra-trusted-public-keys "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI=" \
+                    "$@"
+            '');
+        };
     };
 }

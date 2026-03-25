@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, config, lib, ... }:
+{ inputs, pkgs, username, config, lib, useNiri, ... }:
 let
     playerctl = lib.getExe pkgs.playerctl;
     brightnessctl = lib.getExe pkgs.brightnessctl;
@@ -15,12 +15,15 @@ in
         unstable = lib.mkEnableOption "Use the latest version of Niri";
     };
 
-    imports = [ inputs.niri.nixosModules.niri ];
+    imports = lib.optional useNiri inputs.niri.nixosModules.niri;
 
     config = lib.mkMerge [
         {
             nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-            niri-flake.cache.enable = true;
+            nix.settings = {
+                substituters = [ "https://niri.cachix.org" ];
+                trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
+            };
         }
 
         (lib.mkIf config.mySystem.desktop.niri.enable {
