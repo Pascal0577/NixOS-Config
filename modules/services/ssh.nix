@@ -32,8 +32,7 @@
 
         systemd.services.sshd.serviceConfig = {
             NoNewPrivileges = true;
-            ProtectSystem = "strict";
-            ProtectHome = "read-only";
+            ProtectSystem = "full";
             ProtectClock = true; 
             ProtectHostname = true;
             ProtectKernelTunables = true;
