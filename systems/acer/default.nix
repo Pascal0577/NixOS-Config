@@ -3,7 +3,6 @@
 {
     imports = [
         ./hardware-configuration.nix
-        ./impermanence.nix
     ] ++ lib.filesystem.listFilesRecursive ../../modules;
 
     mySystem = {
