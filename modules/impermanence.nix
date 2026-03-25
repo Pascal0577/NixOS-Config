@@ -30,6 +30,7 @@
                 "/var/lib/nixos"
                 "/var/lib/libvirt"
                 "/var/lib/sbctl"
+                "/var/lib/systemd"
                 "/var/db/sudo/lectured"
                 "/etc/NetworkManager/system-connections"
                 "/etc/ssh"
