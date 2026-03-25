@@ -4,67 +4,32 @@
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-        home-manager.url = "github:nix-community/home-manager";
-        home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        home-manager  = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
+        stylix        = { url = "github:nix-community/stylix";       inputs.nixpkgs.follows = "nixpkgs"; };
+        disko         = { url = "github:nix-community/disko/latest"; inputs.nixpkgs.follows = "nixpkgs"; };
+        lanzaboote    = { url = "github:nix-community/lanzaboote";   inputs.nixpkgs.follows = "nixpkgs"; };
+        impermanence  = { url = "github:nix-community/impermanence"; inputs.nixpkgs.follows = ""; inputs.home-manager.follows = ""; };
 
-        stylix.url = "github:nix-community/stylix";
-        stylix.inputs.nixpkgs.follows = "nixpkgs";
+        nixos-raspberrypi = { url = "github:nvmd/nixos-raspberrypi/develop"; inputs.nixpkgs.follows = "nixpkgs"; };
 
-        disko.url = "github:nix-community/disko/latest";
-        disko.inputs.nixpkgs.follows = "nixpkgs";
+        niri.url       = "github:sodiboo/niri-flake";
+        hyprland.url   = "github:vaxerski/Hyprland/layouts-rethonked";
+        mithril-shell  = { url = "github:andreashgk/mithril-shell"; };
+        oxwm           = { url = "github:tonybanters/oxwm";             inputs.nixpkgs.follows = "nixpkgs"; };
+        plasma-manager = { url = "github:nix-community/plasma-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
 
-        impermanence.url = "github:nix-community/impermanence";
-        impermanence.inputs.nixpkgs.follows = "";
-        impermanence.inputs.home-manager.follows = "";
-
-        nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/develop";
-        nixos-raspberrypi.inputs.nixpkgs.follows = "nixpkgs";
-
-        zen-browser.url = "github:0xc000022070/zen-browser-flake";
-        zen-browser.inputs.nixpkgs.follows = "nixpkgs";
-
-        nixvim.url = "github:nix-community/nixvim";
-        nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
-        niri.url = "github:sodiboo/niri-flake";
-
-        plasma-manager.url = "github:nix-community/plasma-manager";
-        plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-        lanzaboote.url = "github:nix-community/lanzaboote";
-        lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
-
-        noctalia = {
-            url = "github:noctalia-dev/noctalia-shell";
-            inputs.nixpkgs.follows = "nixpkgs";
-            inputs.noctalia-qs.follows = "noctalia-qs";
-        };
-
-        noctalia-qs = {
-            url = "github:noctalia-dev/noctalia-qs";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
+        zen-browser  = { url = "github:0xc000022070/zen-browser-flake"; inputs.nixpkgs.follows = "nixpkgs"; };
+        nixvim       = { url = "github:nix-community/nixvim";           inputs.nixpkgs.follows = "nixpkgs"; };
         elephant.url = "github:abenz1267/elephant";
-        walker = {
-            url = "github:abenz1267/walker";
-            inputs.elephant.follows = "elephant";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        walker       = { url = "github:abenz1267/walker";               inputs.elephant.follows = "elephant"; inputs.nixpkgs.follows = "nixpkgs"; };
+        vicinae.url  = "github:vicinaehq/vicinae";
+        vicinae-extensions = { url = "github:vicinaehq/extensions";     inputs.nixpkgs.follows = "nixpkgs"; };
 
-        vicinae.url = "github:vicinaehq/vicinae";
-        vicinae-extensions = {
-            url = "github:vicinaehq/extensions";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        noctalia-qs = { url = "github:noctalia-dev/noctalia-qs";    inputs.nixpkgs.follows = "nixpkgs"; };
+        noctalia    = { url = "github:noctalia-dev/noctalia-shell"; inputs.nixpkgs.follows = "nixpkgs";   inputs.noctalia-qs.follows = "noctalia-qs"; };
 
-        hyprland.url = "github:vaxerski/Hyprland/layouts-rethonked";
-        mithril-shell.url = "github:andreashgk/mithril-shell";
-
-        oxwm.url = "github:tonybanters/oxwm";
-        oxwm.inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    
     outputs = { self, nixpkgs, nixos-raspberrypi, home-manager, ... }@inputs:
     let
         mkSystem = { name, lib ? nixpkgs.lib, extraArgs ? {}, extraModules ? [] }: 
