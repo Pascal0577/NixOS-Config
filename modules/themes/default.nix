@@ -1,82 +1,85 @@
-{ pkgs, username, lib, inputs, ... }:
+{ pkgs, username, lib, inputs, config, ... }:
 let
-    inherit (lib) mkDefault mkForce;
+    inherit (lib) mkDefault mkForce mkIf;
 in
 {
     imports = [ inputs.stylix.nixosModules.stylix ];
-    programs.dconf.enable = true;
 
-    fonts = {
-        packages = with pkgs; [
-            ubuntu-sans
-            ubuntu-sans-mono
-            noto-fonts-cjk-sans
-        ];
-
-        fontconfig = {
-            enable = true;
-            useEmbeddedBitmaps = true;
-        };
-    };
-
-    stylix = {
-        enable = true;
-        autoEnable = mkDefault true;
+    config = mkIf (!config.mySystem.server.enable) {
+        programs.dconf.enable = true;
 
         fonts = {
-            serif = {
-                package = mkDefault pkgs.ubuntu-sans;
-                name = mkDefault "Ubuntu Sans";
-            };
+            packages = with pkgs; [
+                ubuntu-sans
+                ubuntu-sans-mono
+                noto-fonts-cjk-sans
+            ];
 
-            sansSerif = {
-                package = mkDefault pkgs.ubuntu-sans;
-                name = mkDefault "Ubuntu Sans";
-            };
-
-            monospace = {
-                package = mkDefault pkgs.nerd-fonts.jetbrains-mono;
-                name = mkDefault "JetBrainsMono Nerd Font";
-            };
-
-            emoji = {
-                package = mkDefault pkgs.noto-fonts-color-emoji;
-                name = mkDefault "Noto Color Emoji";
-            };
-        };
-
-        targets = {
-            plymouth.enable = false;
-            qt.enable = false;
-        };
-
-        cursor = {
-            package = mkDefault pkgs.bibata-cursors;
-            name = mkDefault "Bibata-Modern-Ice";
-            size = mkDefault 24;
-        };
-
-        icons = {
-            enable = mkDefault true;
-            package = mkDefault pkgs.papirus-icon-theme;
-            dark = mkDefault "Papirus-Dark";
-            light = mkDefault "Papirus-Light";
-        };
-    };
-
-    home-manager.users.${username} = {          
-        stylix.targets = {
-            nixvim.enable = mkDefault false;
-            zen-browser = {
+            fontconfig = {
                 enable = true;
-                profileNames = [ "pascal" ];
+                useEmbeddedBitmaps = true;
             };
         };
 
-        dconf.settings."org/gnome/desktop/interface" = {
-            color-scheme = mkForce "prefer-dark";
-            font-antialiasing = mkDefault "standard";
-            font-hinting = mkDefault "full";
+        stylix = {
+            enable = true;
+            autoEnable = mkDefault true;
+
+            fonts = {
+                serif = {
+                    package = mkDefault pkgs.ubuntu-sans;
+                    name = mkDefault "Ubuntu Sans";
+                };
+
+                sansSerif = {
+                    package = mkDefault pkgs.ubuntu-sans;
+                    name = mkDefault "Ubuntu Sans";
+                };
+
+                monospace = {
+                    package = mkDefault pkgs.nerd-fonts.jetbrains-mono;
+                    name = mkDefault "JetBrainsMono Nerd Font";
+                };
+
+                emoji = {
+                    package = mkDefault pkgs.noto-fonts-color-emoji;
+                    name = mkDefault "Noto Color Emoji";
+                };
+            };
+
+            targets = {
+                plymouth.enable = false;
+                qt.enable = false;
+            };
+
+            cursor = {
+                package = mkDefault pkgs.bibata-cursors;
+                name = mkDefault "Bibata-Modern-Ice";
+                size = mkDefault 24;
+            };
+
+            icons = {
+                enable = mkDefault true;
+                package = mkDefault pkgs.papirus-icon-theme;
+                dark = mkDefault "Papirus-Dark";
+                light = mkDefault "Papirus-Light";
+            };
+        };
+
+        home-manager.users.${username} = {          
+            stylix.targets = {
+                nixvim.enable = mkDefault false;
+                zen-browser = {
+                    enable = true;
+                    profileNames = [ "pascal" ];
+                };
+            };
+
+            dconf.settings."org/gnome/desktop/interface" = {
+                color-scheme = mkForce "prefer-dark";
+                font-antialiasing = mkDefault "standard";
+                font-hinting = mkDefault "full";
+            };
         };
     };
 }

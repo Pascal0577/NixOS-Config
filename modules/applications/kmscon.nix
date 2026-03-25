@@ -2,7 +2,8 @@
 
 {
     options.mySystem.applications.kmscon.enable =
-        lib.mkEnableOption "KMSCON console module" // { default = true; };        
+        lib.mkEnableOption "KMSCON console module"
+        // { default = !config.mySystem.server.enable; };        
 
     config = lib.mkIf config.mySystem.applications.kmscon.enable {
         services.kmscon = {

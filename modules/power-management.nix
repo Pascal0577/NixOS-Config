@@ -1,11 +1,19 @@
+{ lib, config, ... }:
+
 {
-    # Disable USB auto-suspend so my mouse doesn't get fucked up
-    boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+    options.mySystem.power-management.enable =
+        lib.mkEnableOption "Power Management settings"
+        // { default = !config.mySystem.server.enable; };
 
-    powerManagement = {
-        enable = true;
-        powertop.enable = true;
+    config = lib.mkIf config.mySystem.power-management.enable {
+        # Disable USB auto-suspend so my mouse doesn't get fucked up
+        boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+
+        powerManagement = {
+            enable = true;
+            powertop.enable = true;
+        };
+
+        services.tuned.enable = true;
     };
-
-    services.tuned.enable = true;
 }
