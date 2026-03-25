@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, config, lib, useNiri, ... }:
+{ inputs, pkgs, username, config, lib, ... }@args:
 let
     playerctl = lib.getExe pkgs.playerctl;
     brightnessctl = lib.getExe pkgs.brightnessctl;
@@ -15,7 +15,10 @@ in
         unstable = lib.mkEnableOption "Use the latest version of Niri";
     };
 
-    imports = lib.optional useNiri inputs.niri.nixosModules.niri;
+    # Conditionally import it. I just use this to make sure the raspberry
+    # system doesn't import this, because for some reason the mere action
+    # of importing the niri module causes a build of the niri package
+    imports = lib.optional (args.useNiri or true) inputs.niri.nixosModules.niri;
 
     config = lib.mkMerge [
         {

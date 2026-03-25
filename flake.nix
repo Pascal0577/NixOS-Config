@@ -66,43 +66,31 @@
     };
 
     outputs = { self, nixpkgs, nixos-raspberrypi, home-manager, ... }@inputs:
+    let
+        mkSystem = { name, lib ? nixpkgs.lib, extraArgs ? {}, extraModules ? [] }: 
+            lib.nixosSystem {
+                specialArgs = {
+                    inherit inputs;
+                    hostname = name;
+                    username = "pascal";
+                } // extraArgs;
+                modules = [
+                    home-manager.nixosModules.home-manager
+                    (./systems + "/${name}")
+                ] ++ extraModules;
+            };
+    in
     {
         nixosConfigurations = {
-            nixos = nixpkgs.lib.nixosSystem {
-                specialArgs = {
-                    inherit inputs;
-                    hostname = "nixos";
-                    username = "pascal";
-                };
-                modules = [
-                    home-manager.nixosModules.home-manager
-                    ./systems/acer
-                ];
-            };
+            acer = mkSystem { name = "acer"; };
+            lenovo = mkSystem { name = "lenovo"; };
 
-            lenovo = nixpkgs.lib.nixosSystem {
-                specialArgs = {
-                    inherit inputs;
-                    hostname = "lenovo";
-                    username = "pascal";
-                };
-                modules = [
-                    home-manager.nixosModules.home-manager
-                    ./systems/lenovo
-                ];
-            };
-
-            raspberry = nixos-raspberrypi.lib.nixosSystem {
-                specialArgs = {
-                    inherit inputs nixos-raspberrypi;
-                    hostname = "raspberry";
-                    username = "pascal";
-                    useNiri = false;
-                };
-                modules = [
-                    home-manager.nixosModules.home-manager
+            raspberry = mkSystem {
+                name = "raspberry";
+                lib = nixos-raspberrypi.lib;
+                extraArgs = { inherit nixos-raspberrypi; useNiri = false; };
+                extraModules = [
                     nixos-raspberrypi.nixosModules.sd-image
-                    ./systems/raspberry
                     { sdImage.compressImage = false; }
                 ];
             };
