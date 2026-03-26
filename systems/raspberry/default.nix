@@ -8,7 +8,7 @@
         raspberry-pi-5.display-vc4
         raspberry-pi-5.bluetooth
     ];
-     
+
     mySystem = {
         server.enable = true;
         theme.everforest.enable = true;
@@ -16,6 +16,7 @@
         applications.helix.enable = true;
     };
 
+    sdImage.compressImage = false;
     networking.interfaces.end0.ipv4.addresses = [{
         address = "169.254.0.2";
         prefixLength = 24;

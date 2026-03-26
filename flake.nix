@@ -63,10 +63,10 @@
                 name = "raspberry";
                 lib = nixos-raspberrypi.lib;
                 extraArgs = { inherit nixos-raspberrypi; useNiri = false; };
-                extraModules = [{ sdImage.compressImage = false; }];
             };
         };
 
-        packages.aarch64-linux.pi5-image = self.nixosConfigurations.raspberry.config.system.build.sdImage;
+        packages.aarch64-linux.pi5-image =
+            self.nixosConfigurations.raspberry.config.system.build.sdImage;
     };
 }
