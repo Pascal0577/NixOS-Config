@@ -1,6 +1,4 @@
 {
-    description = "Nixos config flake";
-
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -27,14 +25,13 @@
 
         noctalia-qs = { url = "github:noctalia-dev/noctalia-qs";    inputs.nixpkgs.follows = "nixpkgs"; };
         noctalia    = { url = "github:noctalia-dev/noctalia-shell"; inputs.nixpkgs.follows = "nixpkgs";   inputs.noctalia-qs.follows = "noctalia-qs"; };
-
     };
 
     nixConfig = {
         extra-substituters = [ "https://nixos-raspberrypi.cachix.org" ];
         extra-trusted-public-keys = [ "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI=" ];
     };
-    
+
     outputs = { self, nixpkgs, nixos-raspberrypi, home-manager, ... }@inputs:
     let
         mkSystem = { name, lib ? nixpkgs.lib, extraArgs ? {}, extraModules ? [] }: 
