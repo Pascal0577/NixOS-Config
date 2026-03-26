@@ -24,11 +24,10 @@
         };
 
         home-manager.users.${username} = {
+            home.file.".p10k.zsh".source = ../../assets/.p10k.zsh;
             programs = {
                 fzf.enableZshIntegration = true;
                 eza.enableZshIntegration = true;
-
-                home.file.".p10k.zsh".source = ../../assets/.p10k.zsh;
                 
                 zsh = {
                     enable = true;
