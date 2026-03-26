@@ -15,7 +15,5 @@
         desktop.niri.enable = true;
     };
 
-    nix.settings.substituters = [ "ssh://pascal@161.6.195.206" ];
-
     stylix.targets.plymouth.enable = lib.mkForce true;
 }
