@@ -1,14 +1,13 @@
-{ lib, inputs, ... }:
+{ inputs, ... }:
 
 {
     imports = with inputs.nixos-raspberrypi.nixosModules; [
-        ./hardware-configuration.nix
         sd-image
         raspberry-pi-5.base
         raspberry-pi-5.page-size-16k
         raspberry-pi-5.display-vc4
         raspberry-pi-5.bluetooth
-    ] ++ lib.filesystem.listFilesRecursive ../../modules;
+    ];
      
     mySystem = {
         server.enable = true;

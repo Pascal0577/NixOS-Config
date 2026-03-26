@@ -1,10 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
-    imports = [
-        ./hardware-configuration.nix
-    ] ++ lib.filesystem.listFilesRecursive ../../modules;
-
     mySystem = {
         theme.everforest.enable = true;
         impermanence.enable = true;

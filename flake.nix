@@ -43,8 +43,11 @@
                 } // extraArgs;
                 modules = [
                     home-manager.nixosModules.home-manager
-                    (./systems + "/${name}")
-                ] ++ extraModules;
+                    (./systems + "/${name}/default.nix")
+                    (./systems + "/${name}/hardware-configuration.nix")
+                ]
+                ++ lib.filesystem.listFilesRecursive ./modules
+                ++ extraModules;
             };
     in
     {
