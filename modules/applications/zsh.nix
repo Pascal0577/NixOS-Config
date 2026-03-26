@@ -28,6 +28,8 @@
                 fzf.enableZshIntegration = true;
                 eza.enableZshIntegration = true;
 
+                home.file.".p10k.zsh".source = ../../assets/.p10k.zsh;
+                
                 zsh = {
                     enable = true;
                     history = {
