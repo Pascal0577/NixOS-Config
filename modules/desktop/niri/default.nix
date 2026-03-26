@@ -312,7 +312,7 @@ in
                         {
                             # For games to have VRR
                             matches = [{
-                                app-id = "steam_app_0";
+                                title = "ELDEN RING™";
                             }];
                             variable-refresh-rate = true;
                         }
