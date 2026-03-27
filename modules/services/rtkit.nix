@@ -9,8 +9,6 @@
         ProtectKernelTunables = true;
         ProtectKernelModules = true;
         ProtectKernelLogs = true;
-        ProtectControlGroups = true; 
-        PrivateTmp = true;
         PrivateMounts = true;
         PrivateDevices = true;
         RestrictNamespaces = true;
