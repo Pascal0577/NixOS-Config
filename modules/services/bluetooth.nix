@@ -17,6 +17,10 @@
         ProtectHostname = true;
         ProtectControlGroups = true;
         ProtectProc = "invisible";
+        RestrictSUIDSGID = true;
+        RestrictRealtime = true;
+        LockPersonality = true;
+        MemoryDenyWriteExecute = true;
         SystemCallFilter = [
             "~@obsolete"
             "~@cpu-emulation"
