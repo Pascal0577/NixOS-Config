@@ -7,7 +7,6 @@
     '';
 
     config = {
-        security.rtkit.enable = true;
         nixpkgs.config.allowUnfree = true;
         system.stateVersion = "26.05";
         services.dbus.implementation = "broker";
