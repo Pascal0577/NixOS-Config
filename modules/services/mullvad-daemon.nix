@@ -13,6 +13,11 @@
         systemd.services.mullvad-daemon.serviceConfig = {
             NoNewPrivileges = true;
             ProtectSystem = "strict";
+            ReadWritePaths = [
+                "/var/log/mullvad-vpn"
+                "/etc/mullvad-vpn"
+                "/var/cache/mullvad-vpn"
+            ];
             ProtectHome = true;
             ProtectHostname = true;
             ProtectKernelLogs = true;
