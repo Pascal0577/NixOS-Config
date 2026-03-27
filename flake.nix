@@ -46,7 +46,7 @@
                     (./systems + "/${name}/default.nix")
                     (./systems + "/${name}/hardware-configuration.nix")
                 ]
-                ++ lib.filesystem.listFilesRecursive ./modules
+                ++ nixpkgs.lib.filesystem.listFilesRecursive ./modules
                 ++ extraModules;
             };
     in
