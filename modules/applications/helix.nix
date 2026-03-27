@@ -27,7 +27,7 @@
                 };
             };
             languages = {
-                langauge = map (l: {
+                language = map (l: {
                     name = "${l}";
                     indent = {
                         tab-width = 4;
