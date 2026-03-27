@@ -10,17 +10,6 @@
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG/wHEHpwkF1VwCS/MxZf2cvECIeUHdbiLjO1J1jz0LL pascal@lenovo"
         ];
 
-        services.avahi = {
-            enable = true;
-            nssmdns4 = true;
-            openFirewall = true;
-            publish = {
-                enable = true;
-                addresses = true;
-                domain = true;
-            };
-        };
-
         services.openssh = {
             enable = true;
             settings = {
