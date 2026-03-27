@@ -48,8 +48,6 @@
             "CAP_SETFCAP"
             "CAP_CHOWN"
         ];
-        DeviceAllow = "/dev/tty7 rw";
-        DevicePolicy = "closed";
         UMask = 0077;
         KeyringMode = lib.mkForce "private";
     };
