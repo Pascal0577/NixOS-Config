@@ -4,7 +4,6 @@
     imports = [ inputs.disko.nixosModules.disko ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    services.hardware.bolt.enable = true;
     services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     hardware = {
         cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
