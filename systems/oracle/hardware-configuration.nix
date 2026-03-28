@@ -6,12 +6,11 @@
     nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
     hardware.enableRedistributableFirmware = lib.mkDefault false;
     boot = {
-        kernelModules = [ "kvm-arm64" ];
         initrd.availableKernelModules = [
-            "xhci_pci"
             "virtio_pci"
             "virtio_scsi"
-            "usbhid"
+            "virtio_blk"
+            "sd_mod"
         ];
     };
 
@@ -26,7 +25,7 @@
         disk = {
             main = {
                 type = "disk";
-                device = ""; # fill out later
+                device = "scsi-3605b823cf5ec48d296ebc0c811f0ee17";
                 content = {
                     type = "gpt";
                     partitions = {
