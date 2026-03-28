@@ -6,15 +6,14 @@ let
         ProtectHostname = true;
         ProtectKernelLogs = true;
         ProtectClock = true;
-        PrivateTmp = true;
-        PrivateNetwork = true;
-        PrivateDevices = true;
         RestrictSUIDSGID = true;
         RestrictRealtime = true;
-        RestrictNamespaces = true;
         LockPersonality = true;
         MemoryDenyWriteExecute = true;
         SystemCallArchitectures = "native";
+        PrivateDevices = true;
+        RestrictNamespaces = true;
+        PrivateTmp = true;
         IPAddressDeny = [ "0.0.0.0/0" "::/0" ];
         UMask = "0077";
     };
@@ -27,7 +26,6 @@ in
                 "~@cpu-emulation"
                 "~@debug"
                 "~@keyring"
-                "~@module"
                 "~@mount"
                 "~@obsolete"
                 "~@reboot"
@@ -42,6 +40,7 @@ in
                 "CAP_SYS_NICE"
                 "CAP_SYS_RAWIO"
                 "CAP_DAC_OVERRIDE"
+                "CAP_SYS_MODULE"
             ];
         };
 
@@ -50,6 +49,7 @@ in
             ProtectKernelModules = true;
             ProtectControlGroups = true;
             ProtectSystem = "strict";
+            ReadWritePaths = [ /var/log/tuned ];
             ProtectProc = "invisible";
             SystemCallFilter = [
                 "~@cpu-emulation"
