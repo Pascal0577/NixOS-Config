@@ -9,7 +9,6 @@
     config = {
         nixpkgs.config.allowUnfree = true;
         system.stateVersion = "26.05";
-        services.dbus.implementation = "broker";
 
         nix.settings = {
             experimental-features = [ "nix-command" "flakes" ];
