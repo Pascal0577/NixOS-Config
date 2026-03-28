@@ -17,6 +17,5 @@
             "~@clock"
             "~@cpu-emulation"
         ];
-        LockPersonality = true;
     };
 }
