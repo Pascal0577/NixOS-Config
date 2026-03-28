@@ -9,7 +9,7 @@
         # RestrictSUIDSGID = true;
         RestrictRealtime = true;
         SystemCallErrorNumber = "EPERM";
-        SystemCallArchitectures = "native";
+        SystemCallArchitectures = "native x86";
         SystemCallFilter = [
             "~@obsolete"
             "~@reboot"
