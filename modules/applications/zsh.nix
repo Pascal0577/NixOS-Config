@@ -46,7 +46,7 @@
                         ls = "eza --color=always --icons=always --group-directories-first -a";
                         lsl = "eza --color=always --icons=always --group-directories-first -lAh --total-size";
                         nivm = "nvim";
-                        run0 = "run0 --background="
+                        run0 = "run0 --background=";
                     };
 
                     initContent = ''
