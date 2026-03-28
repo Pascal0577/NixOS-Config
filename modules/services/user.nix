@@ -1,7 +1,6 @@
 {
     systemd.services."user@".serviceConfig = {
         ProtectSystem = "full";
-        ProtectControlGroups = true;
         ProtectHostname = true;
         ProtectKernelTunables = true;
         ProtectKernelModules = true;
