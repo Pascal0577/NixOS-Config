@@ -15,6 +15,24 @@
             trusted-users = [ "${username}" ];
         };
 
+        security = {
+            # Disable sudo
+            run0.enableSudoAlias = true;
+            polkit.enable = true;
+            sudo.enable = false;
+            wrappers = {
+                su.enable = false;
+                sudoedit.enable = false;
+                sg.enable = false;
+                fusermount.enable = false;
+                fusermount3.enable = false;
+                pkexec.setuid = lib.mkForce false;
+                newgrp.setuid = lib.mkForce false;
+                mount.enable = false;
+                umount.enable = false;
+            };
+        };
+
         systemd = {
             # If a service has tried to stop for longer than 10s 
             # something has gone wrong and it should be force stopped
