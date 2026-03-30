@@ -6,8 +6,11 @@
 
     config = lib.mkIf config.mySystem.applications.zsh.enable {
         environment.pathsToLink = [ "/share/zsh" ];
-        programs.zsh.enable = true;
         users.users.${username}.shell = pkgs.zsh;
+        programs.zsh = {
+            enable = true;
+            enableGlobalCompInit = false;
+        };
 
         environment.systemPackages = with pkgs; [
             zinit
@@ -24,7 +27,7 @@
         };
 
         home-manager.users.${username} = {
-            home.file.".p10k.zsh".source = ../../assets/.p10k.zsh;
+            home.file.".cache/p10k.zsh".source = ../../assets/.p10k.zsh;
             programs = {
                 fzf.enableZshIntegration = true;
                 eza.enableZshIntegration = true;
@@ -49,6 +52,8 @@
                         run0 = "run0 --background=";
                     };
 
+                    completionInit = "";
+
                     initContent = ''
                         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
                             source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
@@ -66,9 +71,12 @@
                         zinit light zsh-users/zsh-autosuggestions
                         zinit light zsh-users/zsh-completions
 
+                        autoload -U compinit
+                        mkdir -p "''${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+                        compinit -d "''${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$ZSH_VERSION"
                         zinit cdreplay -q
 
-                        [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
+                        [ -f ~/.cache/p10k.zsh ] && source ~/.cache/p10k.zsh
 
                         bindkey -e
                         bindkey '^p' history-search-backward
