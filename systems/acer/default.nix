@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
     mySystem = {
         theme.everforest.enable = true;
@@ -18,6 +16,4 @@
             file-manager.yazi.enable = true;
         };
     };
-
-    environment.systemPackages = [ pkgs.lmstudio ];
 }
