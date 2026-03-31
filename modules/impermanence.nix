@@ -31,6 +31,7 @@
                 "/var/lib/libvirt"
                 "/var/lib/sbctl"
                 "/var/lib/systemd"
+                "/var/cache/mullvad-vpn"
                 "/var/db/sudo/lectured"
                 "/etc/NetworkManager/system-connections"
                 "/etc/ssh"
