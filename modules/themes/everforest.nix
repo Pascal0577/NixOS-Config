@@ -20,6 +20,10 @@ in
         };
 
         home-manager.users.${username} = lib.mkMerge [
+            {
+                programs.fuzzel.settings.colors.border = lib.mkForce "${hue.base09-hex}ff";
+            }
+
             (lib.mkIf nvim.enable {
                 programs.nixvim = {
                     colorschemes.everforest = {
