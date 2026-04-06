@@ -47,6 +47,7 @@
             "CAP_FSETID"
             "CAP_SETFCAP"
             "CAP_CHOWN"
+            "CAP_SYS_CHROOT"
         ];
         UMask = 0077;
         KeyringMode = lib.mkForce "private";
