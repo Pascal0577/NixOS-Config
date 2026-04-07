@@ -77,6 +77,7 @@
                         "zen.workspaces.separate-essentials" = false;
                         "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
                         "zen.workspaces.continue-where-left-off" = true;
+                        "zen.window-sync.enabled" = false;
                     };
 
                     AutofillAddressEnabled = false;
