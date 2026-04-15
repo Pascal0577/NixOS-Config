@@ -1,6 +1,6 @@
 {
     mySystem = {
-        theme.sekiro.enable = true;
+        theme.everforest.enable = true;
         impermanence.enable = true;
         ZFS.enable = true;
         desktop.niri = {
