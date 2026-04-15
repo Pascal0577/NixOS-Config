@@ -13,9 +13,9 @@ in
         };
 
         home-manager.users.${username} = lib.mkMerge [
-            # {
-            #     programs.fuzzel.settings.colors.border = lib.mkForce "${hue.base09-hex}ff";
-            # }
+            {
+                programs.fuzzel.settings.colors.border = lib.mkForce "${hue.base09-hex}ff";
+            }
 
             (lib.mkIf niri.enable {
                 programs.niri.settings.layout.border.active.color = "#${hue.base09-hex}";
