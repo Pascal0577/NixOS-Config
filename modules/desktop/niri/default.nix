@@ -274,8 +274,8 @@ in
                                 vec4 close_color(vec3 coords_geo, vec3 size_geo) {
                                     float angle = 2.0 * 3.14159265 * niri_clamped_progress;
                                     float scale = 1.0 - niri_clamped_progress * 0.5;
-                                    mat2 rot = mat2(cos(angle), -sin(angle),
-                                                    sin(angle),  cos(angle));
+                                    mat2 rot = mat2(cos(angle), sin(angle),
+                                                    -sin(angle),  cos(angle));
                                     vec3 coords_new = vec3(rot * (coords_geo.xy - vec2(0.5)) / scale + vec2(0.5), 1.0);
 
                                     vec3 coords_tex = niri_geo_to_tex * coords_new;
