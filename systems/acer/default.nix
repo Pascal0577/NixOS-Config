@@ -8,7 +8,7 @@
             unstable = true;
         };
         applications = {
-            obs.enable = false;
+            obs.nvidia = true;
             helix.enable = true;
             swayidle.enable = false;
             launcher.vicinae.enable = true;
