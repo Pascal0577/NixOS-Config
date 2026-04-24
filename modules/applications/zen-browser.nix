@@ -49,7 +49,6 @@
                         "gfx.webrender.all" = true;
                         "network.http.http3.enabled" = true;
 
-                        "privacy.resistFingerprinting" = true;
                         "privacy.resistFingerprinting.randomization.canvas.use_siphash" = true;
                         "privacy.resistFingerprinting.randomization.daily_reset.enabled" = true;
                         "privacy.resistFingerprinting.randomization.daily_reset.private.enabled" = true;
