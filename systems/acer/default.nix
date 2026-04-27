@@ -7,13 +7,14 @@
             enable = true;
             unstable = true;
         };
+        desktop.gnome.enable = true;
         applications = {
             obs.nvidia = true;
             helix.enable = true;
             swayidle.enable = false;
             launcher.vicinae.enable = true;
-            terminal.foot.enable = true;
-            file-manager.yazi.enable = true;
+            terminal.ghostty.enable = true;
+            file-manager.nautilus.enable = true;
         };
     };
 }
