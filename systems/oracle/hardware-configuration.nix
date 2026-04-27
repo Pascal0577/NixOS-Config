@@ -25,7 +25,7 @@
         disk = {
             main = {
                 type = "disk";
-                device = "scsi-3605b823cf5ec48d296ebc0c811f0ee17";
+                device = "/dev/sda";
                 content = {
                     type = "gpt";
                     partitions = {
