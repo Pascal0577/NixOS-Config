@@ -1,12 +1,16 @@
-{ config, lib, username, ... }:
+{ config, lib, username, pkgs, ... }:
 
 {
     options.mySystem.applications.ssh.enable =
         lib.mkEnableOption "SSH service configuration" // { default = true; };
 
     config = lib.mkIf config.mySystem.applications.ssh.enable {
-        boot.kernelParams = [ "console=ttyS0" ];
-        services.getty.autologinUser = "root";
+        boot.kernelParams = [
+            "systemd.show_status=1"   # show service start/fail on console
+            "systemd.log_level=info"  # or "debug" for full firehose
+            "systemd.log_target=console"  # send logs to the console/serial
+            "console=ttyS0"
+        ];
 
         users.users.${username}.openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINcq68JNj92VwwUXhtxLw/yfDStY2dgroWJC3WQIFErx pascal@acer"
@@ -24,6 +28,22 @@
                 PermitRootLogin = "no";
                 StrictModes = true;
             };
+        };
+
+        system.activationScripts.ssh-host-keys = {
+            text = ''
+                mkdir -p /nix/persist/etc/ssh
+                chmod 755 /nix/persist/etc/ssh
+                if [ ! -f /nix/persist/etc/ssh/ssh_host_ed25519_key ]; then
+                    ${pkgs.openssh}/bin/ssh-keygen \
+                        -t ed25519 \
+                        -N "" \
+                        -f /nix/persist/etc/ssh/ssh_host_ed25519_key
+                fi
+                chmod 600 /nix/persist/etc/ssh/ssh_host_ed25519_key
+                chmod 644 /nix/persist/etc/ssh/ssh_host_ed25519_key.pub
+            '';
+            deps = [];
         };
 
         # systemd.services.sshd.serviceConfig = {

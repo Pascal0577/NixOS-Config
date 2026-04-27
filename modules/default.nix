@@ -42,7 +42,7 @@
             };
 
             services = {
-                "serial-getty@".enable = false;
+                # "serial-getty@".enable = false;
                 NetworkManager-wait-online.enable = false;
             };
         };
