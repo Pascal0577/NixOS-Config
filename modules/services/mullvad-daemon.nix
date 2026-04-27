@@ -2,7 +2,8 @@
 
 {
     options.mySystem.applications.mullvad.enable =
-        lib.mkEnableOption "Mullvad VPN module" // { default = true; };
+        lib.mkEnableOption "Mullvad VPN module"
+        // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.mullvad.enable {
         services.mullvad-vpn = {
