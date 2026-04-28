@@ -1,4 +1,4 @@
-{ pkgs, username, config, lib, ... }:
+{ username, config, lib, ... }:
 let
     nvim = config.mySystem.applications.neovim;
 in
@@ -7,11 +7,6 @@ in
         lib.mkEnableOption "Zig integration into Neovim" // { default = true; };
 
     config = lib.mkIf (nvim.enableZig && nvim.enable) {
-        environment.systemPackages = with pkgs; [
-            zig
-            zig-shell-completions
-        ];
-
         home-manager.users.${username}.programs.nixvim = {
             plugins.lsp.servers.zls.enable = true;
 

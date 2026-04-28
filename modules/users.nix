@@ -5,6 +5,7 @@
         isNormalUser = true;
         description = "Pascal";
         extraGroups = [ "networkmanager" "wheel" ];
+        initialHashedPassword = "$y$j9T$wvltSKqqN8rILLpbDzNsP1$m3FGz45jGXG82xieFyEgIinzggARUW/1H85QLMEl4aA";
         packages = with pkgs; [
             home-manager
             nh

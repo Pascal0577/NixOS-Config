@@ -37,12 +37,10 @@
             # If a service has tried to stop for longer than 10s 
             # something has gone wrong and it should be force stopped
             user.extraConfig = "DefaultTimeoutStopSec=10s";
-            settings.Manager = {
-                DefaultTimeoutStopSec = "10s";
-            };
+            settings.Manager.DefaultTimeoutStopSec = "10s";
 
             services = {
-                # "serial-getty@".enable = false;
+                "serial-getty@".enable = false;
                 NetworkManager-wait-online.enable = false;
             };
         };
