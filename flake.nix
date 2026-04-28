@@ -21,10 +21,7 @@
         nixosConfigurations = {
             acer = mkSystem { name = "acer"; };
             lenovo = mkSystem { name = "lenovo"; };
-            oracle = mkSystem {
-                name = "oracle";
-                extraArgs = { useNiri = false; };
-            };
+            oracle = mkSystem { name = "oracle"; };
 
             raspberry = mkSystem {
                 name = "raspberry";
