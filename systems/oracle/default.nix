@@ -1,17 +1,12 @@
-{ username, lib, pkgs, ... }:
-
 {
     mySystem = {
         ZFS.enable = true;
         impermanence.enable = false;
         server.enable = true;
-        applications.neovim.enable = false;
+	    applications.helix.enable = true;
+	    theme.everforest.enable = true;
     };
 
-    home-manager.users.${username}.programs.helix = {
-        extraPackages = lib.mkForce (with pkgs; [
-            bash-language-server
-            nixd
-        ]);
-    }; 
+    stylix.enable = true;
+    stylix.autoEnable = false;    
 }

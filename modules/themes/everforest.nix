@@ -22,7 +22,6 @@ in
         home-manager.users.${username} = lib.mkMerge [
             {
                 programs.fuzzel.settings.colors.border = lib.mkForce "${hue.base09-hex}ff";
-                dconf.settings."org/gnome/desktop/wm/interface".accent-color = lib.mkForce "orange";
             }
 
             (lib.mkIf nvim.enable {

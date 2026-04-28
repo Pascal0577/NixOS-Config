@@ -2,7 +2,7 @@
 
 {
     options.mySystem.applications.neovim.enable =
-        lib.mkEnableOption "Neovim editor module" // { default = true; };
+        lib.mkEnableOption "Neovim editor module" // { default = false; };
 
     config = lib.mkIf config.mySystem.applications.neovim.enable {
         home-manager.users.${username} = {
