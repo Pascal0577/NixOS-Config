@@ -45,6 +45,11 @@
             '';
             deps = [];
         };
+        
+        systemd.services.sshd.serviceConfig = {
+            StandardError = "journal+console";
+            ExecStart = lib.mkForce "${pkgs.openssh}/bin/sshd -D -d -e -f /etc/ssh/sshd_config";
+        };
 
         # systemd.services.sshd.serviceConfig = {
         #     NoNewPrivileges = true;
