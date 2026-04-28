@@ -1,3 +1,5 @@
+{ username, ... }:
+
 {
     mySystem = {
         ZFS.enable = true;
@@ -9,4 +11,5 @@
 
     stylix.enable = true;
     stylix.autoEnable = false;    
+    home-manager.users.${username}.stylix.targets.helix.enable = true;
 }

@@ -12,7 +12,6 @@
     mySystem = {
         server.enable = true;
         theme.everforest.enable = true;
-        applications.neovim.enable = false;
         applications.helix.enable = true;
     };
 
