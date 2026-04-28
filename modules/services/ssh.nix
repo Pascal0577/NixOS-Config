@@ -67,8 +67,6 @@
               "~@debug"
             ];
             CapabilityBoundingSet = [
-                "~CAP_SETUID"
-                "~CAP_SETGID"
                 "~CAP_SETPCAP"
                 "~CAP_SYS_PTRACE"
             ];
