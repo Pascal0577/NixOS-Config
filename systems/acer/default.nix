@@ -9,6 +9,7 @@
         };
         applications = {
             obs.nvidia = true;
+            neovim.enable = true;
             helix.enable = true;
             swayidle.enable = false;
             launcher.vicinae.enable = true;
