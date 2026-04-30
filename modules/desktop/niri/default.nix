@@ -317,9 +317,10 @@ in
                             variable-refresh-rate = true;
                         }
                         {
-                            matches = [{
-                                app-id = "my.file-chooser";
-                            }];
+                            matches = [
+                                { app-id = "my.file-chooser"; }
+                                { app-id = "^th[^/]*\.exe"; }
+                            ];
                             open-floating = true;
                         }
                     ];
