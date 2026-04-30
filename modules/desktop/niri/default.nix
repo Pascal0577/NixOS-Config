@@ -53,10 +53,10 @@ in
                         { argv = [ "noctalia-shell" ]; }
                     ];
 
-                    xwayland-satellite = {
-                        enable = true;
-                        path = lib.getExe pkgs.xwayland-satellite;
-                    };
+                    # xwayland-satellite = {
+                    #     enable = true;
+                    #     path = lib.getExe pkgs.xwayland-satellite;
+                    # };
 
                     binds = {
                         # Focusing

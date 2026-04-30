@@ -4,8 +4,7 @@ let
 in
 {
     options.mySystem.applications.onlyoffice.enable =
-        lib.mkEnableOption "OnlyOffice module (requires xwayland)"
-        // { default = !config.mySystem.server.enable; };
+        lib.mkEnableOption "OnlyOffice module (requires xwayland)";
 
     config = lib.mkIf config.mySystem.applications.onlyoffice.enable {
         home-manager.users.${username}.programs.onlyoffice = {
