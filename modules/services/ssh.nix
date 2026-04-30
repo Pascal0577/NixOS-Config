@@ -18,26 +18,10 @@
                 StrictModes = true;
             };
         };
-
-        # system.activationScripts.ssh-host-keys = {
-        #     text = ''
-        #         mkdir -p /nix/persist/etc/ssh
-        #         chmod 755 /nix/persist/etc/ssh
-        #         if [ ! -f /nix/persist/etc/ssh/ssh_host_ed25519_key ]; then
-        #             ${pkgs.openssh}/bin/ssh-keygen \
-        #                 -t ed25519 \
-        #                 -N "" \
-        #                 -f /nix/persist/etc/ssh/ssh_host_ed25519_key
-        #         fi
-        #         chmod 600 /nix/persist/etc/ssh/ssh_host_ed25519_key
-        #         chmod 644 /nix/persist/etc/ssh/ssh_host_ed25519_key.pub
-        #     '';
-        #     deps = [];
-        # };
         
         systemd.services.sshd.serviceConfig = {
             StandardError = "journal+console";
-            ExecStart = lib.mkForce "${pkgs.openssh}/bin/sshd -D -d -e -f /etc/ssh/sshd_config";
+            ExecStart = lib.mkForce "${pkgs.openssh}/bin/sshd -D -e -f /etc/ssh/sshd_config";
             NoNewPrivileges = true;
             ProtectSystem = "full";
             ProtectClock = true;
