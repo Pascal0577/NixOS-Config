@@ -3,7 +3,10 @@
         theme.everforest.enable = true;
         impermanence.enable = true;
         ZFS.enable = true;
-        desktop.gnome.enable = true;
+        desktop.gnome = {
+            enable = true;
+            dash-to-dock.enable = true;
+        };
         applications = {
             helix.enable = true;
             terminal.ghostty.enable = true;

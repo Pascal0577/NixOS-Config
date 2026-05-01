@@ -20,7 +20,7 @@
                 "org/gnome/shell/extensions/dash-to-dock" = {
                     dock-position = "RIGHT";
                     intellihide-mode = "MAXIMIZED_WINDOWS";
-                    transparency-mode = "DYNAMIC";
+                    transparency-mode = "FIXED";
                     running-indicator-style = "DOT";
                     custom-theme-shrink = true;
                     customize-alphas = true;
@@ -28,7 +28,7 @@
                     extend-height = true;
                     dock-fixed = false;
                     max-alpha = 1.0;
-                    min-alpha = 0.0;
+                    min-alpha = 1.0;
                 };
             };
         };
