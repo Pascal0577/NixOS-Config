@@ -37,7 +37,7 @@ in
             gnome-calendar   gnome-connections
             snapshot         hitori
             iagno            tali
-            loupe
+            loupe            papers
         ]);
 
         home-manager.users.${username} = {
@@ -68,7 +68,7 @@ in
 
                     "org/gnome/desktop/interface" = {
                         show-battery-percentage = true;
-                        accent-color = "pink";
+                        accent-color = "slate";
                         clock-format = "12h";
                     };
 
