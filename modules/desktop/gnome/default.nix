@@ -38,6 +38,8 @@ in
             snapshot         hitori
             iagno            tali
             loupe            papers
+            showtime         gnome-system-monitor
+            gnome-logs       gnome-disk-utility
         ]);
 
         home-manager.users.${username} = {
