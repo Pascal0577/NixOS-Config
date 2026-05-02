@@ -17,6 +17,7 @@
 
     # ZFS Stuff
     networking.hostId = "4e98920d";
+    boot.zfs.forceImportRoot = false;
     services.zfs.autoScrub = {
         enable = true;
         interval = "monthly";
