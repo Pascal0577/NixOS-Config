@@ -8,12 +8,14 @@
     config = lib.mkIf config.mySystem.applications.zed.enable {
         home-manager.users.${username}.programs.zed-editor = {
             enable = true;
+            package = pkgs.zed-editor-fhs;
             extensions = [
                 "zig"
                 "nix"
+                "discord-presence"
             ];
             extraPackages = with pkgs; [
-                zed-zed-editor-fhs
+                nil
                 nixd
                 zig_0_16
                 zls_0_16
@@ -21,10 +23,11 @@
             userSettings = {
                 helix_mode = true;
                 buffer_font_family = "JetBrainsMono Nerd Font";
-                theme = {
-                    mode = "system";
-                    light = "Everforest Light Soft (material)";
-                    dark = "Everforest Dark Medium (regular)";
+
+                lsp = {
+                    nixd.binary.path_lookup = true;
+                    nil.binary.path_lookup = true;
+                    zls.binary.path_lookup = true;
                 };
             };
         };
