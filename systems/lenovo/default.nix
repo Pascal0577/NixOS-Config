@@ -13,6 +13,7 @@
             file-manager.nautilus.enable = true;
             heroic.enable = false;
             mathematica.enable = false;
+            virt-manager.enable = false;
         };
     };
 }
