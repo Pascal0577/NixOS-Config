@@ -2,8 +2,7 @@
 
 {
     options.mySystem.applications.zed.enable =
-        lib.mkEnableOption "Zed editor"
-        // { default = !config.mySystem.server.enable; };
+        lib.mkEnableOption "Zed editor";
 
     config = lib.mkIf config.mySystem.applications.zed.enable {
         home-manager.users.${username}.programs.zed-editor = {
