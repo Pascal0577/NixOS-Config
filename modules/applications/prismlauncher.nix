@@ -9,6 +9,7 @@ in
 
     config = lib.mkIf config.mySystem.applications.prismlauncher.enable {
         environment.systemPackages = [ pkgs.prismlauncher ];
+        networking.firewall.allowedTCPPorts = [ 25565 ];
         home-manager.users.${username} = {
             home.file.".local/share/PrismLauncher/themes/Stylix/theme.json".text = builtins.toJSON {
                 colors = {
