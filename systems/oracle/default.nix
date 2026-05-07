@@ -1,12 +1,18 @@
-{ username, ... }:
+{ inputs, username, ... }:
 
 {
+    imports = [ inputs.website.nixosModules.webserver ];
     mySystem = {
         ZFS.enable = true;
         impermanence.enable = false;
         server.enable = true;
 	    applications.helix.enable = true;
 	    theme.everforest.enable = true;
+    };
+
+    pscl-webserver = {
+        enable = true;
+        interface = "enp0s6";
     };
 
     stylix.enable = true;
