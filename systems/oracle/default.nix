@@ -1,7 +1,6 @@
 { inputs, username, ... }:
 
 {
-    imports = [ inputs.website.nixosModules.webserver ];
     mySystem = {
         ZFS.enable = true;
         impermanence.enable = false;
@@ -10,6 +9,7 @@
 	    theme.everforest.enable = true;
     };
 
+    imports = [ inputs.website.nixosModules.webserver ];
     pscl-webserver = {
         enable = true;
         interface = "enp0s6";
