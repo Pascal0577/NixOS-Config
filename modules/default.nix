@@ -31,6 +31,7 @@
                 newgrp.setuid = lib.mkForce false;
                 mount.enable = false;
                 umount.enable = false;
+                chsh.enable = false;
             };
         };
 
