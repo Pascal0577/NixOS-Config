@@ -61,7 +61,7 @@
         impermanence.inputs.nixpkgs.follows = "";
         impermanence.inputs.home-manager.follows = "";
 
-        website.url = "path:/home/pascal/src/website";
+        website.url = "github:Pascal0577/website";
 
         niri.url = "github:sodiboo/niri-flake";
 
