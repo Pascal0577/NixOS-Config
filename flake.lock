@@ -1071,6 +1071,20 @@
         "type": "github"
       }
     },
+    "nixpkgs_7": {
+      "locked": {
+        "lastModified": 1777826146,
+        "narHash": "sha256-wQ/iN5Zp5VIa3ebBibijPnLyKhor+xEbDy4d0goa9Zs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "73c703c22422b8951895a960959dbbaca7296492",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -1269,6 +1283,7 @@
         "vicinae": "vicinae",
         "vicinae-extensions": "vicinae-extensions",
         "walker": "walker",
+        "website": "website",
         "zen-browser": "zen-browser"
       }
     },
@@ -1638,6 +1653,23 @@
         "type": "github"
       }
     },
+    "website": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_7",
+        "zig": "zig",
+        "zls": "zls"
+      },
+      "locked": {
+        "lastModified": 1778134781,
+        "narHash": "sha256-6UuzWjqta4UQbLPW1+TBDfC7n4RGURBIigs8KrMMK/g=",
+        "path": "/home/pascal/src/website",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/pascal/src/website",
+        "type": "path"
+      }
+    },
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
@@ -1730,6 +1762,53 @@
       "original": {
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
+        "type": "github"
+      }
+    },
+    "zig": {
+      "inputs": {
+        "nixpkgs": [
+          "website",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777897499,
+        "narHash": "sha256-2Jgxzl9gmJg2wEmmXw+8UApqlIXgy/enlcizNPoUuOY=",
+        "owner": "silversquirl",
+        "repo": "zig-flake",
+        "rev": "d300c6802dc40b70f352ce9117e96208a7748d99",
+        "type": "github"
+      },
+      "original": {
+        "owner": "silversquirl",
+        "ref": "compat",
+        "repo": "zig-flake",
+        "type": "github"
+      }
+    },
+    "zls": {
+      "inputs": {
+        "nixpkgs": [
+          "website",
+          "nixpkgs"
+        ],
+        "zig-flake": [
+          "website",
+          "zig"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777913044,
+        "narHash": "sha256-aOV1yRIIqGXR0h1vooyFR03uXbFwgNTCxiqVrKtQYMQ=",
+        "owner": "zigtools",
+        "repo": "zls",
+        "rev": "9c0e53c9b0c68923341530aafe166a04ba5db5e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zigtools",
+        "repo": "zls",
         "type": "github"
       }
     }
