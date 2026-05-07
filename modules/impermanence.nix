@@ -30,6 +30,7 @@
                 "/var/lib/libvirt"
                 "/var/lib/sbctl"
                 "/var/lib/systemd"
+                "/var/lib/nixos-containers"
                 "/etc/mullvad-vpn"
                 "/var/db/sudo/lectured"
                 "/etc/NetworkManager/system-connections"
