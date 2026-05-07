@@ -9,6 +9,7 @@
     config = {
         nixpkgs.config.allowUnfree = true;
         system.stateVersion = "26.05";
+        boot.enableContainers = true;
 
         nix.settings = {
             experimental-features = [ "nix-command" "flakes" ];

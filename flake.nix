@@ -61,6 +61,8 @@
         impermanence.inputs.nixpkgs.follows = "";
         impermanence.inputs.home-manager.follows = "";
 
+        website.url = "github:Pascal0577/website";
+
         niri.url = "github:sodiboo/niri-flake";
 
         hyprland.url = "github:vaxerski/Hyprland/layouts-rethonked";

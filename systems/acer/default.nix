@@ -15,5 +15,7 @@
             terminal.foot.enable = true;
             file-manager.yazi.enable = true;
         };
+
+        enableWebserver = true;
     };
 }
