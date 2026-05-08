@@ -21,6 +21,7 @@
         hashedPasswordFile = lib.mkForce null; # this shit is too much of a headache
     };
 
+    environment.variables = { COLORTERM = "truecolor"; };
     stylix.enable = true;
     stylix.autoEnable = false;    
     home-manager.users.${username}.stylix.targets.helix.enable = true;
