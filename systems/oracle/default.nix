@@ -1,4 +1,4 @@
-{ inputs, username, ... }:
+{ lib, inputs, username, ... }:
 
 {
     mySystem = {
@@ -13,6 +13,11 @@
     pscl-webserver = {
         enable = true;
         interface = "enp0s6";
+    };
+
+    users.users.pascal = {
+        hashedPassword = lib.mkForce "$y$j9T$msWpSYvdV4RrhlUF4spuX1$BBoDphEyTcg4yOIsPJFQk7FFR8xOoLaBf22FeXUZ3I9";
+        hashedPasswordFile = lib.mkForce null; # this shit is too much of a headache
     };
 
     stylix.enable = true;
