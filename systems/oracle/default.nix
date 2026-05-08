@@ -13,6 +13,7 @@
     pscl-webserver = {
         enable = true;
         interface = "enp0s6";
+        extraModules = [ ../../modules/security.nix ];
     };
 
     users.users.pascal = {
