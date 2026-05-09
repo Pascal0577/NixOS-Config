@@ -12,7 +12,7 @@
         initrd.systemd.enable = lib.mkForce false;
     };
 
-    hardware.raspberr-pi.extra-config = ''
+    hardware.raspberry-pi.extra-config = ''
         arm_freq=3000
         gpu_freq=1000
         over_voltage_delta=50000
