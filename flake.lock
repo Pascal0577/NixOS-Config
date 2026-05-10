@@ -1658,11 +1658,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1778359950,
-        "narHash": "sha256-iYTWbb/a+Frs2pr9fHmjHwPzNXVTLWloKJvDKKWxcoA=",
+        "lastModified": 1778443725,
+        "narHash": "sha256-jkcTnKs18PrlxhAvXk/8iSaBIsAGlAqj7BYZMLEgIac=",
         "owner": "Pascal0577",
         "repo": "website",
-        "rev": "3a55642b08117fbc3ca66ae9aacd2fb1ab289291",
+        "rev": "f15932668c442ef0bd8611aa884f7072f003eaae",
         "type": "github"
       },
       "original": {
