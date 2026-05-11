@@ -69,7 +69,7 @@
         hyprland.url = "github:vaxerski/Hyprland/layouts-rethonked";
         mithril-shell.url = "github:andreashgk/mithril-shell";
 
-        oxwm.url = "github:tonybanters/oxwm";
+        oxwm.url = "github:Pascal0577/oxwm/zig_0_15_2";
         oxwm.inputs.nixpkgs.follows = "nixpkgs";
 
         plasma-manager.url = "github:nix-community/plasma-manager";

@@ -1183,15 +1183,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1778342874,
-        "narHash": "sha256-LW7iKjwaFH5CegyoIIFOxCtCv72tZRsj7X+46GaQs7o=",
-        "owner": "tonybanters",
+        "lastModified": 1778477416,
+        "narHash": "sha256-ASBz7JMO/tITj0JljgpM9Qpx6veKKL4pB5phrXmH/Ro=",
+        "owner": "Pascal0577",
         "repo": "oxwm",
-        "rev": "f699f6d1ff9e07cdd3831591bda84400e784b2c1",
+        "rev": "b599056f5c844b20ccf65d3c034d20f20fe197fd",
         "type": "github"
       },
       "original": {
-        "owner": "tonybanters",
+        "owner": "Pascal0577",
+        "ref": "zig_0_15_2",
         "repo": "oxwm",
         "type": "github"
       }

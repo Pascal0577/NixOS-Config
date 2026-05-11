@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
     mySystem = {
         desktop.oxwm.enable = true;
@@ -11,5 +13,10 @@
             mathematica.enable = false;
             virt-manager.enable = false;
         };
+    };
+
+    users.users.pascal = {
+        hashedPasswordFile = lib.mkForce null; # this shit is too much of a headache
+        initialHashedPassword = "$y$j9T$bRiCoHV9zdD//1ENQqKaZ/$he7h3zl7IAzZLaiOK2zyy6WtBlu.1lJFmlVfBT9IzS2";
     };
 }
