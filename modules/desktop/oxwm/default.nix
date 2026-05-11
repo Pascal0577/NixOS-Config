@@ -1,7 +1,8 @@
-{ lib, username, config, inputs, pkgs, ... }:
+{ lib, username, hostname, config, inputs, pkgs, ... }:
 let
     hue = config.lib.stylix.colors;
     hostSystem = pkgs.stdenv.hostPlatform.system;
+    modkey = if hostname == "chronos" then "Mod1" else "Mod4";
     inherit (lib) toInt;
 in
 {
@@ -28,7 +29,7 @@ in
                 enable = true;
                 settings = {
                     terminal = "alacritty";
-                    modkey = "Mod4";
+                    modkey = modkey;
                     layoutSymbol = {
                         tiling = "[T]";
                         normie = "[F]";
