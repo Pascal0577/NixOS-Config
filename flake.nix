@@ -22,11 +22,12 @@
             acer = mkSystem { name = "acer"; };
             lenovo = mkSystem { name = "lenovo"; };
             oracle = mkSystem { name = "oracle"; };
+            chronos = mkSystem { name = "chronos"; };
 
             raspberry = mkSystem {
                 name = "raspberry";
                 lib = nixos-raspberrypi.lib;
-                extraArgs = { inherit nixos-raspberrypi; useNiri = false; };
+                extraArgs = { inherit nixos-raspberrypi; };
             };
         };
 

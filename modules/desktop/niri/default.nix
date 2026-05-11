@@ -15,10 +15,7 @@ in
         unstable = lib.mkEnableOption "Use the latest version of Niri";
     };
 
-    # Conditionally import it. I just use this to make sure the raspberry
-    # system doesn't import this, because for some reason the mere action
-    # of importing the niri module causes a build of the niri package
-    imports = lib.optional (args.useNiri or true) inputs.niri.nixosModules.niri;
+    imports = [ inputs.niri.nixosModules.niri ];
 
     config = lib.mkMerge [
         {
