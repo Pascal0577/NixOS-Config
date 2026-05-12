@@ -4,7 +4,7 @@
     imports = [ inputs.disko.nixosModules.disko ];
 
     nixpkgs.hostPlatform = "x86_64-linux";
-    hardware.enableRedistributableFirmware = false;
+    hardware.enableRedistributableFirmware = true;
 
     boot = {
         initrd.systemd.enable = true;
