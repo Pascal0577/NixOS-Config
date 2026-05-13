@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, username, ... }:
 
 {
     imports = with inputs.nixos-raspberrypi.nixosModules; [
@@ -20,4 +20,9 @@
         address = "169.254.0.2";
         prefixLength = 24;
     }];
+
+    environment.variables = { COLORTERM = "truecolor"; };
+    stylix.enable = true;
+    stylix.autoEnable = false;
+    home-manager.users.${username}.stylix.targets.helix.enable = true;
 }

@@ -27,7 +27,6 @@
             raspberry = mkSystem {
                 name = "raspberry";
                 lib = nixos-raspberrypi.lib;
-                extraArgs = { inherit nixos-raspberrypi; };
             };
         };
 
