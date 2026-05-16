@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, config, lib, ... }@args:
+{ inputs, pkgs, username, config, lib, ... }:
 let
     playerctl = lib.getExe pkgs.playerctl;
     brightnessctl = lib.getExe pkgs.brightnessctl;
@@ -50,10 +50,10 @@ in
                         { argv = [ "noctalia-shell" ]; }
                     ];
 
-                    # xwayland-satellite = {
-                    #     enable = true;
-                    #     path = lib.getExe pkgs.xwayland-satellite;
-                    # };
+                    xwayland-satellite = {
+                        enable = true;
+                        path = lib.getExe pkgs.xwayland-satellite;
+                    };
 
                     binds = {
                         # Focusing
@@ -234,54 +234,6 @@ in
                             place-within-column = false;
                             position = "bottom";
                             width = 4.000000;
-                        };
-                    };
-
-                    animations = {
-                        window-open = {
-                            enable = true;
-                            kind.easing = {
-                                curve = "ease-out-expo";
-                                duration-ms = 350;
-                            };
-                            custom-shader = ''
-                                vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-                                    float angle = 2.0 * 3.14159265 * niri_clamped_progress;
-                                    float scale = 1.0 - (1.0 - niri_clamped_progress) * 0.5;
-                                    mat2 rot = mat2(cos(angle), sin(angle),
-                                                    -sin(angle),  cos(angle));
-                                    vec3 coords_new = vec3(rot * (coords_geo.xy - vec2(0.5)) / scale + vec2(0.5), 1.0);
-
-                                    vec3 coords_tex = niri_geo_to_tex * coords_new;
-                                    vec4 color = texture2D(niri_tex, coords_tex.st);
-
-                                    color *= niri_clamped_progress;
-                                    return color;
-                                }
-                            '';
-                        };
-
-                        window-close = {
-                            enable = true;
-                            kind.easing = {
-                                curve = "ease-out-expo";
-                                duration-ms = 1000;
-                            };
-                            custom-shader = ''
-                                vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-                                    float angle = 2.0 * 3.14159265 * niri_clamped_progress;
-                                    float scale = 1.0 - niri_clamped_progress * 0.5;
-                                    mat2 rot = mat2(cos(angle), sin(angle),
-                                                    -sin(angle),  cos(angle));
-                                    vec3 coords_new = vec3(rot * (coords_geo.xy - vec2(0.5)) / scale + vec2(0.5), 1.0);
-
-                                    vec3 coords_tex = niri_geo_to_tex * coords_new;
-                                    vec4 color = texture2D(niri_tex, coords_tex.st);
-
-                                    color *= (1.0 - niri_clamped_progress);
-                                    return color;
-                                }
-                            '';
                         };
                     };
 
