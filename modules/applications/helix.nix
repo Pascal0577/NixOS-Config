@@ -4,14 +4,11 @@
     options.mySystem.applications.helix.enable = lib.mkEnableOption "Helix module";
 
     config = lib.mkIf config.mySystem.applications.helix.enable {
+        environment.sessionVariables = { EDITOR = "hx"; };
         home-manager.users.${username}.programs.helix = {
             enable = true;
-            extraPackages = with pkgs; [
-                nixd
-                nixfmt
-                zls
-                bash-language-server
-            ];
+            defaultEditor = true;
+            extraPackages = [ pkgs.nixd ];
             settings = {
                 editor = {
                     line-number = "relative";
