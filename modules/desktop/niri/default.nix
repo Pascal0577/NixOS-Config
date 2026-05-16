@@ -317,6 +317,7 @@ in
                             matches = [
                                 { app-id = "my.file-chooser"; }
                                 { app-id = "^th[^/]*\.exe"; }
+                                { app-id = "^東方紅魔郷\.exe"; }
                             ];
                             open-floating = true;
                         }
