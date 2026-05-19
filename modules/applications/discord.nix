@@ -46,6 +46,7 @@
                             BetterUploadButton.enabled = true;
                             WebScreenShareFixes.enabled = true;
                             FixImagesQuality.enabled = true;
+                            ClearURLs = true;
                             NoTrack = {
                                 enabled = true;
                                 disableAnalytics = true;
