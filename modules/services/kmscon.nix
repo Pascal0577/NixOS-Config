@@ -6,6 +6,8 @@
         // { default = !config.mySystem.server.enable; };        
 
     config = lib.mkIf config.mySystem.applications.kmscon.enable {
+        stylix.targets.kmscon.colors.enable = true;
+
         services.kmscon = {
             enable = true;
             hwRender = true;
