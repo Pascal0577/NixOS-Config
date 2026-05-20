@@ -33,70 +33,77 @@ in
 
     imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
 
-    config.boot = lib.mkMerge [
+    config = lib.mkMerge [
         {
-            kernelPackages = lib.mkDefault (if zfs.enable
-                then latestZfsKernel
-                else pkgs.linuxPackages_latest);
+            boot = {
+                kernelPackages = lib.mkDefault (if zfs.enable
+                    then latestZfsKernel
+                    else pkgs.linuxPackages_latest);
 
-            bootspec.enable = true;
-            initrd.systemd.enable = true;
-            supportedFilesystems = lib.mkIf zfs.enable [ "zfs" ];
+                bootspec.enable = true;
+                initrd.systemd.enable = true;
+                supportedFilesystems = lib.mkIf zfs.enable [ "zfs" ];
 
-            loader = {
-                efi.canTouchEfiVariables = true;
-                systemd-boot.enable = true;
+                loader = {
+                    efi.canTouchEfiVariables = true;
+                    systemd-boot.enable = true;
+                };
+
+                kernel.sysctl = {
+                    "kernel.sched_cfs_bandwidth_slice_us" = 3000;
+                    "net.ipv4.tcp_fin_timeout" = 5;
+                    "vm.max_map_count" = 2147483642;
+                };
+
+                kernelParams = [
+                  # security stuff
+                  "rcupdate.rcu_expedited=1"
+                  "page_alloc.shuffle=1"
+                ] ++ (lib.optionals (!zfs.enable) [
+                  # zswap if we aren't using zfs
+                  "zswap.enabled=1"
+                  "zswap.compressor=zstd"
+                  "zswap.max_pool_percent=50"
+                  "zswap.shrinker_enabled=1"
+                ]);
             };
-
-            kernel.sysctl = {
-                "kernel.sched_cfs_bandwidth_slice_us" = 3000;
-                "net.ipv4.tcp_fin_timeout" = 5;
-                "vm.max_map_count" = 2147483642;
-            };
-
-            kernelParams = [
-              # security stuff
-              "rcupdate.rcu_expedited=1"
-              "page_alloc.shuffle=1"
-            ] ++ (lib.optionals (!zfs.enable) [
-              # zswap if we aren't using zfs
-              "zswap.enabled=1"
-              "zswap.compressor=zstd"
-              "zswap.max_pool_percent=50"
-              "zswap.shrinker_enabled=1"
-            ]);
         }
 
         (lib.mkIf boot.enablePlymouth {
-            plymouth = {
-                enable = true;
-                theme = lib.mkDefault "bgrt";
+            boot = {
+                plymouth = {
+                    enable = true;
+                    theme = lib.mkDefault "bgrt";
+                };
+
+                # silent boot
+                consoleLogLevel = 4;
+                initrd.verbose = false;
+                loader.timeout = 0;
+
+                kernelParams = [
+                    "quiet"
+                    "splash"
+                    "nowatchdog"
+                    "boot.shell_on_fail"
+                    "udev.log_priority=3"
+                    "rd.systemd.show_status=auto"
+                ];
             };
-
-            # silent boot
-            consoleLogLevel = 4;
-            initrd.verbose = false;
-            loader.timeout = 0;
-
-            kernelParams = [
-                "quiet"
-                "splash"
-                "nowatchdog"
-                "boot.shell_on_fail"
-                "udev.log_priority=3"
-                "rd.systemd.show_status=auto"
-            ];
         })
 
         (lib.mkIf boot.enableSecureBoot {
-            loader.systemd-boot.enable = lib.mkForce false;
             environment.persistence."/nix/persist".directories =
                 lib.mkIf config.mySystem.impermanence.enable [ "/var/lib/sbctl" ];
-            lanzaboote = {
-                enable = true;
-                pkiBundle = "/var/lib/sbctl";
-                autoGenerateKeys.enable = true;
-                autoEnrollKeys.enable = true;
+
+            boot = {
+                loader.systemd-boot.enable = lib.mkForce false;
+                lanzaboote = {
+                    enable = true;
+                    pkiBundle = "/var/lib/sbctl";
+                    autoGenerateKeys.enable = true;
+                    autoEnrollKeys.enable = true;
+                };
             };
         })
     ];
