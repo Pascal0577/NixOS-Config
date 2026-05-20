@@ -24,7 +24,6 @@
             enable = true;
             hideMounts = true;
             directories = [
-                "/var/log"
                 "/var/lib/bluetooth"
                 "/var/lib/nixos"
                 "/var/lib/libvirt"
@@ -32,7 +31,6 @@
                 "/var/lib/systemd"
                 "/var/lib/nixos-containers"
                 "/etc/mullvad-vpn"
-                "/var/db/sudo/lectured"
                 "/etc/NetworkManager/system-connections"
                 "/etc/ssh"
             ];
