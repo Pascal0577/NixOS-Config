@@ -23,7 +23,7 @@ in
 
         stylix = {
             enable = true;
-            autoEnable = mkDefault true;
+            autoEnable = mkDefault false;
 
             fonts = {
                 serif = {
@@ -45,11 +45,6 @@ in
                     package = mkDefault pkgs.noto-fonts-color-emoji;
                     name = mkDefault "Noto Color Emoji";
                 };
-            };
-
-            targets = {
-                plymouth.enable = false;
-                qt.enable = false;
             };
 
             cursor = {
