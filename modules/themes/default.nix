@@ -62,11 +62,15 @@ in
 
             targets = {
                 console.enable = mkDefault true;
+                gtk.enable = (!config.mySystem.server.enable);
+                gtksourceview.enable = (!config.mySystem.server.enable);
             };
         };
 
         home-manager.users.${username} = {          
             stylix.targets = {
+                gtk.enable = (!config.mySystem.server.enable);
+                gtksourceview.enable = (!config.mySystem.server.enable);
                 nixvim.enable = mkDefault false;
                 zen-browser = {
                     enable = true;
