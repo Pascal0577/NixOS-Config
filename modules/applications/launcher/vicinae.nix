@@ -27,6 +27,8 @@ in
 
                 systemd.user.services.vicinae.Service.RestartSec = lib.mkForce 0;
 
+                stylix.targets.vicinae.enable = true;
+
                 services.vicinae = {
                     enable = true;
                     package = inputs.vicinae.packages.${hostSystem}.default;
