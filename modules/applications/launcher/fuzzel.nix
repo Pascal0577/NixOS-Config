@@ -11,6 +11,7 @@
         };
 
         home-manager.users.${username} = {
+            stylix.targets.fuzzel.enable = true;
             programs.fuzzel = {
                 enable = true;
                 settings = {
