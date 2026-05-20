@@ -7,6 +7,8 @@
 
     config = lib.mkIf config.mySystem.applications.discord.enable {
         home-manager.users.${username} = {
+            stylix.targets.vesktop.enable = true;
+
             home.file.".config/vesktop/settings/quickCss.css".text = ''
                 body {
                     font-family: 'Ubuntu Sans';
