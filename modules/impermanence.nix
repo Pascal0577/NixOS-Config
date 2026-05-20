@@ -25,7 +25,6 @@
             hideMounts = true;
             directories = [
                 "/var/lib/bluetooth"
-                "/var/lib/nixos"
                 "/var/lib/libvirt"
                 "/var/lib/sbctl"
                 "/var/lib/systemd"
