@@ -26,7 +26,6 @@
             files = [ "/etc/machine-id" ];
             directories = [
                 "/var/lib/bluetooth"
-                "/var/lib/libvirt"
                 "/var/lib/sbctl"
                 "/var/lib/systemd"
                 "/var/lib/nixos-containers"
