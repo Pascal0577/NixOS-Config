@@ -7,6 +7,8 @@ in
         lib.mkEnableOption "GNOME Desktop Environment";
 
     config = lib.mkIf config.mySystem.desktop.gnome.enable {
+        stylix.targets.gnome.enable = true;
+
         environment = {
             sessionVariables = { NIXOS_OZONE_WL = "1"; };
             systemPackages = with pkgs; [
@@ -43,6 +45,7 @@ in
         ]);
 
         home-manager.users.${username} = {
+            stylix.targets.gnome.enable = true;
             dconf = {
                 enable = true;
                 settings = {
