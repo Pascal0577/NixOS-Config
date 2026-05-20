@@ -23,6 +23,8 @@
         home-manager.users.${username} = {
             imports = [ inputs.noctalia.homeModules.default ];
 
+            stylix.targets.noctalia-shell.enable = true;
+
             programs.noctalia-shell = {
                 enable = true;
                 settings = {
