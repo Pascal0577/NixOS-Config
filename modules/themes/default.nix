@@ -72,11 +72,6 @@ in
             stylix.targets = {
                 gtk.enable = (!config.mySystem.server.enable);
                 gtksourceview.enable = (!config.mySystem.server.enable);
-                nixvim.enable = mkDefault false;
-                zen-browser = {
-                    enable = true;
-                    profileNames = [ "pascal" ];
-                };
             };
 
             dconf.settings."org/gnome/desktop/interface" = {

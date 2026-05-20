@@ -9,6 +9,11 @@
         home-manager.users.${username} = {
             imports = [ inputs.zen-browser.homeModules.beta ];
 
+            stylix.targets.zen-browser = {
+                enable = true;
+                profileNames = [ "pascal" ];
+            };
+            
             programs.zen-browser = {
                 enable = true;
                 policies =
