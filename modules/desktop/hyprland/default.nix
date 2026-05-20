@@ -33,6 +33,8 @@ in
         services.displayManager.ly.enable = true;
 
         home-manager.users.${username} = {
+            stylix.targets.hyprland.enable = true;
+            stylix.targets.hyprpaper.enable = true;
             wayland.windowManager.hyprland = {
                 enable = true;
                 package = null;
