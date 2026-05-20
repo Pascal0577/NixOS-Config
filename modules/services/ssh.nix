@@ -21,8 +21,13 @@
 
         environment.persistence."/nix/persist".directories =
             lib.mkIf config.mySystem.impermanence.enable [
-                "/home/${username}/.ssh"
                 "/etc/ssh"
+                {
+                    directory = "/home/${username}/.ssh";
+                    mode = "u=rwx,g=rx,o=";
+                    user = "${username}";
+                    group = "users";
+                }
             ];
         
         systemd.services.sshd.serviceConfig = {
