@@ -21,8 +21,5 @@
         hashedPasswordFile = lib.mkForce null; # this shit is too much of a headache
     };
 
-    stylix.enable = true;
-    stylix.autoEnable = false;    
-
     documentation.enable = false;
 }
