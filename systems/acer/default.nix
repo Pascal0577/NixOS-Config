@@ -1,4 +1,6 @@
 {
+    imports = [ ./nvidia.nix ];
+    
     mySystem = {
         theme.everforest.enable = true;
         impermanence.enable = true;

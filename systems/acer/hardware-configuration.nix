@@ -4,7 +4,6 @@
     imports = [ inputs.disko.nixosModules.disko ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
     hardware = {
         cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
         graphics.extraPackages = with pkgs; [
@@ -12,19 +11,6 @@
             vpl-gpu-rt
         ];
         enableRedistributableFirmware = lib.mkDefault true;
-        nvidia = {
-            open = true;
-            modesetting.enable = true;
-            nvidiaSettings = false;
-            powerManagement.enable = false;
-            powerManagement.finegrained = false;
-            dynamicBoost.enable = true;
-            prime = {
-                sync.enable = true;
-                intelBusId = "PCI:0:2:0";
-                nvidiaBusId = "PCI:1:0:0";
-            };
-        };
     };
 
     boot = {
