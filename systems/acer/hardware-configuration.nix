@@ -50,6 +50,7 @@
         interval = "monthly";
     };
 
+    fileSystems."/home".neededForBoot = true;
     disko.devices = {
         disk = {
             main = {
