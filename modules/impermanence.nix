@@ -26,7 +26,6 @@
                 "/var/lib/bluetooth"
                 "/var/lib/systemd"
                 "/var/lib/nixos-containers"
-                "/etc/mullvad-vpn"
                 "/etc/NetworkManager/system-connections"
                 "/etc/ssh"
             ];
