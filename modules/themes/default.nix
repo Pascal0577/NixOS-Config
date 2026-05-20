@@ -59,6 +59,10 @@ in
                 dark = mkDefault "Papirus-Dark";
                 light = mkDefault "Papirus-Light";
             };
+
+            targets = {
+                console.enable = mkDefault true;
+            };
         };
 
         home-manager.users.${username} = {          
