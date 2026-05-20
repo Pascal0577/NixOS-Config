@@ -1,4 +1,4 @@
-{ hostname, ... }:
+{ hostname, lib, config, ... }:
 
 {
     networking = {
@@ -21,8 +21,9 @@
         };
     };
 
-    environment.persistence."/nix/persist".directories = [
-        "/var/lib/bluetooth"
-        "/etc/NetworkManager/system-connections"
-    ];
+    environment.persistence."/nix/persist".directories =
+        lib.mkIf config.mySystem.impermanence.enable [
+            "/var/lib/bluetooth"
+            "/etc/NetworkManager/system-connections"
+        ];
 }

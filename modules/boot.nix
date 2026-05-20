@@ -90,7 +90,8 @@ in
 
         (lib.mkIf boot.enableSecureBoot {
             loader.systemd-boot.enable = lib.mkForce false;
-            environment.persistence."/nix/persist".directories = [ "/var/lib/sbctl" ];
+            environment.persistence."/nix/persist".directories =
+                lib.mkIf config.mySystem.impermanence.enable [ "/var/lib/sbctl" ];
             lanzaboote = {
                 enable = true;
                 pkiBundle = "/var/lib/sbctl";

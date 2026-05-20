@@ -19,7 +19,8 @@
             };
         };
 
-        enviornment.persistence."/nix/persist".directories = [ "/etc/ssh" ];
+        enviornment.persistence."/nix/persist".directories =
+            lib.mkIf config.mySystem.impermanence.enable [ "/etc/ssh" ];
         
         systemd.services.sshd.serviceConfig = {
             StandardError = "journal+console";

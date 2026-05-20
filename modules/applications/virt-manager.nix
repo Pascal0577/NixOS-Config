@@ -13,7 +13,9 @@
         users.groups.libvirtd.members = [ "${username}" ];
         environment.systemPackages = [ pkgs.qemu ];
         networking.firewall.trustedInterfaces = [ "virbr0" ];
-        environment.persistence."/nix/persist".directories = [ "/var/lib/libvirt" ];
+
+        environment.persistence."/nix/persist".directories =
+            lib.mkIf config.mySystem.impermanence.enable [ "/var/lib/libvirt" ];
 
         virtualisation = {
             spiceUSBRedirection.enable = true;

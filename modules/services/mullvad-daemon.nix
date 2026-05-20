@@ -11,7 +11,8 @@
             package = pkgs.mullvad-vpn;
         };
 
-        environment.persistence."/nix/persist".directories = [ "/etc/mullvad-vpn" ];
+        environment.persistence."/nix/persist".directories =
+            lib.mkIf config.mySystem.impermanence.enable [ "/etc/mullvad-vpn" ];
 
         systemd.services.mullvad-daemon.serviceConfig = {
             NoNewPrivileges = true;
