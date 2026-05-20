@@ -2,7 +2,8 @@
 
 {
     options.mySystem.applications.fastfetch.enable =
-        lib.mkEnableOption "Fastfetch module" // { default = true; };
+        lib.mkEnableOption "Fastfetch module"
+        // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.fastfetch.enable {
         home-manager.users.${username} = {
