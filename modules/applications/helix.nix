@@ -4,9 +4,9 @@
     options.mySystem.applications.helix.enable = lib.mkEnableOption "Helix module";
 
     config = lib.mkIf config.mySystem.applications.helix.enable {
-        stylix.targets.helix.enable = true;
         environment.sessionVariables = { EDITOR = "hx"; };
         home-manager.users.${username}.programs.helix = {
+            stylix.targets.helix.enable = true;
             enable = true;
             defaultEditor = true;
             extraPackages = [ pkgs.nixd ];
