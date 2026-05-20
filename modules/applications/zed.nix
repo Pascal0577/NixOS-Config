@@ -7,6 +7,7 @@ in
         lib.mkEnableOption "Zed editor";
 
     config = lib.mkIf config.mySystem.applications.zed.enable {
+        stylix.targets.zed.enable = true;
         home-manager.users.${username}.programs.zed-editor = {
             enable = true;
             package = pkgs.zed-editor-fhs;
