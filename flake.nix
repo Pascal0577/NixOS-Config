@@ -71,11 +71,6 @@
         oxwm.url = "github:tonybanters/oxwm";
         oxwm.inputs.nixpkgs.follows = "nixpkgs";
 
-        elephant.url = "github:abenz1267/elephant";
-        walker.url = "github:abenz1267/walker";
-        walker.inputs.elephant.follows = "elephant";
-        walker.inputs.nixpkgs.follows = "nixpkgs";
-
         vicinae.url = "github:vicinaehq/vicinae";
         vicinae-extensions.url = "github:vicinaehq/extensions";
         vicinae-extensions.inputs.nixpkgs.follows = "nixpkgs";
