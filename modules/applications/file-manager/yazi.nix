@@ -50,7 +50,7 @@ in
         };
 
         home-manager.users.${username} = {
-            programs.foot.enable = true;
+            stylix.targets.yazi.enable = true;
             home.file.".config/xdg-desktop-portal-termfilechooser/config".text = ''
                 [filechooser]
                 cmd=${yaziChooser}
