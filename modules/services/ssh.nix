@@ -18,6 +18,8 @@
                 StrictModes = true;
             };
         };
+
+        enviornment.persistence."/nix/persist".directories = [ "/etc/ssh" ];
         
         systemd.services.sshd.serviceConfig = {
             StandardError = "journal+console";

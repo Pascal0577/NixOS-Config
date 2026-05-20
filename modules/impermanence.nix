@@ -25,7 +25,6 @@
             directories = [
                 "/var/lib/systemd"
                 "/var/lib/nixos-containers"
-                "/etc/ssh"
             ];
         };
     };
