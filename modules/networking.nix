@@ -20,4 +20,9 @@
             DNSOverTLS = true;
         };
     };
+
+    environment.persistence."/nix/persist".directories = [
+        "/var/lib/bluetooth"
+        "/etc/NetworkManager/system-connections"
+    ];
 }
