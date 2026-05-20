@@ -62,6 +62,7 @@ in
 
             targets = {
                 console.enable = mkDefault true;
+                nixos-icons.enable = true;
                 gtk.enable = (!config.mySystem.server.enable);
                 gtksourceview.enable = (!config.mySystem.server.enable);
             };
