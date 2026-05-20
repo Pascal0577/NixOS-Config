@@ -15,9 +15,7 @@
             before = [ "sysroot.mount" ];
             unitConfig.DefaultDependencies = "no";
             serviceConfig.Type = "oneshot";
-            script = ''
-                zfs rollback -r zroot/local/root@blank
-            '';
+            script = ''zfs rollback -r zroot/local/root@blank'';
         };
 
         environment.persistence."/nix/persist" = {
@@ -26,7 +24,6 @@
             files = [ "/etc/machine-id" ];
             directories = [
                 "/var/lib/bluetooth"
-                "/var/lib/sbctl"
                 "/var/lib/systemd"
                 "/var/lib/nixos-containers"
                 "/etc/mullvad-vpn"
