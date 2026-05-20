@@ -20,7 +20,10 @@
         };
 
         environment.persistence."/nix/persist".directories =
-            lib.mkIf config.mySystem.impermanence.enable [ "/etc/ssh" ];
+            lib.mkIf config.mySystem.impermanence.enable [
+                "/home/${username}/.ssh"
+                "/etc/ssh"
+            ];
         
         systemd.services.sshd.serviceConfig = {
             StandardError = "journal+console";
