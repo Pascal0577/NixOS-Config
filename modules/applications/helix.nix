@@ -4,7 +4,10 @@
     options.mySystem.applications.helix.enable = lib.mkEnableOption "Helix module";
 
     config = lib.mkIf config.mySystem.applications.helix.enable {
-        environment.sessionVariables = { EDITOR = "hx"; };
+        environment.sessionVariables = {
+            COLORTERM = "truecolor";
+            EDITOR = "hx";
+        };
         home-manager.users.${username} = {
             stylix.targets.helix.enable = true;
             programs.helix = {
