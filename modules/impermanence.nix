@@ -23,6 +23,7 @@
         environment.persistence."/nix/persist" = {
             enable = true;
             hideMounts = true;
+            files = [ "/etc/machine-id" ];
             directories = [
                 "/var/lib/bluetooth"
                 "/var/lib/libvirt"
@@ -32,9 +33,6 @@
                 "/etc/mullvad-vpn"
                 "/etc/NetworkManager/system-connections"
                 "/etc/ssh"
-            ];
-            files = [
-                "/etc/machine-id"
             ];
         };
     };
