@@ -23,6 +23,7 @@
             hideMounts = true;
             files = [ "/etc/machine-id" ];
             directories = [
+                "/var/lib/nixos"
                 "/var/lib/systemd"
                 "/var/lib/nixos-containers"
             ];
