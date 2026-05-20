@@ -12,6 +12,7 @@
         };
 
         home-manager.users.${username} = {
+            stylix.targets.ghostty.enable = true;
             programs.ghostty = {
                 enable = true;
                 enableZshIntegration = true;
