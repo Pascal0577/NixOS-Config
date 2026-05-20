@@ -3,7 +3,7 @@
 {
     mySystem = {
         ZFS.enable = true;
-        impermanence.enable = false;
+        impermanence.enable = true;
         server.enable = true;
 	    applications.helix.enable = true;
 	    theme.everforest.enable = true;
