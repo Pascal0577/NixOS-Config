@@ -8,8 +8,7 @@ let
 in
 {
     options.mySystem.applications.swayidle.enable =
-        lib.mkEnableOption "Swayidle module"
-        // { default = !config.mySystem.server.enable; };
+        lib.mkEnableOption "Swayidle module" // { default = false; };
 
     config = lib.mkIf config.mySystem.applications.swayidle.enable {
         # https://github.com/NixOS/nixpkgs/pull/297434#issuecomment-2348783988

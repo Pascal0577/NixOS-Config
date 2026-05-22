@@ -11,6 +11,7 @@
             helix.enable = true;
             terminal.ghostty.enable = true;
             file-manager.nautilus.enable = true;
+            swayidle.enable = false;
             heroic.enable = false;
             mathematica.enable = false;
             virt-manager.enable = false;
