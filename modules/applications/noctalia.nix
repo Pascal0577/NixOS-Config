@@ -17,7 +17,6 @@
 
         environment.systemPackages = [
             inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-            pkgs.gpu-screen-recorder
         ];
 
         home-manager.users.${username} = {
@@ -88,9 +87,6 @@
                                 }
                                 {
                                     id = "plugin:privacy-indicator";
-                                }
-                                {
-                                    id = "plugin:screen-recorder";
                                 }
                                 {
                                     id = "NotificationHistory";
