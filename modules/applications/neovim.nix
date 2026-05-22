@@ -9,11 +9,11 @@ in
         enableZig = lib.mkEnableOption "Zig config" // { default = true; };
     };
 
-    config = lib.mkIf nvim.enable lib.mkMerge [
+    config = lib.mkIf nvim.enable (lib.mkMerge [
         {
             home-manager.users.${username} = {
                 imports = [ inputs.nixvim.homeModules.nixvim ];
-                home.sessionVariables.EDITOR = "nvim";
+                # home.sessionVariables.EDITOR = "nvim";
                 programs.nixvim = {
                     enable = true;
                     globals.mapleader = " ";
@@ -299,5 +299,5 @@ in
                 ];
             };
         })
-    ];
+    ]);
 }
