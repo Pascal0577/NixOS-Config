@@ -17,6 +17,7 @@
             resources
             video-trimmer
             loupe
+            gajim
         ];
 
         xdg.mime.defaultApplications = {
