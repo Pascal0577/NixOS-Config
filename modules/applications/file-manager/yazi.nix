@@ -34,7 +34,6 @@ in
         lib.mkEnableOption "Enable my Yazi module";
 
     config = lib.mkIf config.mySystem.applications.file-manager.yazi.enable {
-        mySystem.applications.file-manager.package = pkgs.yazi;
         programs.yazi.enable = true;
 
         xdg.portal = {
