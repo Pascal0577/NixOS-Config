@@ -2,8 +2,7 @@
 
 {
     options.mySystem.applications.kmscon.enable =
-        lib.mkEnableOption "KMSCON console module"
-        // { default = !config.mySystem.server.enable; };        
+        lib.mkEnableOption "KMSCON console module" // { default = false; };
 
     config = lib.mkIf config.mySystem.applications.kmscon.enable {
         stylix.targets.kmscon.colors.enable = true;
