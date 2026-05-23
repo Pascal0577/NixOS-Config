@@ -6,6 +6,7 @@
         // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.gtk-apps.enable {
+        environment.sessionVariables = { GSK_RENDERER = "gl"; };
         environment.systemPackages = with pkgs; [
             baobab
             totem
