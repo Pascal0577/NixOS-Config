@@ -14,7 +14,7 @@
             helix.enable = true;
             launcher.vicinae.enable = true;
             terminal.foot.enable = true;
-            file-manager.yazi.enable = true;
+            file-manager.nautilus.enable = true;
         };
     };
 }
