@@ -12,8 +12,6 @@
         applications = {
             obs.nvidia = true;
             helix.enable = true;
-            zed.enable = true;
-            swayidle.enable = false;
             launcher.vicinae.enable = true;
             terminal.foot.enable = true;
             file-manager.yazi.enable = true;

@@ -19,6 +19,7 @@ in
                     ubuntu-sans
                     ubuntu-sans-mono
                     noto-fonts-cjk-sans
+                    nerd-fonts.jetbrains-mono
                 ];
 
                 fontconfig = {
