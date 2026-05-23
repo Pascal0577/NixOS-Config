@@ -16,8 +16,7 @@ let
 in
 {
     options.mySystem.applications.mathematica.enable =
-        lib.mkEnableOption "Wolfram Mathematica module"
-        // { default = !config.mySystem.server.enable; };
+        lib.mkEnableOption "Wolfram Mathematica module" // { default = false; };
 
     config = lib.mkIf config.mySystem.applications.mathematica.enable {
         environment.systemPackages = [ mathematica-new ];
