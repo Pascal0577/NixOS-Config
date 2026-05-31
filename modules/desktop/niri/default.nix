@@ -7,6 +7,13 @@ let
         env = (oldAttrs.env or {}) // {
             RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
         };
+
+        patches = (oldAttrs.patches or {}) ++ [
+            (pkgs.fetchpatch2 {
+                url = "https://patch-diff.githubusercontent.com/raw/sodiboo/niri-flake/pull/1731.patch";
+                hash = "";
+            })
+        ];
     });
 in
 {
