@@ -63,7 +63,7 @@
 
         website.url = "github:Pascal0577/website";
 
-        niri.url = "github:sodiboo/niri-flake";
+        niri.url = "github:sodiboo/niri-flake/refs/pull/1731/head";
 
         hyprland.url = "github:vaxerski/Hyprland/layouts-rethonked";
         mithril-shell.url = "github:andreashgk/mithril-shell";

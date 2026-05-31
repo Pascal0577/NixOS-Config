@@ -7,13 +7,6 @@ let
         env = (oldAttrs.env or {}) // {
             RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
         };
-
-        patches = (oldAttrs.patches or {}) ++ [
-            (pkgs.fetchpatch2 {
-                url = "https://patch-diff.githubusercontent.com/raw/sodiboo/niri-flake/pull/1731.patch";
-                hash = "";
-            })
-        ];
     });
 in
 {
@@ -266,10 +259,7 @@ in
                             default-column-width.proportion = 0.5;
                         }
                         {
-                            # For games to have VRR
-                            matches = [{
-                                title = "ELDEN RING™";
-                            }];
+                            matches = [{ title = "ELDEN RING™"; }];
                             variable-refresh-rate = true;
                         }
                         {
@@ -279,6 +269,10 @@ in
                                 { app-id = "^東方紅魔郷\.exe"; }
                             ];
                             open-floating = true;
+                        }
+                        {
+                            matches = [{ app-id = "^foot$"; }];
+                            background-effect = { blur = true; };
                         }
                     ];
 

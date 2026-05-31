@@ -31,7 +31,6 @@
                     setupCompleted = true;
                     bar = {
                         position = "top";
-                        backgroundOpacity = 1.0;
                         monitors = [ ];
                         density = "default";
                         showCapsule = true;
@@ -180,7 +179,6 @@
                         enableClipPreview = true;
                         enableClipboardHistory = false;
                         position = "center";
-                        backgroundOpacity = 1.0;
                         pinnedExecs = [ ];
                         useApp2Unit = false;
                         sortByMostUsed = true;
@@ -230,7 +228,6 @@
                     dock = {
                         enabled = false;
                         displayMode = "auto_hide";
-                        backgroundOpacity = 1.0;
                         floatingRatio = 1;
                         onlySameOutput = true;
                         monitors = [ ];
@@ -274,7 +271,6 @@
                         fontFixedScale = 1.0;
                         idleInhibitorEnabled = true;
                         tooltipsEnabled = true;
-                        panelBackgroundOpacity = 1.0;
                     };
                     brightness = {
                         brightnessStep = 5;

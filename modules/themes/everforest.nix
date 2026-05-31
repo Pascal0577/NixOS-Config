@@ -11,6 +11,10 @@ in
         stylix = {
             base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
             image = ../../assets/flowers.png;
+            opacity.terminal = 0.9;
+            opacity.popups = 0.9;
+            opacity.desktop = 0.9;
+            opacity.applications = 0.9;
 
             cursor = {
                 package = pkgs.everforest-cursors;

@@ -41,6 +41,7 @@ in
                         favicon_service = "twenty";
                         pop_to_root_on_close = true;
                         search_files_in_root = true;
+                        launcher_window.csd = true;
 
                         font = {
                             normal = {
@@ -58,11 +59,6 @@ in
                                 name = "stylix";
                                 icon_theme = "Papirus-Dark";
                             };
-                        };
-
-                        launcher_window = {
-                            csd = true;
-                            opacity = 1.0;
                         };
 
                         extensions = with inputs.vicinae-extensions.packages.${hostSystem}; [
