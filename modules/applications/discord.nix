@@ -42,7 +42,6 @@
                         autoUpdate = true;
                         useQuickCss = true;
                         plugins = {
-                            FakeNitro.enabled = true;
                             FixYoutubeEmbeds.enabled = true;
                             YoutubeAdblock.enabled = true;
                             BetterUploadButton.enabled = true;
@@ -52,6 +51,10 @@
                             NoTrack = {
                                 enabled = true;
                                 disableAnalytics = true;
+                            };
+                            FakeNitro = {
+                                enabled = true;
+                                useHyperLinks = false;
                             };
                         };
                     };
