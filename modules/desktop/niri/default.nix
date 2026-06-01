@@ -45,6 +45,7 @@ in
                     hotkey-overlay.skip-at-startup = true;
                     prefer-no-csd = true;
                     environment.QT_QPA_PLATFORM = "wayland";
+                    blur.enable = false;
 
                     spawn-at-startup = lib.mkIf config.mySystem.applications.noctalia.enable [
                         { argv = [ "noctalia-shell" ]; }
