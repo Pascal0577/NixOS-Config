@@ -11,11 +11,14 @@
     config = lib.mkIf config.mySystem.applications.virt-manager.enable {
         programs.virt-manager.enable = true;
         users.groups.libvirtd.members = [ "${username}" ];
-        environment.systemPackages = [ pkgs.qemu ];
         networking.firewall.trustedInterfaces = [ "virbr0" ];
 
-        environment.persistence."/nix/persist".directories =
-            lib.mkIf config.mySystem.impermanence.enable [ "/var/lib/libvirt" ];
+        environment = {
+            systemPackages = [ pkgs.qemu ];
+            sessionVariables = { LIBVIRT_DEFAULT_URI="qemu:///system"; };
+            persistence."/nix/persist".directories =
+                lib.mkIf config.mySystem.impermanence.enable [ "/var/lib/libvirt" ];
+        };
 
         virtualisation = {
             spiceUSBRedirection.enable = true;
@@ -25,13 +28,6 @@
                     package = pkgs.qemu_kvm;
                     swtpm.enable = true;  # TPM emulation for Windows 11
                 };
-            };
-        };
-
-        home-manager.users.${username}.dconf.settings = {
-            "org/virt-manager/virt-manager/connections" = {
-                autoconnect = [ "qemu:///system" ];
-                uris = [ "qemu:///system" ];
             };
         };
 
