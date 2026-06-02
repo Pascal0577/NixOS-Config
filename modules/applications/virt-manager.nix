@@ -12,6 +12,7 @@
         programs.virt-manager.enable = true;
         users.groups.libvirtd.members = [ "${username}" ];
         networking.firewall.trustedInterfaces = [ "virbr0" ];
+        systemd.services."serial-getty@ttyS0".enable = true; # console access to gueses
 
         environment = {
             systemPackages = [ pkgs.qemu ];
