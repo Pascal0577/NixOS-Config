@@ -8,6 +8,11 @@
         // { default = config.mySystem.desktop.niri.enable; };
 
     config = lib.mkIf config.mySystem.applications.noctalia.enable {
+        nix.settings = {
+            extra-substituters = [ "https://noctalia.cachix.org" ];
+            extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
+        };
+
         services.upower.enable = true;
 
         # Try to set icon theme
