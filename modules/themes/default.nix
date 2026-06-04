@@ -20,6 +20,7 @@ in
                     ubuntu-sans-mono
                     noto-fonts-cjk-sans
                     nerd-fonts.jetbrains-mono
+                    akkadian
                 ];
 
                 fontconfig = {
