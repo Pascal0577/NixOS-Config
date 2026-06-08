@@ -63,7 +63,8 @@
 
         website.url = "github:Pascal0577/website";
 
-        niri.url = "github:sodiboo/niri-flake/refs/pull/1731/head";
+        niri.url = "github:sodiboo/niri-flake";
+        noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
 
         hyprland.url = "github:vaxerski/Hyprland/layouts-rethonked";
         mithril-shell.url = "github:andreashgk/mithril-shell";
@@ -75,8 +76,6 @@
         vicinae-extensions.url = "github:vicinaehq/extensions";
         vicinae-extensions.inputs.nixpkgs.follows = "nixpkgs";
     
-        noctalia.url = "github:noctalia-dev/noctalia-shell";
-        noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
         zen-browser.inputs.nixpkgs.follows = "nixpkgs";
