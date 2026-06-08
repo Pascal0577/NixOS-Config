@@ -93,7 +93,11 @@
                         zstyle ':fzf-tab:complete:*' show-hidden true
 
                         zstyle ':fzf-tab:complete:*' fzf-preview '
-                            case "$realpath" in
+                            target="''${realpath:-$word}"
+                            case "$target" in
+                                *.service|*.socket|*.mount|*.automount|*.timer|*.path|*.target|*.swap|*.device|*.slice)
+                                    SYSTEMD_COLORS=1 systemctl cat "$target" 2>/dev/null || cat "$target"
+                                    ;;
                                 *.pdf) pdftotext "$realpath" - | head -200 ;;
                                 *.tar.gz|*.tgz) tar -tzf "$realpath" ;;
                                 *.tar*) tar -tf "$realpath" ;;
