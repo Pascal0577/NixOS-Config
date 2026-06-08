@@ -1,8 +1,6 @@
 { inputs, username, config, lib, pkgs, ... }:
 
 {
-    imports = [ inputs.noctalia.nixosModules.default ];
-
     options.mySystem.applications.noctalia.enable =
         lib.mkEnableOption "Noctalia Shell module"
         // { default = config.mySystem.desktop.niri.enable; };
@@ -29,8 +27,9 @@
 
             stylix.targets.noctalia-shell.enable = true;
 
-            programs.noctalia-shell = {
+            programs.noctalia = {
                 enable = true;
+                systemd.enable = true;
                 settings = {
                     settingsVersion = 0;
                     setupCompleted = true;
