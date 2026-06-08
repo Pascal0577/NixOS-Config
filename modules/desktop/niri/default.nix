@@ -45,11 +45,11 @@ in
                     hotkey-overlay.skip-at-startup = true;
                     prefer-no-csd = true;
                     environment.QT_QPA_PLATFORM = "wayland";
-                    blur.enable = false;
+                    # blur.enable = false;
 
-                    spawn-at-startup = lib.mkIf config.mySystem.applications.noctalia.enable [
-                        { argv = [ "noctalia-shell" ]; }
-                    ];
+                    # spawn-at-startup = lib.mkIf config.mySystem.applications.noctalia.enable [
+                    #     { argv = [ "noctalia-shell" ]; }
+                    # ];
 
                     xwayland-satellite = {
                         enable = true;
@@ -271,10 +271,10 @@ in
                             ];
                             open-floating = true;
                         }
-                        {
-                            matches = [{ app-id = "^foot$"; }];
-                            background-effect = { blur = true; };
-                        }
+                        # {
+                        #     matches = [{ app-id = "^foot$"; }];
+                        #     background-effect = { blur = true; };
+                        # }
                     ];
 
                     switch-events = {
