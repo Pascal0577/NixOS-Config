@@ -27,7 +27,7 @@
 
             stylix.targets.noctalia-shell.enable = true;
 
-            programs.noctalia = {
+            programs.noctalia-shell = {
                 enable = true;
                 systemd.enable = true;
                 settings = {
