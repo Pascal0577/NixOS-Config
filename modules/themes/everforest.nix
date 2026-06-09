@@ -17,8 +17,8 @@ in
             opacity.applications = 1.0;
 
             cursor = {
-                package = pkgs.everforest-cursors;
-                name = "everforest-cursors";
+                package = pkgs.callPackage ../../packages/google-dot-cursors {};
+                name = "GoogleDot-Everforest";
                 size = 32;
             };
         };
