@@ -52,10 +52,16 @@ in
                     };
                 };
 
-                cursor = {
-                    package = mkDefault pkgs.bibata-cursors;
-                    name = mkDefault "Bibata-Modern-Ice";
-                    size = mkDefault 24;
+                cursor = let
+                    hue = config.lib.stylix.colors;
+                in {
+                    package = mkDefault (pkgs.callPackage ../../packages/google-dot-cursors {
+                        customColors = [
+                            { name = "stylix"; bc = "#${hue.base00}"; oc = "#${hue.base05}"; }
+                        ];
+                    });
+                    name = mkDefault "GoogleDot-stylix";
+                    size = mkDefault 28;
                 };
 
                 icons = {

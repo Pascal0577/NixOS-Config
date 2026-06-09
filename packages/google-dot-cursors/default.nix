@@ -9,13 +9,11 @@
   cbmp,
   chromium,
   clickgen,
+  customColors ? [
+    { name = "Everforest"; bc = "#333C43"; oc = "#D3C6AA"; }
+  ]
 }:
 
-let
-  customColors = [
-    { name = "Everforest"; bc = "#333C43"; oc = "#D3C6AA"; }
-  ];
-in
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "google-cursor";
   version = "2.0.0";

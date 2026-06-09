@@ -15,12 +15,6 @@ in
             opacity.popups = 1.0;
             opacity.desktop = 1.0;
             opacity.applications = 1.0;
-
-            cursor = {
-                package = pkgs.callPackage ../../packages/google-dot-cursors {};
-                name = "GoogleDot-Everforest";
-                size = 28;
-            };
         };
 
         home-manager.users.${username} = lib.mkMerge [
