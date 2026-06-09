@@ -19,7 +19,7 @@ in
             cursor = {
                 package = pkgs.callPackage ../../packages/google-dot-cursors {};
                 name = "GoogleDot-Everforest";
-                size = 32;
+                size = 28;
             };
         };
 
