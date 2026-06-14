@@ -7,7 +7,7 @@
         ZFS.enable = true;
         desktop.niri = {
             enable = true;
-            unstable = false;
+            unstable = true;
         };
         applications = {
             obs.nvidia = true;
