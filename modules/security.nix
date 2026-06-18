@@ -6,6 +6,7 @@
 
     security = {
         # Disable sudo
+        run0.enable = true;
         run0.enableSudoAlias = true;
         polkit.enable = true;
         sudo.enable = false;
