@@ -40,7 +40,6 @@ in
                     then latestZfsKernel
                     else pkgs.linuxPackages_latest);
 
-                bootspec.enable = true;
                 initrd.systemd.enable = true;
                 supportedFilesystems = lib.mkIf zfs.enable [ "zfs" ];
 
