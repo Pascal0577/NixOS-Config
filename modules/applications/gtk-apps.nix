@@ -9,7 +9,6 @@
         imageViewer = "org.gnome.Loupe.desktop";
         videoPlayer = "io.github.celluloid_player.Celluloid.desktop";
         audioPlayer = "org.gnome.Decibels.desktop";
-        webBrowser = "zen-beta.desktop";
 
         imageMimes = [
             "image/apng"
@@ -222,23 +221,10 @@
         ];
 
         audioBindings = lib.genAttrs audioMimes (_: audioPlayer);
-
-        browserMimes = [
-            "application/xhtml+xml"
-            "message/rfc822"
-            "text/html"
-            "x-scheme-handler/http"
-            "x-scheme-handler/https"
-            "x-scheme-handler/about"
-            "x-scheme-handler/unknown"
-        ];
-
-        browserBindings = lib.genAttrs browserMimes (_: webBrowser);
     in lib.mkIf config.mySystem.applications.gtk-apps.enable {
         environment.sessionVariables = { GSK_RENDERER = "gl"; };
         environment.systemPackages = with pkgs; [
             loupe
-            celluloid
             decibels
             baobab
             constrict
@@ -247,6 +233,7 @@
             pinta
             blanket
             video-trimmer
+            (celluloid.override { youtubeSupport = false; })
         ];
 
         xdg.mime.defaultApplications = {} //
