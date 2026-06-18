@@ -33,6 +33,7 @@
         packages.aarch64-linux.pi5-image =
             self.nixosConfigurations.raspberry.config.system.build.sdImage;
 
+        # expose environment.systemPackages as flake outputs
         packages.x86_64-linux =
         let
             sysPkgs = self.nixosConfigurations.acer.config.environment.systemPackages;
