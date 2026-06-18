@@ -7,6 +7,7 @@
     config = lib.mkIf config.mySystem.applications.file-manager.nautilus.enable {
         environment.systemPackages = with pkgs; [ 
             nautilus
+            ffmpegthumbnailer
             unzip
             cabextract
         ];
