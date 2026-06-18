@@ -305,6 +305,18 @@
                     };
                 };
             };
+
+            xdg.mimeApps.defaultApplications = let
+                browserMimes = [
+                    "application/xhtml+xml"
+                    "message/rfc822"
+                    "text/html"
+                    "x-scheme-handler/http"
+                    "x-scheme-handler/https"
+                    "x-scheme-handler/about"
+                    "x-scheme-handler/unknown"
+                ];
+            in lib.genAttrs browserMimes (_: "zen-beta.desktop");
         };
     };
 }
