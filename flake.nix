@@ -32,6 +32,15 @@
 
         packages.aarch64-linux.pi5-image =
             self.nixosConfigurations.raspberry.config.system.build.sdImage;
+
+        packages.x86_64-linux =
+        let
+            sysPkgs = self.nixosConfigurations.acer.config.environment.systemPackages;
+            named = builtins.listToAttrs (map (p: {
+              name = p.pname or p.name;
+              value = p;
+            }) sysPkgs);
+        in named;
     };
 
     nixConfig = {
