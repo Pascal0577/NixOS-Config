@@ -34,10 +34,7 @@ in
             };
         };
 
-        mySystem.applications.launcher = {
-            command = "cosmic-launcher";
-            package = pkgs.cosmic-launcher;
-        };
+        mySystem.applications.launcher.command = "cosmic-launcher";
 
         home-manager.users.${username} = {
             stylix.targets.gtk.enable = false;

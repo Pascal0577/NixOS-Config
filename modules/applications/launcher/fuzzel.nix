@@ -1,14 +1,8 @@
-{ username, config, lib, pkgs, ... }:
+{ username, config, lib, ... }:
 
 {
-    options.mySystem.applications.launcher.fuzzel.enable =
-        lib.mkEnableOption "Fuzzel launcher module";
-
-    config = lib.mkIf config.mySystem.applications.launcher.fuzzel.enable {
-        mySystem.applications.launcher = {
-            package = pkgs.fuzzel;
-            command = "fuzzel";
-        };
+    config = lib.mkIf (config.mySystem.applications.launcher.choice == "fuzzel") {
+        mySystem.applications.launcher.command = "fuzzel";
 
         home-manager.users.${username} = {
             stylix.targets.fuzzel.enable = true;

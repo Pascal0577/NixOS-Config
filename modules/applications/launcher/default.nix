@@ -1,11 +1,9 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 
 {
     options.mySystem.applications.launcher = {
-        package = lib.mkOption {
-            type = lib.types.package;
-            default = pkgs.fuzzel;
-            description = "Package for the launcher application";
+        choice = lib.mkOption {
+            type = lib.types.enum [ "vicinae" "fuzzel" "dmenu" ];
         };
 
         command = lib.mkOption {

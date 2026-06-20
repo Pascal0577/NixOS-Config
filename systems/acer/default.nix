@@ -12,7 +12,7 @@
         applications = {
             obs.nvidia = true;
             helix.enable = true;
-            launcher.vicinae.enable = true;
+            launcher.choice = "vicinae";
             terminal.emulator = "foot";
             file-manager.nautilus.enable = true;
         };

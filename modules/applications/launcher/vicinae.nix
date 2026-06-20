@@ -3,9 +3,6 @@ let
     hostSystem = pkgs.stdenv.hostPlatform.system;
 in
 {
-    options.mySystem.applications.launcher.vicinae.enable =
-        lib.mkEnableOption "Vicinae (Raycast for Linux) module";
-
     config = lib.mkMerge [
         {
             nix.settings = {
@@ -16,11 +13,8 @@ in
             };
         }
 
-        (lib.mkIf config.mySystem.applications.launcher.vicinae.enable {
-            mySystem.applications.launcher = {
-                package = inputs.vicinae.packages.${hostSystem}.default;
-                command = "vicinae vicinae://toggle";
-            };
+        (lib.mkIf (config.mySystem.applications.launcher.choice == "vicinae") {
+            mySystem.applications.launcher.command = "vicinae vicinae://toggle";
 
             home-manager.users.${username} = {
                 imports = [ inputs.vicinae.homeManagerModules.default ];
