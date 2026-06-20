@@ -3,10 +3,7 @@ let
     playerctl = lib.getExe pkgs.playerctl;
 in
 {
-    options.mySystem.desktop.gnome.enable =
-        lib.mkEnableOption "GNOME Desktop Environment";
-
-    config = lib.mkIf config.mySystem.desktop.gnome.enable {
+    config = lib.mkIf (config.mySystem.desktop.choice == "gnome") {
         stylix.targets.gnome.enable = true;
 
         environment = {

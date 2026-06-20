@@ -6,10 +6,7 @@ let
     inherit (lib) toInt;
 in
 {
-    options.mySystem.desktop.oxwm.enable =
-        lib.mkEnableOption "OXWM window manager";
-
-    config = lib.mkIf config.mySystem.desktop.oxwm.enable {
+    config = lib.mkIf (config.mySystem.desktop.choice == "oxwm") {
         environment.systemPackages = with pkgs; [ xclip maim bc sysstat ];
         services = {
             displayManager.ly.enable = true;

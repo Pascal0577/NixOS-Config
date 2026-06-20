@@ -1,11 +1,12 @@
 { lib, config, pkgs, username, ... }: 
 let
     cosmicCfg = config.mySystem.desktop.cosmic;
+    cosmicChoice = (config.mySystem.desktop.choice == "cosmic");
 in
 {
-    options.mySystem.desktop.cosmic.cosmicOnNiri.enable = lib.mkEnableOption "cosmicOnNiri";
+    options.mySystem.desktop.cosmic.cosmicOnNiri = lib.mkEnableOption "cosmicOnNiri";
 
-    config = lib.mkIf (cosmicCfg.cosmicOnNiri.enable && cosmicCfg.enable) {
+    config = lib.mkIf (cosmicCfg.cosmicOnNiri && cosmicChoice ) {
         environment = {
             systemPackages = [
                 (pkgs.callPackage ../../../../packages/cosmic-ext-niri/default.nix {})

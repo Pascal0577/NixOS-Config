@@ -5,8 +5,6 @@ let
 in
 {
     options.mySystem.desktop.cosmic = {
-        enable = lib.mkEnableOption "COSMIC desktop";
-
         accentColor = lib.mkOption {
             type = lib.types.str;
             default = "${hue.base0D-hex}";
@@ -32,7 +30,7 @@ in
         };
     };
 
-    config = lib.mkIf config.mySystem.desktop.cosmic.enable {
+    config = lib.mkIf (config.mySystem.desktop.choice == "cosmic") {
         services.displayManager.cosmic-greeter.enable = true;
         services.system76-scheduler.enable = true;
         services.desktopManager.cosmic = {

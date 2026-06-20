@@ -4,10 +4,6 @@ let
     brightnessctl = lib.getExe pkgs.brightnessctl;
 in
 {
-    options.mySystem.desktop.niri = {
-        enable = lib.mkEnableOption "Niri window manager";
-    };
-
     imports = [ inputs.niri.nixosModules.niri ];
 
     config = lib.mkMerge [
@@ -18,12 +14,8 @@ in
             };
         }
 
-        (lib.mkIf config.mySystem.desktop.niri.enable {
-            nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-            programs.niri = {
-                enable = true;
-                package = pkgs.niri-stable;
-            };
+        (lib.mkIf (config.mySystem.desktop == "niri") {
+            programs.niri.enable = true;
 
             services.displayManager.ly.enable = true;
             environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };

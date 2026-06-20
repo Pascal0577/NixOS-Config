@@ -1,21 +1,17 @@
 { pkgs, username, config, lib, ... }:
-
+let
+    gnomeChoice = (config.mySystem.desktop.choice == "gnome");
+in
 {
-    options.mySystem.desktop.gnome.paperwm.enable =
+    options.mySystem.desktop.gnome.paperwm =
         lib.mkEnableOption "PaperWM extension for GNOME";
 
-    config = lib.mkIf config.mySystem.desktop.gnome.paperwm.enable {
-        environment.systemPackages = with pkgs; [
-            gnomeExtensions.paperwm
-        ];
+    config = lib.mkIf (config.mySystem.desktop.gnome.paperwm && gnomeChoice) {
+        environment.systemPackages = [ pkgs.gnomeExtensions.paperwm ];
 
         home-manager.users.${username} = {
             dconf.settings = {
-                "org/gnome/shell" = {
-                    enabled-extensions = with pkgs.gnomeExtensions; [
-                        paperwm.extensionUuid
-                    ];
-                };
+                "org/gnome/shell".enabled-extensions = [ pkgs.gnomeExtensions.paperwm.extensionUuid ];
 
                 "org/gnome/shell/extensions/paperwm" = {
                     animation-time = 0.2;

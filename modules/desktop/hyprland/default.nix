@@ -4,12 +4,9 @@ let
     brightnessctl = lib.getExe pkgs.brightnessctl;
 in
 {
-    options.mySystem.desktop.hyprland.enable =
-        lib.mkEnableOption "Hyprland window manager";
-
     imports = [ inputs.hyprland.nixosModules.default ];
 
-    config = lib.mkIf config.mySystem.desktop.hyprland.enable {
+    config = lib.mkIf (config.mySystem.desktop.choice == "hyprland") {
         nix.settings = {
             substituters = [ "https://hyprland.cachix.org" ];
             trusted-substituters = [ "https://hyprland.cachix.org" ];
