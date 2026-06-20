@@ -1,19 +1,14 @@
 {
     mySystem = {
-        theme.everforest.enable = true;
+        theme = "everforest";
+        desktop.choice = "niri";
         impermanence.enable = true;
         ZFS.enable = true;
-        desktop.gnome = {
-            enable = true;
-            dash-to-dock.enable = true;
-        };
         applications = {
+            file-manager.choice = "nautilus";
+            terminal.emulator = "foot";
             helix.enable = true;
-            terminal.ghostty.enable = true;
-            file-manager.nautilus.enable = true;
             swayidle.enable = false;
-            heroic.enable = false;
-            mathematica.enable = false;
             virt-manager.enable = false;
         };
     };
