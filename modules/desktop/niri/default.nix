@@ -2,17 +2,10 @@
 let
     playerctl = lib.getExe pkgs.playerctl;
     brightnessctl = lib.getExe pkgs.brightnessctl;
-
-    niri-optimized = pkgs.niri-unstable.overrideAttrs (oldAttrs: {
-        env = (oldAttrs.env or {}) // {
-            RUSTFLAGS = "${oldAttrs.env.RUSTFLAGS or ""} -C opt-level=3 -C target-cpu=native -C codegen-units=1 -C lto=thin";
-        };
-    });
 in
 {
     options.mySystem.desktop.niri = {
         enable = lib.mkEnableOption "Niri window manager";
-        unstable = lib.mkEnableOption "Use the latest version of Niri";
     };
 
     imports = [ inputs.niri.nixosModules.niri ];
@@ -29,9 +22,7 @@ in
             nixpkgs.overlays = [ inputs.niri.overlays.niri ];
             programs.niri = {
                 enable = true;
-                package = if config.mySystem.desktop.niri.unstable
-                    then niri-optimized
-                    else pkgs.niri-stable;
+                package = pkgs.niri-stable;
             };
 
             services.displayManager.ly.enable = true;
