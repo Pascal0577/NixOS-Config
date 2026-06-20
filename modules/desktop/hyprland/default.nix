@@ -1,18 +1,10 @@
-{ inputs, pkgs, username, config, lib, ... }:
+{ pkgs, username, config, lib, ... }:
 let
     playerctl = lib.getExe pkgs.playerctl;
     brightnessctl = lib.getExe pkgs.brightnessctl;
 in
 {
-    imports = [ inputs.hyprland.nixosModules.default ];
-
     config = lib.mkIf (config.mySystem.desktop.choice == "hyprland") {
-        nix.settings = {
-            substituters = [ "https://hyprland.cachix.org" ];
-            trusted-substituters = [ "https://hyprland.cachix.org" ];
-            trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-        };
-
         environment = {
             sessionVariables = { NIXOS_OZONE_WL = "1"; };
             systemPackages = with pkgs; [

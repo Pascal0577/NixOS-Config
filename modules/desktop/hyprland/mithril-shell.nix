@@ -1,4 +1,4 @@
-{ pkgs, username, inputs, config, lib, ... }:
+{ username, inputs, config, lib, ... }:
 let
     hypr = config.mySystem.desktop.hyprland;
 in
