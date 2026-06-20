@@ -6,7 +6,7 @@
         impermanence.enable = true;
         server.enable = true;
 	    applications.helix.enable = true;
-	    theme.everforest.enable = true;
+	    theme = "everforest";
     };
 
     imports = [ inputs.website.nixosModules.webserver ];

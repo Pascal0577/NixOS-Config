@@ -2,12 +2,12 @@
 
 {
     mySystem = {
-        desktop.oxwm.enable = true;
-        theme.everforest.enable = true;
+        theme = "everforest";
+        desktop.choice = "oxwm";
         applications = {
-            terminal.alacritty.enable = true;
-            file-manager.yazi.enable = true;
-            launcher.dmenu.enable = true;
+            terminal.emulator = "foot";
+            file-manager.choice = "yazi";
+            launcher.choice = "dmenu";
             helix.enable = true;
             heroic.enable = false;
             mathematica.enable = false;

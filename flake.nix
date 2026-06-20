@@ -1,37 +1,26 @@
 {
-    outputs = { self, nixpkgs, nixos-raspberrypi, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-        mkSystem = { name, lib ? nixpkgs.lib, extraArgs ? {}, extraModules ? [] }: 
-            lib.nixosSystem {
+        mkSystem = { name }:
+            nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit inputs;
                     hostname = name;
                     username = "pascal";
-                } // extraArgs;
+                };
                 modules = [
                     home-manager.nixosModules.home-manager
                     (./systems + "/${name}/default.nix")
                     (./systems + "/${name}/hardware-configuration.nix")
                 ]
-                ++ nixpkgs.lib.filesystem.listFilesRecursive ./modules
-                ++ extraModules;
+                ++ nixpkgs.lib.filesystem.listFilesRecursive ./modules;
             };
     in
     {
-        nixosConfigurations = {
-            acer = mkSystem { name = "acer"; };
-            lenovo = mkSystem { name = "lenovo"; };
-            oracle = mkSystem { name = "oracle"; };
-            chronos = mkSystem { name = "chronos"; };
-
-            raspberry = mkSystem {
-                name = "raspberry";
-                lib = nixos-raspberrypi.lib;
-            };
-        };
-
-        packages.aarch64-linux.pi5-image =
-            self.nixosConfigurations.raspberry.config.system.build.sdImage;
+        nixosConfigurations = builtins.listToAttrs (map
+            (name: { inherit name; value = mkSystem { inherit name; }; })
+            [ "acer" "lenovo" "oracle" "chronos" ]
+        );
 
         # expose environment.systemPackages and custom packages as flake outputs
         packages.x86_64-linux =
@@ -52,16 +41,8 @@
         in named // customNamed;
     };
 
-    nixConfig = {
-        extra-substituters = [ "https://nixos-raspberrypi.cachix.org" ];
-        extra-trusted-public-keys = [ "nixos-raspberrypi.cachix.org-1:4iMO9LXa8BqhU+Rpg6LQKiGa2lsNh/j2oiYLNOQ5sPI=" ];
-    };
-
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-        nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
-        nixos-raspberrypi.inputs.nixpkgs.follows = "nixpkgs";
 
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -93,7 +74,6 @@
         vicinae.url = "github:vicinaehq/vicinae";
         vicinae-extensions.url = "github:vicinaehq/extensions";
         vicinae-extensions.inputs.nixpkgs.follows = "nixpkgs";
-    
 
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
         zen-browser.inputs.nixpkgs.follows = "nixpkgs";
