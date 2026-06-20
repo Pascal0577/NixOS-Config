@@ -4,8 +4,9 @@
         desktop.choice = "niri";
         impermanence.enable = true;
         ZFS.enable = true;
+        power-management.enable = false;
         applications = {
-            file-manager.choice = "nautilus";
+            file-manager.choice = "yazi";
             terminal.emulator = "foot";
             helix.enable = true;
             swayidle.enable = false;
