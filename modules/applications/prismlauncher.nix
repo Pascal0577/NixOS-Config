@@ -8,7 +8,9 @@ in
         // { default = !config.mySystem.server.enable; };
 
     config = lib.mkIf config.mySystem.applications.prismlauncher.enable {
-        environment.systemPackages = [ pkgs.prismlauncher ];
+        environment.systemPackages = [
+            (pkgs.prismlauncher.override { jdks = [ pkgs.jdk21 ]; })
+        ];
         networking.firewall.allowedTCPPorts = [ 25565 ];
         home-manager.users.${username} = {
             home.file.".local/share/PrismLauncher/themes/Stylix/theme.json".text = builtins.toJSON {
