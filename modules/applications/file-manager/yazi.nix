@@ -30,10 +30,7 @@ let
     '';
 in
 {
-    options.mySystem.applications.file-manager.yazi.enable =
-        lib.mkEnableOption "Enable my Yazi module";
-
-    config = lib.mkIf config.mySystem.applications.file-manager.yazi.enable {
+    config = lib.mkIf (config.mySystem.applications.file-manager.choice == "yazi") {
         programs.yazi.enable = true;
 
         xdg.portal = {

@@ -1,10 +1,7 @@
 { pkgs, username, lib, config, ... }:
 
 {
-    options.mySystem.applications.file-manager.nautilus.enable =
-        lib.mkEnableOption "Nautilus File Manager module";
-
-    config = lib.mkIf config.mySystem.applications.file-manager.nautilus.enable {
+    config = lib.mkIf (config.mySystem.applications.file-manager.choice == "nautilus") {
         environment.systemPackages = with pkgs; [ 
             nautilus
             ffmpegthumbnailer

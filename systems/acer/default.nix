@@ -1,6 +1,6 @@
 {
     imports = [ ./nvidia.nix ];
-    
+
     mySystem = {
         theme = "everforest";
         impermanence.enable = true;
@@ -11,7 +11,7 @@
             helix.enable = true;
             launcher.choice = "vicinae";
             terminal.emulator = "foot";
-            file-manager.nautilus.enable = true;
+            file-manager.choice = "nautilus";
         };
     };
 }
