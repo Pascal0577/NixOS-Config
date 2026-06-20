@@ -33,7 +33,7 @@
         packages.aarch64-linux.pi5-image =
             self.nixosConfigurations.raspberry.config.system.build.sdImage;
 
-        # expose environment.systemPackages as flake outputs
+        # expose environment.systemPackages and custom packages as flake outputs
         packages.x86_64-linux =
         let
             sysPkgs = self.nixosConfigurations.acer.config.environment.systemPackages;
@@ -41,7 +41,15 @@
               name = p.pname or p.name;
               value = p;
             }) sysPkgs);
-        in named;
+
+            customPkgs = map (x: nixpkgs.legacyPackages.x86_64-linux.callPackage x {}) (
+                nixpkgs.lib.filesystem.listFilesRecursive ./packages
+            );
+            customNamed = builtins.listToAttrs (map (p: {
+              name = p.pname or p.name;
+              value = p;
+            }) customPkgs);
+        in named // customNamed;
     };
 
     nixConfig = {
