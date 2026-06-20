@@ -21,7 +21,7 @@
         environment.persistence."/nix/persist" = {
             enable = true;
             hideMounts = true;
-            files = [ "/etc/machine-id" "/etc/passwd" ];
+            files = [ "/etc/machine-id" ];
             directories = [
                 "/var/lib/nixos"
                 "/var/lib/systemd"
