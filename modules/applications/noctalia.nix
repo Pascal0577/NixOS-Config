@@ -6,7 +6,7 @@
         // { default = config.mySystem.desktop.niri.enable; };
 
     config = lib.mkIf config.mySystem.applications.noctalia.enable {
-        mySystem.application.launcher.command = lib.mkDefault "noctalia-shell ipc call launcher toggle";
+        mySystem.applications.launcher.command = lib.mkDefault "noctalia-shell ipc call launcher toggle";
 
         nix.settings = {
             extra-substituters = [ "https://noctalia.cachix.org" ];
