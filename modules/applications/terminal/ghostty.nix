@@ -1,12 +1,8 @@
-{ pkgs, username, lib, config, ... }:
+{ username, lib, config, ... }:
 
 {
-    options.mySystem.applications.terminal.ghostty.enable =
-        lib.mkEnableOption "Ghostty terminal module";
-
-    config = lib.mkIf config.mySystem.applications.terminal.ghostty.enable {
+    config = lib.mkIf (config.mySystem.applications.terminal.emulator == "ghostty") {
         mySystem.applications.terminal = {
-            package = pkgs.ghostty;
             runCommand = "ghostty -e";
             openWindow = "ghostty +new-window";
         };

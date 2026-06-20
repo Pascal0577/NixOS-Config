@@ -13,7 +13,7 @@
             obs.nvidia = true;
             helix.enable = true;
             launcher.vicinae.enable = true;
-            terminal.foot.enable = true;
+            terminal.emulator = "foot";
             file-manager.nautilus.enable = true;
         };
     };

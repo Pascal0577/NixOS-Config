@@ -1,12 +1,8 @@
-{ config, lib, pkgs, username, ... }:
+{ config, lib, username, ... }:
 
 {
-    options.mySystem.applications.terminal.kitty.enable =
-        lib.mkEnableOption "Kitty terminal module";
-
-    config = lib.mkIf config.mySystem.applications.terminal.kitty.enable {
+    config = lib.mkIf (config.mySystem.applications.terminal.emulator == "kitty") {
         mySystem.applications.terminal = {
-            package = pkgs.kitty;
             openWindow = "kitty";
             runCommand = "kitty -e";
         };

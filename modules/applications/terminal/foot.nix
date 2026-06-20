@@ -1,14 +1,8 @@
 { pkgs, config, lib, username, ... }:
 
 {
-    options.mySystem.applications.terminal.foot.enable =
-        lib.mkEnableOption "Foot terminal module";
-
-    config = lib.mkIf config.mySystem.applications.terminal.foot.enable {
-        mySystem.applications.terminal = {
-            package = pkgs.foot;
-            openWindow = "${lib.getExe pkgs.foot}";
-        };
+    config = lib.mkIf (config.mySystem.applications.terminal.emulator == "foot") {
+        mySystem.applications.terminal.openWindow = "${lib.getExe pkgs.foot}";
 
         xdg.mime.defaultApplications = {
             "x-scheme-handler/terminal" = "foot.desktop";

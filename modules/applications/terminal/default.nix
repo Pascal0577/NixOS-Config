@@ -1,11 +1,10 @@
-{ pkgs, lib, config, ... }:
+{ lib, config, ... }:
 
 {
     options.mySystem.applications.terminal = {
-        package = lib.mkOption {
-            type = lib.types.package;
-            default = pkgs.ghostty;
-            description = "Terminal package";
+        emulator = lib.mkOption {
+            type = lib.types.enum [ "foot"  "ghostty" "kitty" ];
+            default = "foot";
         };
 
         openWindow = lib.mkOption {
