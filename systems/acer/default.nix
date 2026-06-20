@@ -2,7 +2,7 @@
     imports = [ ./nvidia.nix ];
     
     mySystem = {
-        theme.everforest.enable = true;
+        theme = "everforest";
         impermanence.enable = true;
         ZFS.enable = true;
         desktop.niri = {

@@ -5,16 +5,10 @@ let
     hue = config.lib.stylix.colors;
 in
 {
-    options.mySystem.theme.everforest.enable = lib.mkEnableOption "everforest theme";
-
-    config = lib.mkIf config.mySystem.theme.everforest.enable {
+    config = lib.mkIf (config.mySystem.theme == "everforest") {
         stylix = {
             base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
             image = ../../assets/flowers.png;
-            opacity.terminal = 1.0;
-            opacity.popups = 1.0;
-            opacity.desktop = 1.0;
-            opacity.applications = 1.0;
         };
 
         home-manager.users.${username} = lib.mkMerge [

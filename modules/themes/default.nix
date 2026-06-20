@@ -3,6 +3,11 @@ let
     inherit (lib) mkDefault mkForce mkIf;
 in
 {
+    options.mySystem.theme = lib.mkOption {
+        type = lib.types.enum [ "nord" "everforest" ];
+        default = "everforest";
+    };
+
     imports = [ inputs.stylix.nixosModules.stylix ];
 
     config = lib.mkMerge [

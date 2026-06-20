@@ -3,9 +3,7 @@ let
     nvim = config.mySystem.applications.neovim;
 in
 {
-    options.mySystem.theme.nord.enable = lib.mkEnableOption "Nord theme";
-
-    config = lib.mkIf config.mySystem.theme.nord.enable {
+    config = lib.mkIf (config.mySystem.theme == "nord") {
         stylix = {
             base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
             image = ../../assets/nord-arctic-fox.png;
