@@ -3,7 +3,8 @@
 {
     options.mySystem.applications.launcher = {
         choice = lib.mkOption {
-            type = lib.types.enum [ "vicinae" "fuzzel" "dmenu" ];
+            type = lib.types.enum [ "vicinae" "fuzzel" "dmenu" "none" ];
+            default = "none";
         };
 
         command = lib.mkOption {
