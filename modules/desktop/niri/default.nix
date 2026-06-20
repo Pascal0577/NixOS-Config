@@ -14,7 +14,7 @@ in
             };
         }
 
-        (lib.mkIf (config.mySystem.desktop == "niri") {
+        (lib.mkIf (config.mySystem.desktop.choice == "niri") {
             programs.niri.enable = true;
 
             services.displayManager.ly.enable = true;

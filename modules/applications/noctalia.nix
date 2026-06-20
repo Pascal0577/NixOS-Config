@@ -3,7 +3,7 @@
 {
     options.mySystem.applications.noctalia.enable =
         lib.mkEnableOption "Noctalia Shell module"
-        // { default = config.mySystem.desktop.niri.enable; };
+        // { default = (config.mySystem.desktop.choice == "niri"); };
 
     config = lib.mkIf config.mySystem.applications.noctalia.enable {
         mySystem.applications.launcher.command = lib.mkDefault "noctalia-shell ipc call launcher toggle";

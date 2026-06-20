@@ -1,7 +1,6 @@
 { pkgs, username, lib, config, ... }:
 let
     nvim = config.mySystem.applications.neovim;
-    niri = config.mySystem.desktop.niri;
     hue = config.lib.stylix.colors;
 in
 {
@@ -33,7 +32,7 @@ in
                 };
             })
 
-            (lib.mkIf niri.enable {
+            (lib.mkIf (config.mySystem.desktop.choice == "niri") {
                 programs.niri.settings.layout.border.active.color = "#${hue.base09-hex}";
             })
         ];

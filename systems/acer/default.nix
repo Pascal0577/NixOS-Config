@@ -5,7 +5,7 @@
         theme = "everforest";
         impermanence.enable = true;
         ZFS.enable = true;
-        desktop = "niri";
+        desktop.choice = "niri";
         applications = {
             obs.nvidia = true;
             helix.enable = true;
