@@ -19,7 +19,8 @@ let
     };
 in
 {
-    config = lib.mkIf config.mySystem.power-management.enable {
+    options.mySystem.applications.tuned.enable = lib.mkEnableOption "tuned";
+    config = lib.mkIf config.mySystem.applications.tuned.enable {
         services.tuned.enable = true;
         systemd.services.tuned.serviceConfig = common // {
             SystemCallFilter = [

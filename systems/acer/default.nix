@@ -2,16 +2,18 @@
     imports = [ ./nvidia.nix ];
 
     mySystem = {
+        desktop.choice = "niri";
         theme = "everforest";
         impermanence.enable = true;
         ZFS.enable = true;
-        desktop.choice = "niri";
+        power-management.enable = false;
         applications = {
-            obs.nvidia = true;
-            helix.enable = true;
             launcher.choice = "vicinae";
             terminal.emulator = "foot";
             file-manager.choice = "nautilus";
+            obs.nvidia = true;
+            helix.enable = true;
+            tuned.enable = true;
         };
     };
 }
