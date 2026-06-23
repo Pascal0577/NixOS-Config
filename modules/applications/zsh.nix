@@ -36,7 +36,7 @@
                     enable = true;
                     history = {
                         size = 100000;
-                        save = 1000;
+                        save = 100000;
                         path = "/home/${username}/.local/share/zsh/history";
                         share = true;
                         ignoreSpace = true;
