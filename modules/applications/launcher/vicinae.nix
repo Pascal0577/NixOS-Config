@@ -23,7 +23,7 @@ in
 
                 stylix.targets.vicinae.enable = true;
 
-                programs.vicinae = {
+                services.vicinae = {
                     enable = true;
                     package = inputs.vicinae.packages.${hostSystem}.default;
                     systemd = {
