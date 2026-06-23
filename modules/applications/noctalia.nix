@@ -1,4 +1,4 @@
-{ inputs, username, config, lib, pkgs, ... }:
+{ inputs, username, config, lib, ... }:
 
 {
     options.mySystem.applications.noctalia.enable =
@@ -7,22 +7,12 @@
 
     config = lib.mkIf config.mySystem.applications.noctalia.enable {
         mySystem.applications.launcher.command = lib.mkDefault "noctalia-shell ipc call launcher toggle";
+        mySystem.applications.tuned.enable = lib.mkDefault true;
 
         nix.settings = {
             extra-substituters = [ "https://noctalia.cachix.org" ];
             extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
         };
-
-        services.upower.enable = true;
-
-        # Try to set icon theme
-        environment.sessionVariables = {
-            QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3";
-        };
-
-        environment.systemPackages = [
-            inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-        ];
 
         home-manager.users.${username} = {
             imports = [ inputs.noctalia.homeModules.default ];

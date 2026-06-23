@@ -13,7 +13,6 @@
             file-manager.choice = "nautilus";
             obs.nvidia = true;
             helix.enable = true;
-            tuned.enable = true;
         };
     };
 }
