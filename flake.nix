@@ -22,15 +22,9 @@
             [ "acer" "lenovo" "oracle" "chronos" ]
         );
 
-        # expose environment.systemPackages and custom packages as flake outputs
+        # expose custom packages as flake outputs
         packages.x86_64-linux =
         let
-            sysPkgs = self.nixosConfigurations.acer.config.environment.systemPackages;
-            named = builtins.listToAttrs (map (p: {
-              name = p.pname or p.name;
-              value = p;
-            }) sysPkgs);
-
             customPkgs = map (x: nixpkgs.legacyPackages.x86_64-linux.callPackage x {}) (
                 nixpkgs.lib.filesystem.listFilesRecursive ./packages
             );
@@ -38,7 +32,7 @@
               name = p.pname or p.name;
               value = p;
             }) customPkgs);
-        in named // customNamed;
+        in customNamed;
     };
 
     inputs = {
