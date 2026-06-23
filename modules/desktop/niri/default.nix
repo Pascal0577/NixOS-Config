@@ -15,7 +15,10 @@ in
         }
 
         (lib.mkIf (config.mySystem.desktop.choice == "niri") {
-            programs.niri.enable = true;
+            programs.niri = {
+                enable = true;
+                package = pkgs.niri;
+            };
 
             services.displayManager.ly.enable = true;
             environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
