@@ -1,7 +1,7 @@
 { username, lib, config, ... }:
 
 {
-    config = lib.mkIf (config.mySystem.applications.terminal.emulator == "ghostty") {
+    config = lib.mkIf (config.mySystem.applications.terminal.choice == "ghostty") {
         mySystem.applications.terminal = {
             runCommand = "ghostty -e";
             openWindow = "ghostty +new-window";

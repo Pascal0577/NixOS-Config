@@ -5,7 +5,7 @@
         theme = "everforest";
         desktop.choice = "oxwm";
         applications = {
-            terminal.emulator = "foot";
+            terminal.choice = "foot";
             file-manager.choice = "yazi";
             launcher.choice = "dmenu";
             helix.enable = true;

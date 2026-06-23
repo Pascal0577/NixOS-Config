@@ -2,9 +2,9 @@
 
 {
     options.mySystem.applications.terminal = {
-        emulator = lib.mkOption {
-            type = lib.types.enum [ "foot"  "ghostty" "kitty" ];
-            default = "foot";
+        choice = lib.mkOption {
+            type = lib.types.enum [ "foot"  "ghostty" "kitty" "none" ];
+            default = "none";
         };
 
         openWindow = lib.mkOption {

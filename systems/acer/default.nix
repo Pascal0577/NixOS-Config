@@ -9,7 +9,7 @@
         power-management.enable = false;
         applications = {
             launcher.choice = "vicinae";
-            terminal.emulator = "foot";
+            terminal.choice = "foot";
             file-manager.choice = "nautilus";
             obs.nvidia = true;
             helix.enable = true;

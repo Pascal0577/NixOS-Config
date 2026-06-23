@@ -1,7 +1,7 @@
 { config, lib, username, ... }:
 
 {
-    config = lib.mkIf (config.mySystem.applications.terminal.emulator == "kitty") {
+    config = lib.mkIf (config.mySystem.applications.terminal.choice == "kitty") {
         mySystem.applications.terminal = {
             openWindow = "kitty";
             runCommand = "kitty -e";

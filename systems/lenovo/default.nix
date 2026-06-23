@@ -7,7 +7,7 @@
         power-management.enable = false;
         applications = {
             file-manager.choice = "yazi";
-            terminal.emulator = "foot";
+            terminal.choice = "foot";
             helix.enable = true;
             swayidle.enable = false;
             virt-manager.enable = false;

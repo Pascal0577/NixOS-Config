@@ -1,7 +1,7 @@
 { pkgs, config, lib, username, ... }:
 
 {
-    config = lib.mkIf (config.mySystem.applications.terminal.emulator == "foot") {
+    config = lib.mkIf (config.mySystem.applications.terminal.choice == "foot") {
         mySystem.applications.terminal.openWindow = "${lib.getExe pkgs.foot}";
 
         xdg.mime.defaultApplications = {
