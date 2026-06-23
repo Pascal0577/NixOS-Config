@@ -19,6 +19,7 @@
             };
         };
 
+        fileSystems."/home".neededForBoot = config.mySystem.impermanence.enable;
         environment.persistence."/nix/persist".directories =
             lib.mkIf config.mySystem.impermanence.enable [
                 "/etc/ssh"
