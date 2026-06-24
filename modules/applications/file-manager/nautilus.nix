@@ -9,8 +9,16 @@
             cabextract
         ];
 
-        programs.nautilus-open-any-terminal.enable = true;
         services.gvfs.enable = true;
+
+        programs.nautilus-open-any-terminal = {
+            enable = true;
+            terminal = config.mySystem.applications.terminal.choice;
+        };
+
+        xdg.mime.defaultApplications = {
+            "inode/directory" = "org.gnome.Nautilus.desktop";
+        };
 
         home-manager.users.${username} = {
             dconf.settings."org/gnome/nautilus/preferences" = {
