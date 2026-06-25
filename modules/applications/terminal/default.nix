@@ -25,11 +25,13 @@
         };
     };
 
-    config = lib.mkIf (config.mySystem.applications.terminal.choice != "none") {
-        xdg.mime.defaultApplications."x-scheme-handler/terminal" = "footclient.desktop";
+    config = let
+        desktopFile = config.mySystem.applications.terminal.desktopFile;
+    in lib.mkIf (config.mySystem.applications.terminal.choice != "none") {
+        xdg.mime.defaultApplications."x-scheme-handler/terminal" = desktopFile;
         xdg.terminal-exec = {
             enable = true;
-            settings.default = [ config.mySystem.applications.terminal.desktopFile ];
+            settings.default = [ desktopFile ];
         };
     };
 }
