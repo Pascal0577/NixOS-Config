@@ -14,6 +14,9 @@
             extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
         };
 
+        # to set icon theme
+        environment.sessionVariables.QT_QPA_PLATFORMTHEME = "gtk3";
+
         home-manager.users.${username} = {
             imports = [ inputs.noctalia.homeModules.default ];
 
