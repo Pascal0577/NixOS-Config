@@ -2,10 +2,7 @@
 
 {
     config = lib.mkIf (config.mySystem.applications.terminal.choice == "ghostty") {
-        mySystem.applications.terminal = {
-            runCommand = "ghostty -e";
-            openWindow = "ghostty +new-window";
-        };
+        mySystem.applications.terminal.openWindow = "ghostty +new-window";
 
         home-manager.users.${username} = {
             stylix.targets.ghostty.enable = true;

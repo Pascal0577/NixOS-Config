@@ -4,10 +4,6 @@
     config = lib.mkIf (config.mySystem.applications.terminal.choice == "foot") {
         mySystem.applications.terminal.openWindow = "${lib.getExe pkgs.foot}";
 
-        xdg.mime.defaultApplications = {
-            "x-scheme-handler/terminal" = "foot.desktop";
-        };
-
         home-manager.users.${username} = {
             stylix.targets.foot.enable = true;
             programs.foot = {
