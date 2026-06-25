@@ -33,6 +33,8 @@ in
     config = lib.mkIf (config.mySystem.applications.file-manager.choice == "yazi") {
         programs.yazi.enable = true;
 
+        xdg.mime.defaultApplications."inode/directory" = "yazi.desktop";
+
         xdg.portal = {
             enable = true;
             extraPortals = with pkgs; [
