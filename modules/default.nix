@@ -9,6 +9,7 @@
     config = {
         nixpkgs.config.allowUnfree = true;
         system.stateVersion = "26.05";
+        system.tools.nixos-rebuild.enableRun0Elevation = true;
         boot.enableContainers = true;
 
         nix.settings = {
