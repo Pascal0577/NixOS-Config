@@ -105,20 +105,6 @@
                         mountpoint = "/home";
                         options."com.sun:auto-snapshot" = "true";
                     };
-                    "local/vms" = {
-                        type = "zfs_fs";
-                        mountpoint = "/home/${username}/Machines";
-                        options = {
-                            # optimize for big files
-                            recordsize = "1M";
-                            primarycache = "metadata";
-                            logbias = "throughput";
-                            secondarycache = "none";
-                            sync = "disabled";
-                            redundant_metadata = "most";
-                            "com.sun:auto-snapshot" = "false";
-                        };
-                    };
                     "local/nix" = {
                         type = "zfs_fs";
                         mountpoint = "/nix";
