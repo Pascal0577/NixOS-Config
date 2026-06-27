@@ -24,17 +24,19 @@
             [ "acer" "lenovo" "oracle" "chronos" ]
         );
 
-        # expose custom packages as flake outputs
-        packages.x86_64-linux =
-        let
-            customPkgs = map (x: nixpkgs.legacyPackages.x86_64-linux.callPackage x {}) (builtins.filter
-                (f: nixpkgs.lib.hasSuffix ".nix" f) (nixpkgs.lib.filesystem.listFilesRecursive ./packages)
-            );
-            customNamed = builtins.listToAttrs (map (p: {
-              name = p.pname or p.name;
-              value = p;
+        # expose custom packages as flake outputs for all supported archs
+        packages = let
+            systems = [ "x86_64-linux" "aarch64-linux" ];
+            mkPackages = system: let
+                pkgs = nixpkgs.legacyPackages.${system};
+                files = nixpkgs.lib.filesystem.listFilesRecursive ./packages;
+                nixFiles = builtins.filter (nixpkgs.lib.hasSuffix ".nix") files;
+                customPkgs = map (p: pkgs.callPackage p { }) nixFiles;
+            in builtins.listToAttrs (map (p: {
+                name = p.pname or p.name;
+                value = p;
             }) customPkgs);
-        in customNamed;
+        in nixpkgs.lib.genAttrs systems mkPackages;
     };
 
     inputs = {
