@@ -8,7 +8,11 @@
             |> builtins.filter (lib.hasSuffix ".nix");
 
         mkSystem = hostname: lib.nixosSystem {
-            specialArgs = { inherit inputs self hostname; username = "pascal"; };
+            specialArgs = {
+                inherit inputs self hostname;
+                hardening = import ./lib/hardened-service.nix { inherit lib; };
+                username = "pascal";
+            };
             modules = [
                 home-manager.nixosModules.home-manager
                 ./systems/${hostname}/default.nix
