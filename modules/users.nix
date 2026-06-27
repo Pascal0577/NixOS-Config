@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, ... }:
+{ self, inputs, pkgs, username, ... }:
 
 {
     users.users.${username} = {
@@ -9,6 +9,7 @@
         packages = with pkgs; [
             home-manager
             nh
+            self.packages.${pkgs.stdenv.hostPlatform.system}.renameat2
         ];
     };
 

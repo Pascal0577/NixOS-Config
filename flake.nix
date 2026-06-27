@@ -4,7 +4,7 @@
         mkSystem = { name }:
             nixpkgs.lib.nixosSystem {
                 specialArgs = {
-                    inherit inputs;
+                    inherit inputs self;
                     hostname = name;
                     username = "pascal";
                 };

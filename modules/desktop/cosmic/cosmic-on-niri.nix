@@ -1,4 +1,4 @@
-{ lib, config, pkgs, username, ... }: 
+{ self, lib, config, pkgs, username, ... }: 
 let
     cosmicCfg = config.mySystem.desktop.cosmic;
     cosmicChoice = (config.mySystem.desktop.choice == "cosmic");
@@ -9,7 +9,7 @@ in
     config = lib.mkIf (cosmicCfg.cosmicOnNiri && cosmicChoice ) {
         environment = {
             systemPackages = [
-                (pkgs.callPackage ../../../../packages/cosmic-ext-niri/default.nix {})
+                self.packages.${pkgs.stdenv.hostPlatform.system}.cosmix-ext-niri
                 pkgs.adw-gtk3
             ];
             pathsToLink = [ "/share/wayland-sessions" ];
