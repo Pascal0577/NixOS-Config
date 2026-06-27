@@ -27,7 +27,7 @@
         };
 
         home-manager.users.${username} = {
-            home.file.".cache/p10k.zsh".source = ../../assets/.p10k.zsh;
+            home.file.".cache/p10k.zsh".source = ./.p10k.zsh;
             programs = {
                 fzf.enableZshIntegration = true;
                 eza.enableZshIntegration = true;

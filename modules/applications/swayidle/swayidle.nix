@@ -3,7 +3,7 @@ let
     dim-screen = pkgs.writeShellApplication {
         name = "dim-screen";
         runtimeInputs = [ pkgs.brightnessctl pkgs.bc pkgs.coreutils ];
-        text = builtins.readFile ../../assets/dim-screen-smooth.sh;
+        text = builtins.readFile ./dim-screen-smooth.sh;
     };
 in
 {
