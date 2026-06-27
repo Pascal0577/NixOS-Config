@@ -252,6 +252,10 @@ in
                             ];
                             open-floating = true;
                         }
+                        {
+                            matches = [{ app-id = "^${config.mySystem.applications.terminal.choice}$"; }];
+                            background-effect = { blur = true; };
+                        }
                     ];
 
                     switch-events = lib.mkIf config.mySystem.applications.noctalia.enable {

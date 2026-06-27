@@ -58,7 +58,7 @@
 
         website.url = "github:Pascal0577/website";
 
-        niri.url = "github:sodiboo/niri-flake";
+        niri.url = "github:sodiboo/niri-flake/refs/pull/1731/head";
         niri.inputs.nixpkgs.follows = "nixpkgs";
         
         noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
