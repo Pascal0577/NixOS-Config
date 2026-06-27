@@ -1,3 +1,5 @@
 { hardening, ... }:  {
-    systemd.services.acpid.serviceConfig = hardening.mkService {};
+    systemd.services.acpid.serviceConfig = hardening.mkService {
+        PrivateNetwork = true;
+    };
 }
