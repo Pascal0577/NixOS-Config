@@ -1,41 +1,15 @@
-{ lib, config, ... }:
-let
-    common = {
-        NoNewPrivileges = true;
-        ProtectHome = true;
-        ProtectHostname = true;
-        ProtectKernelLogs = true;
-        ProtectClock = true;
-        RestrictSUIDSGID = true;
-        RestrictRealtime = true;
-        LockPersonality = true;
-        MemoryDenyWriteExecute = true;
-        SystemCallArchitectures = "native";
-        PrivateDevices = true;
-        RestrictNamespaces = true;
-        PrivateTmp = true;
-        IPAddressDeny = [ "0.0.0.0/0" "::/0" ];
-        UMask = "0077";
-    };
-in
+{ lib, config, hardening, ... }:
+
 {
     options.mySystem.applications.tuned.enable = lib.mkEnableOption "tuned";
     config = lib.mkIf config.mySystem.applications.tuned.enable {
         services.tuned.enable = true;
-        systemd.services.tuned.serviceConfig = common // {
-            SystemCallFilter = [
-                "~@cpu-emulation"
-                "~@debug"
-                "~@keyring"
-                "~@mount"
-                "~@obsolete"
-                "~@reboot"
-                "~@swap"
-            ];
-            RestrictAddressFamilies = [
-                "AF_UNIX"
-                "AF_NETLINK"
-            ];
+        systemd.services.tuned.serviceConfig = hardening.mkService {
+            ProtectKernelTunables = false;
+            ProtectKernelModules = false;
+            PrivateNetwork = true;
+            ReadWritePaths = [ /var/log/tuned ];
+            UMask = "0077";
             CapabilityBoundingSet = [
                 "CAP_SYS_ADMIN"
                 "CAP_SYS_NICE"
@@ -43,15 +17,15 @@ in
                 "CAP_DAC_OVERRIDE"
                 "CAP_SYS_MODULE"
             ];
+            SystemCallFilter = [ "~@cpu-emulation" ];
+            RestrictAddressFamilies = [ "AF_UNIX" "AF_NETLINK" ];
         };
 
-        systemd.services.tuned-ppd.serviceConfig = common // {
-            ProtectKernelTunables = true;
-            ProtectKernelModules = true;
-            ProtectControlGroups = true;
-            ProtectSystem = "strict";
+        systemd.services.tuned-ppd.serviceConfig = hardening.mkService {
+            ProtectProc = "default";
+            PrivateNetwork = true;
             ReadWritePaths = [ /var/log/tuned ];
-            ProtectProc = "invisible";
+            UMask = "0077";
             SystemCallFilter = [
                 "~@cpu-emulation"
                 "~@debug"
@@ -65,7 +39,6 @@ in
                 "~@clock"
             ];
             RestrictAddressFamilies = [ "AF_UNIX" ];
-            CapabilityBoundingSet = "";
         };
     };
 }

@@ -30,6 +30,7 @@ let
           "~@debug"
           "~@reboot"
           "~@mount"
+          "~@keyring"
         ];
 
         CapabilityBoundingSet = [ ];
