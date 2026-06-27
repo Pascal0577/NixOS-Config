@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, hardening, ... }:
 
 {
     hardware.bluetooth = {
@@ -12,28 +12,7 @@
         };
     };
 
-    systemd.services.bluetooth.serviceConfig = {
-        ProtectKernelLogs = true;
-        ProtectHostname = true;
-        ProtectControlGroups = true;
-        ProtectProc = "invisible";
-        RestrictSUIDSGID = true;
-        RestrictRealtime = true;
-        LockPersonality = true;
-        MemoryDenyWriteExecute = true;
-        SystemCallFilter = [
-            "~@obsolete"
-            "~@cpu-emulation"
-            "~@swap"
-            "~@reboot"
-            "~@mount"
-        ];
-        SystemCallArchitectures = "native";
-
-        PrivateTmp = true;
-        ProtectSystem = "strict";
-        ProtectHome = true;
-        NoNewPrivileges = true;
+    systemd.services.bluetooth.serviceConfig = hardening.mkService {
         RestrictAddressFamilies = [ "AF_UNIX" "AF_BLUETOOTH" ];
     };
 }

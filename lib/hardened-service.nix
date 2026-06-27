@@ -8,8 +8,8 @@ let
         ProtectHome = mkDefault true;
         ProtectClock = true;
         ProtectHostname = true;
-        ProtectKernelTunables = true;
-        ProtectKernelModules = true;
+        ProtectKernelTunables = mkDefault true;
+        ProtectKernelModules = mkDefault true;
         ProtectKernelLogs = true;
         ProtectControlGroups = mkDefault "strict";
         ProtectProc = mkDefault "invisible";
