@@ -27,8 +27,8 @@
         # expose custom packages as flake outputs
         packages.x86_64-linux =
         let
-            customPkgs = map (x: nixpkgs.legacyPackages.x86_64-linux.callPackage x {}) (
-                nixpkgs.lib.filesystem.listFilesRecursive ./packages
+            customPkgs = map (x: nixpkgs.legacyPackages.x86_64-linux.callPackage x {}) (builtins.filter
+                (f: nixpkgs.lib.hasSuffix ".nix" f) (nixpkgs.lib.filesystem.listFilesRecursive ./packages)
             );
             customNamed = builtins.listToAttrs (map (p: {
               name = p.pname or p.name;
