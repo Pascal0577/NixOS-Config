@@ -3,7 +3,7 @@
 
     mySystem = {
         desktop.choice = "niri";
-        theme = "everforest";
+        theme = "gruvbox";
         impermanence.enable = true;
         ZFS.enable = true;
         power-management.enable = false;
