@@ -57,8 +57,6 @@
         noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
         noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
-        mithril-shell.url = "github:andreashgk/mithril-shell";
-
         oxwm.url = "github:tonybanters/oxwm";
         oxwm.inputs.nixpkgs.follows = "nixpkgs";
 
