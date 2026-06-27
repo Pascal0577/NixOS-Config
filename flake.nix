@@ -13,7 +13,9 @@
                     (./systems + "/${name}/default.nix")
                     (./systems + "/${name}/hardware-configuration.nix")
                 ]
-                ++ nixpkgs.lib.filesystem.listFilesRecursive ./modules;
+                ++ (builtins.filter (f: nixpkgs.lib.hasSuffix ".nix" f)
+                    (nixpkgs.lib.filesystem.listFilesRecursive ./modules)
+                );
             };
     in
     {
