@@ -1,20 +1,10 @@
+{ hardening, ... }:
+
 {
     services.dbus.implementation = "broker";
-    systemd.services.dbus-broker.serviceConfig = {
-        NoNewPrivileges = true;
-        ProtectClock = true;
-        ProtectKernelLogs = true;
-        ProtectKernelModules = true;
-        ProtectKernelTunables = true;
-        ProtectControlGroups = true;
-        ProtectHostname = true;
-        ProtectProc = "invisible";
-        RestrictNamespaces = true;
-        RestrictSUIDSGID = true;
-        RestrictRealtime = true;
-        LockPersonality = true;
-        MemoryDenyWriteExecute = true;
-        SystemCallArchitectures = "native";
+    systemd.services.dbus-broker.serviceConfig = hardening.mkService {
+        PrivateNetwork = true;
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_NETLINK" ];
         SystemCallFilter = [
             "~@clock"
             "~@cpu-emulation"
@@ -27,10 +17,6 @@
             "~@resources"
             "~@swap"
         ];
-        RestrictAddressFamilies = [
-            "AF_UNIX"
-            "AF_NETLINK"
-        ];
         CapabilityBoundingSet = [
             "CAP_SETUID"
             "CAP_SETGID"
@@ -38,7 +24,5 @@
             "CAP_AUDIT_WRITE"
             "CAP_DAC_OVERRIDE"
         ];
-        IPAddressDeny = [ "0.0.0.0/0" "::/0" ];
-        UMask = "0077";
     };
 }

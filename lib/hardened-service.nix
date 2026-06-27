@@ -21,6 +21,7 @@ let
         MemoryDenyWriteExecute = true;
         LockPersonality = true;
         SystemCallArchitectures = "native";
+        UMask = mkDefault 0077;
         SystemCallFilter = [
           "~@cpu-emulation"
           "~@obsolete"
