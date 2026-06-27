@@ -16,8 +16,7 @@
             
             programs.zen-browser = {
                 enable = true;
-                policies =
-                let
+                policies = let
                     mkLockedAttrs = builtins.mapAttrs (_: value: {
                         Value = value;
                         Status = "locked";
