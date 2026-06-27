@@ -1,42 +1,33 @@
 {
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-        mkSystem = { name }:
-            nixpkgs.lib.nixosSystem {
-                specialArgs = {
-                    inherit inputs self;
-                    hostname = name;
-                    username = "pascal";
-                };
-                modules = [
-                    home-manager.nixosModules.home-manager
-                    (./systems + "/${name}/default.nix")
-                    (./systems + "/${name}/hardware-configuration.nix")
-                ]
-                ++ (builtins.filter (f: nixpkgs.lib.hasSuffix ".nix" f)
-                    (nixpkgs.lib.filesystem.listFilesRecursive ./modules)
-                );
-            };
+        lib = nixpkgs.lib;
+
+        sharedModules = ./modules
+            |> lib.filesystem.listFilesRecursive
+            |> builtins.filter (lib.hasSuffix ".nix");
+
+        mkSystem = hostname: lib.nixosSystem {
+            specialArgs = { inherit inputs self hostname; username = "pascal"; };
+            modules = [
+                home-manager.nixosModules.home-manager
+                ./systems/${hostname}/default.nix
+                ./systems/${hostname}/hardware-configuration.nix
+            ] ++ sharedModules;
+        };
     in
     {
-        nixosConfigurations = builtins.listToAttrs (map
-            (name: { inherit name; value = mkSystem { inherit name; }; })
-            [ "acer" "lenovo" "oracle" "chronos" ]
-        );
+        nixosConfigurations = lib.genAttrs [ "acer" "lenovo" "oracle" "chronos" ] mkSystem;
 
         # expose custom packages as flake outputs for all supported archs
         packages = let
             systems = [ "x86_64-linux" "aarch64-linux" ];
-            mkPackages = system: let
-                pkgs = nixpkgs.legacyPackages.${system};
-                files = nixpkgs.lib.filesystem.listFilesRecursive ./packages;
-                nixFiles = builtins.filter (nixpkgs.lib.hasSuffix ".nix") files;
-                customPkgs = map (p: pkgs.callPackage p { }) nixFiles;
-            in builtins.listToAttrs (map (p: {
-                name = p.pname or p.name;
-                value = p;
-            }) customPkgs);
-        in nixpkgs.lib.genAttrs systems mkPackages;
+            mkPackages = system: lib.filesystem.listFilesRecursive ./packages
+                |> lib.filter (lib.hasSuffix ".nix")
+                |> map (p: nixpkgs.legacyPackages.${system}.callPackage p {})
+                |> map (p: { name = p.pname or p.name; value = p; })
+                |> lib.listToAttrs;
+        in lib.genAttrs systems mkPackages;
     };
 
     inputs = {

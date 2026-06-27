@@ -3,18 +3,18 @@ let
     boot = config.mySystem.boot;
     zfs = config.mySystem.ZFS;
 
-    zfsCompatibleKernelPackages = lib.filterAttrs (
-        name: kernelPackages:
+    kernelAttrs = config.boot.zfs.package.kernelModuleAttribute;
+
+    zfsCompatibleKernelPackages = lib.filterAttrs (name: kernelPackages:
         (builtins.match "linux_[0-9]+_[0-9]+" name) != null
         && (builtins.tryEval kernelPackages).success
-        && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+        && (!kernelPackages.${kernelAttrs}.meta.broken)
     ) pkgs.linuxKernel.packages;
 
-    latestZfsKernel = lib.last (
-        lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
-            builtins.attrValues zfsCompatibleKernelPackages
-        )
-    );
+    latestZfsKernel = zfsCompatibleKernelPackages
+        |> builtins.attrValues 
+        |> lib.sort (a: b: lib.versionOlder a.kernel.version b.kernel.version)
+        |> lib.last;
 in
 {
     options.mySystem = {
@@ -36,12 +36,13 @@ in
     config = lib.mkMerge [
         {
             boot = {
-                kernelPackages = lib.mkDefault (if zfs.enable
-                    then latestZfsKernel
-                    else pkgs.linuxPackages_latest);
-
                 initrd.systemd.enable = true;
                 supportedFilesystems = lib.mkIf zfs.enable [ "zfs" ];
+
+                kernelPackages = lib.mkDefault (if zfs.enable
+                    then latestZfsKernel
+                    else pkgs.linuxPackages_latest
+                );
 
                 loader = {
                     efi.canTouchEfiVariables = true;
