@@ -3,7 +3,7 @@
 {
     config = lib.mkIf (config.mySystem.theme == "gruvbox") {
         stylix = {
-            image = ../../assets/Colors.png;
+            image = ./sunlight.png;
             base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
             polarity = "dark";
             opacity.terminal = 0.85;

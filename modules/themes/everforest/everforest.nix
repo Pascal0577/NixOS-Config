@@ -7,7 +7,7 @@ in
     config = lib.mkIf (config.mySystem.theme == "everforest") {
         stylix = {
             base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
-            image = ../../assets/flowers.png;
+            image = ./flowers.png;
         };
 
         home-manager.users.${username} = lib.mkMerge [

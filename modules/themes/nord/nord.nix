@@ -6,7 +6,7 @@ in
     config = lib.mkIf (config.mySystem.theme == "nord") {
         stylix = {
             base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-            image = ../../assets/nord-arctic-fox.png;
+            image = ./nord-arctic-fox.png;
             icons.package = pkgs.papirus-nord;
         };
 
