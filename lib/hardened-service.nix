@@ -1,18 +1,20 @@
 { lib, ... }:
 
 let
+    inherit (lib) mkDefault;
     defaultProfile = {
         NoNewPrivileges = true;
         ProtectSystem = "strict";
-        ProtectHome = lib.mkDefault true;
+        ProtectHome = mkDefault true;
         ProtectClock = true;
         ProtectHostname = true;
         ProtectKernelTunables = true;
         ProtectKernelModules = true;
         ProtectKernelLogs = true;
-        ProtectControlGroups = true;
-        ProtectProc = "invisible";
-        PrivateTmp = true;
+        ProtectControlGroups = mkDefault "strict";
+        ProtectProc = mkDefault "invisible";
+        PrivateTmp = mkDefault "disconnected";
+        PrivateMounts = true;
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
@@ -42,7 +44,7 @@ in
         let
             merged = defaultProfile // overrides;
             extended = lib.mapAttrs
-                (name: items: (merged.${name} or [ ]) ++ items)
+                (name: items: (merged.${name} or []) ++ items)
                 extra;
         in
         merged // extended;

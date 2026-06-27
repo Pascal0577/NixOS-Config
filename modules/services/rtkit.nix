@@ -1,33 +1,22 @@
-{
+{ hardening, ... }: {
     security.rtkit.enable = true;
-    systemd.services.rtkit-daemon.serviceConfig = {
-        NoNewPrivileges = true;
-        ProtectSystem = "strict";
-        ProtectHome = true;
-        ProtectClock = true; 
-        ProtectHostname = true;
-        ProtectKernelTunables = true;
-        ProtectKernelModules = true;
-        ProtectKernelLogs = true;
-        PrivateMounts = true;
+    systemd.services.rtkit-daemon.serviceConfig = hardening.mkService {
+        RestrictRealtime = false;
         PrivateDevices = true;
-        RestrictNamespaces = true;
-        RestrictSUIDSGID = true;
+        DevicePolicy = "closed";
         RestrictAddressFamilies = [ 
             "~AF_INET6"  
             "~AF_INET"
             "~AF_PACKET"
         ];
-        MemoryDenyWriteExecute = true;
-        DevicePolicy = "closed";
-        LockPersonality = true;
         SystemCallFilter = [
-            "~@keyring"
-            "~@swap"
-            "~@clock"         
-            "~@module"
-            "~@obsolete"
-            "~@cpu-emulation"
+          "~@cpu-emulation"
+          "~@obsolete"
+          "~@swap"
+          "~@clock"
+          "~@module"
+          "~@debug"
+          "~@reboot"
         ];
-    }; 
+    };
 }
