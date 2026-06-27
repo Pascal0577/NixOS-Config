@@ -4,7 +4,7 @@ let
 in
 {
     options.mySystem.theme = lib.mkOption {
-        type = lib.types.enum [ "nord" "everforest" ];
+        type = lib.types.enum [ "nord" "everforest" "gruvbox" ];
         default = "everforest";
     };
 
