@@ -12,8 +12,27 @@
             opacity.popups = 0.85;
         };
 
-        home-manager.users.${username} = lib.mkIf (!config.mySystem.server.enable) {
-            dconf.settings."org/gnome/desktop/interface".accent-color = "orange";                
-        };
+        home-manager.users.${username} = lib.mkMerge [
+            (lib.mkIf (!config.mySystem.server.enable) {
+                dconf.settings."org/gnome/desktop/interface".accent-color = "orange";
+            })
+
+            (lib.mkIf config.mySystem.applications.neovim.enable {
+                programs.nixvim = {
+                    colorschemes.gruvbox-material = {
+                        enable = true;
+                        settings = {
+                            background = "soft";
+                            transparent_background = 1;
+                            diagnostic_text_highlight = 1;
+                        };
+                    };
+
+                    performance.combinePlugins.standalonePlugins = [
+                        pkgs.vimPlugins.gruvbox-material
+                    ];
+                };
+            })
+        ];
     };
 }

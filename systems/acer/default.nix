@@ -13,6 +13,7 @@
             file-manager.choice = "nautilus";
             obs.nvidia = true;
             helix.enable = true;
+            neovim.enable = true;
         };
     };
 }
