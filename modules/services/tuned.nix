@@ -10,24 +10,24 @@
             files = [ "/etc/tuned/ppd_base_profile" ];
         };
 
-        systemd.services.tuned.serviceConfig = hardening.mkService {
-            PrivateDevices = true;
-            PrivateNetwork = true;
-            RestrictAddressFamilies = [ "AF_UNIX" "AF_NETLINK" ];
+        # systemd.services.tuned.serviceConfig = hardening.mkService {
+        #     PrivateDevices = true;
+        #     PrivateNetwork = true;
+        #     RestrictAddressFamilies = [ "AF_UNIX" "AF_NETLINK" ];
 
-            ProtectKernelTunables = false;
-            ProtectKernelModules = false;
-            SystemCallFilter = hardening.defaultProfile.SystemCallFilter ++ [ "@module" ];
-            ProtectProc = "default";
-            ReadWritePaths = [ /var/log/tuned /etc/tuned ];
-        };
+        #     ProtectKernelTunables = false;
+        #     ProtectKernelModules = false;
+        #     SystemCallFilter = hardening.defaultProfile.SystemCallFilter ++ [ "@module" ];
+        #     ProtectProc = "default";
+        #     ReadWritePaths = [ /var/log/tuned /etc/tuned ];
+        # };
 
-        systemd.services.tuned-ppd.serviceConfig = hardening.mkService {
-            PrivateDevices = true;
-            PrivateNetwork = true;
+        # systemd.services.tuned-ppd.serviceConfig = hardening.mkService {
+        #     PrivateDevices = true;
+        #     PrivateNetwork = true;
 
-            ProtectProc = "default";
-            ReadWritePaths = [ /var/log/tuned /etc/tuned ];
-        };
+        #     ProtectProc = "default";
+        #     ReadWritePaths = [ /var/log/tuned /etc/tuned ];
+        # };
     };
 }
