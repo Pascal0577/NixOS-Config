@@ -15,7 +15,7 @@
             sudoedit.enable = false;
             sg.enable = false;
             fusermount.enable = false;
-            fusermount3.enable = false;
+            # fusermount3.enable = false;
             pkexec.setuid = lib.mkForce false;
             newgrp.setuid = lib.mkForce false;
             mount.enable = false;
