@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, hardening, ... }:
 
 {
     options.mySystem.applications.mullvad.enable =
@@ -14,28 +14,7 @@
         environment.persistence."/nix/persist".directories =
             lib.mkIf config.mySystem.impermanence.enable [ "/etc/mullvad-vpn" ];
 
-        systemd.services.mullvad-daemon.serviceConfig = {
-            NoNewPrivileges = true;
-            ProtectHome = true;
-            ProtectHostname = true;
-            ProtectKernelLogs = true;
-            ProtectKernelModules = true;
-            ProtectControlGroups = true;
-            ProtectClock = true;
-            PrivateTmp = true;
-            RestrictSUIDSGID = true;
-            RestrictRealtime = true;
-            LockPersonality = true;
-            SystemCallArchitectures = "native";
-            SystemCallFilter = [
-                "~@clock"
-                "~@cpu-emulation"
-                "~@debug"
-                "~@module"
-                "~@obsolete"
-                "~@reboot"
-                "~@swap"
-            ];
+        systemd.services.mullvad-daemon.serviceConfig = hardening.mkService {
             CapabilityBoundingSet = [
                 "CAP_NET_ADMIN"
                 "CAP_NET_RAW"
@@ -44,7 +23,6 @@
                 "CAP_SETUID"
                 "CAP_SETGID"
             ];
-            UMask = "0077";
             RestrictAddressFamilies = [
                 "AF_UNIX"
                 "AF_INET"
@@ -52,12 +30,10 @@
                 "AF_NETLINK"
                 "AF_PACKET"  # needed for raw VPN packets
             ];
-            RestrictNamespaces = [
-                "~user"
-                "~pid"
-                "~uts"
-                "~ipc"
-                "~cgroup"
+
+            ReadWritePaths = [
+                /var/log/mullvad-vpn
+                /etc/mullvad-vpn
             ];
         };
     };
