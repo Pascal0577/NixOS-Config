@@ -1,38 +1,10 @@
-{ lib, ... }:
+{ hardening, lib, ... }:
 
 {
-    systemd.services.display-manager.serviceConfig = {
-        ProtectSystem = "full";
-        ProtectControlGroups = true;
-        ProtectClock = true;
-        ProtectKernelModules = true;
-        PrivateMounts = true;
+    systemd.services.display-manager.serviceConfig = hardening.mkService {
+        ProtectHome = false;
         PrivateIPC = true;
-        RestrictSUIDSGID = true;
-        RestrictRealtime = true;
-        RestrictNamespaces = [ 
-            "~cgroup" 
-        ];
-        RestrictAddressFamilies = [ 
-            "AF_UNIX"
-            "AF_NETLINK"
-            "AF_INET"
-            "AF_INET6"
-        ];
-        SystemCallErrorNumber = "EPERM";
-        SystemCallFilter = [
-            "~@obsolete"
-            "~@cpu-emulation"
-            "~@clock"
-            "~@swap"
-            "~@module"
-            "~@reboot"
-            "~@raw-io"
-            "~@debug"
-        ];
-        SystemCallArchitectures = "native";
-        LockPersonality = true;
-        IPAddressDeny = ["0.0.0.0/0" "::/0"];
+        KeyringMode = lib.mkForce "private";
         CapabilityBoundingSet = [
             "CAP_SYS_ADMIN" 
             "CAP_SETUID"
@@ -49,7 +21,5 @@
             "CAP_CHOWN"
             "CAP_SYS_CHROOT"
         ];
-        UMask = 0077;
-        KeyringMode = lib.mkForce "private";
     };
 }
