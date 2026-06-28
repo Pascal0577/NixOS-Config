@@ -4,41 +4,30 @@
     options.mySystem.applications.tuned.enable = lib.mkEnableOption "tuned";
     config = lib.mkIf config.mySystem.applications.tuned.enable {
         services.tuned.enable = true;
+
+        environment.persistence."/nix/persist" = lib.mkIf config.mySystem.impermanence.enable {
+            directories =  [ "/var/log/tuned/" ];
+            files = [ "/etc/tuned/ppd_base_profile" ];
+        };
+
         systemd.services.tuned.serviceConfig = hardening.mkService {
+            PrivateDevices = true;
+            PrivateNetwork = true;
+            RestrictAddressFamilies = [ "AF_UNIX" "AF_NETLINK" ];
+
             ProtectKernelTunables = false;
             ProtectKernelModules = false;
-            PrivateNetwork = true;
-            ReadWritePaths = [ /var/log/tuned ];
-            UMask = "0077";
-            CapabilityBoundingSet = [
-                "CAP_SYS_ADMIN"
-                "CAP_SYS_NICE"
-                "CAP_SYS_RAWIO"
-                "CAP_DAC_OVERRIDE"
-                "CAP_SYS_MODULE"
-            ];
-            SystemCallFilter = [ "~@cpu-emulation" ];
-            RestrictAddressFamilies = [ "AF_UNIX" "AF_NETLINK" ];
+            SystemCallFilter = hardening.defaultProfile.SystemCallFilter ++ [ "@module" ];
+            ProtectProc = "default";
+            ReadWritePaths = [ /var/log/tuned /etc/tuned ];
         };
 
         systemd.services.tuned-ppd.serviceConfig = hardening.mkService {
-            ProtectProc = "default";
+            PrivateDevices = true;
             PrivateNetwork = true;
-            ReadWritePaths = [ /var/log/tuned ];
-            UMask = "0077";
-            SystemCallFilter = [
-                "~@cpu-emulation"
-                "~@debug"
-                "~@keyring"
-                "~@module"
-                "~@mount"
-                "~@obsolete"
-                "~@reboot"
-                "~@raw-io"
-                "~@swap"
-                "~@clock"
-            ];
-            RestrictAddressFamilies = [ "AF_UNIX" ];
+
+            ProtectProc = "default";
+            ReadWritePaths = [ /var/log/tuned /etc/tuned ];
         };
     };
 }
