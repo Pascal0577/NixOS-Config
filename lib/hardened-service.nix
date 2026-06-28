@@ -37,7 +37,6 @@ let
         ];
         CapabilityBoundingSet = [
             "~CAP_SET(UID|GID|PCAP)"
-            "~AF_(INET|INET6)"
             "~CAP_NET_ADMIN"
         ];
         RestrictAddressFamilies = [

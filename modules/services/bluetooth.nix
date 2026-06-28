@@ -15,7 +15,15 @@
     systemd.services.bluetooth.serviceConfig = let
         default = hardening.defaultProfile;
     in hardening.mkService {
-        PrivateNetwork = false;
+        networking = true;
         RestrictAddressFamilies = default.RestrictAddressFamilies ++ [ "AF_BLUETOOTH" ];
+        CapabilityBoundingSet = default.CapabilityBoundingSet ++ [
+            "CAP_NET_ADMIN"
+            "CAP_NET_RAW"
+            "CAP_NET_BIND_SERVICE"
+            "CAP_DAC_OVERRIDE"
+            "CAP_SETUID"
+            "CAP_SETGID"
+        ];
     };
 }
