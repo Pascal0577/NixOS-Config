@@ -12,7 +12,10 @@
         };
     };
 
-    systemd.services.bluetooth.serviceConfig = hardening.mkService {
-        RestrictAddressFamilies = [ "AF_UNIX" "AF_BLUETOOTH" ];
+    systemd.services.bluetooth.serviceConfig = let
+        default = hardening.defaultProfile;
+    in hardening.mkService {
+        PrivateNetwork = false;
+        RestrictAddressFamilies = default.RestrictAddressFamilies ++ [ "AF_BLUETOOTH" ];
     };
 }

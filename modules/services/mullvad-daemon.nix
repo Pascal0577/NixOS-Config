@@ -15,6 +15,7 @@
             lib.mkIf config.mySystem.impermanence.enable [ "/etc/mullvad-vpn" ];
 
         systemd.services.mullvad-daemon.serviceConfig = hardening.mkService {
+            networking = true;
             CapabilityBoundingSet = [
                 "CAP_NET_ADMIN"
                 "CAP_NET_RAW"
@@ -22,13 +23,6 @@
                 "CAP_DAC_OVERRIDE"
                 "CAP_SETUID"
                 "CAP_SETGID"
-            ];
-            RestrictAddressFamilies = [
-                "AF_UNIX"
-                "AF_INET"
-                "AF_INET6"
-                "AF_NETLINK"
-                "AF_PACKET"  # needed for raw VPN packets
             ];
 
             ReadWritePaths = [

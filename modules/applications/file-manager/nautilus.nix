@@ -9,7 +9,7 @@
             cabextract
         ];
 
-        services.gvfs.enable = true;
+        # services.gvfs.enable = true;
 
         programs.nautilus-open-any-terminal = {
             enable = true;
