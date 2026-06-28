@@ -21,5 +21,10 @@
             "CAP_CHOWN"
             "CAP_SYS_CHROOT"
         ];
+        SystemCallFilter = hardening.defaultProfile.SystemCallFilter ++ [
+            "@raw-io"
+            "@privileged"
+            "@resources"
+        ];
     };
 }

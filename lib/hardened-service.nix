@@ -34,6 +34,9 @@ let
             "~@reboot"
             "~@mount"
             "~@keyring"
+            "~@raw-io"
+            "~@privileged"
+            "~@resources"
         ];
         CapabilityBoundingSet = [
             "~CAP_SET(UID|GID|PCAP)"

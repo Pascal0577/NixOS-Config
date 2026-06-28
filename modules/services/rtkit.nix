@@ -3,6 +3,10 @@
     systemd.services.rtkit-daemon.serviceConfig = hardening.mkService {
         RestrictRealtime = false;
         PrivateDevices = true;
-        SystemCallFilter = hardening.defaultProfile.SystemCallFilter ++ [ "chroot" ];
+        SystemCallFilter = hardening.defaultProfile.SystemCallFilter ++ [
+            "chroot"
+            "setgroups"
+            "@resources"
+        ];
     };
 }
