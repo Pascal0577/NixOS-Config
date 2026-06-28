@@ -6,6 +6,7 @@
         SystemCallFilter = hardening.defaultProfile.SystemCallFilter ++ [
             "chroot"
             "setgroups"
+            "@privileged"
             "@resources"
         ];
     };
