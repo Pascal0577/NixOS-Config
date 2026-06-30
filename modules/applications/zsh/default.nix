@@ -1,8 +1,15 @@
 { pkgs, username, config, lib, ... }:
-
+let
+    cfg = config.mySystem.applications.zsh;
+in
 {
-    options.mySystem.applications.zsh.enable =
-        lib.mkEnableOption "Zsh module" // { default = true; };
+    options.mySystem.applications.zsh = {
+        enable = lib.mkEnableOption "Zsh module" // { default = true; };
+        prompt = lib.mkOption {
+            type = lib.types.enum [ "p10k" "starship" "none" ];
+            default = "starship";
+        };
+    };
 
     config = lib.mkIf config.mySystem.applications.zsh.enable {
         environment.pathsToLink = [ "/share/zsh" ];
@@ -13,7 +20,6 @@
         };
 
         environment.systemPackages = with pkgs; [
-            zinit
             fzf
             eza
             glow
@@ -28,9 +34,15 @@
 
         home-manager.users.${username} = {
             home.file.".local/share/zsh/p10k.zsh".source = ./.p10k.zsh;
+            home.file.".config/starship.toml".source = ./starship.toml;
             programs = {
                 fzf.enableZshIntegration = true;
                 eza.enableZshIntegration = true;
+
+                starship = lib.mkIf (cfg.prompt == "starship") {
+                    enable = true;
+                    enableBashIntegration = true;
+                };
                 
                 zsh = {
                     enable = true;
@@ -56,15 +68,26 @@
                     completionInit = "";
 
                     initContent = ''
+                        ${lib.optionalString (cfg.prompt == "p10k") ''
                         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
                             source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
                         fi
+                        ''}
+
+                        ${lib.optionalString (cfg.prompt == "starship") ''
+                        local starship_cache="$HOME/.local/share/starship-init.zsh"
+                        if [ ! -f "$starship_cache" ]; then
+                            starship init zsh > "$starship_cache"
+                        fi
+                        source "$starship_cache"
+                        ''}
 
                         source ${pkgs.zinit}/share/zinit/zinit.zsh
 
-                        # Load everything as fast as possible
+                        ${lib.optionalString (cfg.prompt == "p10k") ''
                         zinit ice depth=1
                         zinit light romkatv/powerlevel10k
+                        ''}
 
                         zinit ice wait'0' lucid
                         zinit light zdharma-continuum/fast-syntax-highlighting
@@ -73,13 +96,15 @@
                         zinit light zsh-users/zsh-completions
 
                         autoload -U compinit
-                        mkdir -p "/home/${username}/.local/share/zsh"
-                        compinit -d "/home/${username}/.local/share/zsh/zcompdump-$ZSH_VERSION"
+                        mkdir -p "$HOME/.local/share/zsh"
+                        compinit -d "$HOME/.local/share/zsh/zcompdump-$ZSH_VERSION"
                         zinit cdreplay -q
 
-                        if [ -f /home/${username}/.local/share/zsh/p10k.zsh ]; then
-                            source /home/${username}/.local/share/zsh/p10k.zsh
+                        ${lib.optionalString (cfg.prompt == "p10k") ''
+                        if [ -f $HOME/.local/share/zsh/p10k.zsh ]; then
+                            source $HOME/.local/share/zsh/p10k.zsh
                         fi
+                        ''}
 
                         bindkey -e
                         bindkey '^p' history-search-backward
@@ -115,8 +140,28 @@
                             esac
                         '
 
-                        eval "$(fzf --zsh)"
-                        eval "$(zoxide init zsh)"
+                        eval "$(${lib.getExe pkgs.fzf} --zsh)"
+                        eval "$(${lib.getExe pkgs.zoxide} init zsh)"
+
+                        ${lib.optionalString (cfg.prompt == "starship") ''
+                        autoload -Uz add-zsh-hook
+                        add-zsh-hook precmd transient-prompt-precmd
+
+                        TRANSIENT_PROMPT="''${PROMPT// prompt / prompt --profile transient }"
+
+                        function transient-prompt-precmd {
+                            # Fix ctrl+c behavior
+                            TRAPINT() { transient-prompt; return $(( 128 + $1 )) }
+                            SAVED_PROMPT="$(eval "printf '%s' \"''${TRANSIENT_PROMPT}\"")"
+                        }
+
+                        autoload -Uz add-zle-hook-widget
+                        add-zle-hook-widget zle-line-finish transient-prompt
+
+                        function transient-prompt() {
+                            PROMPT="$SAVED_PROMPT" zle .reset-prompt
+                        }
+                        ''}
                     '';
                 };
             };

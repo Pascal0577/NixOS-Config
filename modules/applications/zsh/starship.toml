@@ -1,0 +1,52 @@
+format = """
+$nix_shell\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$character"""
+
+[profiles]
+transient="""
+$nix_shell$character\
+"""
+
+[directory]
+style = "bold blue"
+truncation_length = 3
+truncate_to_repo = true
+read_only = " 󰌾"
+
+[nix_shell]
+disabled = false
+heuristic = true
+impure_msg = '[impure](bold red)'
+pure_msg = '[pure](bold green)'
+unknown_msg = '[pure](bold green)' # `nix shell nixpkgs#pkg` is treated as unknown
+format = '[ $state](bold blue) '
+
+[git_branch]
+symbol = ""
+style = "bold yellow"
+format = "[$branch(:$remote_branch)]($style) "
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "bold yellow"
+conflicted = "⚡"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count}"
+modified = "!${count}"
+staged = "+${count}"
+deleted = "✕${count}"
+
+[character]
+success_symbol = "[❯](bold cyan)"
+error_symbol = "[❯](bold red)"
+
+[cmd_duration]
+min_time = 1_000
+format = "took [$duration](bold yellow) "
