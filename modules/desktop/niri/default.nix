@@ -31,7 +31,7 @@ in
                 };
             };
 
-            systemd.user.services.niri-flake-polkit = {
+            systemd.user.services.polkit = {
                 description = "PolicyKit Authentication Agent";
                 wantedBy = [ "niri.service" ];
                 after = [ "graphical-session.target" ];
@@ -42,6 +42,19 @@ in
                     Restart = "on-failure";
                     RestartSec = 1;
                     TimeoutStopSec = 10;
+                };
+            };
+
+            systemd.user.services.swaybg = {
+                description = "Wallpaper background";
+                wantedBy = [ "graphical-session.target" ];
+                after = [ "graphical-session.target" ];
+                partOf = [ "graphical-session.target" ];
+                requisite = [ "graphical-session.target" ];
+                serviceConfig = {
+                    Type = "simple";
+                    ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i ${config.stylix.image}";
+                    Restart = "on-failure";
                 };
             };
 
