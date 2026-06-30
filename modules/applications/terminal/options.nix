@@ -3,7 +3,7 @@
 {
     options.mySystem.applications.terminal = {
         choice = lib.mkOption {
-            type = lib.types.enum [ "foot"  "ghostty" "kitty" "none" ];
+            type = lib.types.enum [ "foot"  "ghostty" "none" ];
             default = "none";
         };
 
