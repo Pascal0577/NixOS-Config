@@ -2,28 +2,34 @@
 let
     playerctl = lib.getExe pkgs.playerctl;
     brightnessctl = lib.getExe pkgs.brightnessctl;
+    hue = config.lib.stylix.colors;
 in
 {
+    options.mySystem.desktop.niri.borderColor = lib.mkOption {
+        type = lib.types.str;
+        default = hue.base0D;
+    };
+
     config = lib.mkIf (config.mySystem.desktop.choice == "niri") {
         programs.niri.enable = true;
 
         services.displayManager.ly.enable = true;
         environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
-        xdg.portal = {
+        xdg.portal = lib.mkForce {
             enable = true;
-            extraPortals = lib.mkForce (with pkgs; [
+            extraPortals = with pkgs; [
                 xdg-desktop-portal-gnome
                 gnome-keyring
-            ]);
-            config.niri = lib.mkForce {
+            ];
+            config.niri = {
                 default = [ "gnome" ];
                 "org.freedesktop.impl.portal.Access" = "gnome" ;
                 "org.freedesktop.impl.portal.Notification" = "gnome";
             };
         };
 
-        systemd.user.services.polkit = {
+        systemd.user.services.polkit-gnome = {
             description = "PolicyKit Authentication Agent";
             wantedBy = [ "niri.service" ];
             after = [ "graphical-session.target" ];
@@ -99,8 +105,8 @@ in
                     focus-ring { off; }
                     border {
                         width 4
-                        active-color "#7daea3"
-                        inactive-color "#7c6f64"
+                        active-color "${config.mySystem.desktop.niri.borderColor}"
+                        inactive-color "${hue.base03}"
                     }
                     shadow {
                         on
