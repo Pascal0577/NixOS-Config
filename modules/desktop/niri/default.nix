@@ -17,7 +17,18 @@ in
 
             xdg.portal = {
                 enable = true;
-                extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+                extraPortals = lib.mkForce [
+                    pkgs.xdg-desktop-portal-gnome
+                    pkgs.gnome-keyring
+                ];
+                config = {
+                    common.default = [ "gnome" ];
+                    niri = lib.mkForce {
+                        default = [ "gnome" ];
+                        "org.freedesktop.impl.portal.Access" = [ "gnome" ];
+                        "org.freedesktop.impl.portal.Notification" = [ "gnome" ];
+                    };
+                };
             };
 
             systemd.user.services.niri-flake-polkit = {
