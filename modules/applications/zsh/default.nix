@@ -27,7 +27,7 @@
         };
 
         home-manager.users.${username} = {
-            home.file.".cache/p10k.zsh".source = ./.p10k.zsh;
+            home.file.".local/share/zsh/p10k.zsh".source = ./.p10k.zsh;
             programs = {
                 fzf.enableZshIntegration = true;
                 eza.enableZshIntegration = true;
@@ -73,11 +73,13 @@
                         zinit light zsh-users/zsh-completions
 
                         autoload -U compinit
-                        mkdir -p "''${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
-                        compinit -d "''${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$ZSH_VERSION"
+                        mkdir -p "/home/${username}/.local/share/zsh"
+                        compinit -d "/home/${username}/.local/share/zsh/zcompdump-$ZSH_VERSION"
                         zinit cdreplay -q
 
-                        [ -f ~/.cache/p10k.zsh ] && source ~/.cache/p10k.zsh
+                        if [ -f /home/${username}/.local/share/zsh/p10k.zsh ]; then
+                            source /home/${username}/.local/share/zsh/p10k.zsh
+                        fi
 
                         bindkey -e
                         bindkey '^p' history-search-backward
