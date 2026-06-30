@@ -7,7 +7,6 @@
 
     config = let
         imageViewer = "org.gnome.Loupe.desktop";
-        videoPlayer = "io.github.celluloid_player.Celluloid.desktop";
         audioPlayer = "org.gnome.Decibels.desktop";
 
         imageMimes = [
@@ -75,67 +74,6 @@
         ];
 
         imageBindings = lib.genAttrs imageMimes (_: imageViewer);
-
-        videoMimes = [
-            "application/mpeg4-iod"
-            "application/mpeg4-muxcodetable"
-            "application/mxf"
-            "application/ram"
-            "application/sdp"
-            "application/streamingmedia"
-            "application/vnd.apple.mpegurl"
-            "application/vnd.ms-asf"
-            "application/vnd.rn-realmedia"
-            "application/vnd.rn-realmedia-vbr"
-            "application/x-extension-mp4"
-            "application/x-flash-video"
-            "application/x-matroska"
-            "application/x-streamingmedia"
-            "video/3gp"
-            "video/3gpp"
-            "video/3gpp2"
-            "video/divx"
-            "video/dv"
-            "video/fli"
-            "video/flv"
-            "video/mp2t"
-            "video/mp4"
-            "video/mp4v-es"
-            "video/mpeg"
-            "video/mpeg-system"
-            "video/msvideo"
-            "video/ogg"
-            "video/quicktime"
-            "video/vnd.mpegurl"
-            "video/vnd.rn-realvideo"
-            "video/webm"
-            "video/x-avi"
-            "video/x-flc"
-            "video/x-fli"
-            "video/x-flv"
-            "video/x-m4v"
-            "video/x-matroska"
-            "video/x-mpeg"
-            "video/x-mpeg-system"
-            "video/x-mpeg2"
-            "video/x-ms-asf"
-            "video/x-ms-wm"
-            "video/x-ms-wmv"
-            "video/x-ms-wmx"
-            "video/x-msvideo"
-            "video/x-nsv"
-            "video/x-ogm+ogg"
-            "video/x-theora"
-            "video/x-theora+ogg"
-            "x-content/video-dvd"
-            "x-scheme-handler/mms"
-            "x-scheme-handler/mmsh"
-            "x-scheme-handler/rtmp"
-            "x-scheme-handler/rtp"
-            "x-scheme-handler/rtsp"
-        ];
-
-        videoBindings = lib.genAttrs videoMimes (_: videoPlayer);
 
         audioMimes = [
             "application/ogg"
@@ -233,12 +171,10 @@
             pinta
             blanket
             video-trimmer
-            (celluloid.override { youtubeSupport = false; })
         ];
 
         xdg.mime.defaultApplications = {} //
             imageBindings //
-            videoBindings //
             audioBindings;
     };
 }
