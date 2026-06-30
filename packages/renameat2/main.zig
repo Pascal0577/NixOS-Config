@@ -2,14 +2,15 @@ const std = @import("std");
 
 pub fn main(init: std.process.Init) !void {
     const args = init.minimal.args.vector;
-    if (args.len > 3) {
+    if (args.len != 3) {
         std.debug.print("usage: renameat2 file1 file2\n", .{});
         std.process.exit(1);
     }
 
     const dirfd = std.Io.Dir.cwd().handle;
     const id = std.os.linux.renameat2(dirfd, args[1], dirfd, args[2], .{ .EXCHANGE = true });
-    switch (std.posix.errno(id)) {
+    const errno = std.posix.errno(id);
+    switch (errno) {
         .ACCES, .PERM => std.debug.print("Permission denied\n", .{}),
         .BUSY => std.debug.print("One or both files are busy\n", .{}),
         .FAULT => std.debug.print("One or both files are outside your address space. How did you even get this error?\n", .{}),
@@ -25,6 +26,11 @@ pub fn main(init: std.process.Init) !void {
         .NOTEMPTY, .EXIST => std.debug.print("Nonempty directory\n", .{}),
         .ROFS => std.debug.print("Read-only filesystem!\n", .{}),
         .XDEV => std.debug.print("`renameat2` doesn't work across mountpoints\n", .{}),
-        else => std.debug.print("Success!\n", .{}),
+        else => {
+            std.debug.print("Success!\n", .{});
+            return;
+        }
     }
+
+    std.process.exit(@truncate(@intFromEnum(errno)));
 }
