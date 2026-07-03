@@ -1,7 +1,7 @@
 const std = @import("std");
 
-pub fn main(init: std.process.Init) !void {
-    const args = init.minimal.args.vector;
+pub fn main(init: std.process.Init.Minimal) !void {
+    const args = init.args.vector;
     if (args.len != 3) {
         std.debug.print("usage: renameat2 file1 file2\n", .{});
         std.process.exit(1);

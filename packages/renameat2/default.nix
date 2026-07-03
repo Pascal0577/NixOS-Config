@@ -18,7 +18,7 @@ stdenvNoCC.mkDerivation {
         runHook preBuild
         export ZIG_GLOBAL_CACHE_DIR=$TMPDIR/zig-cache
         export ZIG_LOCAL_CACHE_DIR=$TMPDIR/zig-cache
-        zig build-exe main.zig -O ReleaseSafe -femit-bin=renameat2
+        zig build-exe main.zig -O ReleaseSmall -femit-bin=renameat2
         runHook postBuild
     '';
 
