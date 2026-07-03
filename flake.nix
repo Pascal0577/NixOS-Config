@@ -2,17 +2,15 @@
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
         lib = nixpkgs.lib;
+        hardening = import ./lib/hardened-service.nix { inherit lib; };
+        username = "pascal";
 
         sharedModules = ./modules
             |> lib.filesystem.listFilesRecursive
             |> builtins.filter (lib.hasSuffix ".nix");
 
         mkSystem = hostname: lib.nixosSystem {
-            specialArgs = {
-                inherit inputs self hostname;
-                hardening = import ./lib/hardened-service.nix { inherit lib; };
-                username = "pascal";
-            };
+            specialArgs = { inherit inputs self hostname username hardening; };
             modules = [
                 home-manager.nixosModules.home-manager
                 ./systems/${hostname}/default.nix
@@ -21,9 +19,11 @@
         };
     in
     {
-        nixosConfigurations = lib.genAttrs [ "acer" "lenovo" "oracle" "chronos" ] mkSystem;
+        nixosConfigurations = lib.readDir ./systems
+            |> lib.attrNames
+            |> map (n: { name = n; value = mkSystem n; })
+            |> lib.listToAttrs;
 
-        # expose custom packages as flake outputs for all supported archs
         packages = lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system: ./packages
             |> lib.filesystem.listFilesRecursive
             |> lib.filter (lib.hasSuffix ".nix")
