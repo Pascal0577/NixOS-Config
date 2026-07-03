@@ -5,6 +5,7 @@ let
 in
 {
     config = lib.mkIf (config.mySystem.theme == "everforest") {
+        mySystem.desktop.niri.borderColor = "${hue.base09}";
         stylix = {
             base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
             image = ./flowers.png;
@@ -30,10 +31,6 @@ in
                         pkgs.vimPlugins.everforest
                     ];
                 };
-            })
-
-            (lib.mkIf (config.mySystem.desktop.choice == "niri") {
-                programs.niri.settings.layout.border.active.color = "#${hue.base09-hex}";
             })
         ];
     };
