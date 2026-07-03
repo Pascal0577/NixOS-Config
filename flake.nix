@@ -24,14 +24,12 @@
         nixosConfigurations = lib.genAttrs [ "acer" "lenovo" "oracle" "chronos" ] mkSystem;
 
         # expose custom packages as flake outputs for all supported archs
-        packages = let
-            systems = [ "x86_64-linux" "aarch64-linux" ];
-            mkPackages = system: lib.filesystem.listFilesRecursive ./packages
-                |> lib.filter (lib.hasSuffix ".nix")
-                |> map (p: nixpkgs.legacyPackages.${system}.callPackage p {})
-                |> map (p: { name = p.pname or p.name; value = p; })
-                |> lib.listToAttrs;
-        in lib.genAttrs systems mkPackages;
+        packages = lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system: ./packages
+            |> lib.filesystem.listFilesRecursive
+            |> lib.filter (lib.hasSuffix ".nix")
+            |> map (p: nixpkgs.legacyPackages.${system}.callPackage p {})
+            |> map (p: { name = p.pname or p.name; value = p; })
+            |> lib.listToAttrs);
     };
 
     inputs = {
