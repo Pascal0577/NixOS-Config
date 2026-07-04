@@ -29,33 +29,6 @@ in
             };
         };
 
-        systemd.user.services.polkit-gnome = {
-            description = "PolicyKit Authentication Agent";
-            wantedBy = [ "niri.service" ];
-            after = [ "graphical-session.target" ];
-            partOf = [ "graphical-session.target" ];
-            serviceConfig = {
-                Type = "simple";
-                ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-                Restart = "on-failure";
-                RestartSec = 1;
-                TimeoutStopSec = 10;
-            };
-        };
-
-        systemd.user.services.swaybg = {
-            description = "Wallpaper background";
-            wantedBy = [ "graphical-session.target" ];
-            after = [ "graphical-session.target" ];
-            partOf = [ "graphical-session.target" ];
-            requisite = [ "graphical-session.target" ];
-            serviceConfig = {
-                Type = "simple";
-                ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i ${config.stylix.image}";
-                Restart = "on-failure";
-            };
-        };
-
         home-manager.users.${username} = {
             home.file.".config/niri/config.kdl".text = ''
                 input {

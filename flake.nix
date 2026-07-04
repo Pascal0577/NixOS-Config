@@ -38,7 +38,7 @@
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-        stylix.url = "github:nix-community/stylix";
+        stylix.url = "github:nix-community/stylix/pull/2364/head";
         stylix.inputs.nixpkgs.follows = "nixpkgs";
 
         disko.url = "github:nix-community/disko/latest";
@@ -53,7 +53,7 @@
 
         website.url = "github:Pascal0577/website";
 
-        noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
+        noctalia.url = "github:noctalia-dev/noctalia-shell";
         noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
         oxwm.url = "github:tonybanters/oxwm";
