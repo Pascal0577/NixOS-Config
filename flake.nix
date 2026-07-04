@@ -56,6 +56,9 @@
         noctalia.url = "github:noctalia-dev/noctalia-shell";
         noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
+        noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
+        noctalia-greeter.inputs.nixpkgs.follows = "nixpkgs";
+
         oxwm.url = "github:tonybanters/oxwm";
         oxwm.inputs.nixpkgs.follows = "nixpkgs";
 

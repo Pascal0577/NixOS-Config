@@ -13,7 +13,6 @@ in
     config = lib.mkIf (config.mySystem.desktop.choice == "niri") {
         programs.niri.enable = true;
 
-        services.displayManager.ly.enable = true;
         environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
         xdg.portal = lib.mkForce {
@@ -125,7 +124,7 @@ in
                     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
                     Mod+F { maximize-column; }
                     ${lib.optionalString config.mySystem.applications.noctalia.enable ''
-                    Mod+L { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+                    Mod+L { spawn-sh "noctalia msg session lock"; }
                     ''}
                     Mod+Left { focus-column-left; }
                     Mod+Minus { set-column-width "-10%"; }
@@ -170,7 +169,7 @@ in
                     XF86MonBrightnessUp allow-when-locked=true { spawn "${brightnessctl}" "set" "5%+"; }
                 }
                 ${lib.optionalString config.mySystem.applications.noctalia.enable ''
-                switch-events { lid-close { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }; }
+                switch-events { lid-close { spawn "noctalia" "msg" "session" "lock"; }; }
                 ''}
                 window-rule {
                     geometry-corner-radius 10.000000 10.000000 10.000000 10.000000
