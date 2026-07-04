@@ -43,11 +43,12 @@
             imports = [ inputs.noctalia.homeModules.default ];
 
             stylix.targets.noctalia.enable = true;
-
             programs.noctalia = {
                 enable = true;
                 systemd.enable = true;
             };
+
+            home.file.".local/state/noctalia/settings.toml".source = ./settings.toml;
         };
     };
 }

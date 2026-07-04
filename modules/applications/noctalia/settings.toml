@@ -1,0 +1,132 @@
+[audio]
+enable_overdrive = true
+enable_sounds = true
+sound_volume = 0.99999997764825821
+
+[bar.default]
+background_opacity = 0.84999998100101948
+capsule_radius = 8
+center = [ "workspaces" ]
+end = [ "tray", "media", "group:g2", "clock" ]
+margin_edge = 0
+margin_ends = 0
+padding = 4
+radius = 0
+radius_top_left = 0
+radius_top_right = 0
+start = [ "group:g1", "battery" ]
+thickness = 28
+
+    [[bar.default.capsule_group]]
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "cpu", "temp", "ram", "sysmon" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "notifications", "network", "bluetooth", "volume", "brightness" ]
+    opacity = 1.0
+    padding = 6.0
+    radius = 8.0
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 1081.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+[notification]
+layer = "overlay"
+
+[osd]
+position = "top_right"
+
+    [osd.kinds]
+    caffeine = false
+    media = false
+
+[shell]
+avatar_path = "/home/pascal/Pictures/Profile_Pictures/moody.png"
+clipboard_enabled = false
+polkit_agent = true
+screen_time_enabled = true
+show_location = false
+telemetry_enabled = true
+
+    [shell.greeter_sync]
+    auto_sync = true
+
+    [shell.screen_corners]
+    enabled = true
+    size = 12
+
+    [shell.screenshot]
+    save_to_file = false
+
+[weather]
+unit = "imperial"
+
+[widget.battery]
+capsule = true
+
+[widget.brightness]
+show_label = false
+
+[widget.clock]
+capsule = true
+format = "{:%I:%M %p} {:%b %e}"
+
+[widget.control-center]
+capsule = true
+custom_image = "/nix/store/n7vjykbj20pcr9r1sdwkb4jgjrfm9hng-noctalia-5.0.0/share/noctalia/assets/images/distros/nixos.svg"
+glyph = "snowflake"
+
+[widget.cpu]
+display = "text"
+
+[widget.network]
+show_label = false
+
+[widget.ram]
+display = "text"
+
+[widget.sysmon]
+display = "text"
+glyph = "arrows-right-left"
+stat = "swap_pct"
+
+[widget.temp]
+display = "text"
+
+[widget.volume]
+show_label = false
