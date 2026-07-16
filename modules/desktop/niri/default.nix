@@ -188,6 +188,7 @@ in
                     match app-id="my.file-chooser"
                     match app-id="^th[^/]*.exe"
                     match app-id="^東方紅魔郷.exe"
+                    match app-id="mkxp-z"
                     open-floating true
                 }
                 window-rule {
