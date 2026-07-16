@@ -167,7 +167,7 @@
             baobab
             constrict
             curtail
-            deluge
+            qbittorrent
             pinta
             blanket
             video-trimmer
