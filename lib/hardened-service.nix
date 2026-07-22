@@ -44,7 +44,8 @@ let
         ];
         RestrictAddressFamilies = [
             "AF_UNIX"
-            "~AF_(INET|INET6)"
+            "~AF_INET"
+            "~AF_INET6"
             "~AF_PACKET"
         ];
         IPAddressDeny = [ "any" ];
