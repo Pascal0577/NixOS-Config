@@ -84,7 +84,7 @@ in
                     target-trc = "srgb";
                     target-gamut = "bt.709";
                     target-contrast = "auto";
-                    tone-mapping = "bt.2390";
+                    tone-mapping = "bt.709";
 
                     alang = "en";
                     slang = "en";
