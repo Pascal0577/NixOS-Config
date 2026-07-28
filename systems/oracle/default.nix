@@ -3,15 +3,18 @@
 {
     mySystem = {
         ZFS.enable = true;
-        impermanence.enable = true;
+        impermanence.enable = false;
         server.enable = true;
 	    applications.helix.enable = true;
 	    theme = "everforest";
     };
 
-    imports = [ inputs.website.nixosModules.webserver ];
+    imports = [
+        inputs.website.nixosModules.webserver
+        inputs.dorg.nixosModules.matrix
+    ];
     pscl-webserver = {
-        enable = true;
+        enable = false;
         interface = "enp0s6";
         extraModules = [ ../../modules/security.nix ];
     };

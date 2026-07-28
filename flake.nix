@@ -53,6 +53,8 @@
 
         website.url = "github:Pascal0577/website";
 
+        dorg.url = "path:/home/pascal/src/dorg";
+
         noctalia.url = "github:noctalia-dev/noctalia-shell";
         noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
