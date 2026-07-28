@@ -173,8 +173,8 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1785178093,
-        "narHash": "sha256-IcX6rdwp73qFvX00m7djsWB+Zm8qp83dRuMWiO7u3Ww=",
+        "lastModified": 1785212332,
+        "narHash": "sha256-7PFr/ySJYPgMCIVRk8n4rZcnSU+v8v3fBpmhZ+UhCRQ=",
         "path": "/home/pascal/src/dorg",
         "type": "path"
       },
