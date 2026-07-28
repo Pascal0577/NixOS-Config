@@ -1,3 +1,5 @@
+config_version = 2
+
 [audio]
 enable_overdrive = true
 enable_sounds = true
@@ -133,3 +135,9 @@ display = "text"
 
 [widget.volume]
 show_label = false
+
+[widget.workspaces]
+display = "none"
+empty_color = "#D8A567"
+focused_color = "#E78A4E"
+occupied_color = "#D8A657"
